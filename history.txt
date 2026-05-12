@@ -154,5 +154,5 @@
     不 force push / 不跳过 hook 等边界。
   * 在响应正文中按用户提问列出每轮必做的 6 件事（history 必做、
     changelog 仅代码变更时做、commit、push、静默执行、git 安全护栏）。
-- artifacts: 提交 <hash> "docs(changelog): 建立 changelog 并把追加约束写进规则"
-  推送到 origin/main。
+- artifacts: 提交 51915d2 "docs(changelog): 建立 changelog.txt 并把追加约束
+  写进项目规则" 推送到 origin/main。
