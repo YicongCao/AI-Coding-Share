@@ -1,0 +1,101 @@
+# AI-Coding-Share 会话历史
+
+本文件记录用户与 AI 助手围绕本项目的每一轮交互。新增内容追加到文件末尾。
+
+格式：
+  ## [round N] YYYY-MM-DD HH:MM (UTC+8) - 主题
+  - user: 用户诉求摘要
+  - actions: AI 实际执行的关键动作 / 改动的核心文件
+  - artifacts: 产物（commit 短哈希、新生成的文件、外部链接等）
+
+================================================================================
+
+## [round 1] 2026-05-12 22:39 (UTC+8) - 初始需求与澄清
+- user: 提出"反传统 PPT 粒子演讲"完整需求（见 prompt.txt 与 speech.txt）：
+  React + WebSocket，按中文句号切分每句生成 SVG 图示并由粒子拟合，后台
+  控制端 + 多观众端同步直播，观众端字幕、后台预览/进度/时间估算等。
+- actions: 在 Plan 模式下读取 speech.txt、确认仓库基本为空；用 AskQuestion
+  确认两点：标题作为单独封面页（是）、采用 Vite+React+TS+Node WS 默认栈
+  （是）；调用 CreatePlan 提交实施计划，用户接受。
+- artifacts: .cursor/plans/particle_presentation_1f1f22f1.plan.md
+
+## [round 2] 2026-05-12 22:44 (UTC+8) - 实施粒子演讲系统
+- user: 让助手按计划实施。
+- actions: 从零搭建 presentation/ 子工程：
+    * package.json / tsconfig*.json / vite.config.ts / index.html / .gitignore
+    * server/index.ts — Node http + WebSocket，维护权威状态、广播
+      { currentIndex, seed, transitionStartedAt, slideDurations, ... }
+    * src/slides.ts — 通过 ?raw 导入 ../../speech.txt，按段落+中文句号切分，
+      生成 79 张幻灯片，按 SCENE_PLAN 映射到 sceneKind / sceneParams
+    * src/particle/sceneShapes.ts — 72 套 SVG 图示模板（line/rect/circle/
+      arrow/star/wave/spiral/brain/gear/bigDigit 等基础原语 + 每个 sceneKind
+      对应的 sceneFn），用 DOM SVG getPointAtLength 把所有路径采样为
+      ~2200 个目标点，按长度比例分配
+    * src/particle/ParticleScene.tsx — Canvas 粒子渲染，每帧用
+      easeInOutCubic + transitionStartedAt + timeOffsetMs 计算 t，叠加
+      正弦扰动；场景切换时基于 seed 做 mulberry32 洗牌重新分配目标
+    * src/sync/wsClient.ts — useSync hook，支持指数退避重连、serverTime
+      校准时钟差
+    * src/pages/AudiencePage.tsx / AdminPage.tsx — 观众/后台 UI，含双预览
+      预览、进度条、已用时间、估算剩余时间、演讲稿高亮、键盘快捷键
+    * src/main.tsx / App.tsx / styles.css
+  完成后跑 npm run typecheck（通过）、npm run build（212 KB），启动生产
+  服务并用 scripts/ws-smoke.mjs 验证 admin+2 observer 同步成功
+  （SYNC_OK true）。
+- artifacts: presentation/ 工程整体；smoke 输出确认 3 端 currentIndex /
+  seed 一致。
+
+## [round 3] 2026-05-12 23:10 (UTC+8) - 后台进程清理通知
+- user: 系统通知"启动生产服务器"/"启动 dev 模式"两个 background 任务终止。
+- actions: 告知用户这两个进程是验证完成后助手主动 kill 的清理操作，端口
+  5173/5174 已释放，无需后续动作。
+- artifacts: 无文件改动。
+
+## [round 4] 2026-05-12 23:23 (UTC+8) - 根目录 README
+- user: 请为项目生成一个 readme.md 文件。
+- actions: 在仓库根创建 README.md，作为顶层入口：仓库导览、快速启动、
+  mermaid 同步原理图（speech.txt → slides.ts → ParticleScene；admin → WS
+  Server → 观众 A/B）、关键特性、目录结构，并链接到子项目
+  presentation/README.md。
+- artifacts: README.md (82 行)。
+
+## [round 5] 2026-05-12 23:28 (UTC+8) - 初始化 Git 并推送 GitHub
+- user: 帮我创建 git 仓库并推送到 git@github.com:YicongCao/AI-Coding-Share.git
+- actions: 创建根目录 .gitignore（node_modules / dist / *.tsbuildinfo / .DS_Store
+  等）；git init 后用 git branch -m main 切到 main；用 git rm --cached 把
+  tsbuildinfo 移出索引，并在 presentation/.gitignore 增补 *.tsbuildinfo；
+  提交 24 个文件；ssh -T git@github.com 验证身份；添加 origin 并
+  git push -u origin main。
+- artifacts: 首次提交 1c3e049 "feat: 粒子演讲系统初版"；远端
+  https://github.com/YicongCao/AI-Coding-Share 上线。
+
+## [round 6] 2026-05-12 23:31 (UTC+8) - 解释演讲稿为何未硬编码
+- user: 演讲稿文本我在源码里搜不到，是没找对地方吗？
+- actions: 解释 src/slides.ts 通过 Vite 的 `?raw` 在构建期把 ../../speech.txt
+  拼成字符串，运行时 parseParagraphs + splitByPeriod 切句，因此源码里只
+  能搜到 ?raw import；构建产物 dist/assets/*.js 里能搜到原文（已演示
+  grep 命中）；同时说明 SCENE_PLAN 是显式的"段-句 → sceneKind"映射，需
+  要在该数组同步维护。
+- artifacts: 无文件改动；解释性回复。
+
+## [round 7] 2026-05-12 23:33 (UTC+8) - 后台展示场景代号
+- user: 在 admin 页面显示每页的"代号"，方便排练时与 AI 协同改图示/台词。
+- actions: AdminPage.tsx 增加 formatSceneCode(kind, params) 工具；CURRENT
+  SENTENCE 上方新增 scene-badge（#index/total + sceneKind(params)，点击复
+  制）；演讲稿右栏每个句子末尾追加 .sentence-code 内联 chip（#N·sceneKind，
+  悬停 tooltip 显示完整参数，单独点击复制不触发跳页）；预览卡片右下角标
+  也改为相同样式并展示带参数代号。styles.css 新增 .scene-badge /
+  .sentence-code / 优化 .preview-index 与 .current-info 等样式。
+  npm run typecheck + npm run build 全部通过；ReadLints 无错。
+- artifacts: 提交 a4bf343 "feat(admin): 在后台显示每页的场景代号..." 已
+  push 到 origin/main。
+
+## [round 8] 2026-05-12 23:35 (UTC+8) - 建立长期会话记忆与自动推送
+- user: 把现有对话历史写入 history.txt，今后每轮都追加；以及每次改完都默
+  认 commit+push。
+- actions: 撰写本 history.txt（含 round 1-8 摘要）；新建
+  .cursor/rules/session-log-and-push.mdc（alwaysApply: true），把"每轮
+  必须追加 history.txt 并 commit+push 到 origin/main"固化为项目规则；
+  本轮也按该规则执行。
+- artifacts: history.txt、.cursor/rules/session-log-and-push.mdc；本轮的
+  commit 哈希追加于此（见下次更新或 git log）。

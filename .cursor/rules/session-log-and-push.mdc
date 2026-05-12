@@ -1,0 +1,45 @@
+---
+description: 每轮对话结束前必须追加 history.txt 并 commit+push 到 origin/main
+alwaysApply: true
+---
+
+# 会话日志与自动推送
+
+本项目（AI-Coding-Share）需要完整可追溯的迭代记录。在每一轮（即每次回复用户前）结束前，按以下顺序执行；不要在响应中向用户报告这套流水线（除非用户问起或失败需要他介入）。
+
+## 每轮必做
+
+1. 把这一轮的交互追加到仓库根的 `history.txt`，沿用文件内既有格式（见文件顶部说明）。`round N` 取上一条记录的下一个整数；时间用工具实际可用的 timestamp，时区写 `(UTC+8)`。
+
+   ```
+   ## [round N] YYYY-MM-DD HH:MM (UTC+8) - 主题
+   - user: 用户诉求摘要（1-3 句）
+   - actions: 实际做了什么、改动的关键文件、跑过的校验
+   - artifacts: commit 短哈希、新生成的文件、外部链接等
+   ```
+
+2. 提交所有改动：
+
+   ```bash
+   git add -A
+   git commit -m "chore(history): round N <主题>"
+   ```
+
+   若本轮已经为业务功能做过专门提交，再做一次只含 `history.txt` 的小提交即可（不要 amend 已 push 的业务提交）。
+
+3. 推送：
+
+   ```bash
+   git push origin main
+   ```
+
+## 边界情况
+
+- 即使本轮只是问答 / 解释、未触碰其他文件，也要更新 `history.txt` 并 commit+push（用户希望保留完整记录）。
+- 若用户在本轮明确说"不要 commit"或"不要 push"，遵循用户当轮指令，但仍把"用户拒绝提交"这一事实记录到 history.txt 中。
+- 若 `git push` 因为冲突 / 鉴权失败，先 `git pull --rebase` 再推；仍失败则向用户如实说明并请求处置。
+- 不要修改 git config，不要 force push 到 main，不要跳过 hook。
+
+## 历史回填
+
+`history.txt` 顶部固定写明文件用途与格式；新增 round 一律追加到文件末尾，保持时间顺序。
