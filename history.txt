@@ -165,16 +165,26 @@
 - user: 把刚才"先 commit 再回填哈希"的结论也写进 rules，避免下次上下文压
   缩后再领悟一遍。
 - actions:
-  * 更新 .cursor/rules/session-log-and-push.mdc：
-    - 把原来的"### 3. Commit / ### 4. Push"两节合并为"### 3. Commit +
-      回填哈希 + Push"，正文指向新增的工作流章节。
-    - 新增独立章节"## commit hash 鸡生蛋问题与推荐工作流"：详述问题、
-      推荐做法（写 history 时 artifacts 用 `<pending>` 占位 → commit →
-      `git log -1 --format=%h` 取哈希 → 替换占位符 → `commit --amend
-      --no-edit` → push，每轮一条干净提交）、push 后才发现要回填的
-      fallback（补丁提交，禁止 `--force`）、4 条明确反模式（编哈希、
-      跳过 artifacts、push 后 amend+force、回填拖到下一轮）。
-    - 本轮严格按推荐工作流自己 dogfood 一次：history 用 `<pending>` 占位
-      → commit → 取哈希 → amend → push，验证流程可行。
-- artifacts: 提交 f270584 "docs(rules): 把 commit hash 鸡生蛋解法写进 session
-  log 规则" 推送到 origin/main。
+  * 第一版：在 .cursor/rules/session-log-and-push.mdc 拆出"## commit hash
+    鸡生蛋问题与推荐工作流"章节，按"单次 commit + amend"思路写。dogfood
+    该流程：history 用 `<pending>` 占位 → commit C1=f270584 → 回填 →
+    `commit --amend` → push。
+  * dogfood 当场暴露 BUG：`commit --amend` 重新生成新哈希
+    （f270584 → 61226d0），history 里写的 f270584 立刻变成远端不存在的
+    孤儿引用，自指悖论无法绕过。
+  * 第二版（本轮收尾）改方案为 **Pattern A1（哈希延后一轮回填）**：
+    - 本轮 artifacts 用 `<pending>` 占位 → commit → push → **不 amend**；
+    - **下一轮**编辑 history 时第一件事是 `git log --oneline -10` 把上轮
+      所有 `<pending>` 回填为真实短哈希，再追加新内容；
+    - 保留 Pattern A3（两次提交同轮闭合）作备选；
+    - 新增反模式条目：用 amend 合并自指 history、`push --force`、编假哈希、
+      回填拖到下下轮。
+  * 同步检查发现 round 8/9（808d325/54b79d0）当时的 history 确实写的是
+    "哈希见 git log / 下次更新"，正是 Pattern A1 的事实做法，写进规则
+    末尾"历史经验"小节作为论据。
+  * 同步修复 round 12 自身的孤儿哈希：把上文 f270584 改为 61226d0
+    （Pattern A3 的事后补丁应用）。
+- artifacts: 提交 61226d0 "docs(rules): 把 commit hash 鸡生蛋解法写进 session
+  log 规则"（初版，amend 失败留下的实际 push 版本）+ 补丁 <pending>
+  "docs(rules): 修正鸡生蛋方案为 Pattern A1 并回填 round 12 孤儿哈希"
+  推送到 origin/main；后一条哈希按 A1 在下轮回填。

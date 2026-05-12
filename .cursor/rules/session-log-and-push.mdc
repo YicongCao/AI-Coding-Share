@@ -33,48 +33,68 @@ alwaysApply: true
 
 纯问答 / 解释 / 仅更新 history 或规则文件的轮次**不要**改 changelog。
 
-### 3. Commit + 回填哈希 + Push
+### 3. Commit + Push（哈希延后回填）
 
-详见下文「commit hash 鸡生蛋问题与推荐工作流」。一句话：**先 commit，再用 `git log -1 --format=%h` 拿哈希回填 history.txt，再 `git commit --amend --no-edit`，最后 `git push`，每轮只留一条干净提交**。
+详见下文「commit hash 鸡生蛋问题与推荐工作流」。一句话：**`history.txt` 的 `artifacts:` 行先写 `<pending>` 占位 → `git commit` → `git push` → 不 amend；下一轮编辑 history 时第一件事就是 `git log --oneline -10` 把上轮的 `<pending>` 替换成真实哈希。**
 
 - `<type>` 使用 conventional 风格：`feat` / `fix` / `chore` / `docs` / `refactor` / `perf` 等
 - `git push` 是 `git push origin main`
+- **禁止** 用 `git commit --amend` 来"修复"自指哈希——会生成新哈希、原 hash 孤儿化（详见反模式）
 
 ## commit hash 鸡生蛋问题与推荐工作流
 
-**问题**：`history.txt` 的 `artifacts:` 行需要写本轮 commit 的短哈希，但哈希只在 `git commit` 之后才存在。直接写"先 commit 再补 history"会导致每轮被迫拆成 2 条提交，污染历史；而"先 push 再发现需要回填"又会诱导你想用 `--force` 修正——后者绝对禁止。
+**问题**：`history.txt` 的 `artifacts:` 行需要写本轮 commit 的短哈希。但是：
 
-**推荐做法：单次提交 + amend（push 之前 amend 是安全的）**
+1. 哈希在 `git commit` 之后才存在。
+2. `git commit --amend` 会**重新生成新哈希**（tree / parent / committer-date 任一变化都会改 sha），原 commit 立即失活。
+3. 因此"把自己的真实哈希写进自己这条 commit 内部"是个无解的自指悖论：一旦 commit + 回填 + amend，amend 出的新 commit 又是新哈希，原 hash 变成远端永远不存在的孤儿引用。
+
+### 推荐做法：哈希延后一轮回填（Pattern A1）
+
+每轮一条干净提交，本轮的哈希在**下一轮**才被回填。
 
 1. 完成全部代码 / 资源改动。
-2. 写 `changelog.txt`（若适用）；写 `history.txt` 时 `artifacts:` 行先用占位符，例如：
+2. 写 `changelog.txt`（若适用）；写 `history.txt` 时 `artifacts:` 行用占位符：
+
    ```
-   - artifacts: 提交 <pending> "<commit title>" 推送到 origin/main。
+   - artifacts: 提交 <pending> "<commit title>" 推送到 origin/main；
+     哈希在下轮编辑 history 时回填。
    ```
+
 3. `git add -A && git commit -m "<type>(<scope>): <subject>"`
-4. `git log -1 --format=%h` 拿到 7 位短哈希。
-5. 用 `StrReplace` 把 `history.txt` 里的 `<pending>` 替换为真实哈希。
-6. `git add history.txt && git commit --amend --no-edit`（**只在还没 push 时**才允许 amend；这一步合并到上一条提交，不留补丁记录）。
-7. `git push origin main`。
+4. `git push origin main`。**不要 amend**。
+5. **下一轮**任何对 `history.txt` 的编辑，**第一件事**：
 
-> 关键点：amend 永远发生在 push **之前**，所以不违反"不要 amend 已 push 的提交"。
+   ```bash
+   git log --oneline -10
+   ```
 
-### Fallback：业务提交已经 push 出去了
+   把上一轮（以及更早未回填的）`<pending>` 都替换成真实短哈希，**再**追加新 round 内容。
 
-如果你在 amend 之前不慎 push 了，**禁止** `git push --force`。改用补丁提交：
+这样每个 round 的真实哈希在 round N+1 的提交里被填上。Round N 的 history 条目"严格闭合"要等到 N+1。这是可接受的——人想查 round N 实际 commit 永远能 `git log` 找到。
 
-1. 在 `history.txt` 里把占位符换成真实哈希。
-2. `git add history.txt && git commit -m "chore(history): 回填 round N 真实 commit 哈希"`
-3. `git push origin main`
+### Pattern A3（备选）：两次提交同轮闭合
 
-本轮会留下两条提交（业务 + 补丁），可接受但不优雅；下次回到推荐做法。
+如果你**必须**在当轮就让 `history.txt` 包含真实哈希（例如用户提问需要立即引用），用两次提交：
 
-### 反模式（不要做）
+1. 完成全部代码 + `history.txt` 用 `<pending>` 占位 → `git commit -m "<type>: ..."` → `git log -1 --format=%h` 取 H1。
+2. 把 `history.txt` 里 `<pending>` 替换为 H1 → `git commit -m "chore(history): 回填 round N 真实 commit 哈希"`。
+3. `git push origin main` 一并推送。
 
-- ❌ 写 history 时直接编一个假哈希凑数
-- ❌ 跳过 history 的 artifacts 行
-- ❌ 已 push 后用 `git commit --amend && git push --force` 改主线
-- ❌ 把哈希回填拖到下一轮再做（会导致下一轮 history 提到上一轮的事，引用乱套）
+代价：每轮多一条 chore 提交，主线略噪。但 H1 是真实存在于远端的提交，引用准确。
+
+### 反模式（绝对不要做）
+
+- ❌ **用 `git commit --amend` 合并回填后的 history**——amend 生成新哈希 H2，history 里写的 H1 失活变孤儿（远端没有此 commit）。这是 hash 自指的根本性陷阱，**不要去碰**。
+- ❌ **`git push --force` 修复已 push 的孤儿引用**——main 永远禁止 force push。
+- ❌ **编一个假哈希凑数 / 留空 artifacts 行**——破坏可追溯性。
+- ❌ **哈希回填拖到下下轮甚至更晚**——积压超过一轮就会丢失对应关系，无法可靠回填。每轮编辑 `history.txt` 时第一件事就是清掉所有遗留 `<pending>`。
+
+### 历史经验
+
+Round 8 / 9 的提交（808d325 / 54b79d0）在它们自己的 history 条目里写的是"哈希见 git log / 下次更新"，等到后续轮次才被回填为真实哈希。这就是 Pattern A1 的实证：哈希延后一轮，主线干净。
+
+Round 12 尝试"单次 commit + amend"路线失败：amend 把 f270584 升级成 61226d0，写进 history 的 f270584 立刻成孤儿。事后用 Pattern A3 补丁提交修正，并把 Pattern A1 确立为默认。
 
 ## 边界情况
 
