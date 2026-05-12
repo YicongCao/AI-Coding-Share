@@ -131,4 +131,11 @@
   * 验证：npm run typecheck 通过；npm run build 218.35 KB JS / 10.15 KB
     CSS；ws-stats-smoke 输出 STATS_SMOKE_OK；老 ws-smoke.mjs 仍
     SYNC_OK true。
-- artifacts: 本轮的业务+history 一并 commit 后推送（哈希见 git log）。
+- artifacts: 提交 54b79d0 "feat(admin): 在线/活跃统计、每页活跃度直方图
+  与密码登录"，推送到 origin/main。
+
+## [round 10] 2026-05-12 23:45 (UTC+8) - 后台进程清理通知
+- user: 系统通知 round 9 验证用的生产服务（task 541920）被 aborted。
+- actions: 告知用户该 abort 是我在 ws-stats-smoke 完成后主动 kill 40409
+  执行的清理，端口 5174 已释放，无需后续处置。
+- artifacts: 无业务改动；本轮仅追加 history。
