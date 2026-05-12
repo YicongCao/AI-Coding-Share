@@ -7,9 +7,20 @@ import {
   speechTitle,
   totalSlides,
 } from "../slides";
+import type { SceneKind, SceneParams } from "../particle/sceneShapes";
 
 const PREVIEW_PARTICLE_COUNT = 850;
 const STEADY_TRANSITION_ANCHOR = 1;
+
+function formatSceneCode(kind: SceneKind, params?: SceneParams): string {
+  if (!params) return kind;
+  const entries = Object.entries(params).filter(([, v]) => v !== undefined);
+  if (entries.length === 0) return kind;
+  const tail = entries
+    .map(([k, v]) => (typeof v === "string" ? `${k}="${v}"` : `${k}=${v}`))
+    .join(", ");
+  return `${kind}(${tail})`;
+}
 
 function formatDuration(ms: number): string {
   if (!isFinite(ms) || ms < 0) ms = 0;
@@ -166,7 +177,7 @@ export default function AdminPage() {
               particleCount={PREVIEW_PARTICLE_COUNT}
             />
             <span className="preview-index">
-              {currentSlide.sceneKind}
+              {formatSceneCode(currentSlide.sceneKind, currentSlide.sceneParams)}
             </span>
           </div>
           <div className="preview-card next">
@@ -197,7 +208,9 @@ export default function AdminPage() {
               </div>
             )}
             <span className="preview-index">
-              {nextSlide ? nextSlide.sceneKind : "end"}
+              {nextSlide
+                ? formatSceneCode(nextSlide.sceneKind, nextSlide.sceneParams)
+                : "end"}
             </span>
           </div>
         </div>
@@ -250,7 +263,20 @@ export default function AdminPage() {
           </div>
         </div>
 
-        <div className="current-info">CURRENT SENTENCE</div>
+        <div className="current-info">
+          <span>CURRENT SENTENCE</span>
+          <span className="scene-badge" title="点击复制代号">
+            <span className="scene-badge-idx">#{String(currentIndex + 1).padStart(2, "0")}/{totalSlides}</span>
+            <code
+              onClick={() => {
+                const code = formatSceneCode(currentSlide.sceneKind, currentSlide.sceneParams);
+                navigator.clipboard?.writeText(code).catch(() => {});
+              }}
+            >
+              {formatSceneCode(currentSlide.sceneKind, currentSlide.sceneParams)}
+            </code>
+          </span>
+        </div>
         <div className="current-sentence">{currentSlide.text}</div>
       </div>
 
@@ -263,20 +289,32 @@ export default function AdminPage() {
               <div className="paragraph" key={`p-${pi}`}>
                 {para.sentences.map((text, si) => {
                   const globalIdx = para.slideRange.start + si;
+                  const slide = allSlides[globalIdx];
                   const cls =
                     globalIdx === currentIndex
                       ? "sentence is-current"
                       : globalIdx < currentIndex
                       ? "sentence is-past"
                       : "sentence";
+                  const codeLong = formatSceneCode(slide.sceneKind, slide.sceneParams);
                   return (
                     <span
                       key={`s-${pi}-${si}`}
                       className={cls}
                       onClick={() => send({ type: "jumpTo", index: globalIdx })}
-                      title={`跳转到第 ${globalIdx + 1} 页`}
+                      title={`#${globalIdx + 1}  ${codeLong}\n点击跳转到该页`}
                     >
                       {text}
+                      <code
+                        className="sentence-code"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          navigator.clipboard?.writeText(codeLong).catch(() => {});
+                        }}
+                        title={`复制 "${codeLong}"`}
+                      >
+                        #{globalIdx + 1}·{slide.sceneKind}
+                      </code>
                     </span>
                   );
                 })}
