@@ -1,0 +1,99 @@
+# Changelog · AI-Coding-Share
+
+本文件记录粒子演讲系统的每个版本变更。最新版本在最上面，按时间倒序排列。
+
+版本号大致遵循 SemVer：
+- MAJOR 用于不兼容的架构变更
+- MINOR 用于新增的用户可见功能
+- PATCH 用于内务、文档、构建脚本或单纯修复
+
+新增条目时在文件顶部插入；同一次发布若同时含功能与内务，归到当时最高的语义级别（例如 minor）下。
+
+================================================================================
+
+## v0.3.1 - 2026-05-12
+### 内务
+- 完善 history.txt 关于 round 10（生产服务清理通知）的说明，确保每轮交互
+  都有可追溯记录。
+  commits: 9c01233
+
+## v0.3.0 - 2026-05-12 — 在线/活跃统计 + admin 登录密码
+### 新增
+- 服务端新增 `identify` / `ping` 协议，按 role 跟踪每个连接的状态与
+  最后一次 ping 时间（8.5s 活跃窗口），新增 `stats` 帧（totalClients /
+  adminClients / audienceClients / activeAudience），仅广播给 admin。
+- 观众端 useSync 在 role=audience 时根据 `visibilitychange` 仅在前台
+  每 5s 发送 ping；切到后台立即停发。
+- admin 顶部新增 stats-row 三块 chip：管理端 / 观众端 / 活跃（含脉冲点）
+  实时数。
+- admin progress 下方新增 79 根 bar 的 engagement-block，按
+  `activeAudience × dt` 每秒累计到当前页活跃度，当前页橙金色高亮，
+  悬停 tooltip 展示该页活跃度+文本，点击 bar 跳页。
+- engagement 每 1.5s 落 `localStorage:nex-admin-engagement-v2`，避免误关
+  浏览器丢数据；新增"清空统计"按钮。
+- admin 加密码门 LoginGate（默认 `nex2026`），错误时 shake 动画；认证
+  状态存 `localStorage:nex-admin-auth-v1`；新增"退出"按钮一键清除。
+- 新增 scripts/ws-stats-smoke.mjs 端到端验证 identify / ping / stats 链路。
+  commits: 54b79d0
+
+## v0.2.1 - 2026-05-12
+### 内务
+- 新增 history.txt 用于回填全部历史轮次的 user / actions / artifacts。
+- 新增 .cursor/rules/session-log-and-push.mdc (alwaysApply: true)，将
+  "每轮必须追加 history.txt 并 commit+push 到 origin/main" 固化为项目
+  规则。
+  commits: 808d325
+
+## v0.2.0 - 2026-05-12 — admin 后台展示场景代号
+### 新增
+- AdminPage 在 CURRENT SENTENCE 上方新增徽章：`#index/total +
+  sceneKind(params)`，点击代号即可复制到剪贴板。
+- 演讲稿右栏每个句子末尾追加 `.sentence-code` 内联 chip
+  （`#N·sceneKind`），悬停 tooltip 显示完整参数；单独点击复制不会触发
+  跳页。
+- 预览卡片右下角标统一为代号样式，展示带参数的完整 sceneKind。
+- 配套样式：scene-badge / sentence-code / preview-index 视觉对齐。
+  commits: a4bf343
+
+## v0.1.0 - 2026-05-12 — 初版粒子演讲系统
+### 初版
+- 仓库主体：presentation/ 子工程（Vite + React + TypeScript），同进程
+  托管前端静态资源与 Node WebSocket 服务（server/index.ts）；根目录
+  speech.txt + prompt.txt + README.md（含 mermaid 同步原理图）。
+- 演讲稿处理：src/slides.ts 通过 Vite `?raw` 导入 ../../speech.txt，
+  按段落+中文句号 `。` 切分，标题作封面页 + 末段以 `！` 收尾的致谢
+  作末页，合计 79 张幻灯片。SCENE_PLAN 显式映射每段每句到 sceneKind /
+  sceneParams。
+- 图示模板：src/particle/sceneShapes.ts 实现 72 套独立 SVG 图示
+  （cover / timeline / twoQuests / jobsSpeaker / jobsEnvelope / macSpeaks
+  / ttsAsrSplit / rulesGrid / hmmStates / vistaWindow / vistaMenu /
+  siriPhone / intentSlot / carVoice / word2vec / vectorMath / seq2seq /
+  attention / bert / chatgpt / breakthrough / bestWorstIntro / bestAge /
+  worstAge / keyPointTitle / agileFlow / bottleneck / nexTeam / nexEcho
+  / mostManyFastGood / rulesMess / readCode / rightTool / conceptLLM /
+  conceptAgent / conceptTools / conceptMCP / conceptRulesSkills /
+  conceptHarness / formula / busyAI / closedLoopIntro / closedLoopManual
+  / closedLoopAuto / singleThread / multiAgent / roleStack / smartCage /
+  outsider / bsArchitecture / sseXml / sseWs / phasedReality /
+  bulletTrain / slowToken / prePostChat / statusBar / optMix / agileEnd
+  / verticalDomain / agentDevSkills / userIssues / closedLoopReminder /
+  diagnosticLog / aiResolves / notAFrontend / coreSkills / lifecycle /
+  selfAwareness / todayYesterday / slowAndFast / finale 等），全部由
+  几何/SVG 路径组成，不拟合任何文字；运行时用 DOM SVG getPointAtLength
+  按路径长度比例采样为 ~2200 个目标点。
+- 粒子渲染：src/particle/ParticleScene.tsx 用 Canvas 维护粒子池，每帧
+  以 easeInOutCubic + transitionStartedAt + timeOffsetMs 计算 t，叠加
+  正弦扰动；场景切换时按 seed 做 mulberry32 洗牌重新分配目标，呈现
+  "魔法重组"。
+- 同步机制：server 维护权威状态 { currentIndex, seed,
+  transitionStartedAt, slideDurations, ... }，仅广播状态变化（不传逐帧
+  像素）。客户端用相同 seed + 模板在本地生成同样的采样点；每条消息携带
+  `serverTime`，wsClient 用差值校准本地与服务器墙钟。指数退避自动重连。
+- 路由：观众 `/` 全屏 Canvas + 底部圆角灰底白字字幕；后台 `/admin`
+  含当前/下一页双预览、上下页/计时/重置按钮、进度条 + 已用 / 平均每页 /
+  预估剩余时间、演讲稿全文（当前句子红色加粗、可点击跳页）、键盘
+  快捷键（←/→/Space/Home/End/S/R）。
+- 配套：根 .gitignore、presentation/.gitignore（含 *.tsbuildinfo）、
+  README.md（项目入口）、presentation/README.md（子项目细节）、
+  scripts/ws-smoke.mjs 多客户端同步冒烟测试。
+  commits: 1c3e049

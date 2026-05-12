@@ -139,3 +139,20 @@
 - actions: 告知用户该 abort 是我在 ws-stats-smoke 完成后主动 kill 40409
   执行的清理，端口 5174 已释放，无需后续处置。
 - artifacts: 无业务改动；本轮仅追加 history。
+
+## [round 11] 2026-05-12 23:46 (UTC+8) - 建立 changelog 与梳理每轮例行
+- user: 生成 changelog.txt，回填到目前每个版本的标题与详情概要；今后每次
+  改代码都要追加；并询问"每轮对话完默认要做哪些事情"。
+- actions:
+  * 新建 changelog.txt（按版本倒序）：v0.1.0 初版粒子演讲系统、v0.2.0
+    admin 场景代号、v0.2.1 history+rule 内务、v0.3.0 在线统计+登录、
+    v0.3.1 round 10 history 修订。每个版本含 commits 短哈希。
+  * 更新 .cursor/rules/session-log-and-push.mdc：把"每轮触碰业务代码时
+    在 changelog.txt 顶部追加新版本"纳入规则；保留 history.txt 每轮无
+    条件追加 + commit+push 不变；明确版本号 SemVer 粗粒度分级、
+    conventional commit prefix 约定、push 冲突处置、不修改 git config /
+    不 force push / 不跳过 hook 等边界。
+  * 在响应正文中按用户提问列出每轮必做的 6 件事（history 必做、
+    changelog 仅代码变更时做、commit、push、静默执行、git 安全护栏）。
+- artifacts: 提交 <hash> "docs(changelog): 建立 changelog 并把追加约束写进规则"
+  推送到 origin/main。
