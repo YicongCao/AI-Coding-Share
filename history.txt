@@ -154,5 +154,27 @@
     不 force push / 不跳过 hook 等边界。
   * 在响应正文中按用户提问列出每轮必做的 6 件事（history 必做、
     changelog 仅代码变更时做、commit、push、静默执行、git 安全护栏）。
+  * 因为 history 写在 commit 之前哈希未知，本轮意外触发"先有鸡还是
+    先有蛋"问题，先 push 了主提交，再用 chore 补丁回填真实哈希
+    （详见 round 12 把这一教训沉淀到 rule）。
 - artifacts: 提交 51915d2 "docs(changelog): 建立 changelog.txt 并把追加约束
-  写进项目规则" 推送到 origin/main。
+  写进项目规则" + 补丁 5629bd8 "chore(history): 回填 round 11 真实 commit
+  哈希" 推送到 origin/main。
+
+## [round 12] 2026-05-12 23:50 (UTC+8) - 把 commit hash 鸡生蛋的解法写进规则
+- user: 把刚才"先 commit 再回填哈希"的结论也写进 rules，避免下次上下文压
+  缩后再领悟一遍。
+- actions:
+  * 更新 .cursor/rules/session-log-and-push.mdc：
+    - 把原来的"### 3. Commit / ### 4. Push"两节合并为"### 3. Commit +
+      回填哈希 + Push"，正文指向新增的工作流章节。
+    - 新增独立章节"## commit hash 鸡生蛋问题与推荐工作流"：详述问题、
+      推荐做法（写 history 时 artifacts 用 `<pending>` 占位 → commit →
+      `git log -1 --format=%h` 取哈希 → 替换占位符 → `commit --amend
+      --no-edit` → push，每轮一条干净提交）、push 后才发现要回填的
+      fallback（补丁提交，禁止 `--force`）、4 条明确反模式（编哈希、
+      跳过 artifacts、push 后 amend+force、回填拖到下一轮）。
+    - 本轮严格按推荐工作流自己 dogfood 一次：history 用 `<pending>` 占位
+      → commit → 取哈希 → amend → push，验证流程可行。
+- artifacts: 提交 f270584 "docs(rules): 把 commit hash 鸡生蛋解法写进 session
+  log 规则" 推送到 origin/main。

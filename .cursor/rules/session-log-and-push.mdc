@@ -33,21 +33,48 @@ alwaysApply: true
 
 纯问答 / 解释 / 仅更新 history 或规则文件的轮次**不要**改 changelog。
 
-### 3. Commit
+### 3. Commit + 回填哈希 + Push
 
-```bash
-git add -A
-git commit -m "<type>(<scope>): <subject>"
-```
+详见下文「commit hash 鸡生蛋问题与推荐工作流」。一句话：**先 commit，再用 `git log -1 --format=%h` 拿哈希回填 history.txt，再 `git commit --amend --no-edit`，最后 `git push`，每轮只留一条干净提交**。
 
 - `<type>` 使用 conventional 风格：`feat` / `fix` / `chore` / `docs` / `refactor` / `perf` 等
-- 若本轮已为业务功能做过专门提交，再做一次只含 history（+ 视情况 changelog）的小提交即可，不要 amend 已推送的业务提交
+- `git push` 是 `git push origin main`
 
-### 4. Push
+## commit hash 鸡生蛋问题与推荐工作流
 
-```bash
-git push origin main
-```
+**问题**：`history.txt` 的 `artifacts:` 行需要写本轮 commit 的短哈希，但哈希只在 `git commit` 之后才存在。直接写"先 commit 再补 history"会导致每轮被迫拆成 2 条提交，污染历史；而"先 push 再发现需要回填"又会诱导你想用 `--force` 修正——后者绝对禁止。
+
+**推荐做法：单次提交 + amend（push 之前 amend 是安全的）**
+
+1. 完成全部代码 / 资源改动。
+2. 写 `changelog.txt`（若适用）；写 `history.txt` 时 `artifacts:` 行先用占位符，例如：
+   ```
+   - artifacts: 提交 <pending> "<commit title>" 推送到 origin/main。
+   ```
+3. `git add -A && git commit -m "<type>(<scope>): <subject>"`
+4. `git log -1 --format=%h` 拿到 7 位短哈希。
+5. 用 `StrReplace` 把 `history.txt` 里的 `<pending>` 替换为真实哈希。
+6. `git add history.txt && git commit --amend --no-edit`（**只在还没 push 时**才允许 amend；这一步合并到上一条提交，不留补丁记录）。
+7. `git push origin main`。
+
+> 关键点：amend 永远发生在 push **之前**，所以不违反"不要 amend 已 push 的提交"。
+
+### Fallback：业务提交已经 push 出去了
+
+如果你在 amend 之前不慎 push 了，**禁止** `git push --force`。改用补丁提交：
+
+1. 在 `history.txt` 里把占位符换成真实哈希。
+2. `git add history.txt && git commit -m "chore(history): 回填 round N 真实 commit 哈希"`
+3. `git push origin main`
+
+本轮会留下两条提交（业务 + 补丁），可接受但不优雅；下次回到推荐做法。
+
+### 反模式（不要做）
+
+- ❌ 写 history 时直接编一个假哈希凑数
+- ❌ 跳过 history 的 artifacts 行
+- ❌ 已 push 后用 `git commit --amend && git push --force` 改主线
+- ❌ 把哈希回填拖到下一轮再做（会导致下一轮 history 提到上一轮的事，引用乱套）
 
 ## 边界情况
 
