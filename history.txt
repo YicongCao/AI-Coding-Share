@@ -184,7 +184,25 @@
     末尾"历史经验"小节作为论据。
   * 同步修复 round 12 自身的孤儿哈希：把上文 f270584 改为 61226d0
     （Pattern A3 的事后补丁应用）。
-- artifacts: 提交 61226d0 "docs(rules): 把 commit hash 鸡生蛋解法写进 session
-  log 规则"（初版，amend 失败留下的实际 push 版本）+ 补丁 <pending>
-  "docs(rules): 修正鸡生蛋方案为 Pattern A1 并回填 round 12 孤儿哈希"
-  推送到 origin/main；后一条哈希按 A1 在下轮回填。
+- artifacts: 修改 .cursor/rules/session-log-and-push.mdc（先后两版：第一版
+  按 amend 路线，dogfood 失败后改为 Pattern A1）；修改 history.txt 记录
+  全过程；中途因 amend 改 hash 多产生了一条 chore 补丁。
+
+## [round 13] 2026-05-13 00:00 (UTC+8) - 精简会话日志规则
+- user: 觉得为了在 history.txt 里写 commit 号付出代价过高、思路太复杂；
+  其实直接不写 commit 号、只概要描述 artifacts 里的文件改动就够了，规则
+  也跟着精简。
+- actions:
+  * 重写 .cursor/rules/session-log-and-push.mdc，从 ~111 行精简到 ~50 行：
+    - 删除整段"## commit hash 鸡生蛋问题与推荐工作流"（Pattern A1/A3、
+      反模式、历史经验小节全部移除）。
+    - 第 1 节明确：history.txt 是对话历史，artifacts 描述文件改动即可，
+      **不写 commit 短哈希**，要查 commit 用 git log；附一句话说明这条
+      约束顺带规避了自指悖论。
+    - 第 3 节合并为简单 "Commit + Push"，每轮一条提交直接推。
+    - 边界情况保留四条原有条款；不再特别讨论 amend。
+  * 清理 round 12 artifacts 里的 `<pending>` 占位与 amend 解释，改为
+    文件级描述。
+  * 历史 round 1-11 的真实哈希保留不动（已是事实，不影响新规则执行）。
+- artifacts: 修改 .cursor/rules/session-log-and-push.mdc（精简一半篇幅）；
+  修改 history.txt（清理 round 12 占位 + 追加本 round 13）。
