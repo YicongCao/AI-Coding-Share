@@ -97,5 +97,38 @@
   .cursor/rules/session-log-and-push.mdc（alwaysApply: true），把"每轮
   必须追加 history.txt 并 commit+push 到 origin/main"固化为项目规则；
   本轮也按该规则执行。
-- artifacts: history.txt、.cursor/rules/session-log-and-push.mdc；本轮的
-  commit 哈希追加于此（见下次更新或 git log）。
+- artifacts: 提交 808d325 "chore(history): round 8 建立会话日志与自动推送规则"。
+
+## [round 9] 2026-05-12 23:43 (UTC+8) - 在线/活跃统计 + admin 登录密码
+- user: admin 显示当前 WS 在线数；观众端前台时每 5s ping，admin 实时看到
+  每页活跃人数并 localStorage 持久化（避免误关丢数据）；为 admin 加默认
+  密码 nex2026 防止听众闯入。
+- actions:
+  * server/index.ts 重写：每连接生成 clientId；新增 ClientMessage 类型
+    含 identify/ping；ClientRecord 跟踪 role 与 lastPingAt（8.5s 活跃窗口）；
+    computeStats 输出 { totalClients, adminClients, audienceClients,
+    activeAudience }；hello 携带 clientId；新增 stats 帧，仅广播给
+    role === "admin" 的客户端；每 2.5s 定时 broadcastStats，命令处理后
+    与连接变化时也立即广播。
+  * src/sync/wsClient.ts：useSync 接受 { role, pingIntervalMs? }；open 后
+    发 identify；audience 角色监听 visibilitychange，仅在 visible 时每
+    5s 发 ping；新暴露 stats 与 clientId。
+  * src/pages/AudiencePage.tsx 改为 useSync({ role: 'audience' })。
+  * src/pages/AdminPage.tsx 大改：拆出 LoginGate（密码 nex2026，错误时
+    shake 动画 + 红色提示，认证存 localStorage:nex-admin-auth-v1）与
+    AdminConsole；useSync({ role: 'admin' })；顶部新增 stats-row 三块
+    chip（管理端/观众端/活跃 with 脉冲点）；progress 下方新增
+    engagement-block，79 根 bar 按 engagement[i]/max 显示高度，当前页
+    橙金色高亮，点击跳页，悬停 tooltip 显示活跃度与文本；activeAudience
+    每秒按 dt 累加到 engagement[currentIndex]，每 1.5s 落 localStorage:
+    nex-admin-engagement-v2；新增"清空统计"与"退出"按钮（btn-subtle）。
+  * src/styles.css：新增 stats-row/stats-chip/live-dot 脉冲、
+    engagement-block/engagement-bars/engagement-bar、login-root/-card/
+    shake 动画、btn-subtle、preview-placeholder 等样式。
+  * scripts/ws-stats-smoke.mjs：1 admin + 2 audience 端到端测：identify
+    后 stats 正确（activeAudience=2）、admin/audience 都收到 state、
+    audience 不收 stats、断连/重 ping 后计数刷新。
+  * 验证：npm run typecheck 通过；npm run build 218.35 KB JS / 10.15 KB
+    CSS；ws-stats-smoke 输出 STATS_SMOKE_OK；老 ws-smoke.mjs 仍
+    SYNC_OK true。
+- artifacts: 本轮的业务+history 一并 commit 后推送（哈希见 git log）。

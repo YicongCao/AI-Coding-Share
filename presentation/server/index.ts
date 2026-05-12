@@ -2,10 +2,13 @@ import http from "node:http";
 import path from "node:path";
 import fs from "node:fs";
 import url from "node:url";
+import crypto from "node:crypto";
 import { WebSocketServer, type WebSocket } from "ws";
 
 const PORT = Number(process.env.WS_PORT ?? 5174);
 const isProd = process.env.NODE_ENV === "production";
+
+type Role = "admin" | "audience";
 
 type AdminCommand =
   | { type: "next" }
@@ -14,6 +17,11 @@ type AdminCommand =
   | { type: "reset" }
   | { type: "start" }
   | { type: "setTotal"; total: number };
+
+type ClientMessage =
+  | AdminCommand
+  | { type: "identify"; role: Role }
+  | { type: "ping" };
 
 type ServerState = {
   totalSlides: number;
@@ -25,9 +33,26 @@ type ServerState = {
   slideDurations: number[];
 };
 
+type StatsPayload = {
+  totalClients: number;
+  adminClients: number;
+  audienceClients: number;
+  activeAudience: number;
+};
+
 type ServerMessage =
+  | { type: "hello"; payload: ServerState; serverTime: number; clientId: string }
   | { type: "state"; payload: ServerState; serverTime: number }
-  | { type: "hello"; payload: ServerState; serverTime: number };
+  | { type: "stats"; payload: StatsPayload; serverTime: number };
+
+type ClientRecord = {
+  id: string;
+  socket: WebSocket;
+  role: Role | null;
+  lastPingAt: number;
+};
+
+const ACTIVE_TIMEOUT_MS = 8500;
 
 const state: ServerState = {
   totalSlides: 1,
@@ -38,6 +63,8 @@ const state: ServerState = {
   slideEnteredAt: Date.now(),
   slideDurations: [],
 };
+
+const clients = new Map<string, ClientRecord>();
 
 function makeSeed(): number {
   return Math.floor(Math.random() * 0x7fffffff);
@@ -95,13 +122,68 @@ function applyCommand(cmd: AdminCommand) {
   }
 }
 
-const clients = new Set<WebSocket>();
+function computeStats(): StatsPayload {
+  const now = Date.now();
+  let adminClients = 0;
+  let audienceClients = 0;
+  let activeAudience = 0;
+  for (const c of clients.values()) {
+    if (c.role === "admin") adminClients++;
+    else if (c.role === "audience") {
+      audienceClients++;
+      if (now - c.lastPingAt < ACTIVE_TIMEOUT_MS) activeAudience++;
+    }
+  }
+  return {
+    totalClients: clients.size,
+    adminClients,
+    audienceClients,
+    activeAudience,
+  };
+}
 
-function broadcast(message: ServerMessage) {
-  const payload = JSON.stringify(message);
-  for (const client of clients) {
-    if (client.readyState === client.OPEN) {
-      client.send(payload);
+function sendTo(client: ClientRecord, msg: ServerMessage) {
+  if (client.socket.readyState !== client.socket.OPEN) return;
+  try {
+    client.socket.send(JSON.stringify(msg));
+  } catch {
+    /* ignore */
+  }
+}
+
+function broadcastState() {
+  const msg: ServerMessage = {
+    type: "state",
+    payload: state,
+    serverTime: Date.now(),
+  };
+  const payload = JSON.stringify(msg);
+  for (const c of clients.values()) {
+    if (c.socket.readyState === c.socket.OPEN) {
+      try {
+        c.socket.send(payload);
+      } catch {
+        /* ignore */
+      }
+    }
+  }
+}
+
+function broadcastStats() {
+  const stats = computeStats();
+  const msg: ServerMessage = {
+    type: "stats",
+    payload: stats,
+    serverTime: Date.now(),
+  };
+  const payload = JSON.stringify(msg);
+  for (const c of clients.values()) {
+    if (c.role !== "admin") continue;
+    if (c.socket.readyState !== c.socket.OPEN) continue;
+    try {
+      c.socket.send(payload);
+    } catch {
+      /* ignore */
     }
   }
 }
@@ -169,11 +251,33 @@ const httpServer = http.createServer((req, res) => {
 
 const wss = new WebSocketServer({ server: httpServer, path: "/ws" });
 
-wss.on("connection", (socket) => {
-  clients.add(socket);
-  socket.send(
-    JSON.stringify({ type: "hello", payload: state, serverTime: Date.now() })
+function isAdminCommand(t: string): t is AdminCommand["type"] {
+  return (
+    t === "next" ||
+    t === "prev" ||
+    t === "jumpTo" ||
+    t === "reset" ||
+    t === "start" ||
+    t === "setTotal"
   );
+}
+
+wss.on("connection", (socket) => {
+  const id = crypto.randomUUID();
+  const record: ClientRecord = {
+    id,
+    socket,
+    role: null,
+    lastPingAt: 0,
+  };
+  clients.set(id, record);
+
+  sendTo(record, {
+    type: "hello",
+    payload: state,
+    serverTime: Date.now(),
+    clientId: id,
+  });
 
   socket.on("message", (data) => {
     let parsed: unknown;
@@ -183,26 +287,48 @@ wss.on("connection", (socket) => {
       return;
     }
     if (!parsed || typeof parsed !== "object") return;
-    const cmd = parsed as AdminCommand;
-    if (
-      cmd.type !== "next" &&
-      cmd.type !== "prev" &&
-      cmd.type !== "jumpTo" &&
-      cmd.type !== "reset" &&
-      cmd.type !== "start" &&
-      cmd.type !== "setTotal"
-    ) {
+    const msg = parsed as ClientMessage;
+
+    if (msg.type === "identify") {
+      if (msg.role === "admin" || msg.role === "audience") {
+        record.role = msg.role;
+        if (msg.role === "audience") {
+          record.lastPingAt = Date.now();
+        }
+        broadcastStats();
+      }
       return;
     }
-    applyCommand(cmd);
-    broadcast({ type: "state", payload: state, serverTime: Date.now() });
+
+    if (msg.type === "ping") {
+      if (record.role === "audience") {
+        record.lastPingAt = Date.now();
+        broadcastStats();
+      }
+      return;
+    }
+
+    if (isAdminCommand(msg.type)) {
+      applyCommand(msg);
+      broadcastState();
+      broadcastStats();
+    }
   });
 
   socket.on("close", () => {
-    clients.delete(socket);
+    clients.delete(id);
+    broadcastStats();
   });
+
+  broadcastStats();
 });
 
+setInterval(() => {
+  broadcastStats();
+}, 2500);
+
 httpServer.listen(PORT, () => {
-  console.log(`[ws] listening on http://localhost:${PORT} (mode=${isProd ? "prod" : "dev"})`);
+  console.log(
+    `[ws] listening on http://localhost:${PORT} (mode=${isProd ? "prod" : "dev"})`
+  );
 });

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import ParticleScene from "../particle/ParticleScene";
 import { useSync, type AdminCommand } from "../sync/wsClient";
 import {
@@ -11,6 +11,10 @@ import type { SceneKind, SceneParams } from "../particle/sceneShapes";
 
 const PREVIEW_PARTICLE_COUNT = 850;
 const STEADY_TRANSITION_ANCHOR = 1;
+const ADMIN_PASSWORD = "nex2026";
+const AUTH_STORAGE_KEY = "nex-admin-auth-v1";
+const ENGAGEMENT_STORAGE_KEY = "nex-admin-engagement-v2";
+const ENGAGEMENT_SAVE_INTERVAL_MS = 1500;
 
 function formatSceneCode(kind: SceneKind, params?: SceneParams): string {
   if (!params) return kind;
@@ -45,8 +49,110 @@ function useTick(intervalMs: number = 500): number {
   return Date.now();
 }
 
+function loadEngagement(): number[] {
+  try {
+    const raw = localStorage.getItem(ENGAGEMENT_STORAGE_KEY);
+    if (!raw) return new Array(totalSlides).fill(0);
+    const parsed = JSON.parse(raw);
+    if (Array.isArray(parsed)) {
+      const out = new Array(totalSlides).fill(0);
+      for (let i = 0; i < Math.min(parsed.length, totalSlides); i++) {
+        const v = Number(parsed[i]);
+        out[i] = isFinite(v) && v > 0 ? v : 0;
+      }
+      return out;
+    }
+  } catch {
+    /* ignore */
+  }
+  return new Array(totalSlides).fill(0);
+}
+
+function saveEngagement(values: number[]) {
+  try {
+    localStorage.setItem(ENGAGEMENT_STORAGE_KEY, JSON.stringify(values));
+  } catch {
+    /* ignore */
+  }
+}
+
+function LoginGate({ onAuth }: { onAuth: () => void }) {
+  const [pwd, setPwd] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const [shake, setShake] = useState(false);
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  useEffect(() => {
+    inputRef.current?.focus();
+    document.title = "演讲者登录 · AI Coding 反直觉的那些事";
+  }, []);
+
+  const submit = (e?: React.FormEvent) => {
+    e?.preventDefault();
+    if (pwd === ADMIN_PASSWORD) {
+      try {
+        localStorage.setItem(AUTH_STORAGE_KEY, "true");
+      } catch {
+        /* ignore */
+      }
+      onAuth();
+    } else {
+      setError("密码不正确");
+      setShake(true);
+      setTimeout(() => setShake(false), 400);
+      setPwd("");
+      inputRef.current?.focus();
+    }
+  };
+
+  return (
+    <div className="login-root">
+      <form
+        className={`login-card${shake ? " is-shake" : ""}`}
+        onSubmit={submit}
+      >
+        <div className="login-title">演讲者控制台</div>
+        <div className="login-sub">请输入管理密码以进入</div>
+        <input
+          ref={inputRef}
+          className="login-input"
+          type="password"
+          autoComplete="current-password"
+          value={pwd}
+          onChange={(e) => {
+            setPwd(e.target.value);
+            if (error) setError(null);
+          }}
+          placeholder="password"
+        />
+        {error ? <div className="login-error">{error}</div> : null}
+        <button type="submit" className="btn-primary login-submit">
+          进入
+        </button>
+      </form>
+    </div>
+  );
+}
+
+function isAuthed(): boolean {
+  try {
+    return localStorage.getItem(AUTH_STORAGE_KEY) === "true";
+  } catch {
+    return false;
+  }
+}
+
 export default function AdminPage() {
-  const { state, status, timeOffsetMs, send } = useSync();
+  const [authed, setAuthed] = useState<boolean>(() => isAuthed());
+
+  if (!authed) {
+    return <LoginGate onAuth={() => setAuthed(true)} />;
+  }
+  return <AdminConsole onLogout={() => setAuthed(false)} />;
+}
+
+function AdminConsole({ onLogout }: { onLogout: () => void }) {
+  const { state, status, timeOffsetMs, stats, send } = useSync({ role: "admin" });
   const now = useTick(500);
 
   const sentTotalRef = useRef<number>(-1);
@@ -61,6 +167,19 @@ export default function AdminPage() {
   useEffect(() => {
     document.title = "控制台 · AI Coding 反直觉的那些事";
   }, []);
+
+  const currentIndex = state ? state.currentIndex : 0;
+  const currentSlide = allSlides[currentIndex] ?? allSlides[0];
+  const nextSlide =
+    currentIndex + 1 < totalSlides ? allSlides[currentIndex + 1] : null;
+
+  const seed = state?.seed ?? 1;
+  const transitionStartedAt = state?.transitionStartedAt ?? 0;
+
+  const onCmd = useCallback(
+    (cmd: AdminCommand) => () => send(cmd),
+    [send]
+  );
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -104,16 +223,6 @@ export default function AdminPage() {
     return () => window.removeEventListener("keydown", handler);
   }, [send]);
 
-  const currentIndex = state ? state.currentIndex : 0;
-  const currentSlide = allSlides[currentIndex] ?? allSlides[0];
-  const nextSlide =
-    currentIndex + 1 < totalSlides ? allSlides[currentIndex + 1] : null;
-
-  const seed = state?.seed ?? 1;
-  const transitionStartedAt = state?.transitionStartedAt ?? 0;
-
-  const onCmd = (cmd: AdminCommand) => () => send(cmd);
-
   const presentationStartedAt = state?.presentationStartedAt ?? null;
   const slideEnteredAt = state?.slideEnteredAt ?? null;
   const slideDurations = state?.slideDurations ?? [];
@@ -149,6 +258,57 @@ export default function AdminPage() {
 
   const progress = currentIndex / Math.max(1, totalSlides - 1);
 
+  const [engagement, setEngagement] = useState<number[]>(() => loadEngagement());
+  const engagementRef = useRef<number[]>(engagement);
+  engagementRef.current = engagement;
+  const lastTickRef = useRef<number>(Date.now());
+  const lastSaveRef = useRef<number>(0);
+
+  useEffect(() => {
+    const id = window.setInterval(() => {
+      const t = Date.now();
+      const dt = (t - lastTickRef.current) / 1000;
+      lastTickRef.current = t;
+      const active = stats?.activeAudience ?? 0;
+      if (active > 0 && dt > 0 && currentIndex >= 0 && currentIndex < totalSlides) {
+        const next = engagementRef.current.slice();
+        next[currentIndex] = (next[currentIndex] ?? 0) + active * dt;
+        engagementRef.current = next;
+        setEngagement(next);
+        if (t - lastSaveRef.current > ENGAGEMENT_SAVE_INTERVAL_MS) {
+          lastSaveRef.current = t;
+          saveEngagement(next);
+        }
+      }
+    }, 1000);
+    return () => {
+      clearInterval(id);
+      saveEngagement(engagementRef.current);
+    };
+  }, [stats?.activeAudience, currentIndex]);
+
+  const clearEngagement = () => {
+    if (!confirm("清空所有活跃度统计？此操作不可恢复。")) return;
+    const empty = new Array(totalSlides).fill(0);
+    setEngagement(empty);
+    engagementRef.current = empty;
+    saveEngagement(empty);
+  };
+
+  const logout = () => {
+    try {
+      localStorage.removeItem(AUTH_STORAGE_KEY);
+    } catch {
+      /* ignore */
+    }
+    onLogout();
+  };
+
+  const maxEngagement = useMemo(
+    () => Math.max(1, ...engagement),
+    [engagement]
+  );
+
   const speechRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     const container = speechRef.current;
@@ -161,6 +321,10 @@ export default function AdminPage() {
     const desired = offsetTop - container.clientHeight * 0.3;
     container.scrollTo({ top: desired, behavior: "smooth" });
   }, [currentIndex]);
+
+  const activeNow = stats?.activeAudience ?? 0;
+  const audienceTotal = stats?.audienceClients ?? 0;
+  const adminCount = stats?.adminClients ?? 0;
 
   return (
     <div className="admin-root">
@@ -192,20 +356,7 @@ export default function AdminPage() {
                 particleCount={500}
               />
             ) : (
-              <div
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: 12,
-                  letterSpacing: "0.2em",
-                  color: "rgba(255,255,255,0.45)",
-                }}
-              >
-                — 末页 —
-              </div>
+              <div className="preview-placeholder">— 末页 —</div>
             )}
             <span className="preview-index">
               {nextSlide
@@ -230,6 +381,12 @@ export default function AdminPage() {
           <button className="btn-danger" onClick={onCmd({ type: "reset" })}>
             重置
           </button>
+          <button className="btn-subtle" onClick={clearEngagement}>
+            清空统计
+          </button>
+          <button className="btn-subtle" onClick={logout} title="退出登录">
+            退出
+          </button>
           <span className="connection-status">
             <span className={`dot${status === "open" ? " is-connected" : ""}`} />
             {status === "open"
@@ -238,6 +395,20 @@ export default function AdminPage() {
               ? "连接中"
               : "已断开"}
           </span>
+        </div>
+
+        <div className="stats-row">
+          <div className="stats-chip">
+            管理端 <strong>{adminCount}</strong>
+          </div>
+          <div className="stats-chip is-audience">
+            观众端 <strong>{audienceTotal}</strong>
+          </div>
+          <div className="stats-chip is-active">
+            <span className="live-dot" />
+            活跃 <strong>{activeNow}</strong>
+            <span className="stats-sub">/{audienceTotal}</span>
+          </div>
         </div>
 
         <div className="progress-block">
@@ -260,6 +431,37 @@ export default function AdminPage() {
             <span>
               平均/页 <strong>{formatDuration(avgDurationMs)}</strong>
             </span>
+          </div>
+        </div>
+
+        <div className="engagement-block">
+          <div className="engagement-header">
+            <span>各页活跃度（观众·秒）</span>
+            <span className="engagement-sub">
+              累计样本 {Math.round(engagement.reduce((a, b) => a + b, 0))}
+            </span>
+          </div>
+          <div className="engagement-bars">
+            {engagement.map((v, i) => {
+              const h = Math.max(2, Math.round((v / maxEngagement) * 60));
+              const slide = allSlides[i];
+              const cls =
+                i === currentIndex
+                  ? "engagement-bar is-current"
+                  : i < currentIndex
+                  ? "engagement-bar is-past"
+                  : "engagement-bar";
+              return (
+                <button
+                  key={i}
+                  type="button"
+                  className={cls}
+                  style={{ height: `${h}px` }}
+                  onClick={() => send({ type: "jumpTo", index: i })}
+                  title={`#${i + 1} ${slide?.sceneKind ?? ""}\n活跃度 ${v.toFixed(1)}\n${slide?.text ?? ""}`}
+                />
+              );
+            })}
           </div>
         </div>
 
@@ -302,7 +504,7 @@ export default function AdminPage() {
                       key={`s-${pi}-${si}`}
                       className={cls}
                       onClick={() => send({ type: "jumpTo", index: globalIdx })}
-                      title={`#${globalIdx + 1}  ${codeLong}\n点击跳转到该页`}
+                      title={`#${globalIdx + 1}  ${codeLong}\n活跃度 ${engagement[globalIdx]?.toFixed(1) ?? "0.0"}\n点击跳转到该页`}
                     >
                       {text}
                       <code

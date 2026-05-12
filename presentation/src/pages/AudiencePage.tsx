@@ -4,7 +4,7 @@ import { useSync } from "../sync/wsClient";
 import { allSlides, totalSlides } from "../slides";
 
 export default function AudiencePage() {
-  const { state, status, timeOffsetMs } = useSync();
+  const { state, status, timeOffsetMs } = useSync({ role: "audience" });
 
   const slideIndex = useMemo(() => {
     if (!state) return 0;
