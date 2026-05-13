@@ -25,15 +25,24 @@ const ConfettiRain = (
   <g opacity="0.72">
     {([
       [110, 80, "#E8B84A", 12],
+      [150, 205, "#5BAD7A", -25],
       [210, 132, "#6EC8E6", -18],
+      [270, 250, "#E85650", 34],
       [330, 74, "#E8734A", 26],
       [455, 118, "#5BAD7A", -12],
+      [530, 64, "#4A7BCC", 18],
+      [620, 120, "#E8B84A", -34],
       [735, 90, "#E8B84A", 18],
       [870, 138, "#6EC8E6", -24],
+      [930, 245, "#5BAD7A", 28],
       [1015, 82, "#E8734A", 16],
       [1090, 162, "#5BAD7A", -10],
       [170, 535, "#6EC8E6", 20],
+      [285, 455, "#E8734A", -12],
+      [420, 560, "#5BAD7A", 22],
+      [760, 555, "#4A7BCC", -18],
       [980, 520, "#E8B84A", -16],
+      [1080, 440, "#E85650", 30],
     ] as const).map(([x, y, color, rotate], i) => (
       <rect key={i} x={x} y={y} width="12" height="24" rx="2" fill={color} transform={`rotate(${rotate} ${x} ${y})`}/>
     ))}
@@ -42,24 +51,36 @@ const ConfettiRain = (
 
 const ConfettiBurst = (
   <g opacity="0.8">
-    {([
-      [600, 260, 430, 132, "#E8B84A"],
-      [600, 260, 500, 104, "#6EC8E6"],
-      [600, 260, 700, 104, "#E8734A"],
-      [600, 260, 770, 132, "#5BAD7A"],
-      [600, 260, 385, 250, "#6EC8E6"],
-      [600, 260, 815, 250, "#E8B84A"],
-      [600, 260, 455, 390, "#E8734A"],
-      [600, 260, 745, 390, "#5BAD7A"],
-    ] as const).map(([x1, y1, x2, y2, color], i) => (
-      <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke={color} strokeWidth="3" strokeLinecap="round" opacity="0.55"/>
-    ))}
     <circle cx="430" cy="132" r="5" fill="#E8B84A"/>
     <circle cx="500" cy="104" r="4" fill="#6EC8E6"/>
     <circle cx="700" cy="104" r="4" fill="#E8734A"/>
     <circle cx="770" cy="132" r="5" fill="#5BAD7A"/>
+    <circle cx="385" cy="250" r="4" fill="#6EC8E6"/>
+    <circle cx="815" cy="250" r="4" fill="#E8B84A"/>
+    <circle cx="455" cy="390" r="5" fill="#E8734A"/>
+    <circle cx="745" cy="390" r="5" fill="#5BAD7A"/>
+    <circle cx="300" cy="330" r="4" fill="#4A7BCC"/>
+    <circle cx="900" cy="335" r="4" fill="#E85650"/>
+    {([
+      [430, 170, "#E8B84A", 12],
+      [505, 140, "#6EC8E6", -20],
+      [690, 140, "#E8734A", 18],
+      [770, 170, "#5BAD7A", -16],
+      [350, 280, "#4A7BCC", 34],
+      [845, 280, "#E85650", -28],
+      [455, 425, "#E8734A", 22],
+      [735, 425, "#5BAD7A", -14],
+      [560, 180, "#E8B84A", 40],
+      [640, 180, "#6EC8E6", -36],
+      [520, 400, "#4A7BCC", 10],
+      [675, 405, "#E85650", -10],
+    ] as const).map(([x, y, color, rotate], i) => (
+      <rect key={i} x={x} y={y} width="10" height="18" rx="2" fill={color} opacity="0.75" transform={`rotate(${rotate} ${x} ${y})`}/>
+    ))}
     <path d="M360,190 l10,18 l20,2 l-16,12 l5,20 l-19,-11 l-18,11 l5,-20 l-16,-12 l20,-2 Z" fill="#E8B84A" opacity="0.65"/>
     <path d="M835,200 l8,16 l18,1 l-14,11 l4,18 l-16,-10 l-16,10 l4,-18 l-14,-11 l18,-1 Z" fill="#6EC8E6" opacity="0.65"/>
+    <path d="M560,130 l7,14 l16,1 l-12,9 l3,16 l-14,-8 l-14,8 l3,-16 l-12,-9 l16,-1 Z" fill="#E8734A" opacity="0.55"/>
+    <path d="M660,132 l7,14 l16,1 l-12,9 l3,16 l-14,-8 l-14,8 l3,-16 l-12,-9 l16,-1 Z" fill="#5BAD7A" opacity="0.55"/>
   </g>
 );
 
