@@ -94,11 +94,11 @@ export const jobsEnvelopeSceneDef: SvgSceneDef = {
   defs: <defs/>,
   background: Background,
   fragments: [
-    { id: "curtains", content: Curtains, enterFrom: { x: 0, y: 0 }, enterDelay: 0, floatAmp: { x: 3, y: 4 }, floatPeriod: { x: 9.0, y: 10.0 } },
-    { id: "mac", content: ClassicMac, enterFrom: { x: -500, y: 0 }, enterDelay: 100, floatAmp: { x: 8, y: 10 }, floatPeriod: { x: 5.5, y: 7.0 } },
-    { id: "bubble", content: SpeechBubble, enterFrom: { x: 400, y: 0 }, enterDelay: 300, floatAmp: { x: 12, y: 14 }, floatPeriod: { x: 4.8, y: 6.0 } },
-    { id: "waves", content: SoundWaves, enterFrom: { x: 0, y: -200 }, enterDelay: 400, floatAmp: { x: 16, y: 18 }, floatPeriod: { x: 3.5, y: 4.5 } },
-    { id: "year", content: YearLabel, enterFrom: { x: -300, y: -200 }, enterDelay: 200, floatAmp: { x: 14, y: 16 }, floatPeriod: { x: 4.0, y: 5.0 } },
-    { id: "apple", content: AppleLogo, enterFrom: { x: 300, y: -200 }, enterDelay: 500, floatAmp: { x: 18, y: 22 }, floatPeriod: { x: 3.2, y: 4.0 } },
+    { id: "curtains", content: Curtains, enterFrom: { x: 0, y: 0 }, enterDelay: 0, floatAmp: { x: 3, y: 4 }, floatPeriod: { x: 9.0, y: 10.0 }, exitTo: { x: 0, y: 0 }, exitScale: 1.08, exitOpacity: 0.6 },
+    { id: "mac", content: ClassicMac, enterFrom: { x: -500, y: 0 }, enterDelay: 100, floatAmp: { x: 8, y: 10 }, floatPeriod: { x: 5.5, y: 7.0 }, exitTo: { x: -620, y: 0 }, exitSpin: -3 },
+    { id: "bubble", content: SpeechBubble, enterFrom: { x: 400, y: 0 }, enterDelay: 300, floatAmp: { x: 12, y: 14 }, floatPeriod: { x: 4.8, y: 6.0 }, exitTo: { x: 560, y: -80 }, exitScale: 1.1 },
+    { id: "waves", content: SoundWaves, enterFrom: { x: 0, y: -200 }, enterDelay: 400, floatAmp: { x: 16, y: 18 }, floatPeriod: { x: 3.5, y: 4.5 }, exitTo: { x: 260, y: -300 }, exitSpin: 12, exitScale: 1.3 },
+    { id: "year", content: YearLabel, enterFrom: { x: -300, y: -200 }, enterDelay: 200, floatAmp: { x: 14, y: 16 }, floatPeriod: { x: 4.0, y: 5.0 }, exitTo: { x: -420, y: -260 }, exitSpin: -10 },
+    { id: "apple", content: AppleLogo, enterFrom: { x: 300, y: -200 }, enterDelay: 500, floatAmp: { x: 18, y: 22 }, floatPeriod: { x: 3.2, y: 4.0 }, exitTo: { x: 380, y: -320 }, exitSpin: 20, exitScale: 1.25 },
   ],
 };

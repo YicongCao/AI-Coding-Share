@@ -85,11 +85,11 @@ export const twoQuestsSceneDef: SvgSceneDef = {
   defs: <defs/>,
   background: Background,
   fragments: [
-    { id: "computer", content: Computer, enterFrom: { x: 0, y: -400 }, enterDelay: 0, floatAmp: { x: 8, y: 10 }, floatPeriod: { x: 6.0, y: 7.5 } },
-    { id: "speaker", content: SpeakerIcon, enterFrom: { x: -400, y: 0 }, enterDelay: 200, floatAmp: { x: 14, y: 12 }, floatPeriod: { x: 4.5, y: 5.5 } },
-    { id: "mic", content: MicrophoneIcon, enterFrom: { x: 400, y: 0 }, enterDelay: 250, floatAmp: { x: 14, y: 12 }, floatPeriod: { x: 5.0, y: 4.8 } },
-    { id: "human", content: HumanFigure, enterFrom: { x: 300, y: 0 }, enterDelay: 350, floatAmp: { x: 10, y: 14 }, floatPeriod: { x: 5.5, y: 6.0 } },
-    { id: "arrows", content: Arrows, enterFrom: { x: 0, y: 200 }, enterDelay: 400, floatAmp: { x: 6, y: 8 }, floatPeriod: { x: 7.0, y: 8.0 } },
-    { id: "question", content: QuestionBubble, enterFrom: { x: 0, y: -300 }, enterDelay: 500, floatAmp: { x: 18, y: 22 }, floatPeriod: { x: 3.5, y: 4.2 } },
+    { id: "computer", content: Computer, enterFrom: { x: 0, y: -400 }, enterDelay: 0, floatAmp: { x: 8, y: 10 }, floatPeriod: { x: 6.0, y: 7.5 }, exitTo: { x: 0, y: -520 }, exitScale: 0.9 },
+    { id: "speaker", content: SpeakerIcon, enterFrom: { x: -400, y: 0 }, enterDelay: 200, floatAmp: { x: 14, y: 12 }, floatPeriod: { x: 4.5, y: 5.5 }, exitTo: { x: -620, y: -80 }, exitSpin: -8 },
+    { id: "mic", content: MicrophoneIcon, enterFrom: { x: 400, y: 0 }, enterDelay: 250, floatAmp: { x: 14, y: 12 }, floatPeriod: { x: 5.0, y: 4.8 }, exitTo: { x: 620, y: -80 }, exitSpin: 8 },
+    { id: "human", content: HumanFigure, enterFrom: { x: 300, y: 0 }, enterDelay: 350, floatAmp: { x: 10, y: 14 }, floatPeriod: { x: 5.5, y: 6.0 }, exitTo: { x: 460, y: 140 }, exitSpin: 5 },
+    { id: "arrows", content: Arrows, enterFrom: { x: 0, y: 200 }, enterDelay: 400, floatAmp: { x: 6, y: 8 }, floatPeriod: { x: 7.0, y: 8.0 }, exitTo: { x: 0, y: 0 }, exitScale: 1.35, exitOpacity: 1.4 },
+    { id: "question", content: QuestionBubble, enterFrom: { x: 0, y: -300 }, enterDelay: 500, floatAmp: { x: 18, y: 22 }, floatPeriod: { x: 3.5, y: 4.2 }, exitTo: { x: 0, y: -520 }, exitSpin: 20, exitScale: 1.25 },
   ],
 };

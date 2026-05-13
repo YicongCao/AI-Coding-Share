@@ -272,6 +272,8 @@ export const coverSceneDef: SvgSceneDef = {
       enterDelay: 0,
       floatAmp: { x: 10, y: 14 },
       floatPeriod: { x: 5.2, y: 6.8 },
+      exitTo: { x: -760, y: -60 },
+      exitSpin: -4,
     },
     {
       id: "woman",
@@ -280,6 +282,10 @@ export const coverSceneDef: SvgSceneDef = {
       enterDelay: 150,
       floatAmp: { x: 8, y: 12 },
       floatPeriod: { x: 4.5, y: 5.5 },
+      exitTo: { x: 760, y: 0 },
+      exitDelay: 0,
+      exitSpin: 2,
+      exitOpacity: 0.35,
     },
     {
       id: "codeWindow",
@@ -288,6 +294,8 @@ export const coverSceneDef: SvgSceneDef = {
       enterDelay: 250,
       floatAmp: { x: 14, y: 18 },
       floatPeriod: { x: 6.0, y: 4.2 },
+      exitTo: { x: -520, y: -260 },
+      exitSpin: -8,
     },
     {
       id: "bottomCode",
@@ -296,6 +304,8 @@ export const coverSceneDef: SvgSceneDef = {
       enterDelay: 350,
       floatAmp: { x: 12, y: 16 },
       floatPeriod: { x: 5.8, y: 7.0 },
+      exitTo: { x: 0, y: 420 },
+      exitSpin: 6,
     },
     {
       id: "barChart",
@@ -304,6 +314,8 @@ export const coverSceneDef: SvgSceneDef = {
       enterDelay: 450,
       floatAmp: { x: 18, y: 22 },
       floatPeriod: { x: 3.5, y: 4.8 },
+      exitTo: { x: 120, y: 360 },
+      exitSpin: 12,
     },
     {
       id: "cursor",
@@ -312,6 +324,8 @@ export const coverSceneDef: SvgSceneDef = {
       enterDelay: 550,
       floatAmp: { x: 22, y: 28 },
       floatPeriod: { x: 3.0, y: 3.6 },
+      exitTo: { x: 420, y: 420 },
+      exitSpin: 18,
     },
     {
       id: "decorations",

@@ -102,11 +102,11 @@ export const jobsSpeakerSceneDef: SvgSceneDef = {
   defs: <defs/>,
   background: Background,
   fragments: [
-    { id: "spotlight", content: Spotlight, enterFrom: { x: 0, y: -300 }, enterDelay: 0, floatAmp: { x: 4, y: 6 }, floatPeriod: { x: 8.0, y: 10.0 } },
-    { id: "stage", content: Stage, enterFrom: { x: 0, y: 400 }, enterDelay: 100, floatAmp: { x: 4, y: 6 }, floatPeriod: { x: 8.0, y: 9.0 } },
-    { id: "jobs", content: JobsFigure, enterFrom: { x: -500, y: 0 }, enterDelay: 200, floatAmp: { x: 8, y: 10 }, floatPeriod: { x: 5.0, y: 6.5 } },
-    { id: "envelope", content: Envelope, enterFrom: { x: 400, y: 200 }, enterDelay: 350, floatAmp: { x: 14, y: 16 }, floatPeriod: { x: 4.5, y: 5.5 } },
-    { id: "laptop", content: Laptop, enterFrom: { x: 300, y: -300 }, enterDelay: 450, floatAmp: { x: 16, y: 20 }, floatPeriod: { x: 4.0, y: 4.8 } },
-    { id: "stars", content: ExcitementStars, enterFrom: { x: 0, y: 300 }, enterDelay: 500, floatAmp: { x: 12, y: 14 }, floatPeriod: { x: 3.5, y: 4.2 } },
+    { id: "spotlight", content: Spotlight, enterFrom: { x: 0, y: -300 }, enterDelay: 0, floatAmp: { x: 4, y: 6 }, floatPeriod: { x: 8.0, y: 10.0 }, exitTo: { x: 0, y: -420 }, exitOpacity: 1.4 },
+    { id: "stage", content: Stage, enterFrom: { x: 0, y: 400 }, enterDelay: 100, floatAmp: { x: 4, y: 6 }, floatPeriod: { x: 8.0, y: 9.0 }, exitTo: { x: 0, y: 420 } },
+    { id: "jobs", content: JobsFigure, enterFrom: { x: -500, y: 0 }, enterDelay: 200, floatAmp: { x: 8, y: 10 }, floatPeriod: { x: 5.0, y: 6.5 }, exitTo: { x: -560, y: 60 }, exitSpin: -4 },
+    { id: "envelope", content: Envelope, enterFrom: { x: 400, y: 200 }, enterDelay: 350, floatAmp: { x: 14, y: 16 }, floatPeriod: { x: 4.5, y: 5.5 }, exitTo: { x: 360, y: -240 }, exitSpin: 18, exitScale: 1.15 },
+    { id: "laptop", content: Laptop, enterFrom: { x: 300, y: -300 }, enterDelay: 450, floatAmp: { x: 16, y: 20 }, floatPeriod: { x: 4.0, y: 4.8 }, exitTo: { x: -520, y: -360 }, exitSpin: -22, exitScale: 1.2, exitDelay: 80 },
+    { id: "stars", content: ExcitementStars, enterFrom: { x: 0, y: 300 }, enterDelay: 500, floatAmp: { x: 12, y: 14 }, floatPeriod: { x: 3.5, y: 4.2 }, exitTo: { x: 0, y: -220 }, exitScale: 1.35 },
   ],
 };

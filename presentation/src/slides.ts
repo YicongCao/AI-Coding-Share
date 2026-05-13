@@ -59,7 +59,7 @@ const SCENE_PLAN: ScenePick[][] = [
   ],
   ["timeline"],
   ["twoQuests"],
-  ["jobsSpeaker", "jobsEnvelope"],
+  ["jobsSpeaker"],
   ["macSpeaks"],
   ["ttsAsrSplit", "rulesGrid", "hmmStates"],
   ["vistaWindow", "vistaMenu"],

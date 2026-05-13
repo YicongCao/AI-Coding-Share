@@ -79,11 +79,11 @@ export const introBadgeSceneDef: SvgSceneDef = {
   defs: <defs/>,
   background: Background,
   fragments: [
-    { id: "badge", content: BadgeCard, enterFrom: { x: 0, y: -400 }, enterDelay: 0, floatAmp: { x: 8, y: 10 }, floatPeriod: { x: 5.5, y: 7.0 } },
-    { id: "phone", content: PhoneIcon, enterFrom: { x: -300, y: 0 }, enterDelay: 150, floatAmp: { x: 12, y: 15 }, floatPeriod: { x: 4.2, y: 5.8 } },
-    { id: "globe", content: GlobeIcon, enterFrom: { x: 300, y: 0 }, enterDelay: 200, floatAmp: { x: 14, y: 12 }, floatPeriod: { x: 6.0, y: 4.5 } },
-    { id: "wifi", content: WifiSignal, enterFrom: { x: 200, y: -300 }, enterDelay: 300, floatAmp: { x: 16, y: 18 }, floatPeriod: { x: 3.8, y: 5.0 } },
-    { id: "audience", content: AudienceGroup, enterFrom: { x: 0, y: 300 }, enterDelay: 350, floatAmp: { x: 6, y: 8 }, floatPeriod: { x: 6.5, y: 8.0 } },
-    { id: "bubble", content: SpeechBubble, enterFrom: { x: 0, y: -350 }, enterDelay: 100, floatAmp: { x: 10, y: 14 }, floatPeriod: { x: 5.0, y: 6.2 } },
+    { id: "badge", content: BadgeCard, enterFrom: { x: 0, y: -400 }, enterDelay: 0, floatAmp: { x: 8, y: 10 }, floatPeriod: { x: 5.5, y: 7.0 }, exitTo: { x: 0, y: -520 }, exitScale: 0.92 },
+    { id: "phone", content: PhoneIcon, enterFrom: { x: -300, y: 0 }, enterDelay: 150, floatAmp: { x: 12, y: 15 }, floatPeriod: { x: 4.2, y: 5.8 }, exitTo: { x: -520, y: 140 }, exitSpin: -14 },
+    { id: "globe", content: GlobeIcon, enterFrom: { x: 300, y: 0 }, enterDelay: 200, floatAmp: { x: 14, y: 12 }, floatPeriod: { x: 6.0, y: 4.5 }, exitTo: { x: 520, y: -120 }, exitSpin: 12 },
+    { id: "wifi", content: WifiSignal, enterFrom: { x: 200, y: -300 }, enterDelay: 300, floatAmp: { x: 16, y: 18 }, floatPeriod: { x: 3.8, y: 5.0 }, exitTo: { x: 280, y: -420 }, exitScale: 1.25 },
+    { id: "audience", content: AudienceGroup, enterFrom: { x: 0, y: 300 }, enterDelay: 350, floatAmp: { x: 6, y: 8 }, floatPeriod: { x: 6.5, y: 8.0 }, exitTo: { x: 0, y: 360 }, exitDelay: 80 },
+    { id: "bubble", content: SpeechBubble, enterFrom: { x: 0, y: -350 }, enterDelay: 100, floatAmp: { x: 10, y: 14 }, floatPeriod: { x: 5.0, y: 6.2 }, exitTo: { x: 460, y: -300 }, exitSpin: 8 },
   ],
 };

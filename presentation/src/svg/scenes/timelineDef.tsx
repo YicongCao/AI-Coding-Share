@@ -93,11 +93,12 @@ export const timelineSceneDef: SvgSceneDef = {
   viewBox: "0 0 1200 675",
   defs: <defs/>,
   background: Background,
+  transitionEffect: "zipper",
   fragments: [
-    { id: "axis", content: TimelineAxis, enterFrom: { x: -600, y: 0 }, enterDelay: 0, floatAmp: { x: 6, y: 8 }, floatPeriod: { x: 7.0, y: 9.0 } },
-    { id: "milestones", content: MilestoneNodes, enterFrom: { x: 0, y: 300 }, enterDelay: 200, floatAmp: { x: 8, y: 10 }, floatPeriod: { x: 5.5, y: 6.5 } },
-    { id: "rocket", content: Rocket, enterFrom: { x: 300, y: -400 }, enterDelay: 400, floatAmp: { x: 16, y: 20 }, floatPeriod: { x: 3.5, y: 4.0 } },
-    { id: "boat", content: Boat, enterFrom: { x: -400, y: 300 }, enterDelay: 300, floatAmp: { x: 18, y: 14 }, floatPeriod: { x: 4.0, y: 5.5 } },
-    { id: "stars", content: Stars, enterFrom: { x: 0, y: -200 }, enterDelay: 500, floatAmp: { x: 10, y: 12 }, floatPeriod: { x: 6.0, y: 7.5 } },
+    { id: "axis", content: TimelineAxis, enterFrom: { x: -600, y: 0 }, enterDelay: 0, floatAmp: { x: 6, y: 8 }, floatPeriod: { x: 7.0, y: 9.0 }, exitTo: { x: 1220, y: 0 }, exitOpacity: 0.55 },
+    { id: "milestones", content: MilestoneNodes, enterFrom: { x: 0, y: 300 }, enterDelay: 200, floatAmp: { x: 8, y: 10 }, floatPeriod: { x: 5.5, y: 6.5 }, exitTo: { x: 0, y: -520 }, exitSpin: 3 },
+    { id: "rocket", content: Rocket, enterFrom: { x: 300, y: -400 }, enterDelay: 400, floatAmp: { x: 16, y: 20 }, floatPeriod: { x: 3.5, y: 4.0 }, exitTo: { x: 420, y: -520 }, exitSpin: 16, exitScale: 1.15, exitOpacity: 0.5 },
+    { id: "boat", content: Boat, enterFrom: { x: -400, y: 300 }, enterDelay: 300, floatAmp: { x: 18, y: 14 }, floatPeriod: { x: 4.0, y: 5.5 }, exitTo: { x: -420, y: 340 }, exitSpin: -6 },
+    { id: "stars", content: Stars, enterFrom: { x: 0, y: -200 }, enterDelay: 500, floatAmp: { x: 10, y: 12 }, floatPeriod: { x: 6.0, y: 7.5 }, exitTo: { x: 0, y: -320 }, exitScale: 1.25 },
   ],
 };

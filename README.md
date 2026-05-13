@@ -6,7 +6,7 @@
 - [`prompt.txt`](prompt.txt) — 最初的需求描述（产物即本仓库）。
 - [`presentation/`](presentation/) — 基于 React + Vite + WebSocket 的前端演讲页面，按演讲稿每个中文句号 `。` 切分为独立页面，每页用大量粒子拟合 SVG 图示，不拟合任何文字。后台控制端通过 WebSocket 广播翻页"指令流"，所有观众浏览器各自在本地以满帧渲染，画面保持一致。
 
-整套演讲共 **79 张幻灯片**（1 张封面 + 78 个句子），覆盖 **72 套独立 SVG 图示模板**。
+整套演讲共 **78 张幻灯片**（1 张封面 + 77 个句子），覆盖 **72 套独立 SVG 图示模板**。
 
 ## 快速启动
 
@@ -29,7 +29,7 @@ npm run start
 
 ```mermaid
 flowchart LR
-  speech["speech.txt"] -->|"build-time ?raw 导入"| slides["slides.ts<br/>(79 slides)"]
+  speech["speech.txt"] -->|"build-time ?raw 导入"| slides["slides.ts<br/>(78 slides)"]
   slides --> renderer["ParticleScene<br/>(Canvas + SVG 采样)"]
   shapes["sceneShapes.ts<br/>(72 SVG 模板)"] --> renderer
   admin["/admin<br/>(演讲者)"] -->|"next / prev / jumpTo"| wsServer["Node WS Server<br/>权威状态"]

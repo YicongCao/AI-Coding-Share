@@ -6,6 +6,8 @@ import { memo, useEffect, useLayoutEffect, useRef, type ReactNode } from "react"
 
 type Vec2 = { x: number; y: number };
 
+export type SceneTransitionEffect = "zipper";
+
 export type SvgFragment = {
   id: string;
   content: ReactNode;
@@ -13,6 +15,11 @@ export type SvgFragment = {
   enterDelay: number;
   floatAmp: Vec2;
   floatPeriod: Vec2;
+  exitTo?: Vec2;
+  exitDelay?: number;
+  exitSpin?: number;
+  exitScale?: number;
+  exitOpacity?: number;
 };
 
 export type SvgSceneDef = {
@@ -20,6 +27,7 @@ export type SvgSceneDef = {
   defs: ReactNode;
   background?: ReactNode;
   fragments: SvgFragment[];
+  transitionEffect?: SceneTransitionEffect;
 };
 
 export type SvgSceneProps = {
@@ -65,6 +73,7 @@ const SvgScene = memo(function SvgScene({
   exiting = false,
 }: SvgSceneProps) {
   const groupRefs = useRef<(SVGGElement | null)[]>([]);
+  const zipperRef = useRef<SVGGElement | null>(null);
   const rafRef = useRef(0);
   const transitionRef = useRef(transitionStartedAt);
   const exitingRef = useRef(exiting);
@@ -88,6 +97,9 @@ const SvgScene = memo(function SvgScene({
     function frame() {
       rafRef.current = requestAnimationFrame(frame);
       const serverNow = Date.now() + timeOffsetMs;
+      const exitRawT = exitingRef.current
+        ? clamp01((serverNow - exitStartRef.current) / EXIT_DURATION_MS)
+        : 0;
 
       for (let i = 0; i < frags.length; i++) {
         const g = groupRefs.current[i];
@@ -97,7 +109,9 @@ const SvgScene = memo(function SvgScene({
         if (exitingRef.current) {
           const exitElapsed = serverNow - exitStartRef.current;
           const rawT = clamp01(exitElapsed / EXIT_DURATION_MS);
-          const delayed = Math.max(0, rawT - (frag.enterDelay / ENTER_DURATION_MS) * 0.3);
+          const baseDelay = (frag.enterDelay / ENTER_DURATION_MS) * 0.3;
+          const customDelay = (frag.exitDelay ?? 0) / EXIT_DURATION_MS;
+          const delayed = Math.max(0, rawT - baseDelay - customDelay);
           const eT = easeInCubic(Math.min(1, delayed / 0.7));
 
           const exitStart = exitStartRef.current;
@@ -114,13 +128,22 @@ const SvgScene = memo(function SvgScene({
             Math.cos(startNow / frag.floatPeriod.y + phase * 1.3) * frag.floatAmp.y * startEase;
           const startX = startOffX + startFloatX;
           const startY = startOffY + startFloatY;
-          const targetX = -frag.enterFrom.x;
-          const targetY = -frag.enterFrom.y;
+          const exitTo = frag.exitTo ?? { x: -frag.enterFrom.x, y: -frag.enterFrom.y };
+          const targetX = exitTo.x;
+          const targetY = exitTo.y;
           const dx = startX + (targetX - startX) * eT;
           const dy = startY + (targetY - startY) * eT;
+          const rotate = (frag.exitSpin ?? 0) * eT;
+          const scale = 1 + ((frag.exitScale ?? 1) - 1) * eT;
 
-          g.setAttribute("transform", `translate(${dx.toFixed(1)},${dy.toFixed(1)})`);
-          g.setAttribute("opacity", String(Math.max(0, 1 - eT).toFixed(2)));
+          g.setAttribute(
+            "transform",
+            `translate(${dx.toFixed(1)},${dy.toFixed(1)}) rotate(${rotate.toFixed(1)}) scale(${scale.toFixed(3)})`
+          );
+          g.setAttribute(
+            "opacity",
+            String(Math.max(0, 1 - eT * (frag.exitOpacity ?? 1)).toFixed(2))
+          );
           continue;
         }
 
@@ -141,6 +164,22 @@ const SvgScene = memo(function SvgScene({
 
         g.setAttribute("transform", `translate(${tx.toFixed(1)},${ty.toFixed(1)})`);
         g.setAttribute("opacity", String(Math.min(1, eE * 1.5).toFixed(2)));
+      }
+
+      const zg = zipperRef.current;
+      if (zg) {
+        if (exitingRef.current && sceneDef.transitionEffect === "zipper") {
+          zg.setAttribute("opacity", "1");
+          const w = 1200 * exitRawT;
+          const x = w;
+          zg.innerHTML =
+            `<rect x="0" y="0" width="${w.toFixed(1)}" height="675" fill="#2B2B3D" opacity="0.72"/>` +
+            `<line x1="${x.toFixed(1)}" y1="80" x2="${x.toFixed(1)}" y2="595" stroke="#E8B84A" stroke-width="4" stroke-dasharray="14 8" opacity="0.85"/>` +
+            `<path d="M ${(x - 22).toFixed(1)} 330 L ${x.toFixed(1)} 340 L ${(x - 22).toFixed(1)} 350" fill="none" stroke="#6EC8E6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>`;
+        } else {
+          zg.setAttribute("opacity", "0");
+          zg.innerHTML = "";
+        }
       }
     }
 
@@ -175,6 +214,7 @@ const SvgScene = memo(function SvgScene({
             {frag.content}
           </g>
         ))}
+        <g ref={zipperRef} opacity="0" style={{ pointerEvents: "none" }} />
       </svg>
     </div>
   );

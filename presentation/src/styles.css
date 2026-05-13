@@ -76,6 +76,7 @@ button:disabled {
 
 .audience-subtitle {
   position: absolute;
+  z-index: 20;
   left: 50%;
   bottom: 6vh;
   transform: translateX(-50%);
