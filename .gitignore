@@ -7,3 +7,4 @@ dist/
 *.swp
 .env
 .env.local
+*.tar.gz
