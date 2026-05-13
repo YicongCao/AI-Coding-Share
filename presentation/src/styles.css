@@ -94,6 +94,11 @@ button:disabled {
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+.audience-subtitle-word-active {
+  color: #fff45c;
+  text-shadow: 0 0 10px rgba(255, 244, 92, 0.7);
+}
+
 .audience-disconnected {
   position: absolute;
   top: 16px;

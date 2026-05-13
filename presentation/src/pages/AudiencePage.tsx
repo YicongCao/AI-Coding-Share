@@ -5,6 +5,10 @@ import { useSync } from "../sync/wsClient";
 import { allSlides, totalSlides } from "../slides";
 
 const EXIT_LINGER_MS = 1000;
+const MIN_SLIDE_READ_MS = 5000;
+const MAX_SLIDE_READ_MS = 30000;
+const DEFAULT_MS_PER_WORD = 360;
+const READ_SPEED_MULTIPLIER = 1.5;
 
 type ExitingScene = {
   key: number;
@@ -13,6 +17,151 @@ type ExitingScene = {
   timeOffsetMs: number;
   transitionStartedAt: number;
 };
+
+type SubtitlePart = {
+  text: string;
+  isWord: boolean;
+};
+
+type SegmenterPart = {
+  segment: string;
+  isWordLike?: boolean;
+};
+
+type SegmenterCtor = new (
+  locale: string,
+  options: { granularity: "word" }
+) => {
+  segment(text: string): Iterable<SegmenterPart>;
+};
+
+function segmentChineseText(text: string): SubtitlePart[] {
+  const normalizeParts = (parts: SubtitlePart[]): SubtitlePart[] => {
+    const out: SubtitlePart[] = [];
+    for (let i = 0; i < parts.length; i++) {
+      const part = parts[i];
+      if (!part.isWord) {
+        out.push(part);
+        continue;
+      }
+
+      const isSingleChinese = /^[\u4e00-\u9fff]$/.test(part.text);
+      if (!isSingleChinese) {
+        out.push(part);
+        continue;
+      }
+
+      let text = part.text;
+      let j = i + 1;
+      while (j < parts.length) {
+        const next = parts[j];
+        if (!next.isWord || !/^[\u4e00-\u9fff]$/.test(next.text)) break;
+        text += next.text;
+        j++;
+      }
+
+      // If Segmenter splits a phrase into isolated characters, merge them.
+      // For a single isolated character, attach the next word when possible.
+      if (text.length === 1 && j < parts.length && parts[j].isWord) {
+        text += parts[j].text;
+        j++;
+      }
+
+      out.push({ text, isWord: true });
+      i = j - 1;
+    }
+    return out;
+  };
+
+  const segmenterCtor = (Intl as typeof Intl & { Segmenter?: SegmenterCtor }).Segmenter;
+  if (segmenterCtor) {
+    const segmenter = new segmenterCtor("zh", { granularity: "word" });
+    return normalizeParts(Array.from(segmenter.segment(text)).map((part) => ({
+      text: part.segment,
+      isWord: part.isWordLike === true,
+    })));
+  }
+
+  return normalizeParts(text
+    .split(/([\u4e00-\u9fff]+|[A-Za-z0-9]+(?:[-_][A-Za-z0-9]+)*)/g)
+    .filter(Boolean)
+    .map((part) => ({
+      text: part,
+      isWord: /[\u4e00-\u9fffA-Za-z0-9]/.test(part),
+    })));
+}
+
+function countWords(text: string): number {
+  return Math.max(1, segmentChineseText(text).filter((part) => part.isWord).length);
+}
+
+function estimateMsPerWord(slideDurations: number[]): number {
+  const samples = slideDurations
+    .slice(-8)
+    .map((duration, i, arr) => {
+      const slideIndex = slideDurations.length - arr.length + i;
+      const slide = allSlides[slideIndex];
+      if (!slide) return null;
+      return Math.min(MAX_SLIDE_READ_MS, Math.max(MIN_SLIDE_READ_MS, duration)) / countWords(slide.text);
+    })
+    .filter((v): v is number => typeof v === "number" && Number.isFinite(v));
+
+  if (samples.length === 0) return DEFAULT_MS_PER_WORD;
+  return samples.reduce((sum, v) => sum + v, 0) / samples.length;
+}
+
+function SubtitleHighlighter({
+  text,
+  slideEnteredAt,
+  slideDurations,
+  timeOffsetMs,
+}: {
+  text: string;
+  slideEnteredAt: number;
+  slideDurations: number[];
+  timeOffsetMs: number;
+}) {
+  const [now, setNow] = useState(() => Date.now());
+
+  useEffect(() => {
+    const timer = window.setInterval(() => setNow(Date.now()), 80);
+    return () => window.clearInterval(timer);
+  }, [text, slideEnteredAt]);
+
+  const parts = useMemo(() => segmentChineseText(text), [text]);
+  const wordIndexes = useMemo(
+    () => parts.map((part, index) => (part.isWord ? index : -1)).filter((index) => index >= 0),
+    [parts]
+  );
+  const msPerWord = useMemo(
+    () => estimateMsPerWord(slideDurations),
+    [slideDurations]
+  );
+  const estimatedDuration = wordIndexes.length * msPerWord / READ_SPEED_MULTIPLIER;
+  const totalDuration = Math.min(
+    MAX_SLIDE_READ_MS,
+    Math.max(MIN_SLIDE_READ_MS, estimatedDuration)
+  );
+  const elapsed = Math.max(0, now + timeOffsetMs - slideEnteredAt);
+  const activeWordOrder =
+    elapsed >= totalDuration
+      ? -1
+      : Math.min(wordIndexes.length - 1, Math.floor((elapsed / totalDuration) * wordIndexes.length));
+  const activePartIndex = activeWordOrder >= 0 ? wordIndexes[activeWordOrder] : -1;
+
+  return (
+    <>
+      {parts.map((part, index) => (
+        <span
+          key={`${index}-${part.text}`}
+          className={index === activePartIndex ? "audience-subtitle-word-active" : undefined}
+        >
+          {part.text}
+        </span>
+      ))}
+    </>
+  );
+}
 
 export default function AudiencePage() {
   const { state, status, timeOffsetMs } = useSync({ role: "audience" });
@@ -96,7 +245,14 @@ export default function AudiencePage() {
         <div className="audience-waiting">等待演讲开始…</div>
       )}
       {state && (
-        <div className="audience-subtitle">{slide.text}</div>
+        <div className="audience-subtitle">
+          <SubtitleHighlighter
+            text={slide.text}
+            slideEnteredAt={state.slideEnteredAt}
+            slideDurations={state.slideDurations}
+            timeOffsetMs={timeOffsetMs}
+          />
+        </div>
       )}
       {status !== "open" && (
         <div className="audience-disconnected">
