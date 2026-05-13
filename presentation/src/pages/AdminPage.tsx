@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import ParticleScene from "../particle/ParticleScene";
 import SvgScene from "../svg/SvgScene";
 import { getSvgSceneDef } from "../svg/registry";
 import { useSync, type AdminCommand } from "../sync/wsClient";
@@ -9,23 +8,15 @@ import {
   speechTitle,
   totalSlides,
 } from "../slides";
-import type { SceneKind, SceneParams } from "../particle/sceneShapes";
 
-const PREVIEW_PARTICLE_COUNT = 850;
 const STEADY_TRANSITION_ANCHOR = 1;
 const ADMIN_PASSWORD = "nex2026";
 const AUTH_STORAGE_KEY = "nex-admin-auth-v1";
 const ENGAGEMENT_STORAGE_KEY = "nex-admin-engagement-v2";
 const ENGAGEMENT_SAVE_INTERVAL_MS = 1500;
 
-function formatSceneCode(kind: SceneKind, params?: SceneParams): string {
-  if (!params) return kind;
-  const entries = Object.entries(params).filter(([, v]) => v !== undefined);
-  if (entries.length === 0) return kind;
-  const tail = entries
-    .map(([k, v]) => (typeof v === "string" ? `${k}="${v}"` : `${k}=${v}`))
-    .join(", ");
-  return `${kind}(${tail})`;
+function formatSceneCode(sceneId: string): string {
+  return sceneId;
 }
 
 function formatDuration(ms: number): string {
@@ -335,8 +326,7 @@ function AdminConsole({ onLogout }: { onLogout: () => void }) {
           <div className="preview-card current">
             <span className="preview-label">CURRENT · {String(currentIndex + 1).padStart(2, "0")}/{totalSlides}</span>
             {(() => {
-              const svgDef = currentSlide.renderMode === "svg" && currentSlide.svgSceneId
-                ? getSvgSceneDef(currentSlide.svgSceneId) : undefined;
+              const svgDef = getSvgSceneDef(currentSlide.svgSceneId);
               return svgDef ? (
                 <SvgScene
                   sceneDef={svgDef}
@@ -344,26 +334,16 @@ function AdminConsole({ onLogout }: { onLogout: () => void }) {
                   transitionStartedAt={transitionStartedAt}
                   timeOffsetMs={timeOffsetMs}
                 />
-              ) : (
-                <ParticleScene
-                  sceneKind={currentSlide.sceneKind}
-                  sceneParams={currentSlide.sceneParams}
-                  seed={seed}
-                  transitionStartedAt={transitionStartedAt}
-                  timeOffsetMs={timeOffsetMs}
-                  particleCount={PREVIEW_PARTICLE_COUNT}
-                />
-              );
+              ) : null;
             })()}
             <span className="preview-index">
-              {formatSceneCode(currentSlide.sceneKind, currentSlide.sceneParams)}
+              {formatSceneCode(currentSlide.svgSceneId)}
             </span>
           </div>
           <div className="preview-card next">
             <span className="preview-label">NEXT</span>
             {nextSlide ? (() => {
-              const svgDef = nextSlide.renderMode === "svg" && nextSlide.svgSceneId
-                ? getSvgSceneDef(nextSlide.svgSceneId) : undefined;
+              const svgDef = getSvgSceneDef(nextSlide.svgSceneId);
               return svgDef ? (
                 <SvgScene
                   sceneDef={svgDef}
@@ -371,22 +351,13 @@ function AdminConsole({ onLogout }: { onLogout: () => void }) {
                   transitionStartedAt={STEADY_TRANSITION_ANCHOR}
                   timeOffsetMs={timeOffsetMs}
                 />
-              ) : (
-                <ParticleScene
-                  sceneKind={nextSlide.sceneKind}
-                  sceneParams={nextSlide.sceneParams}
-                  seed={(seed * 1664525 + 1013904223) >>> 0}
-                  transitionStartedAt={STEADY_TRANSITION_ANCHOR}
-                  timeOffsetMs={timeOffsetMs}
-                  particleCount={500}
-                />
-              );
+              ) : null;
             })() : (
               <div className="preview-placeholder">— 末页 —</div>
             )}
             <span className="preview-index">
               {nextSlide
-                ? formatSceneCode(nextSlide.sceneKind, nextSlide.sceneParams)
+                ? formatSceneCode(nextSlide.svgSceneId)
                 : "end"}
             </span>
           </div>
@@ -484,7 +455,7 @@ function AdminConsole({ onLogout }: { onLogout: () => void }) {
                   className={cls}
                   style={{ height: `${h}px` }}
                   onClick={() => send({ type: "jumpTo", index: i })}
-                  title={`#${i + 1} ${slide?.sceneKind ?? ""}\n活跃度 ${v.toFixed(1)}\n${slide?.text ?? ""}`}
+                  title={`#${i + 1} ${slide?.svgSceneId ?? ""}\n活跃度 ${v.toFixed(1)}\n${slide?.text ?? ""}`}
                 />
               );
             })}
@@ -497,11 +468,11 @@ function AdminConsole({ onLogout }: { onLogout: () => void }) {
             <span className="scene-badge-idx">#{String(currentIndex + 1).padStart(2, "0")}/{totalSlides}</span>
             <code
               onClick={() => {
-                const code = formatSceneCode(currentSlide.sceneKind, currentSlide.sceneParams);
+                const code = formatSceneCode(currentSlide.svgSceneId);
                 navigator.clipboard?.writeText(code).catch(() => {});
               }}
             >
-              {formatSceneCode(currentSlide.sceneKind, currentSlide.sceneParams)}
+              {formatSceneCode(currentSlide.svgSceneId)}
             </code>
           </span>
         </div>
@@ -524,7 +495,7 @@ function AdminConsole({ onLogout }: { onLogout: () => void }) {
                       : globalIdx < currentIndex
                       ? "sentence is-past"
                       : "sentence";
-                  const codeLong = formatSceneCode(slide.sceneKind, slide.sceneParams);
+                  const codeLong = formatSceneCode(slide.svgSceneId);
                   return (
                     <span
                       key={`s-${pi}-${si}`}
@@ -541,7 +512,7 @@ function AdminConsole({ onLogout }: { onLogout: () => void }) {
                         }}
                         title={`复制 "${codeLong}"`}
                       >
-                        #{globalIdx + 1}·{slide.sceneKind}
+                        #{globalIdx + 1}·{slide.svgSceneId}
                       </code>
                     </span>
                   );

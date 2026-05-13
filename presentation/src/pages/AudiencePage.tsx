@@ -1,5 +1,4 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
-import ParticleScene from "../particle/ParticleScene";
 import SvgScene, { type SvgSceneDef } from "../svg/SvgScene";
 import { getSvgSceneDef } from "../svg/registry";
 import { useSync } from "../sync/wsClient";
@@ -27,9 +26,7 @@ export default function AudiencePage() {
   const transitionStartedAt = state?.transitionStartedAt ?? 0;
   const seed = state?.seed ?? 1;
 
-  const svgDef = slide.renderMode === "svg" && slide.svgSceneId
-    ? getSvgSceneDef(slide.svgSceneId)
-    : undefined;
+  const svgDef = getSvgSceneDef(slide.svgSceneId);
 
   const [exitingScene, setExitingScene] = useState<ExitingScene | null>(null);
   const prevSvgDefRef = useRef<{
@@ -81,7 +78,7 @@ export default function AudiencePage() {
               style={{ position: "absolute", inset: 0, zIndex: 2 }}
             />
           )}
-          {svgDef ? (
+          {svgDef && (
             <SvgScene
               key={`svg-${slideIndex}`}
               className="audience-canvas"
@@ -92,16 +89,6 @@ export default function AudiencePage() {
               }
               timeOffsetMs={timeOffsetMs}
               style={{ position: "absolute", inset: 0, zIndex: 1 }}
-            />
-          ) : (
-            <ParticleScene
-              className="audience-canvas"
-              sceneKind={slide.sceneKind}
-              sceneParams={slide.sceneParams}
-              seed={seed}
-              transitionStartedAt={transitionStartedAt}
-              timeOffsetMs={timeOffsetMs}
-              particleCount={slide.particleCount ?? 2400}
             />
           )}
         </>

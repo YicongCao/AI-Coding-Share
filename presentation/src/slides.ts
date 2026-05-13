@@ -1,18 +1,11 @@
 import speechRaw from "../../speech.txt?raw";
-import type { SceneKind, SceneParams } from "./particle/sceneShapes";
-
-export type SlideRenderMode = "particle" | "svg";
 
 export type Slide = {
   globalIndex: number;
   paragraphIndex: number;
   sentenceIndex: number;
   text: string;
-  sceneKind: SceneKind;
-  sceneParams?: SceneParams;
-  particleCount?: number;
-  renderMode?: SlideRenderMode;
-  svgSceneId?: string;
+  svgSceneId: string;
 };
 
 export type Paragraph = {
@@ -21,10 +14,6 @@ export type Paragraph = {
   slideRange: { start: number; end: number };
   isTitle: boolean;
 };
-
-type ScenePick =
-  | SceneKind
-  | { kind: SceneKind; params: SceneParams };
 
 function parseParagraphs(raw: string): string[] {
   return raw
@@ -53,14 +42,12 @@ const rawParagraphs = parseParagraphs(speechRaw);
 
 export const speechTitle = rawParagraphs[0] ?? "《AI Coding 反直觉的那些事》";
 
-const SCENE_PLAN: ScenePick[][] = [
-  [
-    { kind: "introBadge", params: { speaker: "pixelcao" } },
-  ],
+const SCENE_PLAN: string[][] = [
+  ["introBadge"],
   ["timeline"],
   ["twoQuests"],
   ["jobsSpeaker"],
-  ["macSpeaks"],
+  ["jobsEnvelope"],
   ["ttsAsrSplit", "rulesGrid", "hmmStates"],
   ["vistaWindow", "vistaMenu"],
   ["siriPhone", "intentSlot", "carVoice"],
@@ -68,78 +55,16 @@ const SCENE_PLAN: ScenePick[][] = [
   ["attention", "bert"],
   ["chatgpt", "breakthrough"],
   ["bestWorstIntro", "bestAge", "worstAge"],
-  [
-    { kind: "keyPointTitle", params: { n: 1, title: "敏捷不再敏捷" } },
-    "agileFlow",
-    "bottleneck",
-  ],
+  ["keyPointTitle1", "agileFlow", "bottleneck"],
   ["nexTeam", "nexEcho", "mostManyFastGood"],
-  [
-    { kind: "keyPointTitle", params: { n: 2, title: "不要盲目使用 Rules / Skills" } },
-    "rulesMess",
-    "readCode",
-    "rightTool",
-    "conceptLLM",
-    "conceptAgent",
-    "conceptTools",
-    "conceptMCP",
-    "conceptRulesSkills",
-    "conceptHarness",
-  ],
-  [
-    { kind: "keyPointTitle", params: { n: 3, title: "聪明人用 AI 反而更累" } },
-    "formula",
-    "busyAI",
-    "closedLoopIntro",
-    "closedLoopManual",
-    "closedLoopAuto",
-    "singleThread",
-    "multiAgent",
-    "roleStack",
-    "smartCage",
-  ],
-  [
-    "outsider",
-    { kind: "keyPointTitle", params: { n: 4, title: "不要一步登天" } },
-    "bsArchitecture",
-    "sseXml",
-    "sseWs",
-    "phasedReality",
-  ],
-  [
-    { kind: "keyPointTitle", params: { n: 5, title: "让 Agent 又快又爽" } },
-    "bulletTrain",
-    "slowToken",
-    "prePostChat",
-    "statusBar",
-    "optMix",
-    "agileEnd",
-  ],
+  ["keyPointTitle2", "rulesMess", "readCode", "rightTool", "conceptLLM", "conceptAgent", "conceptTools", "conceptMCP", "conceptRulesSkills", "conceptHarness"],
+  ["keyPointTitle3", "formula", "busyAI", "closedLoopIntro", "closedLoopManual", "closedLoopAuto", "singleThread", "multiAgent", "roleStack", "smartCage"],
+  ["outsider", "keyPointTitle4", "bsArchitecture", "sseXml", "sseWs", "phasedReality"],
+  ["keyPointTitle5", "bulletTrain", "slowToken", "prePostChat", "statusBar", "optMix", "agileEnd"],
   ["verticalDomain"],
-  [
-    { kind: "keyPointTitle", params: { n: 7, title: "做不擅长的事" } },
-    "agentDevSkills",
-    "userIssues",
-    "closedLoopReminder",
-    "diagnosticLog",
-    "aiResolves",
-    "notAFrontend",
-  ],
-  [
-    { kind: "keyPointTitle", params: { n: 8, title: "警示忠告" } },
-    "coreSkills",
-    "lifecycle",
-    "selfAwareness",
-    "todayYesterday",
-    "slowAndFast",
-    "finale",
-  ],
+  ["keyPointTitle7", "agentDevSkills", "userIssues", "closedLoopReminder", "diagnosticLog", "aiResolves", "notAFrontend"],
+  ["keyPointTitle8", "coreSkills", "lifecycle", "selfAwareness", "todayYesterday", "slowAndFast", "finale"],
 ];
-
-function resolvePick(pick: ScenePick): { kind: SceneKind; params?: SceneParams } {
-  if (typeof pick === "string") return { kind: pick };
-  return { kind: pick.kind, params: pick.params };
-}
 
 const slides: Slide[] = [];
 const paragraphs: Paragraph[] = [];
@@ -149,9 +74,6 @@ slides.push({
   paragraphIndex: 0,
   sentenceIndex: 0,
   text: speechTitle,
-  sceneKind: "cover",
-  particleCount: 4500,
-  renderMode: "svg",
   svgSceneId: "cover",
 });
 
@@ -162,32 +84,19 @@ paragraphs.push({
   isTitle: true,
 });
 
-const SVG_OVERRIDES: Record<number, string> = {
-  1: "introBadge",
-  2: "timeline",
-  3: "twoQuests",
-  4: "jobsSpeaker",
-  5: "jobsEnvelope",
-};
-
 for (let pi = 1; pi < rawParagraphs.length; pi++) {
   const raw = rawParagraphs[pi];
   const sentences = splitByPeriod(raw);
   const planRow = SCENE_PLAN[pi - 1] ?? [];
   const start = slides.length;
   for (let si = 0; si < sentences.length; si++) {
-    const pick = planRow[si] ?? planRow[planRow.length - 1] ?? "timeline";
-    const { kind, params } = resolvePick(pick);
-    const idx = slides.length;
-    const svgId = SVG_OVERRIDES[idx];
+    const sceneId = planRow[si] ?? planRow[planRow.length - 1] ?? "timeline";
     slides.push({
-      globalIndex: idx,
+      globalIndex: slides.length,
       paragraphIndex: pi,
       sentenceIndex: si,
       text: sentences[si],
-      sceneKind: kind,
-      sceneParams: params,
-      ...(svgId ? { renderMode: "svg" as const, svgSceneId: svgId } : {}),
+      svgSceneId: sceneId,
     });
   }
   const end = slides.length;
