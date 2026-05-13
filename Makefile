@@ -12,7 +12,7 @@ help: ## 显示帮助
 		awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-12s\033[0m %s\n", $$1, $$2}'
 
 build: ## 构建 Docker 镜像
-	docker build -t $(FULL_IMAGE) presentation/
+	docker build -t $(FULL_IMAGE) .
 
 run: build ## 前台运行（退出后自动删除容器）
 	docker run --rm -it -p $(PORT):5174 --name $(CONTAINER) $(FULL_IMAGE)

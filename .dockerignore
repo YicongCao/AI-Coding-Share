@@ -1,0 +1,9 @@
+presentation/node_modules
+presentation/dist
+.git
+.DS_Store
+*.log
+.env
+.env.local
+*.tar.gz
+.cursor
