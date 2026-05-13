@@ -1,0 +1,310 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="hairGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E8734A"/>
+      <stop offset="100%" stop-color="#D4612F"/>
+    </linearGradient>
+    <linearGradient id="sweaterGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5BAD7A"/>
+      <stop offset="100%" stop-color="#4A9968"/>
+    </linearGradient>
+    <linearGradient id="barGrad" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#3D8B5E"/>
+      <stop offset="100%" stop-color="#5BAD7A"/>
+    </linearGradient>
+    <clipPath id="mainWindowClip">
+      <rect x="400" y="55" width="720" height="450" rx="12"/>
+    </clipPath>
+    <clipPath id="codeWindowClip">
+      <rect x="870" y="150" width="280" height="340" rx="10"/>
+    </clipPath>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="#2B2B3D"/>
+
+  <!-- ==================== MAIN UI/DESIGN WINDOW ==================== -->
+  <g filter="url(#shadow)">
+    <rect x="400" y="55" width="720" height="450" rx="12" fill="#1E1E2E"/>
+    <!-- Window controls -->
+    <circle cx="428" cy="79" r="5" fill="#E85650"/>
+    <circle cx="446" cy="79" r="5" fill="#E8B84A"/>
+    <circle cx="464" cy="79" r="5" fill="#5BAD7A"/>
+
+    <g clip-path="url(#mainWindowClip)">
+      <!-- Grid lines -->
+      <g stroke="#3A3A50" stroke-width="0.5" opacity="0.4">
+        <line x1="400" y1="155" x2="1120" y2="155"/>
+        <line x1="400" y1="255" x2="1120" y2="255"/>
+        <line x1="400" y1="355" x2="1120" y2="355"/>
+        <line x1="550" y1="55" x2="550" y2="505"/>
+        <line x1="700" y1="55" x2="700" y2="505"/>
+        <line x1="850" y1="55" x2="850" y2="505"/>
+        <line x1="1000" y1="55" x2="1000" y2="505"/>
+      </g>
+
+      <!-- Connection lines -->
+      <g stroke="#555570" stroke-width="1.5" fill="none" opacity="0.6">
+        <line x1="510" y1="185" x2="660" y2="185"/>
+        <line x1="660" y1="185" x2="810" y2="185"/>
+        <line x1="810" y1="185" x2="960" y2="185"/>
+        <line x1="510" y1="185" x2="510" y2="305"/>
+        <line x1="660" y1="185" x2="660" y2="305"/>
+        <line x1="810" y1="185" x2="810" y2="305"/>
+        <line x1="960" y1="185" x2="960" y2="305"/>
+        <line x1="510" y1="305" x2="660" y2="305"/>
+        <line x1="660" y1="305" x2="810" y2="305"/>
+        <line x1="810" y1="305" x2="960" y2="305"/>
+        <line x1="510" y1="305" x2="510" y2="405"/>
+        <line x1="660" y1="305" x2="660" y2="405"/>
+        <line x1="810" y1="305" x2="810" y2="405"/>
+        <!-- Diagonal connections -->
+        <line x1="510" y1="185" x2="660" y2="305"/>
+        <line x1="660" y1="185" x2="810" y2="305"/>
+        <line x1="810" y1="185" x2="960" y2="305"/>
+        <line x1="660" y1="185" x2="510" y2="305"/>
+        <line x1="810" y1="185" x2="660" y2="305"/>
+        <line x1="960" y1="185" x2="810" y2="305"/>
+      </g>
+
+      <!-- Node circles -->
+      <g fill="#FFFFFF">
+        <circle cx="510" cy="185" r="9"/>
+        <circle cx="660" cy="185" r="9"/>
+        <circle cx="510" cy="305" r="9"/>
+        <circle cx="660" cy="305" r="9"/>
+        <circle cx="810" cy="305" r="9"/>
+        <circle cx="810" cy="405" r="7"/>
+      </g>
+
+      <!-- Circle element (outlined, upper area) -->
+      <circle cx="520" cy="245" r="38" fill="none" stroke="#555570" stroke-width="2"/>
+      <circle cx="520" cy="245" r="4" fill="#555570"/>
+
+      <!-- Larger circle (wireframe, lower area) -->
+      <circle cx="670" cy="400" r="48" fill="none" stroke="#555570" stroke-width="2"/>
+
+      <!-- Dark card with info lines -->
+      <g>
+        <rect x="445" y="330" width="105" height="72" rx="6" fill="#252538"/>
+        <circle cx="465" cy="350" r="9" fill="#555570"/>
+        <rect x="482" y="345" width="52" height="4" rx="2" fill="#555570"/>
+        <rect x="482" y="355" width="36" height="4" rx="2" fill="#555570" opacity="0.6"/>
+        <rect x="455" y="370" width="82" height="4" rx="2" fill="#555570" opacity="0.4"/>
+        <rect x="455" y="380" width="62" height="4" rx="2" fill="#555570" opacity="0.3"/>
+      </g>
+
+      <!-- Blue button -->
+      <rect x="600" y="205" width="125" height="38" rx="6" fill="#4A7BCC"/>
+
+      <!-- Red square -->
+      <rect x="740" y="300" width="42" height="42" rx="4" fill="#E85650"/>
+
+      <!-- Code icon </> -->
+      <g>
+        <rect x="830" y="130" width="58" height="58" rx="8" fill="#E8B84A"/>
+        <text x="859" y="167" text-anchor="middle" fill="#1E1E2E" font-family="monospace" font-size="18" font-weight="bold">&lt;/&gt;</text>
+      </g>
+
+      <!-- Settings gear icon (blue, top right) -->
+      <g>
+        <rect x="1050" y="72" width="58" height="58" rx="8" fill="#4A7BCC"/>
+        <g transform="translate(1079, 101)" fill="none" stroke="#FFFFFF" stroke-width="2">
+          <circle r="8"/>
+          <circle r="3" fill="#FFFFFF"/>
+          <line x1="0" y1="-12" x2="0" y2="-8"/>
+          <line x1="0" y1="8" x2="0" y2="12"/>
+          <line x1="-12" y1="0" x2="-8" y2="0"/>
+          <line x1="8" y1="0" x2="12" y2="0"/>
+          <line x1="-8.5" y1="-8.5" x2="-5.7" y2="-5.7"/>
+          <line x1="5.7" y1="5.7" x2="8.5" y2="8.5"/>
+          <line x1="8.5" y1="-8.5" x2="5.7" y2="-5.7"/>
+          <line x1="-5.7" y1="5.7" x2="-8.5" y2="8.5"/>
+        </g>
+      </g>
+
+      <!-- Green info panel (right side) -->
+      <rect x="1020" y="275" width="85" height="135" rx="6" fill="#2D4A3D"/>
+      <rect x="1033" y="292" width="58" height="4" rx="2" fill="#5BAD7A" opacity="0.6"/>
+      <rect x="1033" y="304" width="46" height="4" rx="2" fill="#5BAD7A" opacity="0.4"/>
+      <rect x="1033" y="316" width="58" height="4" rx="2" fill="#5BAD7A" opacity="0.5"/>
+      <rect x="1033" y="336" width="52" height="4" rx="2" fill="#5BAD7A" opacity="0.3"/>
+      <rect x="1033" y="348" width="58" height="4" rx="2" fill="#5BAD7A" opacity="0.5"/>
+      <rect x="1033" y="360" width="42" height="4" rx="2" fill="#5BAD7A" opacity="0.4"/>
+      <rect x="1033" y="380" width="58" height="4" rx="2" fill="#5BAD7A" opacity="0.3"/>
+      <rect x="1033" y="392" width="50" height="4" rx="2" fill="#5BAD7A" opacity="0.5"/>
+    </g>
+  </g>
+
+  <!-- ==================== CODE EDITOR WINDOW (right side, on top of main window) ==================== -->
+  <g filter="url(#shadow)">
+    <rect x="870" y="150" width="280" height="340" rx="10" fill="#1E1E2E"/>
+    <g clip-path="url(#codeWindowClip)">
+      <rect x="895" y="180" width="60" height="6" rx="3" fill="#5BAD7A" opacity="0.8"/>
+      <rect x="965" y="180" width="90" height="6" rx="3" fill="#5BAD7A" opacity="0.6"/>
+      <rect x="895" y="198" width="45" height="6" rx="3" fill="#6EC8E6" opacity="0.7"/>
+      <rect x="948" y="198" width="70" height="6" rx="3" fill="#5BAD7A" opacity="0.8"/>
+      <rect x="1026" y="198" width="40" height="6" rx="3" fill="#E8C44A" opacity="0.7"/>
+      <rect x="910" y="216" width="80" height="6" rx="3" fill="#5BAD7A" opacity="0.7"/>
+      <rect x="998" y="216" width="55" height="6" rx="3" fill="#E8734A" opacity="0.6"/>
+      <rect x="910" y="234" width="50" height="6" rx="3" fill="#E8C44A" opacity="0.7"/>
+      <rect x="968" y="234" width="100" height="6" rx="3" fill="#5BAD7A" opacity="0.6"/>
+      <rect x="895" y="252" width="70" height="6" rx="3" fill="#6EC8E6" opacity="0.7"/>
+      <rect x="973" y="252" width="60" height="6" rx="3" fill="#5BAD7A" opacity="0.7"/>
+      <rect x="910" y="270" width="90" height="6" rx="3" fill="#5BAD7A" opacity="0.8"/>
+      <rect x="1008" y="270" width="40" height="6" rx="3" fill="#E8734A" opacity="0.5"/>
+      <rect x="910" y="288" width="55" height="6" rx="3" fill="#E8C44A" opacity="0.6"/>
+      <rect x="973" y="288" width="75" height="6" rx="3" fill="#6EC8E6" opacity="0.7"/>
+      <rect x="895" y="306" width="40" height="6" rx="3" fill="#5BAD7A" opacity="0.7"/>
+      <rect x="943" y="306" width="100" height="6" rx="3" fill="#5BAD7A" opacity="0.5"/>
+      <rect x="910" y="324" width="85" height="6" rx="3" fill="#E8734A" opacity="0.6"/>
+      <rect x="1003" y="324" width="50" height="6" rx="3" fill="#5BAD7A" opacity="0.7"/>
+      <rect x="895" y="342" width="60" height="6" rx="3" fill="#6EC8E6" opacity="0.7"/>
+      <rect x="963" y="342" width="80" height="6" rx="3" fill="#E8C44A" opacity="0.6"/>
+      <rect x="910" y="360" width="70" height="6" rx="3" fill="#5BAD7A" opacity="0.8"/>
+      <rect x="988" y="360" width="45" height="6" rx="3" fill="#5BAD7A" opacity="0.5"/>
+      <rect x="895" y="378" width="50" height="6" rx="3" fill="#E8C44A" opacity="0.6"/>
+      <rect x="953" y="378" width="90" height="6" rx="3" fill="#6EC8E6" opacity="0.7"/>
+      <rect x="910" y="396" width="75" height="6" rx="3" fill="#5BAD7A" opacity="0.7"/>
+      <rect x="895" y="414" width="55" height="6" rx="3" fill="#E8734A" opacity="0.5"/>
+      <rect x="958" y="414" width="65" height="6" rx="3" fill="#5BAD7A" opacity="0.7"/>
+      <rect x="910" y="432" width="40" height="6" rx="3" fill="#6EC8E6" opacity="0.6"/>
+      <rect x="958" y="432" width="80" height="6" rx="3" fill="#5BAD7A" opacity="0.7"/>
+      <rect x="895" y="450" width="95" height="6" rx="3" fill="#5BAD7A" opacity="0.8"/>
+      <rect x="910" y="468" width="65" height="6" rx="3" fill="#E8C44A" opacity="0.6"/>
+      <rect x="983" y="468" width="55" height="6" rx="3" fill="#5BAD7A" opacity="0.5"/>
+    </g>
+  </g>
+
+  <!-- ==================== BOTTOM SMALL CODE WINDOW ==================== -->
+  <g filter="url(#shadow)">
+    <rect x="440" y="420" width="310" height="165" rx="10" fill="#1E1E2E" stroke="#3A3A50" stroke-width="1.5" stroke-dasharray="6 4"/>
+    <rect x="466" y="448" width="55" height="5" rx="2.5" fill="#5BAD7A" opacity="0.7"/>
+    <rect x="529" y="448" width="80" height="5" rx="2.5" fill="#6EC8E6" opacity="0.6"/>
+    <rect x="466" y="462" width="40" height="5" rx="2.5" fill="#E8C44A" opacity="0.6"/>
+    <rect x="514" y="462" width="95" height="5" rx="2.5" fill="#5BAD7A" opacity="0.5"/>
+    <rect x="481" y="476" width="70" height="5" rx="2.5" fill="#5BAD7A" opacity="0.7"/>
+    <rect x="559" y="476" width="45" height="5" rx="2.5" fill="#E8734A" opacity="0.5"/>
+    <rect x="626" y="476" width="30" height="5" rx="2.5" fill="#4A7BCC" opacity="0.5"/>
+    <rect x="481" y="490" width="50" height="5" rx="2.5" fill="#6EC8E6" opacity="0.6"/>
+    <rect x="539" y="490" width="65" height="5" rx="2.5" fill="#E8C44A" opacity="0.5"/>
+    <rect x="466" y="504" width="85" height="5" rx="2.5" fill="#5BAD7A" opacity="0.6"/>
+    <rect x="559" y="504" width="40" height="5" rx="2.5" fill="#5BAD7A" opacity="0.4"/>
+    <rect x="481" y="518" width="60" height="5" rx="2.5" fill="#E8734A" opacity="0.5"/>
+    <rect x="549" y="518" width="75" height="5" rx="2.5" fill="#6EC8E6" opacity="0.6"/>
+    <rect x="466" y="532" width="45" height="5" rx="2.5" fill="#5BAD7A" opacity="0.7"/>
+    <rect x="519" y="532" width="90" height="5" rx="2.5" fill="#5BAD7A" opacity="0.4"/>
+    <rect x="481" y="546" width="70" height="5" rx="2.5" fill="#E8C44A" opacity="0.5"/>
+    <rect x="559" y="546" width="50" height="5" rx="2.5" fill="#6EC8E6" opacity="0.6"/>
+    <rect x="466" y="560" width="55" height="5" rx="2.5" fill="#5BAD7A" opacity="0.6"/>
+    <rect x="529" y="560" width="40" height="5" rx="2.5" fill="#E8734A" opacity="0.4"/>
+  </g>
+
+  <!-- ==================== BAR CHART ICON ==================== -->
+  <g transform="translate(810, 510)">
+    <rect x="0" y="0" width="62" height="62" rx="6" fill="#2D4A3D"/>
+    <rect x="12" y="30" width="11" height="24" rx="2" fill="url(#barGrad)"/>
+    <rect x="26" y="16" width="11" height="38" rx="2" fill="url(#barGrad)"/>
+    <rect x="40" y="22" width="11" height="32" rx="2" fill="url(#barGrad)"/>
+  </g>
+
+  <!-- ==================== MOUSE CURSOR ==================== -->
+  <g transform="translate(935, 490)">
+    <path d="M0,0 L0,42 L12,31 L23,52 L30,48 L18,28 L32,25 Z" fill="#FFFFFF" stroke="#2B2B3D" stroke-width="1.5"/>
+  </g>
+
+  <!-- ==================== WOMAN CHARACTER (side profile, facing right) ==================== -->
+  <g transform="translate(205, 200)">
+
+    <!-- Hair - back flowing mass (wide, voluminous, behind body) -->
+    <path d="M-16,-22 C-32,-12 -52,20 -56,60 C-60,100 -56,145 -48,180 C-42,205 -32,222 -18,228 C-8,232 2,228 6,222 L0,215 C-12,210 -24,195 -32,172 C-40,142 -44,108 -42,72 C-40,40 -32,12 -22,-8 Z" fill="url(#hairGrad)"/>
+    <path d="M-20,-16 C-36,-4 -48,28 -52,62 C-55,95 -52,132 -46,165 C-40,192 -30,212 -18,220 C-26,200 -34,175 -38,148 C-44,115 -46,80 -43,50 C-40,25 -32,5 -24,-10 Z" fill="#D4612F" opacity="0.4"/>
+    <path d="M-24,-10 C-40,5 -54,35 -58,70 C-62,108 -58,148 -52,180 C-48,200 -40,216 -30,225 C-38,205 -46,178 -50,150 C-54,118 -55,82 -52,52 C-48,28 -38,8 -28,-8 Z" fill="#C45A2A" opacity="0.3"/>
+
+    <!-- Neck -->
+    <path d="M8,52 C8,52 5,68 6,75 L18,75 C20,68 18,52 18,52 Z" fill="#F5C5A3"/>
+
+    <!-- Body / Torso (side view - much thinner) -->
+    <path d="M-5,75 C-15,80 -22,90 -25,110 L-28,195 C-28,200 -24,203 -18,203 L38,203 C44,203 48,200 48,195 L42,110 C38,90 32,80 22,75 Z" fill="url(#sweaterGrad)"/>
+
+    <!-- White collar (V-neck, side view) -->
+    <path d="M5,73 L13,88 L22,73" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M5,73 C8,71 18,71 22,73 L13,88 Z" fill="#FFFFFF"/>
+
+    <!-- Left arm (behind body, mostly hidden, at hip) -->
+    <path d="M-20,100 C-30,115 -35,140 -33,170 C-32,180 -28,185 -22,183 L-25,195" fill="url(#sweaterGrad)"/>
+    <!-- Left hand at hip -->
+    <ellipse cx="-28" cy="182" rx="10" ry="8" fill="#F5C5A3" transform="rotate(-10, -28, 182)"/>
+
+    <!-- Right arm (extended forward, holding pen) -->
+    <path d="M38,100 C52,110 68,118 85,128 C92,132 95,130 92,126 L75,115" fill="url(#sweaterGrad)"/>
+    <path d="M38,100 C42,98 50,105 62,112 C74,119 85,125 90,128" fill="url(#sweaterGrad)" stroke="#4A9968" stroke-width="0.5"/>
+
+    <!-- Right hand -->
+    <g transform="translate(88, 125)">
+      <ellipse cx="0" cy="0" rx="10" ry="8" fill="#F5C5A3" transform="rotate(25)"/>
+      <!-- Pen/stylus -->
+      <line x1="6" y1="-4" x2="22" y2="-28" stroke="#E85650" stroke-width="3" stroke-linecap="round"/>
+      <line x1="22" y1="-28" x2="24" y2="-35" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+    </g>
+
+    <!-- Head (side profile) -->
+    <ellipse cx="12" cy="18" rx="28" ry="35" fill="#F5C5A3"/>
+
+    <!-- ===== HAIR ON TOP OF HEAD (solid mass covering skull, drawn BEFORE face) ===== -->
+    <!-- Main hair mass: thick crescent covering entire top/back of head -->
+    <path d="M36,2 C34,-16 26,-34 14,-44 C2,-52 -12,-52 -24,-42 C-36,-28 -40,-8 -40,14 C-40,30 -38,44 -34,54 C-30,60 -24,58 -20,52 C-22,40 -24,25 -22,10 C-20,-6 -12,-20 2,-28 C14,-34 26,-28 34,-14 C36,-6 36,-1 36,2 Z" fill="url(#hairGrad)"/>
+
+    <!-- Hair volume highlight layer -->
+    <path d="M32,0 C30,-14 22,-30 12,-40 C2,-46 -10,-46 -20,-38 C-30,-26 -34,-8 -34,12 C-34,26 -32,38 -28,48 C-24,44 -26,30 -26,16 C-26,0 -20,-14 -8,-24 C4,-32 18,-30 28,-18 C32,-10 32,-4 32,0 Z" fill="#E8734A" opacity="0.35"/>
+
+    <!-- Hair extra top volume above the skull -->
+    <path d="M30,-10 C26,-28 16,-42 4,-48 C-8,-52 -20,-48 -30,-38 C-38,-26 -40,-12 -38,2 C-36,-10 -30,-24 -20,-34 C-10,-42 2,-46 14,-42 C24,-36 30,-24 32,-10 Z" fill="#D4612F" opacity="0.5"/>
+
+    <!-- Hair front bangs (side view, swept across forehead) -->
+    <path d="M36,2 C38,-6 40,-2 40,6 C38,10 35,8 34,4 Z" fill="#E8734A" opacity="0.6"/>
+    <path d="M36,-8 C39,-4 40,2 39,8 C37,4 36,0 36,-8 Z" fill="#E8734A" opacity="0.4"/>
+
+    <!-- ===== FACE FEATURES (drawn AFTER hair so they're visible) ===== -->
+    <!-- Ear (slightly visible under hair) -->
+    <ellipse cx="0" cy="28" rx="4" ry="6" fill="#F0BA96"/>
+
+    <!-- Face profile overlay (nose, chin protruding right) -->
+    <path d="M38,8 C42,12 44,18 42,22 C44,24 44,28 40,32 C38,38 34,44 28,50 C22,54 14,55 10,54" fill="#F5C5A3" stroke="none"/>
+
+    <!-- Nose (profile) -->
+    <path d="M38,12 C43,16 44,20 42,23 C40,24 38,22 38,20" fill="#F5C5A3" stroke="#E8A88A" stroke-width="1.2" stroke-linecap="round"/>
+
+    <!-- Eye (one visible in profile) -->
+    <ellipse cx="22" cy="16" rx="3" ry="3.5" fill="#2B2B3D"/>
+    <circle cx="23" cy="15" r="1" fill="#FFFFFF"/>
+
+    <!-- Eyebrow -->
+    <path d="M18,9 C22,6 28,7 30,10" fill="none" stroke="#D4612F" stroke-width="1.8" stroke-linecap="round"/>
+
+    <!-- Mouth (subtle smile) -->
+    <path d="M28,34 C32,35 34,33 35,31" fill="none" stroke="#D4856A" stroke-width="1.5" stroke-linecap="round"/>
+
+    <!-- Eyelashes -->
+    <path d="M19,13 C18,11 19,10 20,11" fill="none" stroke="#2B2B3D" stroke-width="0.8"/>
+
+    <!-- Pants (blue, side view - slim) -->
+    <path d="M-22,203 L-26,380 L-6,380 L2,260 L8,260 L14,380 L34,380 L38,203 Z" fill="#6A8FBF"/>
+
+    <!-- Belt -->
+    <rect x="-24" y="200" width="66" height="8" rx="2" fill="#4A7090"/>
+
+    <!-- Shoes (side view) -->
+    <path d="M-28,378 C-30,382 -30,388 -24,390 L-2,390 C0,388 0,382 -4,378" fill="#3A3A50"/>
+    <path d="M12,378 C10,382 10,388 16,390 L38,390 C40,388 40,382 36,378" fill="#3A3A50"/>
+  </g>
+
+  <!-- ==================== DECORATIVE DASHED CONNECTIONS ==================== -->
+  <g stroke="#555570" stroke-width="1" stroke-dasharray="4 3" fill="none" opacity="0.4">
+    <path d="M750,505 Q770,480 800,512"/>
+    <path d="M440,585 Q450,600 480,595"/>
+  </g>
+</svg>

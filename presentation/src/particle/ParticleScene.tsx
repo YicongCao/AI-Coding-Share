@@ -34,6 +34,14 @@ type Particle = {
   driftY: number;
   size: number;
   hueShift: number;
+  fromH: number;
+  fromS: number;
+  fromL: number;
+  fromA: number;
+  toH: number;
+  toS: number;
+  toL: number;
+  toA: number;
 };
 
 const DEFAULT_PARTICLE_COUNT = 2200;
@@ -163,6 +171,8 @@ const ParticleScene = memo(function ParticleScene({
           driftY: rng() * 2 - 1,
           size: 0.9 + rng() * 1.4,
           hueShift: (rng() - 0.5) * 30,
+          fromH: -1, fromS: -1, fromL: -1, fromA: -1,
+          toH: -1, toS: -1, toL: -1, toA: -1,
         };
       }
     }
@@ -172,11 +182,21 @@ const ParticleScene = memo(function ParticleScene({
       const arr = particlesRef.current;
       stageTargetsRef.current = stageTargets;
       for (let i = 0; i < particleCount; i++) {
-        const proj = projectScenePoint(stageTargets[i], w, h);
-        arr[i].fromX = arr[i].x;
-        arr[i].fromY = arr[i].y;
-        arr[i].toX = proj.x;
-        arr[i].toY = proj.y;
+        const sp = stageTargets[i];
+        const proj = projectScenePoint(sp, w, h);
+        const p = arr[i];
+        p.fromX = p.x;
+        p.fromY = p.y;
+        p.toX = proj.x;
+        p.toY = proj.y;
+        p.fromH = p.toH;
+        p.fromS = p.toS;
+        p.fromL = p.toL;
+        p.fromA = p.toA;
+        p.toH = sp.h ?? -1;
+        p.toS = sp.s ?? -1;
+        p.toL = sp.l ?? -1;
+        p.toA = sp.a ?? -1;
       }
     }
 
@@ -227,7 +247,10 @@ const ParticleScene = memo(function ParticleScene({
       ctx.save();
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, w, h);
-      ctx.globalCompositeOperation = "lighter";
+      const anyCustomTo = arr.some((p) => p.toH >= 0);
+      const anyCustomFrom = arr.some((p) => p.fromH >= 0);
+      const useSourceOver = anyCustomTo || anyCustomFrom;
+      ctx.globalCompositeOperation = useSourceOver ? "source-over" : "lighter";
 
       const wobbleAmp = 1.4 + (1 - t) * 6.5;
       const driftAmp = 0.35;
@@ -240,8 +263,23 @@ const ParticleScene = memo(function ParticleScene({
         p.x = p.fromX + (p.toX - p.fromX) * e + wobX;
         p.y = p.fromY + (p.toY - p.fromY) * e + wobY;
         const r = p.size * (1 + (1 - t) * 0.45);
-        const hue = 195 + p.hueShift + Math.sin(p.phase * 0.7) * 12;
-        ctx.fillStyle = `hsla(${hue.toFixed(1)}, 88%, 70%, 0.78)`;
+
+        const defaultH = 195 + p.hueShift + Math.sin(p.phase * 0.7) * 12;
+        const fH = p.fromH >= 0 ? p.fromH : defaultH;
+        const fS = p.fromS >= 0 ? p.fromS : 88;
+        const fL = p.fromL >= 0 ? p.fromL : 70;
+        const fA = p.fromA >= 0 ? p.fromA : 0.78;
+        const tH = p.toH >= 0 ? p.toH : defaultH;
+        const tS = p.toS >= 0 ? p.toS : 88;
+        const tL = p.toL >= 0 ? p.toL : 70;
+        const tA = p.toA >= 0 ? p.toA : 0.78;
+
+        const ch = fH + (tH - fH) * e;
+        const cs = fS + (tS - fS) * e;
+        const cl = fL + (tL - fL) * e;
+        const ca = fA + (tA - fA) * e;
+
+        ctx.fillStyle = `hsla(${ch | 0},${cs | 0}%,${cl | 0}%,${ca.toFixed(2)})`;
         ctx.beginPath();
         ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
         ctx.fill();

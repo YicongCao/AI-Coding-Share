@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import ParticleScene from "../particle/ParticleScene";
+import SvgScene from "../svg/SvgScene";
+import { getSvgSceneDef } from "../svg/registry";
 import { useSync, type AdminCommand } from "../sync/wsClient";
 import {
   allParagraphs,
@@ -332,30 +334,54 @@ function AdminConsole({ onLogout }: { onLogout: () => void }) {
         <div className="admin-previews">
           <div className="preview-card current">
             <span className="preview-label">CURRENT · {String(currentIndex + 1).padStart(2, "0")}/{totalSlides}</span>
-            <ParticleScene
-              sceneKind={currentSlide.sceneKind}
-              sceneParams={currentSlide.sceneParams}
-              seed={seed}
-              transitionStartedAt={transitionStartedAt}
-              timeOffsetMs={timeOffsetMs}
-              particleCount={PREVIEW_PARTICLE_COUNT}
-            />
+            {(() => {
+              const svgDef = currentSlide.renderMode === "svg" && currentSlide.svgSceneId
+                ? getSvgSceneDef(currentSlide.svgSceneId) : undefined;
+              return svgDef ? (
+                <SvgScene
+                  sceneDef={svgDef}
+                  seed={seed}
+                  transitionStartedAt={transitionStartedAt}
+                  timeOffsetMs={timeOffsetMs}
+                />
+              ) : (
+                <ParticleScene
+                  sceneKind={currentSlide.sceneKind}
+                  sceneParams={currentSlide.sceneParams}
+                  seed={seed}
+                  transitionStartedAt={transitionStartedAt}
+                  timeOffsetMs={timeOffsetMs}
+                  particleCount={PREVIEW_PARTICLE_COUNT}
+                />
+              );
+            })()}
             <span className="preview-index">
               {formatSceneCode(currentSlide.sceneKind, currentSlide.sceneParams)}
             </span>
           </div>
           <div className="preview-card next">
             <span className="preview-label">NEXT</span>
-            {nextSlide ? (
-              <ParticleScene
-                sceneKind={nextSlide.sceneKind}
-                sceneParams={nextSlide.sceneParams}
-                seed={(seed * 1664525 + 1013904223) >>> 0}
-                transitionStartedAt={STEADY_TRANSITION_ANCHOR}
-                timeOffsetMs={timeOffsetMs}
-                particleCount={500}
-              />
-            ) : (
+            {nextSlide ? (() => {
+              const svgDef = nextSlide.renderMode === "svg" && nextSlide.svgSceneId
+                ? getSvgSceneDef(nextSlide.svgSceneId) : undefined;
+              return svgDef ? (
+                <SvgScene
+                  sceneDef={svgDef}
+                  seed={(seed * 1664525 + 1013904223) >>> 0}
+                  transitionStartedAt={STEADY_TRANSITION_ANCHOR}
+                  timeOffsetMs={timeOffsetMs}
+                />
+              ) : (
+                <ParticleScene
+                  sceneKind={nextSlide.sceneKind}
+                  sceneParams={nextSlide.sceneParams}
+                  seed={(seed * 1664525 + 1013904223) >>> 0}
+                  transitionStartedAt={STEADY_TRANSITION_ANCHOR}
+                  timeOffsetMs={timeOffsetMs}
+                  particleCount={500}
+                />
+              );
+            })() : (
               <div className="preview-placeholder">— 末页 —</div>
             )}
             <span className="preview-index">

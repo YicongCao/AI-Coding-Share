@@ -1,4 +1,14 @@
-export type ScenePoint = { x: number; y: number };
+export type ScenePoint = {
+  x: number;
+  y: number;
+  h?: number;
+  s?: number;
+  l?: number;
+  a?: number;
+};
+
+export type ColoredPath = { d: string; h: number; s: number; l: number; a: number };
+export type PathSpec = string | ColoredPath;
 
 export type SceneKind =
   | "cover"
@@ -378,29 +388,225 @@ function bigDigit(digit: number, cx: number, cy: number, scale = 1): string[] {
 // Scenes
 // ============================================================================
 
-type SceneFn = (params: SceneParams | undefined, rng: () => number) => string[];
+type SceneFn = (params: SceneParams | undefined, rng: () => number) => PathSpec[];
 
-const sceneCover: SceneFn = (_, rng) => {
-  const cx = STAGE_W / 2;
-  const cy = STAGE_H / 2;
-  const paths: string[] = [];
-  paths.push(rrect(80, 100, 840, 400, 36));
-  paths.push(rrect(110, 130, 780, 340, 30));
-  paths.push(line(40, 60, 160, 60));
-  paths.push(line(40, 60, 40, 180));
-  paths.push(line(960, 540, 840, 540));
-  paths.push(line(960, 540, 960, 420));
-  paths.push(circ(cx, cy, 86));
-  paths.push(circ(cx, cy, 130));
-  for (let i = 0; i < 14; i++) {
-    const a = (i / 14) * Math.PI * 2 + rng() * 0.3;
-    const r = 200 + rng() * 50;
-    const x = cx + Math.cos(a) * r;
-    const y = cy + Math.sin(a) * r * 0.55;
-    paths.push(circ(x, y, 4 + rng() * 4));
-  }
-  paths.push(line(cx - 60, cy - 14, cx + 60, cy - 14));
-  paths.push(line(cx - 40, cy + 14, cx + 40, cy + 14));
+function colored(
+  h: number,
+  s: number,
+  l: number,
+  a: number,
+  ...paths: string[]
+): ColoredPath[] {
+  return paths.map((d) => ({ d, h, s, l, a }));
+}
+
+const sceneCover: SceneFn = () => {
+  const paths: PathSpec[] = [];
+
+  // ── left code panel (behind the woman) ──
+  paths.push(...colored(220, 18, 22, 0.82,
+    rrect(40, 100, 280, 280, 14),
+  ));
+  paths.push(...colored(220, 18, 28, 0.72,
+    line(40, 140, 320, 140),
+  ));
+  paths.push(...colored(140, 75, 52, 0.80,
+    line(70, 170, 180, 170), line(70, 200, 160, 200),
+    line(70, 290, 200, 290),
+  ));
+  paths.push(...colored(350, 70, 58, 0.80,
+    line(190, 170, 290, 170), line(70, 230, 160, 230),
+    line(70, 320, 130, 320),
+  ));
+  paths.push(...colored(45, 85, 58, 0.80,
+    line(170, 200, 290, 200), line(170, 230, 290, 230),
+    line(140, 320, 280, 320),
+  ));
+  paths.push(...colored(210, 75, 58, 0.75,
+    line(70, 260, 220, 260), line(210, 290, 290, 290),
+    line(70, 350, 200, 350),
+  ));
+
+  // ── woman figure ──
+  // hair (orange)
+  paths.push(...colored(25, 85, 55, 0.88,
+    circ(195, 175, 30),
+    `M 165 175 q -15 40 -5 80`,
+    `M 225 175 q 15 40 5 80`,
+    `M 170 160 q 25 -20 50 0`,
+  ));
+  // face / skin
+  paths.push(...colored(25, 60, 75, 0.85,
+    circ(195, 190, 18),
+    line(180, 390, 186, 340),
+    line(210, 390, 204, 340),
+  ));
+  // green sweater
+  paths.push(...colored(152, 62, 46, 0.88,
+    rrect(170, 220, 50, 100, 10),
+    `M 170 240 q -40 20 -60 70`,
+    `M 220 240 q 30 10 55 50`,
+  ));
+  // left arm + pencil
+  paths.push(...colored(152, 62, 46, 0.85,
+    `M 170 250 q -50 30 -70 90`,
+  ));
+  paths.push(...colored(30, 50, 45, 0.80,
+    line(100, 340, 80, 380),
+    line(80, 380, 76, 396),
+  ));
+  paths.push(...colored(25, 60, 75, 0.82,
+    circ(100, 336, 8),
+  ));
+  // right arm pointing
+  paths.push(...colored(152, 62, 46, 0.85,
+    `M 220 250 q 40 15 65 55`,
+  ));
+  paths.push(...colored(25, 60, 75, 0.82,
+    circ(285, 305, 7),
+  ));
+  // blue pants
+  paths.push(...colored(215, 65, 50, 0.88,
+    `M 175 320 l -12 100 l 24 0 l 12 -100`,
+    `M 195 320 l 12 100 l 24 0 l -12 -100`,
+  ));
+  // shoes
+  paths.push(...colored(220, 20, 30, 0.80,
+    rrect(157, 418, 30, 10, 4),
+    rrect(201, 418, 30, 10, 4),
+  ));
+
+  // ── main macOS window ──
+  paths.push(...colored(220, 15, 18, 0.85,
+    rrect(320, 60, 580, 380, 16),
+  ));
+  // title bar
+  paths.push(...colored(220, 15, 24, 0.78,
+    line(320, 100, 900, 100),
+  ));
+  // toolbar dots
+  paths.push(...colored(0, 78, 55, 0.90, circ(348, 80, 7)));
+  paths.push(...colored(45, 88, 55, 0.90, circ(370, 80, 7)));
+  paths.push(...colored(130, 68, 48, 0.90, circ(392, 80, 7)));
+  // gear icon (top-right, blue)
+  paths.push(...colored(220, 70, 52, 0.88,
+    rrect(850, 62, 36, 36, 8),
+  ));
+  paths.push(...colored(220, 80, 65, 0.85,
+    ...gear(868, 80, 12, 8),
+  ));
+
+  // ── window content: UI wireframe grid ──
+  // grid lines (subtle)
+  paths.push(...colored(210, 25, 40, 0.45,
+    line(420, 140, 420, 400),
+    line(530, 140, 530, 400),
+    line(650, 140, 650, 400),
+    line(770, 140, 770, 400),
+    line(360, 200, 870, 200),
+    line(360, 280, 870, 280),
+    line(360, 360, 870, 360),
+  ));
+  // connection lines between elements
+  paths.push(...colored(210, 30, 50, 0.50,
+    line(470, 170, 590, 170),
+    line(590, 170, 710, 170),
+    line(470, 170, 470, 240),
+    line(710, 170, 710, 240),
+    line(590, 240, 590, 320),
+    line(470, 320, 590, 320),
+    line(590, 320, 710, 320),
+  ));
+
+  // white circles (UI element nodes)
+  paths.push(...colored(0, 0, 92, 0.88,
+    circ(470, 170, 18),
+    circ(710, 170, 18),
+    circ(470, 320, 16),
+    circ(710, 320, 16),
+    circ(590, 240, 22),
+  ));
+
+  // blue rectangle element
+  paths.push(...colored(215, 70, 52, 0.88,
+    rrect(528, 156, 120, 28, 8),
+  ));
+
+  // yellow code-brackets icon
+  paths.push(...colored(45, 88, 52, 0.90,
+    rrect(670, 224, 42, 32, 6),
+  ));
+  paths.push(...colored(45, 92, 65, 0.88,
+    polyline([[678, 246], [672, 240], [678, 234]]),
+    polyline([[704, 234], [710, 240], [704, 246]]),
+  ));
+
+  // red square accent
+  paths.push(...colored(0, 72, 50, 0.88,
+    rrect(468, 226, 28, 28, 4),
+  ));
+
+  // small circles (decorative dots on grid)
+  paths.push(...colored(0, 0, 80, 0.55,
+    circ(820, 170, 6),
+    circ(820, 240, 6),
+    circ(820, 320, 6),
+  ));
+
+  // ── bottom code panel ──
+  paths.push(...colored(220, 18, 20, 0.82,
+    rrect(340, 390, 440, 140, 12),
+  ));
+  paths.push(...colored(220, 18, 28, 0.70,
+    line(340, 420, 780, 420),
+  ));
+  paths.push(...colored(140, 75, 52, 0.78,
+    line(370, 445, 480, 445), line(370, 470, 440, 470),
+    line(370, 495, 520, 495),
+  ));
+  paths.push(...colored(350, 70, 58, 0.78,
+    line(490, 445, 600, 445), line(450, 470, 560, 470),
+  ));
+  paths.push(...colored(45, 85, 58, 0.78,
+    line(610, 445, 750, 445), line(570, 470, 700, 470),
+    line(530, 495, 720, 495),
+  ));
+  paths.push(...colored(210, 75, 58, 0.72,
+    line(370, 510, 500, 510), line(710, 470, 750, 470),
+  ));
+
+  // ── green chart icon (bottom-right) ──
+  paths.push(...colored(140, 68, 46, 0.90,
+    rrect(810, 410, 46, 46, 8),
+  ));
+  paths.push(...colored(140, 80, 60, 0.88,
+    rect(820, 438, 8, 16),
+    rect(832, 428, 8, 26),
+    rect(844, 420, 8, 34),
+  ));
+
+  // ── large mouse cursor (right side) ──
+  paths.push(...colored(0, 0, 96, 0.92,
+    polyline([
+      [830, 300], [830, 370], [845, 355], [862, 388],
+      [872, 383], [855, 350], [875, 345], [830, 300],
+    ]),
+  ));
+  // cursor fill lines
+  paths.push(...colored(0, 0, 90, 0.70,
+    line(835, 315, 835, 355),
+    line(840, 320, 840, 348),
+    line(845, 325, 845, 345),
+    line(850, 330, 850, 345),
+  ));
+
+  // ── decorative dots around ──
+  paths.push(...colored(220, 50, 55, 0.40,
+    circ(55, 80, 4), circ(330, 50, 3),
+    circ(910, 55, 4), circ(940, 460, 3),
+    circ(60, 420, 3), circ(20, 300, 4),
+  ));
+
   return paths;
 };
 
@@ -1952,14 +2158,24 @@ const SCENE_FNS: Record<SceneKind, SceneFn> = {
   finale: sceneFinale,
 };
 
+export function getSceneSpecs(
+  kind: SceneKind,
+  params: SceneParams | undefined,
+  seed: number
+): PathSpec[] {
+  const rng = mulberry32(seed);
+  const fn = SCENE_FNS[kind] ?? sceneCover;
+  return fn(params, rng);
+}
+
 export function getScenePaths(
   kind: SceneKind,
   params: SceneParams | undefined,
   seed: number
 ): string[] {
-  const rng = mulberry32(seed);
-  const fn = SCENE_FNS[kind] ?? sceneCover;
-  return fn(params, rng);
+  return getSceneSpecs(kind, params, seed).map((s) =>
+    typeof s === "string" ? s : s.d
+  );
 }
 
 // ============================================================================
@@ -1983,15 +2199,18 @@ function ensureSvgHost(): SVGSVGElement {
 }
 
 export function samplePathsToPoints(
-  paths: string[],
+  specs: PathSpec[],
   count: number
 ): ScenePoint[] {
-  if (paths.length === 0 || count <= 0) return [];
+  if (specs.length === 0 || count <= 0) return [];
   const host = ensureSvgHost();
   const pathEls: SVGPathElement[] = [];
   const lengths: number[] = [];
+  const colors: (Pick<ColoredPath, "h" | "s" | "l" | "a"> | null)[] = [];
   let total = 0;
-  for (const d of paths) {
+  for (const spec of specs) {
+    const d = typeof spec === "string" ? spec : spec.d;
+    const color = typeof spec === "string" ? null : spec;
     const p = document.createElementNS("http://www.w3.org/2000/svg", "path");
     p.setAttribute("d", d);
     host.appendChild(p);
@@ -2002,6 +2221,7 @@ export function samplePathsToPoints(
     }
     pathEls.push(p);
     lengths.push(len);
+    colors.push(color);
     total += len;
   }
   if (pathEls.length === 0 || total <= 0) {
@@ -2016,18 +2236,29 @@ export function samplePathsToPoints(
       : Math.max(1, Math.round((lengths[i] / total) * count));
     const path = pathEls[i];
     const len = lengths[i];
+    const c = colors[i];
     for (let j = 0; j < share; j++) {
       const t = (j + 0.5) / share;
       const pt = path.getPointAtLength(t * len);
-      out.push({ x: pt.x, y: pt.y });
+      const point: ScenePoint = { x: pt.x, y: pt.y };
+      if (c) {
+        point.h = c.h;
+        point.s = c.s;
+        point.l = c.l;
+        point.a = c.a;
+      }
+      out.push(point);
     }
     assigned += share;
   }
   for (const el of pathEls) host.removeChild(el);
   if (out.length > count) out.length = count;
   while (out.length < count) {
-    const ref = out[out.length % Math.max(1, out.length)] ?? { x: STAGE_W / 2, y: STAGE_H / 2 };
-    out.push({ x: ref.x, y: ref.y });
+    const ref = out[out.length % Math.max(1, out.length)] ?? {
+      x: STAGE_W / 2,
+      y: STAGE_H / 2,
+    };
+    out.push({ x: ref.x, y: ref.y, h: ref.h, s: ref.s, l: ref.l, a: ref.a });
   }
   return out;
 }
@@ -2038,6 +2269,6 @@ export function getScenePoints(opts: {
   seed: number;
   count: number;
 }): ScenePoint[] {
-  const paths = getScenePaths(opts.kind, opts.params, opts.seed);
-  return samplePathsToPoints(paths, opts.count);
+  const specs = getSceneSpecs(opts.kind, opts.params, opts.seed);
+  return samplePathsToPoints(specs, opts.count);
 }

@@ -1,6 +1,8 @@
 import speechRaw from "../../speech.txt?raw";
 import type { SceneKind, SceneParams } from "./particle/sceneShapes";
 
+export type SlideRenderMode = "particle" | "svg";
+
 export type Slide = {
   globalIndex: number;
   paragraphIndex: number;
@@ -8,6 +10,9 @@ export type Slide = {
   text: string;
   sceneKind: SceneKind;
   sceneParams?: SceneParams;
+  particleCount?: number;
+  renderMode?: SlideRenderMode;
+  svgSceneId?: string;
 };
 
 export type Paragraph = {
@@ -145,6 +150,9 @@ slides.push({
   sentenceIndex: 0,
   text: speechTitle,
   sceneKind: "cover",
+  particleCount: 4500,
+  renderMode: "svg",
+  svgSceneId: "cover",
 });
 
 paragraphs.push({
@@ -154,6 +162,14 @@ paragraphs.push({
   isTitle: true,
 });
 
+const SVG_OVERRIDES: Record<number, string> = {
+  1: "introBadge",
+  2: "timeline",
+  3: "twoQuests",
+  4: "jobsSpeaker",
+  5: "jobsEnvelope",
+};
+
 for (let pi = 1; pi < rawParagraphs.length; pi++) {
   const raw = rawParagraphs[pi];
   const sentences = splitByPeriod(raw);
@@ -162,13 +178,16 @@ for (let pi = 1; pi < rawParagraphs.length; pi++) {
   for (let si = 0; si < sentences.length; si++) {
     const pick = planRow[si] ?? planRow[planRow.length - 1] ?? "timeline";
     const { kind, params } = resolvePick(pick);
+    const idx = slides.length;
+    const svgId = SVG_OVERRIDES[idx];
     slides.push({
-      globalIndex: slides.length,
+      globalIndex: idx,
       paragraphIndex: pi,
       sentenceIndex: si,
       text: sentences[si],
       sceneKind: kind,
       sceneParams: params,
+      ...(svgId ? { renderMode: "svg" as const, svgSceneId: svgId } : {}),
     });
   }
   const end = slides.length;
