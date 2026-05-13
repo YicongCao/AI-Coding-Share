@@ -7,6 +7,7 @@ const Spotlight = (
     <path d="M600,0 L420,450 L780,450 Z" fill="#E8B84A" opacity="0.04"/>
     <path d="M600,0 L480,450 L720,450 Z" fill="#E8B84A" opacity="0.06"/>
     <circle cx="600" cy="0" r="30" fill="#E8B84A" opacity="0.15"/>
+    <text x="100" y="60" fill="#E8B84A" fontFamily="sans-serif" fontSize="14" opacity="0.5" fontWeight="bold">2008</text>
   </g>
 );
 
@@ -61,6 +62,7 @@ const Envelope = (
     {/* Laptop peeking out */}
     <rect x="30" y="5" width="140" height="6" rx="3" fill="#555570"/>
     <rect x="40" y="-2" width="120" height="4" rx="2" fill="#3A3A50"/>
+    <text x="100" y="158" textAnchor="middle" fill="#E8C44A" fontFamily="sans-serif" fontSize="10" opacity="0.6">MacBook Air</text>
   </g>
 );
 

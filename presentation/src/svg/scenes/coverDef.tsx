@@ -124,7 +124,7 @@ const MainWindow = (
 // ── Fragment 2: Code editor window ──
 const CodeWindow = (
   <g filter="url(#shadow)">
-    <rect x="870" y="150" width="280" height="340" rx="10" fill="#1E1E2E"/>
+    <rect x="870" y="150" width="280" height="340" rx="10" fill="#1E1E2E" stroke="#3A3A50" strokeWidth="1.5" strokeDasharray="6 4"/>
     <g clipPath="url(#codeWindowClip)">
       <rect x="895" y="180" width="60" height="6" rx="3" fill="#5BAD7A" opacity="0.8"/>
       <rect x="965" y="180" width="90" height="6" rx="3" fill="#5BAD7A" opacity="0.6"/>
@@ -189,45 +189,66 @@ const BottomCode = (
   </g>
 );
 
-// ── Fragment 4: Woman character ──
+// ── Fragment 4: Miku-style girl (back view, twin tails, holding leek) ──
 const Woman = (
-  <g transform="translate(205, 200)">
-    <path d="M-16,-22 C-32,-12 -52,20 -56,60 C-60,100 -56,145 -48,180 C-42,205 -32,222 -18,228 C-8,232 2,228 6,222 L0,215 C-12,210 -24,195 -32,172 C-40,142 -44,108 -42,72 C-40,40 -32,12 -22,-8 Z" fill="url(#hairGrad)"/>
-    <path d="M-20,-16 C-36,-4 -48,28 -52,62 C-55,95 -52,132 -46,165 C-40,192 -30,212 -18,220 C-26,200 -34,175 -38,148 C-44,115 -46,80 -43,50 C-40,25 -32,5 -24,-10 Z" fill="#D4612F" opacity="0.4"/>
-    <path d="M-24,-10 C-40,5 -54,35 -58,70 C-62,108 -58,148 -52,180 C-48,200 -40,216 -30,225 C-38,205 -46,178 -50,150 C-54,118 -55,82 -52,52 C-48,28 -38,8 -28,-8 Z" fill="#C45A2A" opacity="0.3"/>
-    <path d="M8,52 C8,52 5,68 6,75 L18,75 C20,68 18,52 18,52 Z" fill="#F5C5A3"/>
-    <path d="M-5,75 C-15,80 -22,90 -25,110 L-28,195 C-28,200 -24,203 -18,203 L38,203 C44,203 48,200 48,195 L42,110 C38,90 32,80 22,75 Z" fill="url(#sweaterGrad)"/>
-    <path d="M5,73 L13,88 L22,73" fill="none" stroke="#FFFFFF" strokeWidth="3" strokeLinejoin="round"/>
-    <path d="M5,73 C8,71 18,71 22,73 L13,88 Z" fill="#FFFFFF"/>
-    <path d="M-20,100 C-30,115 -35,140 -33,170 C-32,180 -28,185 -22,183 L-25,195" fill="url(#sweaterGrad)"/>
-    <ellipse cx="-28" cy="182" rx="10" ry="8" fill="#F5C5A3" transform="rotate(-10, -28, 182)"/>
-    <path d="M38,100 C52,110 68,118 85,128 C92,132 95,130 92,126 L75,115" fill="url(#sweaterGrad)"/>
-    <path d="M38,100 C42,98 50,105 62,112 C74,119 85,125 90,128" fill="url(#sweaterGrad)" stroke="#4A9968" strokeWidth="0.5"/>
-    <g transform="translate(88, 125)">
-      <ellipse cx="0" cy="0" rx="10" ry="8" fill="#F5C5A3" transform="rotate(25)"/>
-      <line x1="6" y1="-4" x2="22" y2="-28" stroke="#E85650" strokeWidth="3" strokeLinecap="round"/>
-      <line x1="22" y1="-28" x2="24" y2="-35" stroke="#333" strokeWidth="2" strokeLinecap="round"/>
-    </g>
-    <ellipse cx="12" cy="18" rx="28" ry="35" fill="#F5C5A3"/>
-    {/* Hair underlay: covers gap between head and hair, stays above forehead line */}
-    <ellipse cx="2" cy="-6" rx="32" ry="30" fill="url(#hairGrad)"/>
-    <path d="M36,2 C34,-16 26,-34 14,-44 C2,-52 -12,-52 -24,-42 C-36,-28 -40,-8 -40,14 C-40,30 -38,44 -34,54 C-30,60 -24,58 -20,52 C-22,40 -24,25 -22,10 C-20,-6 -12,-20 2,-28 C14,-34 26,-28 34,-14 C36,-6 36,-1 36,2 Z" fill="url(#hairGrad)"/>
-    <path d="M32,0 C30,-14 22,-30 12,-40 C2,-46 -10,-46 -20,-38 C-30,-26 -34,-8 -34,12 C-34,26 -32,38 -28,48 C-24,44 -26,30 -26,16 C-26,0 -20,-14 -8,-24 C4,-32 18,-30 28,-18 C32,-10 32,-4 32,0 Z" fill="#E8734A" opacity="0.35"/>
-    <path d="M30,-10 C26,-28 16,-42 4,-48 C-8,-52 -20,-48 -30,-38 C-38,-26 -40,-12 -38,2 C-36,-10 -30,-24 -20,-34 C-10,-42 2,-46 14,-42 C24,-36 30,-24 32,-10 Z" fill="#D4612F" opacity="0.5"/>
-    <path d="M36,2 C38,-6 40,-2 40,6 C38,10 35,8 34,4 Z" fill="#E8734A" opacity="0.6"/>
-    <path d="M36,-8 C39,-4 40,2 39,8 C37,4 36,0 36,-8 Z" fill="#E8734A" opacity="0.4"/>
-    <ellipse cx="0" cy="28" rx="4" ry="6" fill="#F0BA96"/>
-    <path d="M38,8 C42,12 44,18 42,22 C44,24 44,28 40,32 C38,38 34,44 28,50 C22,54 14,55 10,54" fill="#F5C5A3" stroke="none"/>
-    <path d="M38,12 C43,16 44,20 42,23 C40,24 38,22 38,20" fill="#F5C5A3" stroke="#E8A88A" strokeWidth="1.2" strokeLinecap="round"/>
-    <ellipse cx="22" cy="16" rx="3" ry="3.5" fill="#2B2B3D"/>
-    <circle cx="23" cy="15" r="1" fill="#FFFFFF"/>
-    <path d="M18,9 C22,6 28,7 30,10" fill="none" stroke="#D4612F" strokeWidth="1.8" strokeLinecap="round"/>
-    <path d="M28,34 C32,35 34,33 35,31" fill="none" stroke="#D4856A" strokeWidth="1.5" strokeLinecap="round"/>
-    <path d="M19,13 C18,11 19,10 20,11" fill="none" stroke="#2B2B3D" strokeWidth="0.8"/>
-    <path d="M-22,203 L-26,380 L-6,380 L2,260 L8,260 L14,380 L34,380 L38,203 Z" fill="#6A8FBF"/>
-    <rect x="-24" y="200" width="66" height="8" rx="2" fill="#4A7090"/>
-    <path d="M-28,378 C-30,382 -30,388 -24,390 L-2,390 C0,388 0,382 -4,378" fill="#3A3A50"/>
-    <path d="M12,378 C10,382 10,388 16,390 L38,390 C40,388 40,382 36,378" fill="#3A3A50"/>
+  <g transform="translate(205, 180)">
+    {/* Head (back view, no face detail) */}
+    <ellipse cx="13" cy="22" rx="26" ry="32" fill="#2B2B3D"/>
+    {/* Hair cap covering head */}
+    <ellipse cx="13" cy="14" rx="30" ry="30" fill="#39C5BB"/>
+    <path d="M-17,14 Q13,-18 43,14 Q43,30 38,42 L13,48 L-12,42 Q-17,30 -17,14 Z" fill="#39C5BB"/>
+    {/* Hair highlight sheen */}
+    <path d="M-8,4 Q13,-10 34,4 Q30,18 13,22 Q-4,18 -8,4 Z" fill="#4DE8D8" opacity="0.25"/>
+
+    {/* Twin tails — left */}
+    <path d="M-12,36 C-22,50 -34,90 -40,160 C-44,210 -42,280 -38,340 C-36,360 -30,370 -24,368 C-18,366 -16,350 -18,330 C-22,270 -26,200 -24,140 C-22,100 -16,65 -10,42" fill="#39C5BB"/>
+    <path d="M-14,38 C-24,55 -36,100 -40,170 C-43,220 -40,280 -36,335" fill="none" stroke="#2DA8A0" strokeWidth="2" opacity="0.4"/>
+    {/* Twin tails — right */}
+    <path d="M38,36 C48,50 60,90 66,160 C70,210 68,280 64,340 C62,360 56,370 50,368 C44,366 42,350 44,330 C48,270 52,200 50,140 C48,100 42,65 36,42" fill="#39C5BB"/>
+    <path d="M40,38 C50,55 62,100 66,170 C69,220 66,280 62,335" fill="none" stroke="#2DA8A0" strokeWidth="2" opacity="0.4"/>
+    {/* Hair tie accents (red ribbons) */}
+    <circle cx="-12" cy="40" r="5" fill="#E85650"/>
+    <circle cx="38" cy="40" r="5" fill="#E85650"/>
+
+    {/* Neck */}
+    <rect x="4" y="46" width="18" height="16" rx="4" fill="#F5C5A3" opacity="0.7"/>
+
+    {/* Body / torso (back view, gray top — Miku style) */}
+    <path d="M-8,62 C-16,68 -22,82 -24,110 L-26,195 C-26,200 -22,204 -16,204 L42,204 C48,204 52,200 52,195 L48,110 C44,82 38,68 30,62 Z" fill="#3A3A50"/>
+    {/* Back collar detail */}
+    <rect x="0" y="60" width="26" height="6" rx="3" fill="#555570" opacity="0.5"/>
+    {/* Sleeves */}
+    <path d="M-24,90 C-34,100 -40,120 -38,145" fill="none" stroke="#3A3A50" strokeWidth="16" strokeLinecap="round"/>
+    <path d="M52,90 C62,100 68,120 66,145" fill="none" stroke="#3A3A50" strokeWidth="16" strokeLinecap="round"/>
+
+    {/* Left arm holding leek (hanging at side) */}
+    <path d="M-38,145 C-40,155 -42,170 -40,182" fill="none" stroke="#F5C5A3" strokeWidth="8" strokeLinecap="round" opacity="0.7"/>
+    {/* Right arm extended, holding a large leek */}
+    <path d="M66,145 C70,160 76,175 82,185" fill="none" stroke="#F5C5A3" strokeWidth="8" strokeLinecap="round" opacity="0.7"/>
+    {/* Leek */}
+    <line x1="78" y1="175" x2="105" y2="90" stroke="#5BAD7A" strokeWidth="5" strokeLinecap="round"/>
+    <line x1="105" y1="90" x2="108" y2="78" stroke="#4A9968" strokeWidth="4" strokeLinecap="round"/>
+    {/* Leek leaves */}
+    <path d="M105,90 C115,75 125,68 130,72 C128,80 118,88 108,92" fill="#5BAD7A" opacity="0.8"/>
+    <path d="M106,86 C112,70 120,60 126,62 C125,70 116,80 108,86" fill="#4A9968" opacity="0.6"/>
+
+    {/* Skirt (Miku-style pleated, dark gray) */}
+    <path d="M-20,200 L-30,260 L-10,262 L2,210 L8,210 L20,262 L40,262 L52,260 L42,200 Z" fill="#3A3A50"/>
+    <line x1="-20" y1="210" x2="-26" y2="255" stroke="#555570" strokeWidth="0.8" opacity="0.5"/>
+    <line x1="0" y1="205" x2="-5" y2="258" stroke="#555570" strokeWidth="0.8" opacity="0.5"/>
+    <line x1="22" y1="205" x2="28" y2="258" stroke="#555570" strokeWidth="0.8" opacity="0.5"/>
+    <line x1="42" y1="210" x2="48" y2="255" stroke="#555570" strokeWidth="0.8" opacity="0.5"/>
+
+    {/* Thigh-high socks (Miku teal) */}
+    <rect x="-22" y="260" width="24" height="100" rx="6" fill="#39C5BB" opacity="0.85"/>
+    <rect x="20" y="260" width="24" height="100" rx="6" fill="#39C5BB" opacity="0.85"/>
+    {/* Sock top rings */}
+    <rect x="-22" y="260" width="24" height="5" rx="2" fill="#2DA8A0"/>
+    <rect x="20" y="260" width="24" height="5" rx="2" fill="#2DA8A0"/>
+
+    {/* Shoes (black) */}
+    <path d="M-24,358 C-26,362 -26,370 -20,372 L4,372 C6,370 6,362 2,358" fill="#1E1E2E"/>
+    <path d="M18,358 C16,362 16,370 22,372 L46,372 C48,370 48,362 44,358" fill="#1E1E2E"/>
   </g>
 );
 
@@ -248,11 +269,17 @@ const Cursor = (
   </g>
 );
 
-// ── Fragment 7: Decorative dashes ──
+// ── Fragment 7: Decorative dashes + text labels ──
 const Decorations = (
-  <g stroke="#555570" strokeWidth="1" strokeDasharray="4 3" fill="none" opacity="0.4">
-    <path d="M750,505 Q770,480 800,512"/>
-    <path d="M440,585 Q450,600 480,595"/>
+  <g>
+    <g stroke="#555570" strokeWidth="1" strokeDasharray="4 3" fill="none" opacity="0.4">
+      <path d="M750,505 Q770,480 800,512"/>
+      <path d="M440,585 Q450,600 480,595"/>
+    </g>
+    {/* Window title bar label */}
+    <text x="500" y="82" fill="#FFFFFF" fontFamily="sans-serif" fontSize="11" opacity="0.45">Design System</text>
+    {/* Main title watermark */}
+    <text x="600" y="620" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="13" opacity="0.2" letterSpacing="6">AI CODING</text>
   </g>
 );
 

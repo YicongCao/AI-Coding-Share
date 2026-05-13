@@ -5,12 +5,13 @@ const Background = <rect width="1200" height="675" fill="#2B2B3D"/>;
 const TimelineAxis = (
   <g>
     <line x1="80" y1="340" x2="1100" y2="340" stroke="#555570" strokeWidth="2.5"/>
-    {/* Arrow head */}
     <polygon points="1100,340 1080,330 1080,350" fill="#555570"/>
-    {/* Tick marks */}
     {[140, 280, 420, 560, 700, 840, 980].map((x, i) => (
       <line key={i} x1={x} y1="332" x2={x} y2="348" stroke="#555570" strokeWidth="2"/>
     ))}
+    <text x="90" y="370" fill="#555570" fontFamily="sans-serif" fontSize="11" opacity="0.6">2000</text>
+    <text x="1060" y="370" fill="#555570" fontFamily="sans-serif" fontSize="11" opacity="0.6">NOW</text>
+    <text x="540" y="370" fill="#FFFFFF" fontFamily="sans-serif" fontSize="10" opacity="0.3">NLP Timeline</text>
   </g>
 );
 

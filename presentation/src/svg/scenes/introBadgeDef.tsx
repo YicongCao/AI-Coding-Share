@@ -9,14 +9,14 @@ const BadgeCard = (
     <circle cx="460" cy="320" r="65" fill="#252538" stroke="#555570" strokeWidth="2"/>
     <circle cx="460" cy="300" r="22" fill="#6EC8E6" opacity="0.6"/>
     <path d="M425,350 Q460,380 495,350" fill="none" stroke="#6EC8E6" strokeWidth="2.5" opacity="0.5"/>
-    {/* Name lines */}
-    <rect x="560" y="265" width="200" height="10" rx="5" fill="#FFFFFF" opacity="0.85"/>
-    <rect x="560" y="295" width="150" height="8" rx="4" fill="#6EC8E6" opacity="0.5"/>
+    {/* Name & title */}
+    <text x="560" y="278" fill="#FFFFFF" fontFamily="sans-serif" fontSize="18" opacity="0.9">pixelcao</text>
+    <text x="560" y="302" fill="#6EC8E6" fontFamily="sans-serif" fontSize="12" opacity="0.6">R&D 研发中心</text>
     <rect x="560" y="320" width="170" height="6" rx="3" fill="#555570" opacity="0.4"/>
     <rect x="560" y="340" width="130" height="6" rx="3" fill="#555570" opacity="0.3"/>
     {/* IgniteX tag */}
     <rect x="560" y="370" width="100" height="28" rx="6" fill="#E8734A" opacity="0.85"/>
-    <rect x="572" y="380" width="60" height="6" rx="3" fill="#FFFFFF" opacity="0.8"/>
+    <text x="610" y="389" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="11" fontWeight="bold">IgniteX</text>
   </g>
 );
 

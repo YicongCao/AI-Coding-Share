@@ -50,13 +50,13 @@ const SpeechBubble = (
     {/* Tail pointing left */}
     <polygon points="0,80 -30,100 0,110" fill="#252538" stroke="#5BAD7A" strokeWidth="2"/>
     <rect x="0" y="80" width="4" height="30" fill="#252538"/>
-    {/* Text lines inside */}
-    <rect x="30" y="30" width="180" height="8" rx="4" fill="#FFFFFF" opacity="0.6"/>
-    <rect x="30" y="52" width="260" height="6" rx="3" fill="#FFFFFF" opacity="0.35"/>
-    <rect x="30" y="70" width="220" height="6" rx="3" fill="#FFFFFF" opacity="0.3"/>
-    <rect x="30" y="100" width="150" height="8" rx="4" fill="#5BAD7A" opacity="0.5"/>
-    <rect x="30" y="122" width="280" height="6" rx="3" fill="#FFFFFF" opacity="0.25"/>
-    <rect x="30" y="140" width="200" height="6" rx="3" fill="#FFFFFF" opacity="0.2"/>
+    {/* Spoken text */}
+    <text x="30" y="46" fill="#5BAD7A" fontFamily="monospace" fontSize="14" opacity="0.8">Hello, I'm Macintosh</text>
+    <rect x="30" y="60" width="260" height="5" rx="2.5" fill="#FFFFFF" opacity="0.25"/>
+    <rect x="30" y="76" width="220" height="5" rx="2.5" fill="#FFFFFF" opacity="0.2"/>
+    <text x="30" y="110" fill="#FFFFFF" fontFamily="sans-serif" fontSize="11" opacity="0.35">It sure is great to get</text>
+    <text x="30" y="128" fill="#FFFFFF" fontFamily="sans-serif" fontSize="11" opacity="0.35">out of that bag.</text>
+    <rect x="30" y="145" width="200" height="5" rx="2.5" fill="#FFFFFF" opacity="0.15"/>
   </g>
 );
 
@@ -76,8 +76,8 @@ const SoundWaves = (
 const YearLabel = (
   <g transform="translate(100, 60)">
     <rect x="0" y="0" width="140" height="50" rx="12" fill="#1E1E2E" stroke="#E8B84A" strokeWidth="1.5"/>
-    <rect x="20" y="16" width="80" height="10" rx="5" fill="#E8B84A" opacity="0.7"/>
-    <rect x="20" y="32" width="50" height="6" rx="3" fill="#E8B84A" opacity="0.35"/>
+    <text x="70" y="24" textAnchor="middle" fill="#E8B84A" fontFamily="sans-serif" fontSize="16" fontWeight="bold" opacity="0.85">1984</text>
+    <text x="70" y="42" textAnchor="middle" fill="#E8B84A" fontFamily="sans-serif" fontSize="10" opacity="0.5">Macintosh</text>
   </g>
 );
 
