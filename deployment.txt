@@ -49,45 +49,40 @@ NGINX
 sudo ln -sf /etc/nginx/sites-available/ai-show.yicong.me /etc/nginx/sites-enabled/
 sudo nginx -t && sudo systemctl reload nginx
 
-6. 配置磁盘监控定时任务 (每12小时检查一次，超80%推送企微告警)
+6. 配置 Cloudflare DNS 及 HTTPS
 ---
-sudo tee /usr/local/bin/disk-check.sh > /dev/null << SCRIPT
-#!/bin/bash
-THRESHOLD=80
-WEBHOOK="https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=d07c63ca-2852-4f3d-afe7-45b32baf5209"
-SERVER_NAME="Lighthouse HK"
-usage=$(df / --output=pcent | tail -1 | tr -dc "0-9")
-if [ "$usage" -ge "$THRESHOLD" ]; then
-    ip=$(hostname -I | awk "{print \$1}")
-    total=$(df -h / --output=size | tail -1 | xargs)
-    used=$(df -h / --output=used | tail -1 | xargs)
-    avail=$(df -h / --output=avail | tail -1 | xargs)
-    now=$(date "+%Y-%m-%d %H:%M:%S")
-    curl -s -o /dev/null "$WEBHOOK" \
-        -H "Content-Type: application/json" \
-        -d "{\"msgtype\":\"markdown\",\"markdown\":{\"content\":\"## ⚠️ 磁盘空间告警\n> 服务器: **${SERVER_NAME}** (${ip})\n> 使用率: <font color=\\\"warning\\\">${usage}%</font> (阈值 ${THRESHOLD}%)\n> 总容量: ${total} | 已用: ${used} | 可用: ${avail}\n> 时间: ${now}\"}}"
-fi
-SCRIPT
-sudo chmod +x /usr/local/bin/disk-check.sh
-(sudo crontab -l 2>/dev/null | grep -v disk-check; echo "0 */12 * * * /usr/local/bin/disk-check.sh") | sudo crontab -
+a) 登录 Cloudflare Dashboard，进入 yicong.me 域名管理页面
+b) DNS -> Records -> Add Record:
+   - Type: A
+   - Name: ai-show
+   - Content: 150.109.75.152
+   - Proxy status: Proxied (橙色云朵，开启 Cloudflare 代理)
+c) SSL/TLS -> Overview:
+   - 加密模式选择 "Full"（因为源站 Nginx 监听 80，Cloudflare 负责终止 HTTPS）
+   - 如果源站后续配了自签证书或 Cloudflare Origin Certificate，可切换为 "Full (Strict)"
+d) SSL/TLS -> Edge Certificates:
+   - 确认 "Always Use HTTPS" 已开启
+   - 可选开启 "Automatic HTTPS Rewrites"
 
-7. DNS 配置
----
-将 ai-show.yicong.me 的 A 记录指向 150.109.75.152
+配置完成后，用户通过 https://ai-show.yicong.me/ 访问时:
+  用户 --HTTPS--> Cloudflare CDN --HTTP(80)--> 源站 Nginx --> localhost:5174
 
-8. (可选) 配置 HTTPS
+7. (可选) Docker 容器开机自启
 ---
-sudo apt install -y certbot python3-certbot-nginx
-sudo certbot --nginx -d ai-show.yicong.me
+sudo docker update --restart unless-stopped ai-coding-share-run
+
+配置后服务器重启时 Docker 会自动拉起容器，无需手动操作。
 
 ========================================
 二、服务器重启后恢复服务
 ========================================
 
-# Docker 容器需要手动重启 (未设置 --restart 策略)
+# 如果已配置 --restart unless-stopped，容器会自动启动，无需手动操作。
+# 如果未配置，需手动启动:
 sudo docker start ai-coding-share-run
 
-# Nginx 已设为开机自启，无需手动操作
+# Nginx 已设为开机自启，无需手动操作。
+
 # 确认服务状态:
 sudo systemctl status nginx
 sudo docker ps
@@ -95,7 +90,7 @@ sudo docker ps
 # 如果容器不存在 (被删除过)，需要重新创建:
 cd /home/ubuntu/AI-Coding-Share
 sudo docker build -t ai-coding-share:latest .
-sudo docker run -d -p 127.0.0.1:5174:5174 --name ai-coding-share-run ai-coding-share:latest
+sudo docker run -d -p 127.0.0.1:5174:5174 --restart unless-stopped --name ai-coding-share-run ai-coding-share:latest
 
 ========================================
 三、日常运维命令
@@ -112,10 +107,7 @@ cd /home/ubuntu/AI-Coding-Share
 git pull
 sudo docker stop ai-coding-share-run && sudo docker rm ai-coding-share-run
 sudo docker build -t ai-coding-share:latest .
-sudo docker run -d -p 127.0.0.1:5174:5174 --name ai-coding-share-run ai-coding-share:latest
+sudo docker run -d -p 127.0.0.1:5174:5174 --restart unless-stopped --name ai-coding-share-run ai-coding-share:latest
 
 # 查看磁盘使用情况
 df -h /
-
-# 手动触发磁盘检查
-sudo /usr/local/bin/disk-check.sh
