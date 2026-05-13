@@ -1,0 +1,121 @@
+# AI-Coding-Share 部署文档
+# 服务器: Lighthouse HK (150.109.75.152)
+# 系统: Ubuntu 24.04 LTS
+# 用户: ubuntu
+
+========================================
+一、首次部署步骤
+========================================
+
+1. 拉取项目
+---
+cd /home/ubuntu
+git clone git@github.com:YicongCao/AI-Coding-Share.git
+cd AI-Coding-Share
+
+2. 构建 Docker 镜像
+---
+sudo docker build -t ai-coding-share:latest .
+
+3. 启动容器 (绑定 localhost，不暴露公网)
+---
+sudo docker run -d -p 127.0.0.1:5174:5174 --name ai-coding-share-run ai-coding-share:latest
+
+4. 安装 Nginx
+---
+sudo apt update && sudo apt install -y nginx
+
+5. 配置 Nginx 反向代理
+---
+sudo tee /etc/nginx/sites-available/ai-show.yicong.me > /dev/null << NGINX
+server {
+    listen 80;
+    server_name ai-show.yicong.me;
+
+    location / {
+        proxy_pass http://127.0.0.1:5174;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_read_timeout 86400;
+    }
+}
+NGINX
+
+sudo ln -sf /etc/nginx/sites-available/ai-show.yicong.me /etc/nginx/sites-enabled/
+sudo nginx -t && sudo systemctl reload nginx
+
+6. 配置磁盘监控定时任务 (每12小时检查一次，超80%推送企微告警)
+---
+sudo tee /usr/local/bin/disk-check.sh > /dev/null << SCRIPT
+#!/bin/bash
+THRESHOLD=80
+WEBHOOK="https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=d07c63ca-2852-4f3d-afe7-45b32baf5209"
+SERVER_NAME="Lighthouse HK"
+usage=$(df / --output=pcent | tail -1 | tr -dc "0-9")
+if [ "$usage" -ge "$THRESHOLD" ]; then
+    ip=$(hostname -I | awk "{print \$1}")
+    total=$(df -h / --output=size | tail -1 | xargs)
+    used=$(df -h / --output=used | tail -1 | xargs)
+    avail=$(df -h / --output=avail | tail -1 | xargs)
+    now=$(date "+%Y-%m-%d %H:%M:%S")
+    curl -s -o /dev/null "$WEBHOOK" \
+        -H "Content-Type: application/json" \
+        -d "{\"msgtype\":\"markdown\",\"markdown\":{\"content\":\"## ⚠️ 磁盘空间告警\n> 服务器: **${SERVER_NAME}** (${ip})\n> 使用率: <font color=\\\"warning\\\">${usage}%</font> (阈值 ${THRESHOLD}%)\n> 总容量: ${total} | 已用: ${used} | 可用: ${avail}\n> 时间: ${now}\"}}"
+fi
+SCRIPT
+sudo chmod +x /usr/local/bin/disk-check.sh
+(sudo crontab -l 2>/dev/null | grep -v disk-check; echo "0 */12 * * * /usr/local/bin/disk-check.sh") | sudo crontab -
+
+7. DNS 配置
+---
+将 ai-show.yicong.me 的 A 记录指向 150.109.75.152
+
+8. (可选) 配置 HTTPS
+---
+sudo apt install -y certbot python3-certbot-nginx
+sudo certbot --nginx -d ai-show.yicong.me
+
+========================================
+二、服务器重启后恢复服务
+========================================
+
+# Docker 容器需要手动重启 (未设置 --restart 策略)
+sudo docker start ai-coding-share-run
+
+# Nginx 已设为开机自启，无需手动操作
+# 确认服务状态:
+sudo systemctl status nginx
+sudo docker ps
+
+# 如果容器不存在 (被删除过)，需要重新创建:
+cd /home/ubuntu/AI-Coding-Share
+sudo docker build -t ai-coding-share:latest .
+sudo docker run -d -p 127.0.0.1:5174:5174 --name ai-coding-share-run ai-coding-share:latest
+
+========================================
+三、日常运维命令
+========================================
+
+# 查看容器日志
+sudo docker logs -f ai-coding-share-run
+
+# 重启容器
+sudo docker restart ai-coding-share-run
+
+# 更新代码并重新部署
+cd /home/ubuntu/AI-Coding-Share
+git pull
+sudo docker stop ai-coding-share-run && sudo docker rm ai-coding-share-run
+sudo docker build -t ai-coding-share:latest .
+sudo docker run -d -p 127.0.0.1:5174:5174 --name ai-coding-share-run ai-coding-share:latest
+
+# 查看磁盘使用情况
+df -h /
+
+# 手动触发磁盘检查
+sudo /usr/local/bin/disk-check.sh
