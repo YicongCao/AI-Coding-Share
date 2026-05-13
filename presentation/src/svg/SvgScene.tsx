@@ -44,6 +44,10 @@ function easeInCubic(t: number): number {
   return t * t * t;
 }
 
+function clamp01(t: number): number {
+  return Math.max(0, Math.min(1, t));
+}
+
 // ---------------------------------------------------------------------------
 // Component
 // ---------------------------------------------------------------------------
@@ -92,18 +96,36 @@ const SvgScene = memo(function SvgScene({
 
         if (exitingRef.current) {
           const exitElapsed = serverNow - exitStartRef.current;
-          const rawT = Math.max(0, Math.min(1, exitElapsed / EXIT_DURATION_MS));
+          const rawT = clamp01(exitElapsed / EXIT_DURATION_MS);
           const delayed = Math.max(0, rawT - (frag.enterDelay / ENTER_DURATION_MS) * 0.3);
           const eT = easeInCubic(Math.min(1, delayed / 0.7));
-          const dx = -frag.enterFrom.x * eT;
-          const dy = -frag.enterFrom.y * eT;
+
+          const exitStart = exitStartRef.current;
+          const startEnterElapsed = exitStart - transitionRef.current - frag.enterDelay;
+          const startEnterT = clamp01(startEnterElapsed / ENTER_DURATION_MS);
+          const startEase = easeOutCubic(startEnterT);
+          const startOffX = frag.enterFrom.x * (1 - startEase);
+          const startOffY = frag.enterFrom.y * (1 - startEase);
+          const phase = seed * 0.001 + i * 1.7;
+          const startNow = exitStart * 0.001;
+          const startFloatX =
+            Math.sin(startNow / frag.floatPeriod.x + phase) * frag.floatAmp.x * startEase;
+          const startFloatY =
+            Math.cos(startNow / frag.floatPeriod.y + phase * 1.3) * frag.floatAmp.y * startEase;
+          const startX = startOffX + startFloatX;
+          const startY = startOffY + startFloatY;
+          const targetX = -frag.enterFrom.x;
+          const targetY = -frag.enterFrom.y;
+          const dx = startX + (targetX - startX) * eT;
+          const dy = startY + (targetY - startY) * eT;
+
           g.setAttribute("transform", `translate(${dx.toFixed(1)},${dy.toFixed(1)})`);
           g.setAttribute("opacity", String(Math.max(0, 1 - eT).toFixed(2)));
           continue;
         }
 
         const enterElapsed = serverNow - transitionRef.current - frag.enterDelay;
-        const enterT = Math.max(0, Math.min(1, enterElapsed / ENTER_DURATION_MS));
+        const enterT = clamp01(enterElapsed / ENTER_DURATION_MS);
         const eE = easeOutCubic(enterT);
 
         const offX = frag.enterFrom.x * (1 - eE);

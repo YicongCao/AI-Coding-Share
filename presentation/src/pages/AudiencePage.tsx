@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import ParticleScene from "../particle/ParticleScene";
 import SvgScene, { type SvgSceneDef } from "../svg/SvgScene";
 import { getSvgSceneDef } from "../svg/registry";
@@ -12,6 +12,7 @@ type ExitingScene = {
   def: SvgSceneDef;
   seed: number;
   timeOffsetMs: number;
+  transitionStartedAt: number;
 };
 
 export default function AudiencePage() {
@@ -31,13 +32,24 @@ export default function AudiencePage() {
     : undefined;
 
   const [exitingScene, setExitingScene] = useState<ExitingScene | null>(null);
-  const prevSvgDefRef = useRef<{ def: SvgSceneDef; seed: number; idx: number } | null>(null);
+  const prevSvgDefRef = useRef<{
+    def: SvgSceneDef;
+    seed: number;
+    idx: number;
+    transitionStartedAt: number;
+  } | null>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const prev = prevSvgDefRef.current;
     if (prev && prev.idx !== slideIndex && prev.def) {
       const exitKey = Date.now();
-      setExitingScene({ key: exitKey, def: prev.def, seed: prev.seed, timeOffsetMs });
+      setExitingScene({
+        key: exitKey,
+        def: prev.def,
+        seed: prev.seed,
+        timeOffsetMs,
+        transitionStartedAt: prev.transitionStartedAt,
+      });
       const timer = window.setTimeout(() => {
         setExitingScene((cur) => (cur?.key === exitKey ? null : cur));
       }, EXIT_LINGER_MS);
@@ -47,11 +59,11 @@ export default function AudiencePage() {
 
   useEffect(() => {
     if (svgDef) {
-      prevSvgDefRef.current = { def: svgDef, seed, idx: slideIndex };
+      prevSvgDefRef.current = { def: svgDef, seed, idx: slideIndex, transitionStartedAt };
     } else {
       prevSvgDefRef.current = null;
     }
-  }, [svgDef, seed, slideIndex]);
+  }, [svgDef, seed, slideIndex, transitionStartedAt]);
 
   return (
     <div className="audience-root">
@@ -63,10 +75,10 @@ export default function AudiencePage() {
               className="audience-canvas"
               sceneDef={exitingScene.def}
               seed={exitingScene.seed}
-              transitionStartedAt={0}
+              transitionStartedAt={exitingScene.transitionStartedAt}
               timeOffsetMs={exitingScene.timeOffsetMs}
               exiting
-              style={{ position: "absolute", inset: 0, zIndex: 0 }}
+              style={{ position: "absolute", inset: 0, zIndex: 2 }}
             />
           )}
           {svgDef ? (
@@ -75,9 +87,11 @@ export default function AudiencePage() {
               className="audience-canvas"
               sceneDef={svgDef}
               seed={seed}
-              transitionStartedAt={transitionStartedAt}
+              transitionStartedAt={
+                exitingScene ? transitionStartedAt + EXIT_LINGER_MS : transitionStartedAt
+              }
               timeOffsetMs={timeOffsetMs}
-              style={{ position: "relative", zIndex: 1 }}
+              style={{ position: "absolute", inset: 0, zIndex: 1 }}
             />
           ) : (
             <ParticleScene
