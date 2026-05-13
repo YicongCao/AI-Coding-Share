@@ -28,8 +28,8 @@ const SpeakerIcon = (
     <path d="M160,50 Q195,95 160,140" fill="none" stroke="#6EC8E6" strokeWidth="2" strokeLinecap="round" opacity="0.4"/>
     <path d="M175,35 Q220,95 175,155" fill="none" stroke="#6EC8E6" strokeWidth="1.5" strokeLinecap="round" opacity="0.25"/>
     {/* Label */}
-    <rect x="40" y="145" width="80" height="24" rx="6" fill="#252538"/>
-    <text x="80" y="162" textAnchor="middle" fill="#4A7BCC" fontFamily="sans-serif" fontSize="10" opacity="0.8">TTS 合成</text>
+    <rect x="0" y="150" width="160" height="44" rx="12" fill="#252538" stroke="#4A7BCC" strokeWidth="1.2" opacity="0.95"/>
+    <text x="80" y="179" textAnchor="middle" fill="#4A7BCC" fontFamily="sans-serif" fontSize="22" fontWeight="bold" opacity="0.92">TTS 合成</text>
   </g>
 );
 
@@ -46,8 +46,8 @@ const MicrophoneIcon = (
     <path d="M-15,70 Q-40,95 -15,120" fill="none" stroke="#E8B84A" strokeWidth="2.5" strokeLinecap="round" opacity="0.6" transform="scale(-1,1) translate(-120,0)"/>
     <path d="M-30,50 Q-65,95 -30,140" fill="none" stroke="#E8B84A" strokeWidth="2" strokeLinecap="round" opacity="0.4" transform="scale(-1,1) translate(-120,0)"/>
     {/* Label */}
-    <rect x="20" y="185" width="80" height="24" rx="6" fill="#252538"/>
-    <text x="60" y="202" textAnchor="middle" fill="#E8734A" fontFamily="sans-serif" fontSize="10" opacity="0.8">ASR 识别</text>
+    <rect x="-20" y="188" width="160" height="44" rx="12" fill="#252538" stroke="#E8734A" strokeWidth="1.2" opacity="0.95"/>
+    <text x="60" y="217" textAnchor="middle" fill="#E8734A" fontFamily="sans-serif" fontSize="22" fontWeight="bold" opacity="0.92">ASR 识别</text>
   </g>
 );
 

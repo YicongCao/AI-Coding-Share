@@ -5,15 +5,16 @@ const Background = <rect width="1200" height="675" fill="#2B2B3D"/>;
 const FormulaCards = (
   <g>
     {[
-      { x: 120, word: "King", color: "#E8B84A" },
-      { x: 340, word: "Man", color: "#6EC8E6" },
-      { x: 560, word: "Woman", color: "#E8734A" },
-      { x: 830, word: "Queen", color: "#5BAD7A" },
+      { x: 120, word: "King", emoji: "🤴", color: "#E8B84A" },
+      { x: 340, word: "Man", emoji: "👨", color: "#6EC8E6" },
+      { x: 560, word: "Woman", emoji: "👩", color: "#E8734A" },
+      { x: 830, word: "Queen", emoji: "👸", color: "#5BAD7A" },
     ].map((card, i) => (
       <g key={i} transform={`translate(${card.x}, 270)`}>
         <rect x="0" y="0" width="160" height="80" rx="14" fill="#1E1E2E" stroke={card.color} strokeWidth="2"/>
-        <text x="80" y="48" textAnchor="middle" fontSize="26" fontWeight="bold" fill={card.color} fontFamily="sans-serif">{card.word}</text>
-        <rect x="20" y="62" width="120" height="4" rx="2" fill={card.color} opacity="0.3"/>
+        <text x="80" y="30" textAnchor="middle" fontSize="24" fill="#FFFFFF" fontFamily="sans-serif" opacity="0.9">{card.emoji}</text>
+        <text x="80" y="58" textAnchor="middle" fontSize="24" fontWeight="bold" fill={card.color} fontFamily="sans-serif">{card.word}</text>
+        <rect x="20" y="66" width="120" height="4" rx="2" fill={card.color} opacity="0.3"/>
       </g>
     ))}
   </g>

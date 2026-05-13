@@ -24,11 +24,11 @@ const IPhone = (
 
 const SiriRipples = (
   <g transform="translate(600, 300)">
-    <circle r="80" fill="none" stroke="#6EC8E6" strokeWidth="2" opacity="0.15"/>
-    <circle r="60" fill="none" stroke="#6EC8E6" strokeWidth="2.5" opacity="0.25"/>
-    <circle r="40" fill="none" stroke="#6EC8E6" strokeWidth="3" opacity="0.4"/>
-    <circle r="22" fill="#4A7BCC" opacity="0.6"/>
-    <circle r="12" fill="#6EC8E6" opacity="0.8"/>
+    <circle r="96" fill="none" stroke="#6EC8E6" strokeWidth="2" opacity="0.12"/>
+    <circle r="72" fill="none" stroke="#6EC8E6" strokeWidth="2.5" opacity="0.2"/>
+    <circle r="48" fill="none" stroke="#6EC8E6" strokeWidth="3" opacity="0.34"/>
+    <circle r="28" fill="#4A7BCC" opacity="0.62"/>
+    <circle r="14" fill="#6EC8E6" opacity="0.85"/>
   </g>
 );
 
@@ -43,25 +43,6 @@ const YearTag = (
   <g transform="translate(80, 120)">
     <rect x="0" y="0" width="100" height="44" rx="8" fill="#5BAD7A"/>
     <text x="50" y="29" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="20" fontWeight="bold">2010</text>
-  </g>
-);
-
-const AppleLogo = (
-  <g transform="translate(900, 200)">
-    {/* Simplified apple outline */}
-    <path d="M0,-30 C15,-30 25,-20 30,-10 C35,5 30,25 20,35 C10,48 0,50 -5,50 C-10,50 -15,48 -20,45 C-25,48 -30,50 -35,50 C-40,48 -50,35 -55,20 C-60,5 -58,-10 -50,-20 C-42,-30 -30,-32 -20,-28 C-15,-26 -10,-28 -5,-30 C-3,-30 -2,-30 0,-30 Z" fill="none" stroke="#FFFFFF" strokeWidth="2" opacity="0.4"/>
-    {/* Leaf */}
-    <path d="M0,-30 C5,-42 15,-48 25,-45" fill="none" stroke="#5BAD7A" strokeWidth="2" opacity="0.5"/>
-  </g>
-);
-
-const SoundWaves = (
-  <g transform="translate(750, 280)">
-    <path d="M0,0 C10,-20 10,-40 0,-60" fill="none" stroke="#6EC8E6" strokeWidth="2" opacity="0.4" strokeLinecap="round"/>
-    <path d="M20,10 C35,-15 35,-50 20,-75" fill="none" stroke="#6EC8E6" strokeWidth="2" opacity="0.3" strokeLinecap="round"/>
-    <path d="M40,20 C60,-10 60,-55 40,-85" fill="none" stroke="#6EC8E6" strokeWidth="2" opacity="0.2" strokeLinecap="round"/>
-    <path d="M-30,0 C-40,-20 -40,-40 -30,-60" fill="none" stroke="#6EC8E6" strokeWidth="2" opacity="0.4" strokeLinecap="round"/>
-    <path d="M-50,10 C-65,-15 -65,-50 -50,-75" fill="none" stroke="#6EC8E6" strokeWidth="2" opacity="0.3" strokeLinecap="round"/>
   </g>
 );
 
@@ -82,8 +63,6 @@ export const siriPhoneSceneDef: SvgSceneDef = {
     { id: "siriRipples", content: SiriRipples, enterFrom: { x: 0, y: 0 }, enterDelay: 200, floatAmp: { x: 10, y: 10 }, floatPeriod: { x: 4.0, y: 5.0 }, exitTo: { x: 0, y: -400 }, exitScale: 1.5 },
     { id: "heySiriText", content: HeySiriText, enterFrom: { x: 0, y: 300 }, enterDelay: 300, floatAmp: { x: 12, y: 8 }, floatPeriod: { x: 6.0, y: 7.5 }, exitTo: { x: 0, y: 350 } },
     { id: "yearTag", content: YearTag, enterFrom: { x: -300, y: -200 }, enterDelay: 150, floatAmp: { x: 18, y: 14 }, floatPeriod: { x: 3.5, y: 4.8 }, exitTo: { x: -350, y: -250 }, exitSpin: -10 },
-    { id: "appleLogo", content: AppleLogo, enterFrom: { x: 400, y: -200 }, enterDelay: 400, floatAmp: { x: 20, y: 16 }, floatPeriod: { x: 4.5, y: 6.0 }, exitTo: { x: 450, y: -250 }, exitSpin: 15 },
-    { id: "soundWaves", content: SoundWaves, enterFrom: { x: 300, y: 0 }, enterDelay: 500, floatAmp: { x: 14, y: 12 }, floatPeriod: { x: 5.0, y: 6.5 }, exitTo: { x: 350, y: 0 }, exitScale: 0.5 },
     { id: "iPhoneLabel", content: IPhoneLabel, enterFrom: { x: -300, y: 200 }, enterDelay: 600, floatAmp: { x: 10, y: 8 }, floatPeriod: { x: 7.0, y: 9.0 }, exitTo: { x: -350, y: 250 } },
   ],
 };

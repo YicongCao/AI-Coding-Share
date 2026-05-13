@@ -59,23 +59,24 @@ const Envelope = (
     <path d="M0,28 L100,90 L200,28" fill="none" stroke="#C49538" strokeWidth="2"/>
     {/* Flap open */}
     <path d="M0,28 L100,0 L200,28" fill="#E8C44A" opacity="0.7" stroke="#C49538" strokeWidth="1"/>
-    {/* Laptop peeking out */}
-    <rect x="30" y="5" width="140" height="6" rx="3" fill="#555570"/>
-    <rect x="40" y="-2" width="120" height="4" rx="2" fill="#3A3A50"/>
+    {/* Slot where the closed MacBook is being pulled out */}
+    <rect x="28" y="6" width="144" height="10" rx="5" fill="#1E1E2E" opacity="0.55"/>
+    <rect x="42" y="10" width="116" height="4" rx="2" fill="#C4C7CC" opacity="0.45"/>
     <text x="100" y="158" textAnchor="middle" fill="#E8C44A" fontFamily="sans-serif" fontSize="10" opacity="0.6">MacBook Air</text>
   </g>
 );
 
 const Laptop = (
-  <g transform="translate(790, 200)">
-    {/* Screen */}
-    <rect x="0" y="0" width="120" height="75" rx="6" fill="#1E1E2E" stroke="#555570" strokeWidth="1.5"/>
-    <rect x="8" y="8" width="104" height="55" rx="3" fill="#252538"/>
-    <rect x="20" y="20" width="60" height="4" rx="2" fill="#5BAD7A" opacity="0.5"/>
-    <rect x="20" y="30" width="80" height="4" rx="2" fill="#4A7BCC" opacity="0.4"/>
-    <rect x="20" y="40" width="50" height="4" rx="2" fill="#6EC8E6" opacity="0.4"/>
-    {/* Keyboard base */}
-    <path d="M-10,75 L130,75 L140,85 L-20,85 Z" fill="#3A3A50"/>
+  <g transform="translate(774, 218) rotate(-5 86 54)">
+    {/* Closed MacBook lid */}
+    <rect x="0" y="0" width="172" height="108" rx="14" fill="#C4C7CC" stroke="#F0F2F4" strokeWidth="1.5"/>
+    <rect x="8" y="8" width="156" height="92" rx="10" fill="#D7DADE" opacity="0.55"/>
+    <path d="M16,94 L156,94" stroke="#A8ADB4" strokeWidth="1.4" opacity="0.45"/>
+    <g transform="translate(72, 42)" fill="#1E1E2E" opacity="0.6">
+      <path d="M14,2 C19,-5 25,-2 27,4 C21,5 17,7 14,12 C11,8 8,5 2,5 C5,-1 10,-3 14,2 Z"/>
+      <path d="M14,14 C10,8 3,8 1,16 C-1,24 5,36 12,34 C15,33 17,33 20,34 C27,36 33,24 31,16 C29,8 22,8 18,14 C17,16 15,16 14,14 Z"/>
+    </g>
+    <path d="M-8,108 L180,108 L168,118 L4,118 Z" fill="#8E949B" opacity="0.75"/>
   </g>
 );
 
@@ -108,7 +109,7 @@ export const jobsSpeakerSceneDef: SvgSceneDef = {
     { id: "stage", content: Stage, enterFrom: { x: 0, y: 400 }, enterDelay: 100, floatAmp: { x: 4, y: 6 }, floatPeriod: { x: 8.0, y: 9.0 }, exitTo: { x: 0, y: 420 } },
     { id: "jobs", content: JobsFigure, enterFrom: { x: -500, y: 0 }, enterDelay: 200, floatAmp: { x: 8, y: 10 }, floatPeriod: { x: 5.0, y: 6.5 }, exitTo: { x: -560, y: 60 }, exitSpin: -4 },
     { id: "envelope", content: Envelope, enterFrom: { x: 400, y: 200 }, enterDelay: 350, floatAmp: { x: 14, y: 16 }, floatPeriod: { x: 4.5, y: 5.5 }, exitTo: { x: 360, y: -240 }, exitSpin: 18, exitScale: 1.15 },
-    { id: "laptop", content: Laptop, enterFrom: { x: 300, y: -300 }, enterDelay: 450, floatAmp: { x: 16, y: 20 }, floatPeriod: { x: 4.0, y: 4.8 }, exitTo: { x: -520, y: -360 }, exitSpin: -22, exitScale: 1.2, exitDelay: 80 },
+    { id: "laptop", content: Laptop, enterFrom: { x: 20, y: 160 }, enterDelay: 450, floatAmp: { x: 10, y: 58 }, floatPeriod: { x: 4.0, y: 2.25 }, exitTo: { x: -520, y: -360 }, exitSpin: -22, exitScale: 1.2, exitDelay: 80 },
     { id: "stars", content: ExcitementStars, enterFrom: { x: 0, y: 300 }, enterDelay: 500, floatAmp: { x: 12, y: 14 }, floatPeriod: { x: 3.5, y: 4.2 }, exitTo: { x: 0, y: -220 }, exitScale: 1.35 },
   ],
 };

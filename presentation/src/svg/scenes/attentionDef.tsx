@@ -64,6 +64,14 @@ const YearTag = (
   </g>
 );
 
+const CoreIdeaLabel = (
+  <g transform="translate(820, 205)">
+    <rect x="0" y="0" width="260" height="72" rx="12" fill="#1E1E2E" stroke="#6EC8E6" strokeWidth="1.5"/>
+    <text x="130" y="30" textAnchor="middle" fontSize="17" fontWeight="bold" fill="#6EC8E6" fontFamily="sans-serif">关注重要 token</text>
+    <text x="130" y="54" textAnchor="middle" fontSize="14" fill="#FFFFFF" fontFamily="sans-serif" opacity="0.72">Attention is all you need</text>
+  </g>
+);
+
 const OutputArrow = (
   <g>
     <line x1="760" y1="350" x2="900" y2="350" stroke="#FFFFFF" strokeWidth="2" opacity="0.5"/>
@@ -84,6 +92,7 @@ export const attentionSceneDef: SvgSceneDef = {
     { id: "lines", content: ConnectionLines, enterFrom: { x: -200, y: 0 }, enterDelay: 250, floatAmp: { x: 8, y: 10 }, floatPeriod: { x: 4.5, y: 5.5 }, exitTo: { x: -300, y: 0 } },
     { id: "title", content: TitleText, enterFrom: { x: 0, y: -200 }, enterDelay: 50, floatAmp: { x: 14, y: 9 }, floatPeriod: { x: 7, y: 9 }, exitTo: { x: 0, y: -300 }, exitSpin: 4 },
     { id: "year", content: YearTag, enterFrom: { x: 200, y: -150 }, enterDelay: 200, floatAmp: { x: 10, y: 12 }, floatPeriod: { x: 5.5, y: 7.5 }, exitTo: { x: 300, y: -200 } },
+    { id: "core-idea", content: CoreIdeaLabel, enterFrom: { x: 250, y: 0 }, enterDelay: 320, floatAmp: { x: 10, y: 12 }, floatPeriod: { x: 5.5, y: 6.5 }, exitTo: { x: 350, y: 0 } },
     { id: "output", content: OutputArrow, enterFrom: { x: 300, y: 0 }, enterDelay: 400, floatAmp: { x: 11, y: 13 }, floatPeriod: { x: 5, y: 6 }, exitTo: { x: 400, y: 0 } },
   ],
 };

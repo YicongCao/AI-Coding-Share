@@ -43,6 +43,14 @@ const ClusterHighlights = (
   </g>
 );
 
+const EmbeddingBadge = (
+  <g transform="translate(455, 110)">
+    <rect x="0" y="0" width="290" height="74" rx="14" fill="#1E1E2E" stroke="#E8B84A" strokeWidth="2"/>
+    <text x="145" y="36" textAnchor="middle" fontSize="28" fontWeight="bold" fill="#E8B84A" fontFamily="sans-serif">Embedding</text>
+    <text x="145" y="58" textAnchor="middle" fontSize="14" fill="#FFFFFF" fontFamily="sans-serif" opacity="0.72">词 → 向量空间</text>
+  </g>
+);
+
 const TitleTag = (
   <g transform="translate(950, 100)">
     <rect x="0" y="0" width="180" height="50" rx="10" fill="#1E1E2E" stroke="#6EC8E6" strokeWidth="1.5"/>
@@ -71,6 +79,7 @@ export const word2vecSceneDef: SvgSceneDef = {
     { id: "axes", content: CoordinateAxes, enterFrom: { x: -400, y: 0 }, enterDelay: 0, floatAmp: { x: 8, y: 10 }, floatPeriod: { x: 7, y: 8 }, exitTo: { x: -500, y: 0 } },
     { id: "dots", content: WordDots, enterFrom: { x: 0, y: 300 }, enterDelay: 150, floatAmp: { x: 10, y: 12 }, floatPeriod: { x: 5, y: 6 }, exitTo: { x: 0, y: -400 }, exitScale: 0.6 },
     { id: "clusters", content: ClusterHighlights, enterFrom: { x: 0, y: 200 }, enterDelay: 350, floatAmp: { x: 12, y: 14 }, floatPeriod: { x: 6, y: 7.5 }, exitTo: { x: 0, y: -350 } },
+    { id: "embedding", content: EmbeddingBadge, enterFrom: { x: 0, y: -180 }, enterDelay: 300, floatAmp: { x: 10, y: 9 }, floatPeriod: { x: 5.5, y: 6.5 }, exitTo: { x: 0, y: -260 }, exitScale: 1.1 },
     { id: "title", content: TitleTag, enterFrom: { x: 300, y: -200 }, enterDelay: 100, floatAmp: { x: 14, y: 10 }, floatPeriod: { x: 4, y: 5 }, exitTo: { x: 400, y: -300 }, exitSpin: 8 },
     { id: "year", content: YearLabel, enterFrom: { x: 200, y: -150 }, enterDelay: 250, floatAmp: { x: 10, y: 8 }, floatPeriod: { x: 5.5, y: 7 }, exitTo: { x: 300, y: -200 } },
     { id: "chinese", content: ChineseLabel, enterFrom: { x: 200, y: 0 }, enterDelay: 400, floatAmp: { x: 9, y: 11 }, floatPeriod: { x: 6.5, y: 8 }, exitTo: { x: 300, y: 100 } },

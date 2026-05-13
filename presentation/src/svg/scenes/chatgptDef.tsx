@@ -22,10 +22,23 @@ const ChatBubble = (
 );
 
 const OpenAILogo = (
-  <g transform="translate(100, 250)">
-    <circle r="48" fill="none" stroke="#5BAD7A" strokeWidth="3" opacity="0.6"/>
-    <path d="M0,-30 Q20,-30 28,-10 Q36,10 20,25 Q4,40 -16,35 Q-36,30 -38,10 Q-40,-10 -28,-25 Q-16,-40 0,-30 Z" fill="none" stroke="#5BAD7A" strokeWidth="2.5" opacity="0.7"/>
-    <circle r="6" fill="#5BAD7A" opacity="0.5"/>
+  <g transform="translate(600, 290)">
+    <circle r="86" fill="#252538" stroke="#555570" strokeWidth="1.5" opacity="0.78"/>
+    <circle r="56" fill="none" stroke="#6EC8E6" strokeWidth="1.2" opacity="0.18"/>
+    {Array.from({ length: 6 }, (_, i) => (
+      <g key={i} transform={`rotate(${i * 60})`}>
+        <path
+          d="M0,-74 C28,-74 48,-54 48,-28 C48,-7 35,10 15,17 C31,27 42,44 37,62 C31,83 5,91 -13,77 C-25,68 -29,51 -20,36 C-42,35 -60,21 -64,0 C-68,-24 -50,-47 -25,-50 C-15,-51 -6,-46 0,-38 Z"
+          fill="none"
+          stroke="#5BAD7A"
+          strokeWidth="9"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          opacity="0.88"
+        />
+      </g>
+    ))}
+    <circle r="10" fill="#5BAD7A" opacity="0.72"/>
   </g>
 );
 

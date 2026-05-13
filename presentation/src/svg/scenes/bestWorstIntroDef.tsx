@@ -14,22 +14,27 @@ const BrightHalf = (
     <rect x="40" y="110" width="520" height="470" rx="18" fill="#1E1E2E" opacity="0.6"/>
     <circle cx="300" cy="340" r="180" fill="#E8B84A" opacity="0.06"/>
     <circle cx="300" cy="340" r="120" fill="#E8B84A" opacity="0.08"/>
-    {/* Upward arrows */}
-    <path d="M200,450 L200,260" stroke="#5BAD7A" strokeWidth="3" opacity="0.5"/>
-    <polygon points="200,250 190,270 210,270" fill="#5BAD7A" opacity="0.5"/>
-    <path d="M300,420 L300,230" stroke="#5BAD7A" strokeWidth="3" opacity="0.6"/>
-    <polygon points="300,220 290,240 310,240" fill="#5BAD7A" opacity="0.6"/>
-    <path d="M400,440 L400,280" stroke="#5BAD7A" strokeWidth="3" opacity="0.45"/>
-    <polygon points="400,270 390,290 410,290" fill="#5BAD7A" opacity="0.45"/>
-    {/* Stars */}
-    {[{ x: 150, y: 200 }, { x: 380, y: 180 }, { x: 250, y: 500 }, { x: 440, y: 420 }].map((s, i) => (
+    <g transform="translate(300, 360)">
+      <ellipse cx="0" cy="-142" rx="56" ry="14" fill="none" stroke="#E8B84A" strokeWidth="6" opacity="0.92"/>
+      <path d="M-78,-42 C-155,-104 -205,-45 -154,38 C-119,93 -70,70 -54,18 Z" fill="#F7DFA3" opacity="0.9"/>
+      <path d="M78,-42 C155,-104 205,-45 154,38 C119,93 70,70 54,18 Z" fill="#F7DFA3" opacity="0.9"/>
+      <path d="M-122,-34 C-102,-22 -83,-7 -62,14" fill="none" stroke="#E8B84A" strokeWidth="3" opacity="0.45"/>
+      <path d="M122,-34 C102,-22 83,-7 62,14" fill="none" stroke="#E8B84A" strokeWidth="3" opacity="0.45"/>
+      <circle cx="0" cy="-74" r="42" fill="#F7DFA3" stroke="#E8B84A" strokeWidth="2.5"/>
+      <circle cx="-15" cy="-80" r="4" fill="#2B2B3D" opacity="0.78"/>
+      <circle cx="15" cy="-80" r="4" fill="#2B2B3D" opacity="0.78"/>
+      <path d="M-15,-60 Q0,-49 15,-60" fill="none" stroke="#2B2B3D" strokeWidth="2.5" strokeLinecap="round" opacity="0.75"/>
+      <path d="M-56,6 Q0,-26 56,6 L34,112 L-34,112 Z" fill="#5BAD7A" opacity="0.78"/>
+      <path d="M-34,28 L-74,74" stroke="#F7DFA3" strokeWidth="11" strokeLinecap="round"/>
+      <path d="M34,28 L74,74" stroke="#F7DFA3" strokeWidth="11" strokeLinecap="round"/>
+      <path d="M-18,52 L-2,68 L28,34" fill="none" stroke="#FFFFFF" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" opacity="0.9"/>
+    </g>
+    {[{ x: 150, y: 200 }, { x: 420, y: 185 }, { x: 165, y: 495 }, { x: 455, y: 445 }].map((s, i) => (
       <g key={i} transform={`translate(${s.x}, ${s.y})`} opacity={0.35 + i * 0.1}>
         <line x1="-6" y1="0" x2="6" y2="0" stroke="#E8B84A" strokeWidth="1.5"/>
         <line x1="0" y1="-6" x2="0" y2="6" stroke="#E8B84A" strokeWidth="1.5"/>
       </g>
     ))}
-    <circle cx="300" cy="300" r="28" fill="none" stroke="#E8B84A" strokeWidth="2" opacity="0.3"/>
-    <path d="M284,300 L296,312 L316,288" fill="none" stroke="#E8B84A" strokeWidth="3" strokeLinecap="round" opacity="0.5"/>
   </g>
 );
 
@@ -38,24 +43,28 @@ const DarkHalf = (
     <rect x="640" y="110" width="520" height="470" rx="18" fill="#1E1E2E" opacity="0.6"/>
     <circle cx="900" cy="340" r="180" fill="#E85650" opacity="0.05"/>
     <circle cx="900" cy="340" r="120" fill="#E85650" opacity="0.07"/>
-    {/* Downward arrows */}
-    <path d="M800,230 L800,420" stroke="#E85650" strokeWidth="3" opacity="0.5"/>
-    <polygon points="800,430 790,410 810,410" fill="#E85650" opacity="0.5"/>
-    <path d="M900,250 L900,440" stroke="#E85650" strokeWidth="3" opacity="0.6"/>
-    <polygon points="900,450 890,430 910,430" fill="#E85650" opacity="0.6"/>
-    <path d="M1000,240 L1000,400" stroke="#E85650" strokeWidth="3" opacity="0.45"/>
-    <polygon points="1000,410 990,390 1010,390" fill="#E85650" opacity="0.45"/>
-    {/* Warning signs */}
-    {[{ x: 760, y: 180 }, { x: 1040, y: 200 }, { x: 850, y: 490 }, { x: 1000, y: 460 }].map((w, i) => (
+    <g transform="translate(900, 360)">
+      <path d="M-72,-96 C-118,-154 -42,-147 -30,-105 Z" fill="#E85650" stroke="#E8734A" strokeWidth="2"/>
+      <path d="M72,-96 C118,-154 42,-147 30,-105 Z" fill="#E85650" stroke="#E8734A" strokeWidth="2"/>
+      <path d="M-56,-16 Q0,-52 56,-16 L44,112 L-44,112 Z" fill="#E85650" opacity="0.78"/>
+      <circle cx="0" cy="-68" r="48" fill="#E85650" stroke="#E8734A" strokeWidth="2.5"/>
+      <path d="M-25,-76 L-8,-68 L-25,-60" fill="none" stroke="#2B2B3D" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M25,-76 L8,-68 L25,-60" fill="none" stroke="#2B2B3D" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M-20,-45 Q0,-60 20,-45" fill="none" stroke="#2B2B3D" strokeWidth="3" strokeLinecap="round"/>
+      <path d="M-48,34 C-98,48 -92,107 -36,94" fill="none" stroke="#E85650" strokeWidth="8" strokeLinecap="round"/>
+      <path d="M-36,94 L-56,82 L-48,110 Z" fill="#E85650"/>
+      <line x1="72" y1="-10" x2="72" y2="116" stroke="#E8B84A" strokeWidth="5" strokeLinecap="round"/>
+      <path d="M50,4 L72,-18 L94,4" fill="none" stroke="#E8B84A" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M-30,44 L30,94" stroke="#2B2B3D" strokeWidth="5" strokeLinecap="round" opacity="0.45"/>
+      <path d="M30,44 L-30,94" stroke="#2B2B3D" strokeWidth="5" strokeLinecap="round" opacity="0.45"/>
+    </g>
+    {[{ x: 760, y: 180 }, { x: 1040, y: 200 }, { x: 780, y: 500 }, { x: 1030, y: 475 }].map((w, i) => (
       <g key={i} transform={`translate(${w.x}, ${w.y})`} opacity={0.3 + i * 0.08}>
         <path d="M0,-8 L7,6 L-7,6 Z" fill="none" stroke="#E85650" strokeWidth="1.5"/>
         <line x1="0" y1="-4" x2="0" y2="1" stroke="#E85650" strokeWidth="1.5"/>
         <circle cx="0" cy="3.5" r="1" fill="#E85650"/>
       </g>
     ))}
-    <circle cx="900" cy="300" r="28" fill="none" stroke="#E85650" strokeWidth="2" opacity="0.3"/>
-    <line x1="882" y1="282" x2="918" y2="318" stroke="#E85650" strokeWidth="3" strokeLinecap="round" opacity="0.4"/>
-    <line x1="918" y1="282" x2="882" y2="318" stroke="#E85650" strokeWidth="3" strokeLinecap="round" opacity="0.4"/>
   </g>
 );
 

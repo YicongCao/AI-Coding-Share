@@ -44,28 +44,34 @@ const BertTitle = (
 );
 
 const ParameterBadge = (
-  <g transform="translate(850, 180)">
-    <rect x="0" y="0" width="120" height="48" rx="24" fill="#252538" stroke="#E85650" strokeWidth="2"/>
-    <text x="60" y="32" textAnchor="middle" fontSize="20" fontWeight="bold" fill="#E85650" fontFamily="sans-serif">0.3B</text>
+  <g transform="translate(820, 180)">
+    <rect x="0" y="0" width="180" height="48" rx="24" fill="#252538" stroke="#E85650" strokeWidth="2"/>
+    <text x="90" y="32" textAnchor="middle" fontSize="20" fontWeight="bold" fill="#E85650" fontFamily="sans-serif">0.3 Billion</text>
   </g>
 );
 
 const YearTag = (
-  <g transform="translate(1000, 180)">
+  <g transform="translate(1020, 180)">
     <rect x="0" y="0" width="72" height="36" rx="8" fill="#252538" stroke="#E8B84A" strokeWidth="1.5"/>
     <text x="36" y="24" textAnchor="middle" fontSize="16" fill="#E8B84A" fontFamily="sans-serif">2018</text>
   </g>
 );
 
+const ScaleNote = (
+  <g transform="translate(830, 250)">
+    <text x="0" y="0" fontSize="15" fill="#E85650" fontFamily="sans-serif" opacity="0.9">语言模型走向大规模的开始</text>
+  </g>
+);
+
 const ContextLabel = (
-  <g transform="translate(840, 260)">
+  <g transform="translate(840, 295)">
     <text x="0" y="0" fontSize="20" fill="#6EC8E6" fontFamily="sans-serif">上下文理解</text>
     <text x="0" y="28" fontSize="14" fill="#555570" fontFamily="sans-serif">Contextual Understanding</text>
   </g>
 );
 
 const OutputBox = (
-  <g transform="translate(830, 340)">
+  <g transform="translate(830, 365)">
     <rect x="0" y="0" width="260" height="200" rx="14" fill="#1E1E2E" stroke="#555570" strokeWidth="1.5"/>
     <text x="20" y="35" fontSize="13" fill="#FFFFFF" fontFamily="sans-serif" opacity="0.7">[CLS] token representation</text>
     {[0, 1, 2, 3, 4].map(i => (
@@ -86,6 +92,7 @@ export const bertSceneDef: SvgSceneDef = {
     { id: "title", content: BertTitle, enterFrom: { x: 300, y: -200 }, enterDelay: 50, floatAmp: { x: 16, y: 10 }, floatPeriod: { x: 5, y: 6.5 }, exitTo: { x: 400, y: -250 }, exitSpin: 6 },
     { id: "badge", content: ParameterBadge, enterFrom: { x: 200, y: -150 }, enterDelay: 200, floatAmp: { x: 12, y: 14 }, floatPeriod: { x: 4, y: 5 }, exitTo: { x: 300, y: -200 }, exitScale: 1.3 },
     { id: "year", content: YearTag, enterFrom: { x: 250, y: -100 }, enterDelay: 300, floatAmp: { x: 9, y: 11 }, floatPeriod: { x: 5.5, y: 7 }, exitTo: { x: 300, y: -150 } },
+    { id: "scale-note", content: ScaleNote, enterFrom: { x: 200, y: 0 }, enterDelay: 260, floatAmp: { x: 9, y: 10 }, floatPeriod: { x: 5, y: 6.5 }, exitTo: { x: 300, y: 80 } },
     { id: "context", content: ContextLabel, enterFrom: { x: 200, y: 0 }, enterDelay: 150, floatAmp: { x: 11, y: 13 }, floatPeriod: { x: 6, y: 7.5 }, exitTo: { x: 300, y: 100 } },
     { id: "output", content: OutputBox, enterFrom: { x: 350, y: 200 }, enterDelay: 400, floatAmp: { x: 10, y: 14 }, floatPeriod: { x: 5, y: 6 }, exitTo: { x: 400, y: 300 } },
   ],

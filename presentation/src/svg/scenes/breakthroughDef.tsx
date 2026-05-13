@@ -12,50 +12,43 @@ const ExpCurve = (
   </g>
 );
 
-const BrainIcon = (
-  <g transform="translate(160, 200)">
-    <ellipse cx="0" cy="0" rx="42" ry="48" fill="#252538" stroke="#6EC8E6" strokeWidth="2"/>
-    <path d="M-20,-30 Q-10,-45 0,-30 Q10,-45 20,-30" fill="none" stroke="#6EC8E6" strokeWidth="1.8"/>
-    <path d="M-28,-10 Q-15,-20 0,-10 Q15,-20 28,-10" fill="none" stroke="#6EC8E6" strokeWidth="1.5" opacity="0.7"/>
-    <path d="M-24,10 Q-10,0 0,10 Q10,0 24,10" fill="none" stroke="#6EC8E6" strokeWidth="1.5" opacity="0.6"/>
-    <path d="M-18,28 Q0,18 18,28" fill="none" stroke="#6EC8E6" strokeWidth="1.5" opacity="0.5"/>
-    <line x1="0" y1="-35" x2="0" y2="35" stroke="#6EC8E6" strokeWidth="1" opacity="0.3"/>
-  </g>
-);
-
-const TransformArrow = (
+const ConversationBubbles = (
   <g>
-    <line x1="220" y1="200" x2="380" y2="200" stroke="#E8B84A" strokeWidth="3" strokeDasharray="8 5"/>
-    <polygon points="385,200 370,190 370,210" fill="#E8B84A"/>
-    <text x="300" y="185" textAnchor="middle" fill="#E8B84A" fontFamily="sans-serif" fontSize="13" opacity="0.7">NLP</text>
+    <g transform="translate(165, 430)">
+      <rect width="170" height="86" rx="18" fill="#252538" stroke="#6EC8E6" strokeWidth="2"/>
+      <path d="M42,86 L28,116 L72,86" fill="#252538" stroke="#6EC8E6" strokeWidth="2" strokeLinejoin="round"/>
+      <rect x="28" y="25" width="96" height="8" rx="4" fill="#6EC8E6" opacity="0.65"/>
+      <rect x="28" y="45" width="120" height="8" rx="4" fill="#5BAD7A" opacity="0.55"/>
+      <text x="85" y="70" textAnchor="middle" fill="#6EC8E6" fontFamily="sans-serif" fontSize="16" fontWeight="bold">Chat</text>
+    </g>
+    <g transform="translate(355, 370)">
+      <rect width="138" height="72" rx="16" fill="#1E1E2E" stroke="#5BAD7A" strokeWidth="1.8"/>
+      <path d="M96,72 L118,96 L112,72" fill="#1E1E2E" stroke="#5BAD7A" strokeWidth="1.8" strokeLinejoin="round"/>
+      <circle cx="38" cy="36" r="6" fill="#5BAD7A" opacity="0.72"/>
+      <circle cx="68" cy="36" r="6" fill="#5BAD7A" opacity="0.58"/>
+      <circle cx="98" cy="36" r="6" fill="#5BAD7A" opacity="0.44"/>
+    </g>
   </g>
 );
 
-const AgentIcon = (
-  <g transform="translate(430, 170)">
-    <rect x="-40" y="-40" width="80" height="80" rx="14" fill="#252538" stroke="#4A7BCC" strokeWidth="2"/>
-    <circle cx="0" cy="-12" r="14" fill="none" stroke="#4A7BCC" strokeWidth="2"/>
-    <circle cx="0" cy="-12" r="4" fill="#4A7BCC"/>
-    <rect x="-20" y="10" width="40" height="22" rx="6" fill="none" stroke="#4A7BCC" strokeWidth="1.8"/>
-    <circle cx="-10" cy="20" r="3" fill="#4A7BCC" opacity="0.6"/>
-    <circle cx="10" cy="20" r="3" fill="#4A7BCC" opacity="0.6"/>
-  </g>
-);
-
-const ShatteredFragments = (
+const ChatToAgentArrow = (
   <g>
-    {[
-      { x: 300, y: 430, w: 50, h: 35, rot: 12, c: "#E85650" },
-      { x: 420, y: 470, w: 40, h: 30, rot: -18, c: "#E8734A" },
-      { x: 200, y: 490, w: 55, h: 28, rot: 25, c: "#E85650" },
-      { x: 520, y: 510, w: 45, h: 32, rot: -8, c: "#E8734A" },
-      { x: 140, y: 530, w: 38, h: 26, rot: 30, c: "#E85650" },
-    ].map((f, i) => (
-      <g key={i} transform={`translate(${f.x}, ${f.y}) rotate(${f.rot})`} opacity={0.4 + i * 0.06}>
-        <rect width={f.w} height={f.h} rx="4" fill="#1E1E2E" stroke={f.c} strokeWidth="1.2"/>
-        <line x1="5" y1={f.h / 2} x2={f.w - 5} y2={f.h / 2} stroke={f.c} strokeWidth="1" opacity="0.5" strokeDasharray="3 2"/>
-      </g>
-    ))}
+    <path d="M500,405 C625,300 740,205 855,92" fill="none" stroke="#E8B84A" strokeWidth="3" strokeDasharray="9 6" strokeLinecap="round"/>
+    <polygon points="861,86 842,92 855,105" fill="#E8B84A"/>
+    <text x="690" y="270" textAnchor="middle" fill="#E8B84A" fontFamily="sans-serif" fontSize="18" fontWeight="bold">Chat to Agent</text>
+  </g>
+);
+
+const RobotIcon = (
+  <g transform="translate(815, 72)">
+    <line x1="0" y1="-42" x2="0" y2="-28" stroke="#6EC8E6" strokeWidth="2" strokeLinecap="round"/>
+    <circle cx="0" cy="-46" r="5" fill="#6EC8E6" opacity="0.75"/>
+    <rect x="-44" y="-28" width="88" height="64" rx="16" fill="#252538" stroke="#6EC8E6" strokeWidth="2.2"/>
+    <circle cx="-18" cy="-2" r="7" fill="#6EC8E6" opacity="0.85"/>
+    <circle cx="18" cy="-2" r="7" fill="#6EC8E6" opacity="0.85"/>
+    <path d="M-18,20 Q0,31 18,20" fill="none" stroke="#5BAD7A" strokeWidth="2.5" strokeLinecap="round"/>
+    <line x1="-54" y1="-2" x2="-44" y2="-2" stroke="#6EC8E6" strokeWidth="2" strokeLinecap="round"/>
+    <line x1="44" y1="-2" x2="54" y2="-2" stroke="#6EC8E6" strokeWidth="2" strokeLinecap="round"/>
   </g>
 );
 
@@ -94,10 +87,9 @@ export const breakthroughSceneDef: SvgSceneDef = {
   fragments: [
     { id: "gridDots", content: GridDots, enterFrom: { x: 0, y: 0 }, enterDelay: 0, floatAmp: { x: 8, y: 8 }, floatPeriod: { x: 9.0, y: 9.0 }, exitTo: { x: 0, y: 0 } },
     { id: "expCurve", content: ExpCurve, enterFrom: { x: -600, y: 0 }, enterDelay: 0, floatAmp: { x: 8, y: 12 }, floatPeriod: { x: 6.0, y: 7.5 }, exitTo: { x: 600, y: 0 } },
-    { id: "brainIcon", content: BrainIcon, enterFrom: { x: -300, y: 0 }, enterDelay: 100, floatAmp: { x: 14, y: 18 }, floatPeriod: { x: 4.5, y: 5.5 }, exitTo: { x: -400, y: 200 }, exitSpin: -6 },
-    { id: "transformArrow", content: TransformArrow, enterFrom: { x: 0, y: -200 }, enterDelay: 200, floatAmp: { x: 10, y: 10 }, floatPeriod: { x: 5.0, y: 6.0 }, exitTo: { x: 0, y: -300 } },
-    { id: "agentIcon", content: AgentIcon, enterFrom: { x: 300, y: -200 }, enterDelay: 300, floatAmp: { x: 16, y: 20 }, floatPeriod: { x: 4.0, y: 5.0 }, exitTo: { x: 400, y: -300 }, exitSpin: 5 },
-    { id: "shattered", content: ShatteredFragments, enterFrom: { x: 0, y: 300 }, enterDelay: 350, floatAmp: { x: 12, y: 16 }, floatPeriod: { x: 5.5, y: 7.0 }, exitTo: { x: 0, y: 400 }, exitSpin: 4 },
+    { id: "conversationBubbles", content: ConversationBubbles, enterFrom: { x: -300, y: 120 }, enterDelay: 100, floatAmp: { x: 14, y: 18 }, floatPeriod: { x: 4.5, y: 5.5 }, exitTo: { x: -400, y: 200 }, exitSpin: -3 },
+    { id: "chatToAgentArrow", content: ChatToAgentArrow, enterFrom: { x: -120, y: 180 }, enterDelay: 200, floatAmp: { x: 10, y: 10 }, floatPeriod: { x: 5.0, y: 6.0 }, exitTo: { x: 180, y: -300 } },
+    { id: "robotIcon", content: RobotIcon, enterFrom: { x: 300, y: -200 }, enterDelay: 350, floatAmp: { x: 16, y: 20 }, floatPeriod: { x: 4.0, y: 5.0 }, exitTo: { x: 400, y: -300 }, exitSpin: 5 },
     { id: "codingAgentLabel", content: CodingAgentLabel, enterFrom: { x: 300, y: -200 }, enterDelay: 450, floatAmp: { x: 18, y: 22 }, floatPeriod: { x: 3.5, y: 4.5 }, exitTo: { x: 400, y: -300 }, exitScale: 1.15 },
     { id: "rocket", content: Rocket, enterFrom: { x: 200, y: -300 }, enterDelay: 550, floatAmp: { x: 20, y: 22 }, floatPeriod: { x: 3.0, y: 4.0 }, exitTo: { x: 300, y: -400 }, exitSpin: 12 },
   ],

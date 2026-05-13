@@ -13,6 +13,7 @@ const EncoderBox = (
         <rect x="116" y={82 + i * 48} width="80" height="8" rx="4" fill="#6EC8E6" opacity="0.3"/>
       </g>
     ))}
+    <text x="140" y="300" textAnchor="middle" fontSize="15" fontWeight="bold" fill="#6EC8E6" fontFamily="sans-serif">Encoder reads</text>
   </g>
 );
 
@@ -27,6 +28,7 @@ const DecoderBox = (
         <rect x="116" y={82 + i * 48} width="80" height="8" rx="4" fill="#5BAD7A" opacity="0.3"/>
       </g>
     ))}
+    <text x="140" y="300" textAnchor="middle" fontSize="15" fontWeight="bold" fill="#5BAD7A" fontFamily="sans-serif">Decoder writes</text>
   </g>
 );
 
@@ -65,6 +67,13 @@ const OutputTokens = (
   </g>
 );
 
+const SequenceFlowLabel = (
+  <g transform="translate(435, 535)">
+    <rect x="0" y="0" width="330" height="42" rx="10" fill="#252538" stroke="#E8B84A" strokeWidth="1" opacity="0.85"/>
+    <text x="165" y="27" textAnchor="middle" fontSize="15" fill="#E8B84A" fontFamily="sans-serif">输入序列 → 输出序列</text>
+  </g>
+);
+
 const TitleAndLabels = (
   <g>
     <text x="600" y="80" textAnchor="middle" fontSize="30" fontWeight="bold" fill="#FFFFFF" fontFamily="sans-serif">Seq2Seq</text>
@@ -86,6 +95,7 @@ export const seq2seqSceneDef: SvgSceneDef = {
     { id: "arrow", content: BigArrow, enterFrom: { x: 0, y: -200 }, enterDelay: 250, floatAmp: { x: 8, y: 10 }, floatPeriod: { x: 5, y: 6 }, exitTo: { x: 0, y: -300 }, exitSpin: 5 },
     { id: "input", content: InputTokens, enterFrom: { x: -200, y: 200 }, enterDelay: 350, floatAmp: { x: 12, y: 14 }, floatPeriod: { x: 4.5, y: 5.5 }, exitTo: { x: -300, y: 200 } },
     { id: "output", content: OutputTokens, enterFrom: { x: 200, y: 200 }, enterDelay: 400, floatAmp: { x: 12, y: 14 }, floatPeriod: { x: 4.5, y: 5.5 }, exitTo: { x: 300, y: 200 } },
+    { id: "flow-label", content: SequenceFlowLabel, enterFrom: { x: 0, y: 180 }, enterDelay: 450, floatAmp: { x: 8, y: 10 }, floatPeriod: { x: 5.5, y: 6.5 }, exitTo: { x: 0, y: 260 } },
     { id: "title", content: TitleAndLabels, enterFrom: { x: 0, y: -250 }, enterDelay: 50, floatAmp: { x: 14, y: 10 }, floatPeriod: { x: 7, y: 9 }, exitTo: { x: 0, y: -350 }, exitScale: 1.2 },
   ],
 };

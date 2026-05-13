@@ -12,31 +12,21 @@ const QuoteText = (
 
 const Turtle = (
   <g transform="translate(120, 300)">
-    <ellipse cx="100" cy="60" rx="80" ry="50" fill="#5BAD7A" opacity="0.2"/>
-    <ellipse cx="100" cy="60" rx="65" ry="40" fill="#1E1E2E" stroke="#5BAD7A" strokeWidth="2"/>
-    <path d="M50,55 Q40,50 35,60 Q32,72 40,78 L55,70" fill="#5BAD7A" opacity="0.6"/>
-    <path d="M150,55 Q160,50 165,60 Q168,72 160,78 L145,70" fill="#5BAD7A" opacity="0.6"/>
-    <circle cx="30" cy="50" r="12" fill="#5BAD7A" opacity="0.5"/>
-    <circle cx="25" cy="47" r="2.5" fill="#FFFFFF"/>
-    <line x1="35" y1="55" x2="50" y2="55" stroke="#5BAD7A" strokeWidth="2" opacity="0.4"/>
-    <path d="M70,40 Q85,25 100,35 Q115,25 130,40" fill="none" stroke="#5BAD7A" strokeWidth="1.5" opacity="0.3"/>
-    <path d="M75,50 Q90,40 105,50 Q120,40 125,50" fill="none" stroke="#5BAD7A" strokeWidth="1" opacity="0.2"/>
-    <text x="100" y="130" textAnchor="middle" fill="#5BAD7A" fontFamily="sans-serif" fontSize="16" fontWeight="bold">慢</text>
-    <text x="100" y="152" textAnchor="middle" fill="#555570" fontFamily="sans-serif" fontSize="12">Steady</text>
+    <circle cx="100" cy="62" r="86" fill="#5BAD7A" opacity="0.12"/>
+    <circle cx="100" cy="62" r="64" fill="#1E1E2E" stroke="#5BAD7A" strokeWidth="2"/>
+    <text x="100" y="92" textAnchor="middle" fontFamily="Apple Color Emoji, Segoe UI Emoji, sans-serif" fontSize="76">🐢</text>
+    <text x="100" y="150" textAnchor="middle" fill="#5BAD7A" fontFamily="sans-serif" fontSize="18" fontWeight="bold">不着急</text>
+    <text x="100" y="174" textAnchor="middle" fill="#555570" fontFamily="sans-serif" fontSize="12">Steady pace</text>
   </g>
 );
 
 const Rabbit = (
   <g transform="translate(860, 300)">
-    <ellipse cx="80" cy="70" rx="45" ry="35" fill="#1E1E2E" stroke="#E8734A" strokeWidth="2"/>
-    <circle cx="55" cy="40" r="14" fill="#E8734A" opacity="0.5"/>
-    <circle cx="50" cy="37" r="2.5" fill="#FFFFFF"/>
-    <path d="M48,26 L42,0 L50,18" fill="#E8734A" opacity="0.5"/>
-    <path d="M58,26 L64,2 L56,18" fill="#E8734A" opacity="0.5"/>
-    <path d="M125,65 L145,55 L140,70 L125,75" fill="#E8734A" opacity="0.4"/>
-    <path d="M60,95 L50,115 M80,100 L75,118 M100,95 L110,112" fill="none" stroke="#E8734A" strokeWidth="2" strokeLinecap="round" opacity="0.5"/>
-    <text x="80" y="140" textAnchor="middle" fill="#E8734A" fontFamily="sans-serif" fontSize="16" fontWeight="bold">快</text>
-    <text x="80" y="162" textAnchor="middle" fill="#555570" fontFamily="sans-serif" fontSize="12">Fast</text>
+    <circle cx="80" cy="62" r="86" fill="#E8734A" opacity="0.12"/>
+    <circle cx="80" cy="62" r="64" fill="#1E1E2E" stroke="#E8734A" strokeWidth="2"/>
+    <text x="80" y="92" textAnchor="middle" fontFamily="Apple Color Emoji, Segoe UI Emoji, sans-serif" fontSize="76">🐇</text>
+    <text x="80" y="150" textAnchor="middle" fill="#E8734A" fontFamily="sans-serif" fontSize="18" fontWeight="bold">一定要快</text>
+    <text x="80" y="174" textAnchor="middle" fill="#555570" fontFamily="sans-serif" fontSize="12">Fast feedback</text>
   </g>
 );
 

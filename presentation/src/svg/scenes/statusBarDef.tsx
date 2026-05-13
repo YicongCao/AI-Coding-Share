@@ -35,14 +35,17 @@ const StatusBarUI = (
       <rect x="0" y="0" width="12" height="18" rx="1" fill="#FFFFFF" opacity="0.6"/>
       <rect x="16" y="0" width="12" height="18" rx="1" fill="#FFFFFF" opacity="0.3"/>
       <rect x="32" y="0" width="12" height="18" rx="1" fill="#FFFFFF" opacity="0.15"/>
+      <rect x="58" y="-2" width="3" height="22" rx="1.5" fill="#5BAD7A" opacity="0.9"/>
+      <text x="78" y="14" fill="#555570" fontFamily="sans-serif" fontSize="12">typing...</text>
     </g>
 
     <rect x="600" y="60" width="270" height="120" rx="10" fill="#252538" stroke="#555570" strokeWidth="1"/>
-    <text x="735" y="90" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="13" opacity="0.5">Progress</text>
-    <rect x="630" y="105" width="210" height="10" rx="5" fill="#1E1E2E"/>
-    <rect x="630" y="105" width="140" height="10" rx="5" fill="#5BAD7A" opacity="0.6"/>
-    <text x="735" y="140" textAnchor="middle" fill="#5BAD7A" fontFamily="sans-serif" fontSize="20" fontWeight="bold">67%</text>
-    <text x="735" y="165" textAnchor="middle" fill="#555570" fontFamily="sans-serif" fontSize="11">3 / 5 steps complete</text>
+    <text x="735" y="90" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="13" opacity="0.55">现在正在做</text>
+    <text x="735" y="122" textAnchor="middle" fill="#6EC8E6" fontFamily="sans-serif" fontSize="18" fontWeight="bold">分析报错上下文</text>
+    <text x="735" y="150" textAnchor="middle" fill="#555570" fontFamily="sans-serif" fontSize="12">接下来会给出修改方案</text>
+    <circle cx="715" cy="166" r="3" fill="#E8B84A" opacity="0.55"/>
+    <circle cx="735" cy="166" r="3" fill="#E8B84A" opacity="0.35"/>
+    <circle cx="755" cy="166" r="3" fill="#E8B84A" opacity="0.2"/>
   </g>
 );
 

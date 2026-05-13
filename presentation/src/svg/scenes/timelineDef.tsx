@@ -9,32 +9,34 @@ const TimelineAxis = (
     {[140, 280, 420, 560, 700, 840, 980].map((x, i) => (
       <line key={i} x1={x} y1="332" x2={x} y2="348" stroke="#555570" strokeWidth="2"/>
     ))}
-    <text x="90" y="370" fill="#555570" fontFamily="sans-serif" fontSize="11" opacity="0.6">2000</text>
+    <text x="90" y="370" fill="#555570" fontFamily="sans-serif" fontSize="11" opacity="0.6">1950</text>
     <text x="1060" y="370" fill="#555570" fontFamily="sans-serif" fontSize="11" opacity="0.6">NOW</text>
-    <text x="540" y="370" fill="#FFFFFF" fontFamily="sans-serif" fontSize="10" opacity="0.3">NLP Timeline</text>
+    <text x="540" y="370" fill="#FFFFFF" fontFamily="sans-serif" fontSize="10" opacity="0.3">AI / NLP Timeline</text>
   </g>
 );
 
 const MilestoneNodes = (
   <g>
     {[
-      { x: 140, color: "#555570", label: 40 },
-      { x: 280, color: "#5BAD7A", label: 50 },
-      { x: 420, color: "#6EC8E6", label: 55 },
-      { x: 560, color: "#E8B84A", label: 60 },
-      { x: 700, color: "#E8734A", label: 55 },
-      { x: 840, color: "#E85650", label: 50 },
-      { x: 980, color: "#4A7BCC", label: 45 },
+      { x: 130, color: "#555570", year: "1950s", event: "NLP", note: "自然语言处理" },
+      { x: 285, color: "#5BAD7A", year: "1984", event: "Macintosh", note: "图形界面普及" },
+      { x: 430, color: "#6EC8E6", year: "2007", event: "Vista", note: "语音交互尝试" },
+      { x: 575, color: "#E8B84A", year: "2011", event: "Siri", note: "手机语音助手" },
+      { x: 720, color: "#E8734A", year: "2013", event: "Word2Vec", note: "词向量爆发" },
+      { x: 865, color: "#E85650", year: "2017-18", event: "Attention/BERT", note: "大模型底座" },
+      { x: 1010, color: "#4A7BCC", year: "2022+", event: "ChatGPT/Agent", note: "对话到执行" },
     ].map((m, i) => {
       const up = i % 2 === 0;
-      const cardY = up ? 220 : 380;
+      const cardY = up ? 205 : 385;
+      const cardWidth = 128;
       return (
         <g key={i}>
           <circle cx={m.x} cy={340} r="10" fill={m.color}/>
-          <line x1={m.x} y1={up ? 330 : 350} x2={m.x} y2={cardY + (up ? 50 : 0)} stroke={m.color} strokeWidth="1.5" opacity="0.5" strokeDasharray="4 3"/>
-          <rect x={m.x - 42} y={cardY} width={84} height={50} rx="8" fill="#1E1E2E" stroke={m.color} strokeWidth="1.2" opacity="0.8"/>
-          <rect x={m.x - 30} y={cardY + 14} width={m.label} height="5" rx="2.5" fill={m.color} opacity="0.6"/>
-          <rect x={m.x - 30} y={cardY + 28} width={m.label - 12} height="4" rx="2" fill="#555570" opacity="0.35"/>
+          <line x1={m.x} y1={up ? 330 : 350} x2={m.x} y2={cardY + (up ? 66 : 0)} stroke={m.color} strokeWidth="1.5" opacity="0.5" strokeDasharray="4 3"/>
+          <rect x={m.x - cardWidth / 2} y={cardY} width={cardWidth} height={66} rx="9" fill="#1E1E2E" stroke={m.color} strokeWidth="1.2" opacity="0.88"/>
+          <text x={m.x} y={cardY + 18} textAnchor="middle" fill={m.color} fontFamily="sans-serif" fontSize="11" fontWeight="bold">{m.year}</text>
+          <text x={m.x} y={cardY + 39} textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="13" fontWeight="bold">{m.event}</text>
+          <text x={m.x} y={cardY + 56} textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="10" opacity="0.55">{m.note}</text>
         </g>
       );
     })}

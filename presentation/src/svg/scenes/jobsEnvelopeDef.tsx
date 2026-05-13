@@ -14,33 +14,32 @@ const Curtains = (
 );
 
 const ClassicMac = (
-  <g transform="translate(420, 130)">
-    {/* Outer shell */}
-    <rect x="0" y="0" width="240" height="320" rx="18" fill="#D4D0C8" stroke="#B8B4A8" strokeWidth="2"/>
-    {/* Bezel */}
-    <rect x="20" y="20" width="200" height="160" rx="10" fill="#1E1E2E" stroke="#999" strokeWidth="1.5"/>
-    {/* Screen */}
-    <rect x="30" y="30" width="180" height="140" rx="6" fill="#2A4A2A"/>
-    {/* Green text lines on screen */}
-    <rect x="44" y="50" width="100" height="5" rx="2.5" fill="#5BAD7A" opacity="0.8"/>
-    <rect x="44" y="65" width="140" height="5" rx="2.5" fill="#5BAD7A" opacity="0.6"/>
-    <rect x="44" y="80" width="80" height="5" rx="2.5" fill="#5BAD7A" opacity="0.7"/>
-    <rect x="44" y="95" width="120" height="5" rx="2.5" fill="#5BAD7A" opacity="0.5"/>
-    <rect x="44" y="110" width="90" height="5" rx="2.5" fill="#5BAD7A" opacity="0.6"/>
-    <rect x="44" y="130" width="20" height="8" rx="2" fill="#5BAD7A" opacity="0.9"/>
-    {/* Floppy drive slot */}
-    <rect x="60" y="205" width="120" height="12" rx="3" fill="#B8B4A8" stroke="#999" strokeWidth="1"/>
-    {/* Vent lines */}
-    {[240, 252, 264, 276].map((y, i) => (
-      <line key={i} x1="60" y1={y} x2="180" y2={y} stroke="#B8B4A8" strokeWidth="1.5" opacity="0.5"/>
+  <g transform="translate(390, 120)">
+    {/* Compact Macintosh shell with a square face and rounded beige body. */}
+    <path d="M22,0 H258 Q280,0 284,24 L304,300 Q306,328 278,328 H2 Q-26,328 -24,300 L-4,24 Q-2,0 22,0 Z" fill="#D8D3C7" stroke="#B8B4A8" strokeWidth="2"/>
+    <path d="M20,18 H260 Q268,18 269,27 L282,286 H2 L15,27 Q16,18 20,18 Z" fill="#E4E0D4" opacity="0.52"/>
+
+    {/* Bezel and screen */}
+    <rect x="38" y="34" width="220" height="166" rx="16" fill="#1E1E2E" stroke="#8D897E" strokeWidth="2"/>
+    <rect x="56" y="52" width="184" height="130" rx="8" fill="#1C3C30"/>
+    <rect x="68" y="66" width="104" height="5" rx="2.5" fill="#5BAD7A" opacity="0.85"/>
+    <rect x="68" y="84" width="142" height="5" rx="2.5" fill="#5BAD7A" opacity="0.62"/>
+    <rect x="68" y="102" width="84" height="5" rx="2.5" fill="#5BAD7A" opacity="0.72"/>
+    <rect x="68" y="120" width="124" height="5" rx="2.5" fill="#5BAD7A" opacity="0.5"/>
+    <rect x="68" y="150" width="24" height="9" rx="2" fill="#5BAD7A" opacity="0.9"/>
+
+    {/* Drive bay, vents, and front badge */}
+    <rect x="72" y="224" width="154" height="14" rx="4" fill="#BDB8AB" stroke="#9C978C" strokeWidth="1.2"/>
+    <rect x="196" y="252" width="44" height="10" rx="5" fill="#BDB8AB" opacity="0.65"/>
+    {[252, 264, 276].map((y, i) => (
+      <line key={i} x1="62" y1={y} x2="156" y2={y} stroke="#B8B4A8" strokeWidth="1.6" opacity="0.62"/>
     ))}
-    {/* Apple logo outline */}
-    <g transform="translate(105, 290)">
-      <path d="M15,0 Q20,-8 15,-12 Q8,-8 8,0 Q8,10 15,14 Q22,10 22,0 Q22,-8 15,-12" fill="none" stroke="#999" strokeWidth="1.5" opacity="0.6"/>
-      <line x1="15" y1="-12" x2="18" y2="-18" stroke="#999" strokeWidth="1.2" opacity="0.5"/>
+    <g transform="translate(136, 292) scale(0.58)">
+      <path d="M24,18 C20,10 13,10 9,16 C5,22 8,35 17,42 C20,44 22,41 25,41 C28,41 30,44 33,42 C41,35 44,23 40,17 C36,11 29,11 25,18 C24,19 24,19 24,18 Z" fill="#8C887E"/>
+      <path d="M25,13 C26,5 32,1 38,1 C37,8 32,13 25,13 Z" fill="#8C887E"/>
+      <circle cx="40" cy="20" r="5" fill="#E4E0D4"/>
     </g>
-    {/* Base/foot */}
-    <rect x="-10" y="320" width="260" height="14" rx="4" fill="#C4C0B4"/>
+    <rect x="-32" y="328" width="328" height="16" rx="5" fill="#C6C1B6"/>
   </g>
 );
 
@@ -61,15 +60,21 @@ const SpeechBubble = (
 );
 
 const SoundWaves = (
-  <g transform="translate(680, 220)">
-    <path d="M0,0 Q-15,30 0,60" fill="none" stroke="#5BAD7A" strokeWidth="2.5" strokeLinecap="round" opacity="0.6"/>
-    <path d="M-15,-15 Q-35,30 -15,75" fill="none" stroke="#5BAD7A" strokeWidth="2" strokeLinecap="round" opacity="0.4"/>
-    <path d="M-28,-25 Q-55,30 -28,85" fill="none" stroke="#5BAD7A" strokeWidth="1.5" strokeLinecap="round" opacity="0.25"/>
-    {/* Musical notes */}
-    <circle cx="-50" cy="10" r="5" fill="#5BAD7A" opacity="0.35"/>
-    <line x1="-45" y1="10" x2="-45" y2="-10" stroke="#5BAD7A" strokeWidth="1.5" opacity="0.35"/>
-    <circle cx="-65" cy="70" r="4" fill="#E8B84A" opacity="0.3"/>
-    <line x1="-61" y1="70" x2="-61" y2="52" stroke="#E8B84A" strokeWidth="1.5" opacity="0.3"/>
+  <g transform="translate(658, 224)">
+    {[
+      { x: 0, opacity: 0.72, begin: "0s" },
+      { x: 78, opacity: 0.5, begin: "-0.5s" },
+      { x: 156, opacity: 0.32, begin: "-1s" },
+      { x: 234, opacity: 0.16, begin: "-1.5s" },
+    ].map((wave, i) => (
+      <g key={i} transform={`translate(${wave.x}, 0)`} opacity={wave.opacity}>
+        <animateTransform attributeName="transform" type="translate" values={`${wave.x} 0; ${wave.x + 92} 0`} dur="2.4s" begin={wave.begin} repeatCount="indefinite"/>
+        <animate attributeName="opacity" values={`${wave.opacity};${wave.opacity * 0.55};0`} dur="2.4s" begin={wave.begin} repeatCount="indefinite"/>
+        <path d="M0,-24 C18,-14 18,14 0,24" fill="none" stroke="#5BAD7A" strokeWidth="2.6" strokeLinecap="round"/>
+        <path d="M18,-38 C42,-22 42,22 18,38" fill="none" stroke="#6EC8E6" strokeWidth="2.2" strokeLinecap="round"/>
+        <path d="M40,-52 C70,-30 70,30 40,52" fill="none" stroke="#E8B84A" strokeWidth="1.8" strokeLinecap="round"/>
+      </g>
+    ))}
   </g>
 );
 
@@ -82,10 +87,14 @@ const YearLabel = (
 );
 
 const AppleLogo = (
-  <g transform="translate(1020, 60)">
-    <path d="M40,15 Q50,0 40,-10 Q25,0 25,15 Q25,35 40,45 Q55,35 55,15 Q55,0 40,-10" fill="none" stroke="#B8B4A8" strokeWidth="2.5" opacity="0.4"/>
-    <line x1="40" y1="-10" x2="46" y2="-22" stroke="#B8B4A8" strokeWidth="2" opacity="0.35"/>
-    <path d="M46,-22 Q52,-18 50,-12" fill="none" stroke="#5BAD7A" strokeWidth="1.5" opacity="0.3"/>
+  <g transform="translate(1005, 46)">
+    <rect x="0" y="0" width="112" height="112" rx="24" fill="#1E1E2E" stroke="#3A3A50" strokeWidth="1.5" opacity="0.72"/>
+    <g transform="translate(30, 25) scale(1.18)">
+      <path d="M24,18 C20,10 13,10 9,16 C5,22 8,35 17,42 C20,44 22,41 25,41 C28,41 30,44 33,42 C41,35 44,23 40,17 C36,11 29,11 25,18 C24,19 24,19 24,18 Z" fill="#B8B4A8" opacity="0.82"/>
+      <path d="M25,13 C26,5 32,1 38,1 C37,8 32,13 25,13 Z" fill="#5BAD7A" opacity="0.82"/>
+      <circle cx="40" cy="20" r="5" fill="#1E1E2E"/>
+    </g>
+    <text x="56" y="92" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="11" opacity="0.45">Apple</text>
   </g>
 );
 
@@ -97,7 +106,7 @@ export const jobsEnvelopeSceneDef: SvgSceneDef = {
     { id: "curtains", content: Curtains, enterFrom: { x: 0, y: 0 }, enterDelay: 0, floatAmp: { x: 3, y: 4 }, floatPeriod: { x: 9.0, y: 10.0 }, exitTo: { x: 0, y: 0 }, exitScale: 1.08, exitOpacity: 0.6 },
     { id: "mac", content: ClassicMac, enterFrom: { x: -500, y: 0 }, enterDelay: 100, floatAmp: { x: 8, y: 10 }, floatPeriod: { x: 5.5, y: 7.0 }, exitTo: { x: -620, y: 0 }, exitSpin: -3 },
     { id: "bubble", content: SpeechBubble, enterFrom: { x: 400, y: 0 }, enterDelay: 300, floatAmp: { x: 12, y: 14 }, floatPeriod: { x: 4.8, y: 6.0 }, exitTo: { x: 560, y: -80 }, exitScale: 1.1 },
-    { id: "waves", content: SoundWaves, enterFrom: { x: 0, y: -200 }, enterDelay: 400, floatAmp: { x: 16, y: 18 }, floatPeriod: { x: 3.5, y: 4.5 }, exitTo: { x: 260, y: -300 }, exitSpin: 12, exitScale: 1.3 },
+    { id: "waves", content: SoundWaves, enterFrom: { x: -120, y: -80 }, enterDelay: 400, floatAmp: { x: 28, y: 10 }, floatPeriod: { x: 2.8, y: 4.5 }, exitTo: { x: 720, y: -120 }, exitSpin: 8, exitScale: 1.25, exitOpacity: 0 },
     { id: "year", content: YearLabel, enterFrom: { x: -300, y: -200 }, enterDelay: 200, floatAmp: { x: 14, y: 16 }, floatPeriod: { x: 4.0, y: 5.0 }, exitTo: { x: -420, y: -260 }, exitSpin: -10 },
     { id: "apple", content: AppleLogo, enterFrom: { x: 300, y: -200 }, enterDelay: 500, floatAmp: { x: 18, y: 22 }, floatPeriod: { x: 3.2, y: 4.0 }, exitTo: { x: 380, y: -320 }, exitSpin: 20, exitScale: 1.25 },
   ],

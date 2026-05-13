@@ -42,14 +42,21 @@ const NeuralLines = (
 
 const ThoughtBubbles = (
   <g>
-    <circle cx="200" cy="180" r="28" fill="#252538" stroke="#555570" strokeWidth="1"/>
-    <text x="200" y="186" textAnchor="middle" fill="#E8B84A" fontFamily="sans-serif" fontSize="13">推理</text>
-    <circle cx="1000" cy="180" r="28" fill="#252538" stroke="#555570" strokeWidth="1"/>
-    <text x="1000" y="186" textAnchor="middle" fill="#5BAD7A" fontFamily="sans-serif" fontSize="13">生成</text>
-    <circle cx="200" cy="460" r="28" fill="#252538" stroke="#555570" strokeWidth="1"/>
-    <text x="200" y="466" textAnchor="middle" fill="#6EC8E6" fontFamily="sans-serif" fontSize="13">理解</text>
-    <circle cx="1000" cy="460" r="28" fill="#252538" stroke="#555570" strokeWidth="1"/>
-    <text x="1000" y="466" textAnchor="middle" fill="#E8734A" fontFamily="sans-serif" fontSize="13">规划</text>
+    {[
+      { x: 220, y: 172, label: "推理", sub: "Reasoning", color: "#E8B84A" },
+      { x: 980, y: 172, label: "生成", sub: "Generation", color: "#5BAD7A" },
+      { x: 220, y: 468, label: "理解", sub: "Understanding", color: "#6EC8E6" },
+      { x: 980, y: 468, label: "规划", sub: "Planning", color: "#E8734A" },
+    ].map((item) => (
+      <g key={item.label} transform={`translate(${item.x}, ${item.y})`}>
+        <circle cx="0" cy="0" r="58" fill={item.color} opacity="0.08"/>
+        <rect x="-86" y="-42" width="172" height="84" rx="24" fill="#252538" stroke={item.color} strokeWidth="2" opacity="0.96"/>
+        <circle cx="-52" cy="0" r="20" fill={item.color} opacity="0.18"/>
+        <circle cx="-52" cy="0" r="7" fill={item.color}/>
+        <text x="12" y="-4" textAnchor="middle" fill={item.color} fontFamily="sans-serif" fontSize="25" fontWeight="900">{item.label}</text>
+        <text x="12" y="22" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="12" opacity="0.55">{item.sub}</text>
+      </g>
+    ))}
   </g>
 );
 

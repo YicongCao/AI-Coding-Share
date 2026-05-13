@@ -15,6 +15,15 @@ const nodes = [
 const LoopArrows = (
   <g>
     {nodes.map((node, i) => {
+      if (node.label === "Feedback") {
+        return (
+          <g key={i}>
+            <path d="M420,280 C300,230 330,105 545,130" fill="none" stroke="#555570" strokeWidth="2.5" strokeDasharray="8 5" opacity="0.6"/>
+            <circle cx="545" cy="130" r="4" fill="#555570" opacity="0.8"/>
+          </g>
+        );
+      }
+
       const next = nodes[(i + 1) % 4];
       const a1 = (node.angle + 20) * Math.PI / 180;
       const a2 = (next.angle - 20) * Math.PI / 180;

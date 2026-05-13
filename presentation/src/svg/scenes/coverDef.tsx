@@ -192,61 +192,62 @@ const BottomCode = (
 // ── Fragment 4: Miku-style girl (back view, twin tails, holding leek) ──
 const Woman = (
   <g transform="translate(205, 180)">
-    {/* Head (back view, no face detail) */}
-    <ellipse cx="13" cy="22" rx="26" ry="32" fill="#2B2B3D"/>
-    {/* Hair cap covering head */}
-    <ellipse cx="13" cy="14" rx="30" ry="30" fill="#39C5BB"/>
-    <path d="M-17,14 Q13,-18 43,14 Q43,30 38,42 L13,48 L-12,42 Q-17,30 -17,14 Z" fill="#39C5BB"/>
-    {/* Hair highlight sheen */}
-    <path d="M-8,4 Q13,-10 34,4 Q30,18 13,22 Q-4,18 -8,4 Z" fill="#4DE8D8" opacity="0.25"/>
+    {/* Long twin tails hang from red ribbons high on the back of the head. */}
+    <path d="M-24,25 C-52,58 -64,128 -58,210 C-54,270 -50,330 -62,372 C-42,364 -31,324 -33,264 C-36,188 -34,92 -16,38 Z" fill="#39C5BB"/>
+    <path d="M48,25 C76,58 88,128 82,210 C78,270 74,330 86,372 C66,364 55,324 57,264 C60,188 58,92 40,38 Z" fill="#39C5BB"/>
+    <path d="M-36,54 C-51,118 -50,224 -52,332" fill="none" stroke="#2DA8A0" strokeWidth="2.4" opacity="0.45"/>
+    <path d="M62,54 C77,118 76,224 78,332" fill="none" stroke="#2DA8A0" strokeWidth="2.4" opacity="0.45"/>
 
-    {/* Twin tails — left */}
-    <path d="M-12,36 C-22,50 -34,90 -40,160 C-44,210 -42,280 -38,340 C-36,360 -30,370 -24,368 C-18,366 -16,350 -18,330 C-22,270 -26,200 -24,140 C-22,100 -16,65 -10,42" fill="#39C5BB"/>
-    <path d="M-14,38 C-24,55 -36,100 -40,170 C-43,220 -40,280 -36,335" fill="none" stroke="#2DA8A0" strokeWidth="2" opacity="0.4"/>
-    {/* Twin tails — right */}
-    <path d="M38,36 C48,50 60,90 66,160 C70,210 68,280 64,340 C62,360 56,370 50,368 C44,366 42,350 44,330 C48,270 52,200 50,140 C48,100 42,65 36,42" fill="#39C5BB"/>
-    <path d="M40,38 C50,55 62,100 66,170 C69,220 66,280 62,335" fill="none" stroke="#2DA8A0" strokeWidth="2" opacity="0.4"/>
-    {/* Hair tie accents (red ribbons) */}
-    <circle cx="-12" cy="40" r="5" fill="#E85650"/>
-    <circle cx="38" cy="40" r="5" fill="#E85650"/>
+    {/* Head and hair cap, back view only. */}
+    <rect x="4" y="45" width="18" height="18" rx="5" fill="#F5C5A3" opacity="0.72"/>
+    <ellipse cx="13" cy="24" rx="26" ry="31" fill="#F5C5A3" opacity="0.72"/>
+    <ellipse cx="13" cy="15" rx="31" ry="30" fill="#39C5BB"/>
+    <path d="M-18,12 Q13,-20 44,12 Q45,32 38,48 Q22,57 4,53 Q-14,49 -19,31 Z" fill="#39C5BB"/>
+    <path d="M-8,3 Q13,-12 34,3 Q30,18 13,23 Q-3,18 -8,3 Z" fill="#4DE8D8" opacity="0.25"/>
+    <path d="M-16,34 Q13,58 42,34 L36,52 Q13,68 -10,52 Z" fill="#2DA8A0" opacity="0.35"/>
 
-    {/* Neck */}
-    <rect x="4" y="46" width="18" height="16" rx="4" fill="#F5C5A3" opacity="0.7"/>
+    {/* Red ribbon bows at the left-up/right-up tie points. */}
+    <g fill="#E85650">
+      <circle cx="-24" cy="25" r="5"/>
+      <path d="M-28,24 L-52,14 L-45,35 Z"/>
+      <path d="M-20,24 L-2,10 L-5,33 Z"/>
+      <circle cx="48" cy="25" r="5"/>
+      <path d="M44,24 L26,10 L29,33 Z"/>
+      <path d="M52,24 L76,14 L69,35 Z"/>
+    </g>
 
-    {/* Body / torso (back view, gray top — Miku style) */}
-    <path d="M-8,62 C-16,68 -22,82 -24,110 L-26,195 C-26,200 -22,204 -16,204 L42,204 C48,204 52,200 52,195 L48,110 C44,82 38,68 30,62 Z" fill="#3A3A50"/>
-    {/* Back collar detail */}
-    <rect x="0" y="60" width="26" height="6" rx="3" fill="#555570" opacity="0.5"/>
-    {/* Sleeves */}
-    <path d="M-24,90 C-34,100 -40,120 -38,145" fill="none" stroke="#3A3A50" strokeWidth="16" strokeLinecap="round"/>
-    <path d="M52,90 C62,100 68,120 66,145" fill="none" stroke="#3A3A50" strokeWidth="16" strokeLinecap="round"/>
+    {/* Sleeves and arms */}
+    <path d="M-24,84 C-35,96 -42,124 -39,152" fill="none" stroke="#2C2C3F" strokeWidth="16" strokeLinecap="round"/>
+    <path d="M50,84 C62,98 70,128 68,154" fill="none" stroke="#2C2C3F" strokeWidth="16" strokeLinecap="round"/>
+    <path d="M-39,151 C-41,162 -42,175 -39,185" fill="none" stroke="#F5C5A3" strokeWidth="8" strokeLinecap="round" opacity="0.75"/>
+    <path d="M68,153 C72,166 78,178 84,188" fill="none" stroke="#F5C5A3" strokeWidth="8" strokeLinecap="round" opacity="0.75"/>
 
-    {/* Left arm holding leek (hanging at side) */}
-    <path d="M-38,145 C-40,155 -42,170 -40,182" fill="none" stroke="#F5C5A3" strokeWidth="8" strokeLinecap="round" opacity="0.7"/>
-    {/* Right arm extended, holding a large leek */}
-    <path d="M66,145 C70,160 76,175 82,185" fill="none" stroke="#F5C5A3" strokeWidth="8" strokeLinecap="round" opacity="0.7"/>
     {/* Leek */}
-    <line x1="78" y1="175" x2="105" y2="90" stroke="#5BAD7A" strokeWidth="5" strokeLinecap="round"/>
+    <line x1="80" y1="178" x2="105" y2="90" stroke="#5BAD7A" strokeWidth="5" strokeLinecap="round"/>
     <line x1="105" y1="90" x2="108" y2="78" stroke="#4A9968" strokeWidth="4" strokeLinecap="round"/>
-    {/* Leek leaves */}
     <path d="M105,90 C115,75 125,68 130,72 C128,80 118,88 108,92" fill="#5BAD7A" opacity="0.8"/>
     <path d="M106,86 C112,70 120,60 126,62 C125,70 116,80 108,86" fill="#4A9968" opacity="0.6"/>
 
-    {/* Skirt (Miku-style pleated, dark gray) */}
-    <path d="M-20,200 L-30,260 L-10,262 L2,210 L8,210 L20,262 L40,262 L52,260 L42,200 Z" fill="#3A3A50"/>
-    <line x1="-20" y1="210" x2="-26" y2="255" stroke="#555570" strokeWidth="0.8" opacity="0.5"/>
-    <line x1="0" y1="205" x2="-5" y2="258" stroke="#555570" strokeWidth="0.8" opacity="0.5"/>
-    <line x1="22" y1="205" x2="28" y2="258" stroke="#555570" strokeWidth="0.8" opacity="0.5"/>
-    <line x1="42" y1="210" x2="48" y2="255" stroke="#555570" strokeWidth="0.8" opacity="0.5"/>
+    {/* Back torso: gray Miku-inspired top with teal trim. */}
+    <path d="M-10,62 C-18,70 -23,87 -24,112 L-24,190 C-24,197 -18,202 -10,202 L36,202 C45,202 50,197 50,190 L48,112 C46,87 40,70 31,62 Z" fill="#3A3A50"/>
+    <path d="M-8,66 Q13,79 34,66" fill="none" stroke="#39C5BB" strokeWidth="4" strokeLinecap="round" opacity="0.9"/>
+    <rect x="-15" y="106" width="5" height="78" rx="2.5" fill="#39C5BB" opacity="0.75"/>
+    <rect x="38" y="106" width="5" height="78" rx="2.5" fill="#39C5BB" opacity="0.75"/>
+    <rect x="-22" y="188" width="74" height="8" rx="4" fill="#39C5BB" opacity="0.85"/>
 
-    {/* Thigh-high socks (Miku teal) */}
-    <rect x="-22" y="260" width="24" height="100" rx="6" fill="#39C5BB" opacity="0.85"/>
-    <rect x="20" y="260" width="24" height="100" rx="6" fill="#39C5BB" opacity="0.85"/>
-    {/* Sock top rings */}
-    <rect x="-22" y="260" width="24" height="5" rx="2" fill="#2DA8A0"/>
-    <rect x="20" y="260" width="24" height="5" rx="2" fill="#2DA8A0"/>
+    {/* Ultra-short pleated skirt, visible thighs, black stockings. */}
+    <path d="M-24,194 L-35,232 L-14,235 L-4,202 L5,202 L14,235 L36,235 L52,231 L42,194 Z" fill="#2C2C3F"/>
+    <line x1="-20" y1="199" x2="-29" y2="229" stroke="#555570" strokeWidth="1" opacity="0.55"/>
+    <line x1="0" y1="199" x2="-5" y2="232" stroke="#555570" strokeWidth="1" opacity="0.55"/>
+    <line x1="22" y1="199" x2="28" y2="232" stroke="#555570" strokeWidth="1" opacity="0.55"/>
+    <rect x="-20" y="232" width="22" height="38" rx="7" fill="#F5C5A3" opacity="0.78"/>
+    <rect x="22" y="232" width="22" height="38" rx="7" fill="#F5C5A3" opacity="0.78"/>
+    <rect x="-22" y="268" width="25" height="92" rx="7" fill="#11111A"/>
+    <rect x="20" y="268" width="25" height="92" rx="7" fill="#11111A"/>
+    <rect x="-22" y="268" width="25" height="5" rx="2.5" fill="#39C5BB" opacity="0.8"/>
+    <rect x="20" y="268" width="25" height="5" rx="2.5" fill="#39C5BB" opacity="0.8"/>
 
-    {/* Shoes (black) */}
+    {/* Shoes */}
     <path d="M-24,358 C-26,362 -26,370 -20,372 L4,372 C6,370 6,362 2,358" fill="#1E1E2E"/>
     <path d="M18,358 C16,362 16,370 22,372 L46,372 C48,370 48,362 44,358" fill="#1E1E2E"/>
   </g>
