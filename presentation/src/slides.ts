@@ -108,6 +108,14 @@ for (let pi = 1; pi < rawParagraphs.length; pi++) {
   });
 }
 
+slides.push({
+  globalIndex: slides.length,
+  paragraphIndex: -1,
+  sentenceIndex: 0,
+  text: "NEX 体验报名",
+  svgSceneId: "signup",
+});
+
 export const allSlides: Slide[] = slides;
 export const allParagraphs: Paragraph[] = paragraphs;
 export const totalSlides: number = slides.length;

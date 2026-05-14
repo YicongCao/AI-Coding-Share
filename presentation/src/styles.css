@@ -99,6 +99,148 @@ button:disabled {
   text-shadow: 0 0 10px rgba(255, 244, 92, 0.7);
 }
 
+/* ===== Signup form overlay ===== */
+.signup-overlay {
+  position: absolute;
+  z-index: 15;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.signup-card {
+  pointer-events: auto;
+  width: min(420px, 88vw);
+  background: rgba(20, 22, 38, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(250, 204, 21, 0.2);
+  border-radius: 20px;
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.signup-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.signup-field label {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.signup-field input,
+.signup-field textarea {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 10px 14px;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.signup-field input:focus,
+.signup-field textarea:focus {
+  border-color: #FACC15;
+}
+
+.signup-field textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+.signup-roles {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.signup-role-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 6px 18px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.signup-role-btn:hover {
+  border-color: #FACC15;
+  color: #FACC15;
+}
+
+.signup-role-btn.active {
+  background: #FACC15;
+  border-color: #FACC15;
+  color: #000000;
+  font-weight: 600;
+}
+
+.signup-submit {
+  background: #FACC15;
+  border: none;
+  border-radius: 12px;
+  padding: 12px;
+  color: #000000;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  margin-top: 4px;
+}
+
+.signup-submit:hover {
+  opacity: 0.9;
+}
+
+.signup-submit:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.signup-thanks {
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  padding: 40px 32px;
+}
+
+.signup-thanks-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #FACC15;
+  color: #000000;
+  font-size: 28px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup-thanks h2 {
+  color: #FACC15;
+  font-size: 24px;
+  margin: 0;
+}
+
+.signup-thanks p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  margin: 0;
+}
+
 .audience-disconnected {
   position: absolute;
   top: 16px;

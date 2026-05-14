@@ -240,12 +240,75 @@ function serveStatic(req: http.IncomingMessage, res: http.ServerResponse) {
   });
 }
 
-const httpServer = http.createServer((req, res) => {
-  if ((req.url ?? "").startsWith("/healthz")) {
+type SignupEntry = {
+  name: string;
+  role: string;
+  favoriteAI: string;
+  useCase: string;
+  submittedAt: string;
+};
+
+const signupEntries: SignupEntry[] = [];
+
+function readBody(req: http.IncomingMessage): Promise<string> {
+  return new Promise((resolve) => {
+    let body = "";
+    req.on("data", (chunk: Buffer) => { body += chunk.toString(); });
+    req.on("end", () => resolve(body));
+  });
+}
+
+const httpServer = http.createServer(async (req, res) => {
+  const urlStr = req.url ?? "/";
+  const parsedUrl = url.parse(urlStr, true);
+  const pathname = parsedUrl.pathname ?? "/";
+
+  if (pathname === "/healthz") {
     res.writeHead(200, { "content-type": "text/plain" });
     res.end("ok");
     return;
   }
+
+  if (pathname === "/api/signup" && req.method === "POST") {
+    try {
+      const raw = await readBody(req);
+      const data = JSON.parse(raw);
+      const entry: SignupEntry = {
+        name: String(data.name ?? "").slice(0, 100),
+        role: String(data.role ?? "").slice(0, 50),
+        favoriteAI: String(data.favoriteAI ?? "").slice(0, 200),
+        useCase: String(data.useCase ?? "").slice(0, 500),
+        submittedAt: new Date().toISOString(),
+      };
+      signupEntries.push(entry);
+      res.writeHead(200, { "content-type": "application/json" });
+      res.end(JSON.stringify({ ok: true, count: signupEntries.length }));
+    } catch {
+      res.writeHead(400, { "content-type": "application/json" });
+      res.end(JSON.stringify({ ok: false, error: "invalid body" }));
+    }
+    return;
+  }
+
+  if (pathname === "/api/signup" && req.method === "GET") {
+    if (parsedUrl.query.format === "csv") {
+      const header = "name,role,favoriteAI,useCase,submittedAt\n";
+      const csvEscape = (s: string) => `"${s.replace(/"/g, '""')}"`;
+      const rows = signupEntries.map((e) =>
+        [e.name, e.role, e.favoriteAI, e.useCase, e.submittedAt].map(csvEscape).join(",")
+      ).join("\n");
+      res.writeHead(200, {
+        "content-type": "text/csv; charset=utf-8",
+        "content-disposition": "attachment; filename=signup-entries.csv",
+      });
+      res.end("\uFEFF" + header + rows);
+    } else {
+      res.writeHead(200, { "content-type": "application/json" });
+      res.end(JSON.stringify(signupEntries));
+    }
+    return;
+  }
+
   serveStatic(req, res);
 });
 

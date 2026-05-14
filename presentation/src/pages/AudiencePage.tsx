@@ -3,6 +3,7 @@ import SvgScene, { type SvgSceneDef } from "../svg/SvgScene";
 import { getSvgSceneDef } from "../svg/registry";
 import { useSync } from "../sync/wsClient";
 import { allSlides, totalSlides } from "../slides";
+import SignupForm from "./SignupForm";
 
 const EXIT_LINGER_MS = 1000;
 const MIN_SLIDE_READ_MS = 5000;
@@ -249,7 +250,8 @@ export default function AudiencePage() {
       ) : (
         <div className="audience-waiting">等待演讲开始…</div>
       )}
-      {state && (
+      {state && slide.svgSceneId === "signup" && <SignupForm />}
+      {state && slide.svgSceneId !== "signup" && (
         <div className="audience-subtitle">
           <SubtitleHighlighter
             text={slide.text}

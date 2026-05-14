@@ -77,6 +77,7 @@ import { selfAwarenessSceneDef } from "./scenes/selfAwarenessDef";
 import { todayYesterdaySceneDef } from "./scenes/todayYesterdayDef";
 import { slowAndFastSceneDef } from "./scenes/slowAndFastDef";
 import { finaleSceneDef } from "./scenes/finaleDef";
+import { signupSceneDef } from "./scenes/signupDef";
 
 const SVG_SCENES: Record<string, SvgSceneDef> = {
   cover: coverSceneDef,
@@ -157,6 +158,7 @@ const SVG_SCENES: Record<string, SvgSceneDef> = {
   todayYesterday: todayYesterdaySceneDef,
   slowAndFast: slowAndFastSceneDef,
   finale: finaleSceneDef,
+  signup: signupSceneDef,
 };
 
 export function getSvgSceneDef(id: string): SvgSceneDef | undefined {

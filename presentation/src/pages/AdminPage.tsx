@@ -280,6 +280,28 @@ function AdminConsole({ onLogout }: { onLogout: () => void }) {
     };
   }, [stats?.activeAudience, currentIndex]);
 
+  type SignupEntry = { name: string; role: string; favoriteAI: string; useCase: string; submittedAt: string };
+  const [showSignups, setShowSignups] = useState(false);
+  const [signupList, setSignupList] = useState<SignupEntry[]>([]);
+  const [signupCount, setSignupCount] = useState(0);
+
+  const fetchSignups = useCallback(async () => {
+    try {
+      const res = await fetch("/api/signup");
+      const data = await res.json();
+      if (Array.isArray(data)) {
+        setSignupList(data);
+        setSignupCount(data.length);
+      }
+    } catch { /* ignore */ }
+  }, []);
+
+  useEffect(() => {
+    fetchSignups();
+    const id = setInterval(fetchSignups, 10000);
+    return () => clearInterval(id);
+  }, [fetchSignups]);
+
   const clearEngagement = () => {
     if (!confirm("清空所有活跃度统计？此操作不可恢复。")) return;
     const empty = new Array(totalSlides).fill(0);
@@ -520,6 +542,57 @@ function AdminConsole({ onLogout }: { onLogout: () => void }) {
               </div>
             );
           })}
+        </div>
+
+        <div className="signup-admin-section">
+          <h3 onClick={() => setShowSignups((v) => !v)} style={{ cursor: "pointer", userSelect: "none" }}>
+            {showSignups ? "▾" : "▸"} Signup Entries ({signupCount})
+          </h3>
+          {showSignups && (
+            <>
+              <button
+                className="btn-primary"
+                style={{ marginBottom: 8, fontSize: 13, padding: "6px 16px" }}
+                onClick={() => window.open("/api/signup?format=csv")}
+              >
+                导出 CSV
+              </button>
+              <button
+                style={{ marginLeft: 8, marginBottom: 8, fontSize: 13, padding: "6px 16px" }}
+                onClick={fetchSignups}
+              >
+                刷新
+              </button>
+              <div style={{ maxHeight: 300, overflow: "auto", fontSize: 12, lineHeight: 1.6 }}>
+                {signupList.length === 0 ? (
+                  <p style={{ opacity: 0.5 }}>暂无报名</p>
+                ) : (
+                  <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                    <thead>
+                      <tr style={{ borderBottom: "1px solid #555" }}>
+                        <th style={{ textAlign: "left", padding: "4px 8px" }}>姓名</th>
+                        <th style={{ textAlign: "left", padding: "4px 8px" }}>岗位</th>
+                        <th style={{ textAlign: "left", padding: "4px 8px" }}>最爱 AI</th>
+                        <th style={{ textAlign: "left", padding: "4px 8px" }}>用途</th>
+                        <th style={{ textAlign: "left", padding: "4px 8px" }}>时间</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {signupList.map((entry, i) => (
+                        <tr key={i} style={{ borderBottom: "1px solid #333" }}>
+                          <td style={{ padding: "4px 8px" }}>{entry.name}</td>
+                          <td style={{ padding: "4px 8px" }}>{entry.role}</td>
+                          <td style={{ padding: "4px 8px" }}>{entry.favoriteAI}</td>
+                          <td style={{ padding: "4px 8px", maxWidth: 200, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{entry.useCase}</td>
+                          <td style={{ padding: "4px 8px", whiteSpace: "nowrap" }}>{new Date(entry.submittedAt).toLocaleString()}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                )}
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>
