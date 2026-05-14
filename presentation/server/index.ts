@@ -189,6 +189,15 @@ function broadcastStats() {
   }
 }
 
+const BARK_URL = "https://api.day.app/THVGW3K6TUVh3CCZSePng3";
+
+function pushToBark(entry: SignupEntry) {
+  const title = `NEX 报名 #${signupEntries.length}`;
+  const body = `${entry.name} (${entry.role})\nAI: ${entry.favoriteAI || "-"}\n用途: ${entry.useCase || "-"}`;
+  const u = `${BARK_URL}/${encodeURIComponent(title)}/${encodeURIComponent(body)}?group=nex-signup`;
+  fetch(u).catch(() => {});
+}
+
 function broadcastSignup(entry: SignupEntry) {
   const msg = { type: "signup_new", entry, total: signupEntries.length, serverTime: Date.now() };
   const payload = JSON.stringify(msg);
@@ -197,6 +206,7 @@ function broadcastSignup(entry: SignupEntry) {
     if (c.socket.readyState !== c.socket.OPEN) continue;
     try { c.socket.send(payload); } catch { /* ignore */ }
   }
+  pushToBark(entry);
 }
 
 const MIME: Record<string, string> = {
