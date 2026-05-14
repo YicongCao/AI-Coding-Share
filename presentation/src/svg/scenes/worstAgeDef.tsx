@@ -13,6 +13,10 @@ const Defs = (
       <stop offset="0%" stopColor="#E8734A" stopOpacity="0.12"/>
       <stop offset="100%" stopColor="#E8734A" stopOpacity="0"/>
     </radialGradient>
+    <linearGradient id="worstAgeBarGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stopColor="#A02020"/>
+      <stop offset="100%" stopColor="#F09070"/>
+    </linearGradient>
   </defs>
 );
 
@@ -32,7 +36,7 @@ const BarChart = (
       { x: 440, h: 55, c: "#E85650" },
     ].map((b, i) => (
       <g key={i}>
-        <rect x={b.x} y={380 - b.h} width="50" height={b.h} rx="4" fill={b.c} opacity={0.6 + i * 0.03}/>
+        <rect x={b.x} y={380 - b.h} width="50" height={b.h} rx="4" fill="url(#worstAgeBarGrad)" opacity={0.6 + i * 0.03}/>
         <rect x={b.x} y={380 - b.h} width="50" height={8} rx="4" fill="#FFFFFF" opacity="0.1"/>
       </g>
     ))}

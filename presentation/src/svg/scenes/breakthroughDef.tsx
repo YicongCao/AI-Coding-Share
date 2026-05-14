@@ -13,13 +13,17 @@ const Defs = (
       <stop offset="0%" stopColor="#5BAD7A" stopOpacity="0.12"/>
       <stop offset="100%" stopColor="#5BAD7A" stopOpacity="0"/>
     </radialGradient>
+    <linearGradient id="breakthroughCurveGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stopColor="#4A7BCC"/>
+      <stop offset="100%" stopColor="#E8B84A"/>
+    </linearGradient>
   </defs>
 );
 
 
 const ExpCurve = (
   <g>
-    <path d="M80,550 Q200,540 350,500 Q500,440 600,360 Q700,260 800,180 Q900,110 1000,60" fill="none" stroke="#5BAD7A" strokeWidth="3.5" strokeLinecap="round"/>
+    <path d="M80,550 Q200,540 350,500 Q500,440 600,360 Q700,260 800,180 Q900,110 1000,60" fill="none" stroke="url(#breakthroughCurveGrad)" strokeWidth="3.5" strokeLinecap="round"/>
     <path d="M80,550 Q200,540 350,500 Q500,440 600,360 Q700,260 800,180 Q900,110 1000,60 L1000,580 L80,580 Z" fill="#5BAD7A" opacity="0.06"/>
     {[200, 350, 500, 650, 800, 950].map((x, i) => (
       <circle key={i} cx={x} cy={550 - (i * i * 14)} r="5" fill="#5BAD7A" opacity={0.5 + i * 0.08}/>

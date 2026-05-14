@@ -4,6 +4,8 @@ const Background = (
   <g>
     <rect width="1200" height="675" fill="#2B2B3D"/>
     <rect width="1200" height="675" fill="url(#bestWorstIntroBgGlow)"/>
+    <rect x="0" y="0" width="600" height="675" fill="url(#bestWorstLeftGlow)"/>
+    <rect x="600" y="0" width="600" height="675" fill="url(#bestWorstRightGlow)"/>
   </g>
 );
 
@@ -12,6 +14,18 @@ const Defs = (
     <radialGradient id="bestWorstIntroBgGlow" cx="50%" cy="30%" r="60%">
       <stop offset="0%" stopColor="#E8734A" stopOpacity="0.12"/>
       <stop offset="100%" stopColor="#E8734A" stopOpacity="0"/>
+    </radialGradient>
+    <linearGradient id="bestWorstDividerGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stopColor="#E8B84A"/>
+      <stop offset="100%" stopColor="#E85650"/>
+    </linearGradient>
+    <radialGradient id="bestWorstLeftGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stopColor="#E8B84A" stopOpacity="0.06"/>
+      <stop offset="100%" stopColor="#E8B84A" stopOpacity="0"/>
+    </radialGradient>
+    <radialGradient id="bestWorstRightGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stopColor="#E85650" stopOpacity="0.06"/>
+      <stop offset="100%" stopColor="#E85650" stopOpacity="0"/>
     </radialGradient>
   </defs>
 );
@@ -85,8 +99,8 @@ const DarkHalf = (
 
 const CenterDivider = (
   <g>
-    <line x1="600" y1="120" x2="600" y2="570" stroke="#555570" strokeWidth="2" strokeDasharray="8 6" opacity="0.5"/>
-    <circle cx="600" cy="345" r="10" fill="#252538" stroke="#555570" strokeWidth="1.5"/>
+    <line x1="600" y1="120" x2="600" y2="570" stroke="url(#bestWorstDividerGrad)" strokeWidth="2" strokeDasharray="8 6" opacity="0.5"/>
+    <circle cx="600" cy="345" r="10" fill="#252538" stroke="url(#bestWorstDividerGrad)" strokeWidth="1.5"/>
   </g>
 );
 

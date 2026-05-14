@@ -4,6 +4,12 @@ const Background = (
   <g>
     <rect width="1200" height="675" fill="#2B2B3D"/>
     <rect width="1200" height="675" fill="url(#chatgptBgGlow)"/>
+    {[30, 85, 150, 220, 290].map((angle, i) => {
+      const rad = angle * Math.PI / 180;
+      return (
+        <line key={i} x1={600} y1={337} x2={600 + 600 * Math.cos(rad)} y2={337 + 600 * Math.sin(rad)} stroke="white" strokeWidth="0.5" opacity="0.04"/>
+      );
+    })}
   </g>
 );
 
