@@ -22,9 +22,6 @@ const Defs = (
 
 const HeaderPanel = (
   <g>
-    {/* Frosted glass backing — same width as signup-card (420px) */}
-    <rect x="390" y="18" width="420" height="200" rx="20" fill="#1E1E2E" opacity="0.55" stroke="#FFFFFF" strokeOpacity="0.06" strokeWidth="1"/>
-    <rect x="390" y="18" width="420" height="200" rx="20" fill="#2B2B3D" opacity="0.3"/>
     {/* NEX Logo */}
     <g transform="translate(540, 30)">
       <g transform="scale(2.8)">
