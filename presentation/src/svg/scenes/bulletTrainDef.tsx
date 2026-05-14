@@ -18,8 +18,8 @@ const Defs = (
 );
 
 const TYPEWRITER_LINES = [
-  { text: "流式输出正在出现", color: "#FFFFFF", size: 24, weight: "bold" },
-  { text: "先看到方向，再看到细节", color: "#FFFFFF", size: 18, weight: "normal" },
+  { text: "Streaming output is appearing", color: "#FFFFFF", size: 24, weight: "bold" },
+  { text: "See the direction first, then the details", color: "#FFFFFF", size: 18, weight: "normal" },
   { text: "token token token token token ", color: "#6EC8E6", size: 16, weight: "normal" },
 ];
 
