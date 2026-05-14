@@ -15,6 +15,7 @@ export type SvgFragment = {
   enterDelay: number;
   floatAmp: Vec2;
   floatPeriod: Vec2;
+  floatRotate?: number;
   exitTo?: Vec2;
   exitDelay?: number;
   exitSpin?: number;
@@ -161,8 +162,10 @@ const SvgScene = memo(function SvgScene({
 
         const tx = offX + floatX;
         const ty = offY + floatY;
+        const fr = frag.floatRotate ?? 0;
+        const floatR = fr !== 0 ? Math.sin(now / frag.floatPeriod.x + phase * 0.7) * fr * eE : 0;
 
-        g.setAttribute("transform", `translate(${tx.toFixed(1)},${ty.toFixed(1)})`);
+        g.setAttribute("transform", `translate(${tx.toFixed(1)},${ty.toFixed(1)}) rotate(${floatR.toFixed(2)})`);
         g.setAttribute("opacity", String(Math.min(1, eE * 1.5).toFixed(2)));
       }
 
