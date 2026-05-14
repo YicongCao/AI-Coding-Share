@@ -31,7 +31,7 @@ const Staircase = (
       const x = i * 200;
       const h = 60 + i * 50;
       const y = -h;
-      const colors = ["#555570", "#4A7BCC", "#6EC8E6", "#5BAD7A", "#E8B84A"];
+      const colors = ["#4A7BCC", "#3CC8C8", "#5BAD7A", "#E8B84A", "#E8734A"];
       return (
         <g key={i}>
           <rect x={x} y={y} width="180" height={h} rx="8" fill="#1E1E2E" stroke={colors[i]} strokeWidth="2"/>
