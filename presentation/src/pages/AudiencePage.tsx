@@ -5,6 +5,41 @@ import { useSync } from "../sync/wsClient";
 import { allSlides, totalSlides } from "../slides";
 import SignupForm from "./SignupForm";
 
+const STAGE_ASPECT = 16 / 9;
+const MASK_COLOR = "#000000";
+
+function StageMask() {
+  const [bars, setBars] = useState<{ top: number; bottom: number; left: number; right: number }>({ top: 0, bottom: 0, left: 0, right: 0 });
+  useEffect(() => {
+    function calc() {
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+      const windowAspect = vw / vh;
+      if (windowAspect > STAGE_ASPECT) {
+        const stageW = vh * STAGE_ASPECT;
+        const side = (vw - stageW) / 2;
+        setBars({ top: 0, bottom: 0, left: side, right: side });
+      } else {
+        const stageH = vw / STAGE_ASPECT;
+        const bar = (vh - stageH) / 2;
+        setBars({ top: bar, bottom: bar, left: 0, right: 0 });
+      }
+    }
+    calc();
+    window.addEventListener("resize", calc);
+    return () => window.removeEventListener("resize", calc);
+  }, []);
+  const s: React.CSSProperties = { position: "absolute", background: MASK_COLOR, zIndex: 30, pointerEvents: "none" };
+  return (
+    <>
+      {bars.top > 0 && <div style={{ ...s, top: 0, left: 0, right: 0, height: bars.top }} />}
+      {bars.bottom > 0 && <div style={{ ...s, bottom: 0, left: 0, right: 0, height: bars.bottom }} />}
+      {bars.left > 0 && <div style={{ ...s, top: 0, bottom: 0, left: 0, width: bars.left }} />}
+      {bars.right > 0 && <div style={{ ...s, top: 0, bottom: 0, right: 0, width: bars.right }} />}
+    </>
+  );
+}
+
 const EXIT_LINGER_MS = 1000;
 const MIN_SLIDE_READ_MS = 5000;
 const MAX_SLIDE_READ_MS = 30000;
@@ -266,6 +301,7 @@ export default function AudiencePage() {
           {status === "connecting" ? "正在连接…" : "连接已断开，正在重连…"}
         </div>
       )}
+      <StageMask />
     </div>
   );
 }

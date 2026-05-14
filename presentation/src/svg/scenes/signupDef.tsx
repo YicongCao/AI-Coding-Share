@@ -22,9 +22,9 @@ const Defs = (
 
 const HeaderPanel = (
   <g>
-    {/* Frosted glass backing */}
-    <rect x="360" y="18" width="480" height="200" rx="20" fill="#1E1E2E" opacity="0.55" stroke="#FFFFFF" strokeOpacity="0.06" strokeWidth="1"/>
-    <rect x="360" y="18" width="480" height="200" rx="20" fill="#2B2B3D" opacity="0.3"/>
+    {/* Frosted glass backing — same width as signup-card (420px) */}
+    <rect x="390" y="18" width="420" height="200" rx="20" fill="#1E1E2E" opacity="0.55" stroke="#FFFFFF" strokeOpacity="0.06" strokeWidth="1"/>
+    <rect x="390" y="18" width="420" height="200" rx="20" fill="#2B2B3D" opacity="0.3"/>
     {/* NEX Logo */}
     <g transform="translate(540, 30)">
       <g transform="scale(2.8)">
@@ -83,10 +83,10 @@ export const signupSceneDef: SvgSceneDef = {
   defs: Defs,
   background: Background,
   fragments: [
-    { id: "header", content: HeaderPanel, enterFrom: { x: 0, y: -300 }, enterDelay: 0, floatAmp: { x: 6, y: 8 }, floatPeriod: { x: 6, y: 7 }, floatRotate: 0.5 },
     { id: "shotTL", content: ScreenshotTL, enterFrom: { x: -400, y: -300 }, enterDelay: 150, floatAmp: { x: 14, y: 16 }, floatPeriod: { x: 5, y: 6 }, floatRotate: 1.5 },
     { id: "shotTR", content: ScreenshotTR, enterFrom: { x: 400, y: -300 }, enterDelay: 200, floatAmp: { x: 16, y: 14 }, floatPeriod: { x: 5.5, y: 5 }, floatRotate: -1.5 },
     { id: "shotBL", content: ScreenshotBL, enterFrom: { x: -400, y: 300 }, enterDelay: 250, floatAmp: { x: 12, y: 18 }, floatPeriod: { x: 4.5, y: 6.5 }, floatRotate: 2 },
     { id: "shotBR", content: ScreenshotBR, enterFrom: { x: 400, y: 300 }, enterDelay: 300, floatAmp: { x: 18, y: 12 }, floatPeriod: { x: 5, y: 4.5 }, floatRotate: -2 },
+    { id: "header", content: HeaderPanel, enterFrom: { x: 0, y: -300 }, enterDelay: 0, floatAmp: { x: 6, y: 8 }, floatPeriod: { x: 6, y: 7 }, floatRotate: 0.5 },
   ],
 };
