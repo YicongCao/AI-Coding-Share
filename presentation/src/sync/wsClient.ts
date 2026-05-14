@@ -29,13 +29,23 @@ export type AdminCommand =
   | { type: "start" }
   | { type: "setTotal"; total: number };
 
+export type SignupEntry = {
+  name: string;
+  role: string;
+  favoriteAI: string;
+  useCase: string;
+  submittedAt: string;
+};
+
 export type SyncBag = {
   state: SyncState | null;
   status: SyncStatus;
   timeOffsetMs: number;
   stats: SyncStats | null;
   clientId: string | null;
+  signupEntries: SignupEntry[];
   send: (cmd: AdminCommand) => void;
+  sendJson: (msg: object) => void;
 };
 
 export type SyncOptions = {
@@ -59,6 +69,7 @@ export function useSync({
   const [status, setStatus] = useState<SyncStatus>("connecting");
   const [timeOffsetMs, setTimeOffsetMs] = useState(0);
   const [clientId, setClientId] = useState<string | null>(null);
+  const [signupEntries, setSignupEntries] = useState<SignupEntry[]>([]);
 
   const wsRef = useRef<WebSocket | null>(null);
   const reconnectTimerRef = useRef<number | null>(null);
@@ -152,6 +163,9 @@ export function useSync({
           } else if (msg.type === "stats") {
             const payload = (msg as { payload?: SyncStats }).payload;
             if (payload && typeof payload === "object") setStats(payload);
+          } else if (msg.type === "signup_new") {
+            const entry = (msg as { entry?: SignupEntry }).entry;
+            if (entry) setSignupEntries((prev) => [...prev, entry]);
           }
         } catch (err) {
           console.warn("[sync] bad message", err);
@@ -224,5 +238,15 @@ export function useSync({
     }
   };
 
-  return { state, status, timeOffsetMs, stats, clientId, send };
+  const sendJson = (msg: object) => {
+    const ws = wsRef.current;
+    if (!ws || ws.readyState !== WebSocket.OPEN) return;
+    try {
+      ws.send(JSON.stringify(msg));
+    } catch (err) {
+      console.warn("[sync] sendJson failed", err);
+    }
+  };
+
+  return { state, status, timeOffsetMs, stats, clientId, signupEntries, send, sendJson };
 }

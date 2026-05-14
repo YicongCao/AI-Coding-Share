@@ -21,7 +21,8 @@ type AdminCommand =
 type ClientMessage =
   | AdminCommand
   | { type: "identify"; role: Role }
-  | { type: "ping" };
+  | { type: "ping" }
+  | { type: "signup"; name: string; role: string; favoriteAI: string; useCase: string };
 
 type ServerState = {
   totalSlides: number;
@@ -185,6 +186,16 @@ function broadcastStats() {
     } catch {
       /* ignore */
     }
+  }
+}
+
+function broadcastSignup(entry: SignupEntry) {
+  const msg = { type: "signup_new", entry, total: signupEntries.length, serverTime: Date.now() };
+  const payload = JSON.stringify(msg);
+  for (const c of clients.values()) {
+    if (c.role !== "admin") continue;
+    if (c.socket.readyState !== c.socket.OPEN) continue;
+    try { c.socket.send(payload); } catch { /* ignore */ }
   }
 }
 
@@ -368,6 +379,20 @@ wss.on("connection", (socket) => {
         record.lastPingAt = Date.now();
         broadcastStats();
       }
+      return;
+    }
+
+    if (msg.type === "signup") {
+      const d = msg as Record<string, unknown>;
+      const entry: SignupEntry = {
+        name: String(d.name ?? "").slice(0, 100),
+        role: String(d.role ?? "").slice(0, 50),
+        favoriteAI: String(d.favoriteAI ?? "").slice(0, 200),
+        useCase: String(d.useCase ?? "").slice(0, 500),
+        submittedAt: new Date().toISOString(),
+      };
+      signupEntries.push(entry);
+      broadcastSignup(entry);
       return;
     }
 

@@ -2,30 +2,24 @@ import { useState, type FormEvent } from "react";
 
 const ROLES = ["产品", "研发", "PM", "市场"];
 
-export default function SignupForm() {
+export default function SignupForm({ sendJson }: { sendJson: (msg: object) => void }) {
   const [name, setName] = useState("");
   const [role, setRole] = useState("");
   const [favoriteAI, setFavoriteAI] = useState("");
   const [useCase, setUseCase] = useState("");
   const [submitted, setSubmitted] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
 
-  async function handleSubmit(e: FormEvent) {
+  function handleSubmit(e: FormEvent) {
     e.preventDefault();
     if (!name.trim() || !role) return;
-    setSubmitting(true);
-    try {
-      await fetch("/api/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: name.trim(), role, favoriteAI: favoriteAI.trim(), useCase: useCase.trim() }),
-      });
-      setSubmitted(true);
-    } catch {
-      alert("提交失败，请重试");
-    } finally {
-      setSubmitting(false);
-    }
+    sendJson({
+      type: "signup",
+      name: name.trim(),
+      role,
+      favoriteAI: favoriteAI.trim(),
+      useCase: useCase.trim(),
+    });
+    setSubmitted(true);
   }
 
   if (submitted) {
@@ -89,9 +83,9 @@ export default function SignupForm() {
         <button
           type="submit"
           className="signup-submit"
-          disabled={submitting || !name.trim() || !role}
+          disabled={!name.trim() || !role}
         >
-          {submitting ? "提交中..." : "提交报名"}
+          提交报名
         </button>
       </form>
     </div>

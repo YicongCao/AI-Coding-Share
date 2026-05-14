@@ -200,7 +200,7 @@ function SubtitleHighlighter({
 }
 
 export default function AudiencePage() {
-  const { state, status, timeOffsetMs } = useSync({ role: "audience" });
+  const { state, status, timeOffsetMs, sendJson } = useSync({ role: "audience" });
 
   const slideIndex = useMemo(() => {
     if (!state) return 0;
@@ -285,8 +285,8 @@ export default function AudiencePage() {
       ) : (
         <div className="audience-waiting">等待演讲开始…</div>
       )}
-      {state && slide.svgSceneId === "signup" && <SignupForm />}
-      {state && slide.svgSceneId !== "signup" && (
+      {state && slide.svgSceneId === "signup" && <SignupForm sendJson={sendJson} />}
+      {state && (
         <div className="audience-subtitle">
           <SubtitleHighlighter
             text={slide.text}
