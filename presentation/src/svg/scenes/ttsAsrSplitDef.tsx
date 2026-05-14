@@ -22,6 +22,7 @@ const TtsSide = (
     <path d="M220,245 Q235,260 220,275" fill="none" stroke="#5BAD7A" strokeWidth="2.5" strokeLinecap="round"/>
     <path d="M228,232 Q250,260 228,288" fill="none" stroke="#5BAD7A" strokeWidth="2" strokeLinecap="round" opacity="0.7"/>
     <path d="M236,222 Q264,260 236,298" fill="none" stroke="#5BAD7A" strokeWidth="1.5" strokeLinecap="round" opacity="0.4"/>
+    <path d="M244,212 Q278,260 244,308" fill="none" stroke="#5BAD7A" strokeWidth="1" strokeLinecap="round" opacity="0.2"/>
     {/* TTS label */}
     <text x="200" y="350" textAnchor="middle" fill="#5BAD7A" fontFamily="sans-serif" fontSize="28" fontWeight="bold">TTS</text>
     <text x="200" y="380" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="15" opacity="0.8">语音合成</text>
@@ -43,6 +44,7 @@ const AsrSide = (
     <path d="M960,245 Q945,260 960,275" fill="none" stroke="#6EC8E6" strokeWidth="2.5" strokeLinecap="round"/>
     <path d="M950,232 Q930,260 950,288" fill="none" stroke="#6EC8E6" strokeWidth="2" strokeLinecap="round" opacity="0.7"/>
     <path d="M940,222 Q914,260 940,298" fill="none" stroke="#6EC8E6" strokeWidth="1.5" strokeLinecap="round" opacity="0.4"/>
+    <path d="M930,212 Q900,260 930,298" fill="none" stroke="#6EC8E6" strokeWidth="1" strokeLinecap="round" opacity="0.2"/>
     {/* ASR label */}
     <text x="1000" y="350" textAnchor="middle" fill="#6EC8E6" fontFamily="sans-serif" fontSize="28" fontWeight="bold">ASR</text>
     <text x="1000" y="380" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="15" opacity="0.8">语音识别</text>
@@ -69,6 +71,12 @@ const CenterRobot = (
     <line x1="655" y1="240" x2="680" y2="260" stroke="#555570" strokeWidth="3" strokeLinecap="round"/>
     {/* Label */}
     <text x="600" y="312" textAnchor="middle" fill="#E8B84A" fontFamily="sans-serif" fontSize="13" opacity="0.8">AI Engine</text>
+    {/* Conversion symbol */}
+    <path d="M576,340 A28,28 0 0,1 624,340" fill="none" stroke="#E8B84A" strokeWidth="2" strokeLinecap="round"/>
+    <path d="M624,340 L618,334 M624,340 L618,346" fill="none" stroke="#E8B84A" strokeWidth="2" strokeLinecap="round"/>
+    <path d="M624,362 A28,28 0 0,1 576,362" fill="none" stroke="#E8B84A" strokeWidth="2" strokeLinecap="round"/>
+    <path d="M576,362 L582,356 M576,362 L582,368" fill="none" stroke="#E8B84A" strokeWidth="2" strokeLinecap="round"/>
+    <text x="600" y="355" textAnchor="middle" fill="#E8B84A" fontFamily="sans-serif" fontSize="10" opacity="0.7">转化</text>
   </g>
 );
 

@@ -28,12 +28,13 @@ const StateNodes = (
   <g>
     {states.map((s, i) => (
       <g key={i}>
+        <circle cx={s.x} cy={s.y} r="48" fill={s.color} opacity="0.1"/>
         <circle cx={s.x} cy={s.y} r="38" fill="#1E1E2E" stroke={s.color} strokeWidth="2.5"/>
         <circle cx={s.x} cy={s.y} r="32" fill="none" stroke={s.color} strokeWidth="1" opacity="0.3"/>
         <text x={s.x} y={s.y + 6} textAnchor="middle" fill={s.color} fontFamily="sans-serif" fontSize="20" fontWeight="bold">{s.label}</text>
         {/* Self-loop arc */}
         <path d={`M${s.x - 12},${s.y - 38} Q${s.x},${s.y - 72} ${s.x + 12},${s.y - 38}`} fill="none" stroke={s.color} strokeWidth="1.5" opacity="0.4"/>
-        <text x={s.x} y={s.y - 60} textAnchor="middle" fill={s.color} fontFamily="sans-serif" fontSize="10" opacity="0.5">{(0.4 - i * 0.05).toFixed(1)}</text>
+        <text x={s.x} y={s.y - 60} textAnchor="middle" fill={s.color} fontFamily="sans-serif" fontSize={Math.round(8 + (0.4 - i * 0.05) * 14)} opacity="0.5">{(0.4 - i * 0.05).toFixed(1)}</text>
       </g>
     ))}
   </g>
@@ -45,16 +46,17 @@ const TransitionArrows = (
       const sx = states[t.from].x + 38;
       const ex = states[t.to].x - 38;
       const y = 200;
-      const cy = y + (t.curve ?? 0);
+      const cy = y + (t.curve ?? -25);
       const mx = (sx + ex) / 2;
       const my = cy - 20;
+      const probFontSize = Math.round(8 + parseFloat(t.label) * 14);
       return (
         <g key={i}>
           <path
-            d={t.curve ? `M${sx},${y} Q${mx},${cy} ${ex},${y}` : `M${sx},${y} L${ex},${y}`}
+            d={`M${sx},${y} Q${mx},${cy} ${ex},${y}`}
             fill="none" stroke="#555570" strokeWidth="2" markerEnd="url(#arrowHead)"
           />
-          <text x={mx} y={my} textAnchor="middle" fill="#E8B84A" fontFamily="sans-serif" fontSize="12" fontWeight="bold">{t.label}</text>
+          <text x={mx} y={my} textAnchor="middle" fill="#E8B84A" fontFamily="sans-serif" fontSize={probFontSize} fontWeight="bold">{t.label}</text>
         </g>
       );
     })}

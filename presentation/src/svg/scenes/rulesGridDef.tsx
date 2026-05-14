@@ -25,8 +25,9 @@ const RuleCards = (
       const x = 260 + col * 115;
       const y = 100 + row * 125;
       const failed = [2, 5, 7, 10, 13, 16, 19, 22].includes(i);
+      const angle = failed ? ((i % 2 === 0) ? 3 : -4) : 0;
       return (
-        <g key={i} opacity={failed ? 0.5 : 0.85}>
+        <g key={i} opacity={failed ? 0.5 : 0.85} transform={angle ? `rotate(${angle}, ${x + 50}, ${y + 52})` : undefined}>
           <rect x={x} y={y} width="100" height="105" rx="8" fill="#1E1E2E" stroke={failed ? "#E85650" : "#555570"} strokeWidth={failed ? 1.5 : 1}/>
           <rect x={x + 12} y={y + 16} width={50 + (i % 3) * 10} height="5" rx="2.5" fill={failed ? "#555570" : "#6EC8E6"} opacity="0.6"/>
           <rect x={x + 12} y={y + 28} width={35 + (i % 4) * 8} height="4" rx="2" fill="#555570" opacity="0.4"/>
@@ -35,8 +36,8 @@ const RuleCards = (
           <rect x={x + 12} y={y + 66} width={40 + (i % 2) * 8} height="4" rx="2" fill="#555570" opacity="0.2"/>
           {failed && (
             <g>
-              <line x1={x + 15} y1={y + 18} x2={x + 85} y2={y + 88} stroke="#E85650" strokeWidth="3" strokeLinecap="round" opacity="0.8"/>
-              <line x1={x + 85} y1={y + 18} x2={x + 15} y2={y + 88} stroke="#E85650" strokeWidth="3" strokeLinecap="round" opacity="0.8"/>
+              <line x1={x + 5} y1={y + 8} x2={x + 95} y2={y + 98} stroke="#E85650" strokeWidth="4" strokeLinecap="round" opacity="0.8"/>
+              <line x1={x + 95} y1={y + 8} x2={x + 5} y2={y + 98} stroke="#E85650" strokeWidth="4" strokeLinecap="round" opacity="0.8"/>
             </g>
           )}
         </g>

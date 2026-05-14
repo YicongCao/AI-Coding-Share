@@ -19,12 +19,13 @@ const Defs = (
 
 const VistaWindow = (
   <g>
+    <rect x="251" y="71" width="700" height="470" rx="12" fill="#90C8E8" opacity="0.03"/>
     <rect x="250" y="70" width="700" height="470" rx="12" fill="#121A2A" stroke="#4A7BCC" strokeWidth="1.4" opacity="0.95"/>
     <path d="M250,420 C350,350 470,390 560,310 C650,230 780,260 950,150 L950,492 L250,492 Z" fill="#4A7BCC" opacity="0.14"/>
     <path d="M250,230 C390,180 460,230 560,170 C650,120 780,135 950,82" fill="none" stroke="#6EC8E6" strokeWidth="1.2" opacity="0.18"/>
     <rect x="250" y="492" width="700" height="48" rx="0" fill="#172033" opacity="0.96" stroke="#FFFFFF" strokeOpacity="0.08" strokeWidth="1"/>
     <rect x="250" y="520" width="700" height="20" rx="12" fill="#172033" stroke="#FFFFFF" strokeOpacity="0.08" strokeWidth="1"/>
-    <g opacity="0.92">
+    <g opacity="0.92" transform="translate(288, 514) scale(1.2) translate(-288, -514)">
       <rect x="282" y="508" width="9" height="9" fill="#FFFFFF"/>
       <rect x="294" y="508" width="9" height="9" fill="#FFFFFF"/>
       <rect x="282" y="520" width="9" height="9" fill="#FFFFFF"/>
@@ -48,7 +49,7 @@ const VistaWindow = (
     <rect x="350" y="115" width="500" height="34" rx="6" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <rect x="350" y="141" width="500" height="8" fill="#252538"/>
     <text x="374" y="137" fill="#FFFFFF" fontFamily="sans-serif" fontSize="12" opacity="0.78">Voice Assistant - Windows Desktop</text>
-    <g transform="translate(754, 115)">
+    <g transform="translate(735, 112) scale(1.2)">
       <rect x="0" y="0" width="32" height="34" fill="#252538"/>
       <line x1="10" y1="20" x2="22" y2="20" stroke="#FFFFFF" strokeWidth="1.4" opacity="0.72"/>
       <rect x="32" y="0" width="32" height="34" fill="#252538"/>
@@ -75,7 +76,8 @@ const Sidebar = (
     <text x="385" y="192" fill="#FFFFFF" fontFamily="sans-serif" fontSize="12" opacity="0.72">Start Menu</text>
     <rect x="385" y="214" width="150" height="8" rx="4" fill="#555570" opacity="0.5"/>
     <rect x="385" y="238" width="130" height="6" rx="3" fill="#555570" opacity="0.35"/>
-    <rect x="385" y="258" width="146" height="6" rx="3" fill="#555570" opacity="0.35"/>
+    <rect x="382" y="254" width="155" height="14" rx="4" fill="#5BAD7A" opacity="0.1"/>
+    <rect x="385" y="258" width="146" height="6" rx="3" fill="#FFFFFF" opacity="0.45"/>
     <rect x="385" y="278" width="118" height="6" rx="3" fill="#555570" opacity="0.35"/>
     <rect x="385" y="310" width="150" height="22" rx="5" fill="#4A7BCC" opacity="0.45"/>
     <text x="405" y="325" fill="#FFFFFF" fontFamily="sans-serif" fontSize="11" opacity="0.82">Voice Shortcut</text>

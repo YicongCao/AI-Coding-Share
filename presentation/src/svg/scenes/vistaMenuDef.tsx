@@ -19,11 +19,12 @@ const Defs = (
 
 const NotepadWindow = (
   <g>
+    <rect x="106" y="91" width="450" height="360" rx="8" fill="#90C8E8" opacity="0.03"/>
     <rect x="105" y="90" width="450" height="360" rx="8" fill="#111827" stroke="#4A7BCC" strokeWidth="1.2"/>
     <rect x="105" y="90" width="450" height="34" rx="8" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <rect x="105" y="116" width="450" height="8" fill="#252538"/>
     <text x="130" y="112" fill="#FFFFFF" fontFamily="sans-serif" fontSize="12" opacity="0.78">Notepad - Windows</text>
-    <g transform="translate(459, 90)">
+    <g transform="translate(440, 87) scale(1.2)">
       <rect x="0" y="0" width="32" height="34" fill="#252538"/>
       <line x1="10" y1="20" x2="22" y2="20" stroke="#FFFFFF" strokeWidth="1.4" opacity="0.72"/>
       <rect x="32" y="0" width="32" height="34" fill="#252538"/>
@@ -66,8 +67,8 @@ const ContextMenu = (
     <rect x="654" y="230" width="202" height="30" rx="4" fill="transparent"/>
     <text x="676" y="249" fill="#FFFFFF" fontFamily="sans-serif" fontSize="12" opacity="0.72">Sort by</text>
     <text x="840" y="249" textAnchor="end" fill="#555570" fontFamily="sans-serif" fontSize="12">›</text>
-    <rect x="654" y="262" width="202" height="30" rx="4" fill="transparent"/>
-    <text x="676" y="281" fill="#FFFFFF" fontFamily="sans-serif" fontSize="12" opacity="0.72">Refresh</text>
+    <rect x="654" y="262" width="202" height="30" rx="4" fill="#5BAD7A" opacity="0.12"/>
+    <text x="676" y="281" fill="#FFFFFF" fontFamily="sans-serif" fontSize="12" opacity="0.85">Refresh</text>
     <line x1="654" y1="306" x2="856" y2="306" stroke="#555570" strokeWidth="0.6" opacity="0.45"/>
     <rect x="654" y="318" width="202" height="30" rx="4" fill="transparent"/>
     <text x="676" y="337" fill="#FFFFFF" fontFamily="sans-serif" fontSize="12" opacity="0.72">Open with</text>
