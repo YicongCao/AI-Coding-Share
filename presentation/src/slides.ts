@@ -112,7 +112,7 @@ slides.push({
   globalIndex: slides.length,
   paragraphIndex: -1,
   sentenceIndex: 0,
-  text: "NEX 体验报名",
+  text: "NEX是一个基于浏览器的AI Coding产品，通过与AI对话，帮你快速创建游戏官网、活动页面和数据看板，欢迎扫码体验。",
   svgSceneId: "signup",
 });
 

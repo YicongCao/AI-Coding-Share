@@ -34,29 +34,29 @@ const TitleText = (
 
 const ScreenshotTL = (
   <g transform="translate(20, 20) rotate(-6)">
-    <rect x="0" y="0" width="260" height="146" rx="10" fill="#1E1E2E" stroke="#FFFFFF" strokeOpacity="0.08" strokeWidth="1"/>
-    <image href="/screenshots/s1.png" x="4" y="4" width="252" height="138" preserveAspectRatio="xMidYMid slice" clipPath="inset(0 round 8px)" opacity="0.7"/>
+    <rect x="0" y="0" width="260" height="170" rx="10" fill="#1E1E2E" stroke="#FFFFFF" strokeOpacity="0.08" strokeWidth="1"/>
+    <image href="/screenshots/s1.png" x="4" y="4" width="252" height="162" preserveAspectRatio="xMidYMid meet" opacity="0.7"/>
   </g>
 );
 
 const ScreenshotTR = (
   <g transform="translate(920, 30) rotate(4)">
-    <rect x="0" y="0" width="260" height="146" rx="10" fill="#1E1E2E" stroke="#FFFFFF" strokeOpacity="0.08" strokeWidth="1"/>
-    <image href="/screenshots/s2.png" x="4" y="4" width="252" height="138" preserveAspectRatio="xMidYMid slice" clipPath="inset(0 round 8px)" opacity="0.7"/>
+    <rect x="0" y="0" width="260" height="170" rx="10" fill="#1E1E2E" stroke="#FFFFFF" strokeOpacity="0.08" strokeWidth="1"/>
+    <image href="/screenshots/s2.png" x="4" y="4" width="252" height="162" preserveAspectRatio="xMidYMid meet" opacity="0.7"/>
   </g>
 );
 
 const ScreenshotBL = (
-  <g transform="translate(30, 500) rotate(5)">
-    <rect x="0" y="0" width="260" height="146" rx="10" fill="#1E1E2E" stroke="#FFFFFF" strokeOpacity="0.08" strokeWidth="1"/>
-    <image href="/screenshots/s3.png" x="4" y="4" width="252" height="138" preserveAspectRatio="xMidYMid slice" clipPath="inset(0 round 8px)" opacity="0.7"/>
+  <g transform="translate(30, 480) rotate(5)">
+    <rect x="0" y="0" width="260" height="170" rx="10" fill="#1E1E2E" stroke="#FFFFFF" strokeOpacity="0.08" strokeWidth="1"/>
+    <image href="/screenshots/s3.png" x="4" y="4" width="252" height="162" preserveAspectRatio="xMidYMid meet" opacity="0.7"/>
   </g>
 );
 
 const ScreenshotBR = (
-  <g transform="translate(910, 500) rotate(-3)">
-    <rect x="0" y="0" width="260" height="146" rx="10" fill="#1E1E2E" stroke="#FFFFFF" strokeOpacity="0.08" strokeWidth="1"/>
-    <image href="/screenshots/s4.png" x="4" y="4" width="252" height="138" preserveAspectRatio="xMidYMid slice" clipPath="inset(0 round 8px)" opacity="0.7"/>
+  <g transform="translate(910, 480) rotate(-3)">
+    <rect x="0" y="0" width="260" height="170" rx="10" fill="#1E1E2E" stroke="#FFFFFF" strokeOpacity="0.08" strokeWidth="1"/>
+    <image href="/screenshots/s4.png" x="4" y="4" width="252" height="162" preserveAspectRatio="xMidYMid meet" opacity="0.7"/>
   </g>
 );
 
