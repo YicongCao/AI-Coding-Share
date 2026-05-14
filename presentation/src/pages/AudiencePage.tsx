@@ -196,9 +196,12 @@ export default function AudiencePage() {
         timeOffsetMs,
         transitionStartedAt: prev.transitionStartedAt,
       });
+      const lingerMs = prev.def.exitDurationMs
+        ? prev.def.exitDurationMs + 200
+        : EXIT_LINGER_MS;
       const timer = window.setTimeout(() => {
         setExitingScene((cur) => (cur?.key === exitKey ? null : cur));
-      }, EXIT_LINGER_MS);
+      }, lingerMs);
       return () => clearTimeout(timer);
     }
   }, [slideIndex, timeOffsetMs]);
@@ -234,7 +237,9 @@ export default function AudiencePage() {
               sceneDef={svgDef}
               seed={seed}
               transitionStartedAt={
-                exitingScene ? transitionStartedAt + EXIT_LINGER_MS : transitionStartedAt
+                exitingScene
+                  ? transitionStartedAt + (exitingScene.def.exitDurationMs ?? EXIT_LINGER_MS)
+                  : transitionStartedAt
               }
               timeOffsetMs={timeOffsetMs}
               style={{ position: "absolute", inset: 0, zIndex: 1 }}

@@ -29,6 +29,7 @@ export type SvgSceneDef = {
   background?: ReactNode;
   fragments: SvgFragment[];
   transitionEffect?: SceneTransitionEffect;
+  exitDurationMs?: number;
 };
 
 export type SvgSceneProps = {
@@ -98,8 +99,9 @@ const SvgScene = memo(function SvgScene({
     function frame() {
       rafRef.current = requestAnimationFrame(frame);
       const serverNow = Date.now() + timeOffsetMs;
+      const exitDur = sceneDef.exitDurationMs ?? EXIT_DURATION_MS;
       const exitRawT = exitingRef.current
-        ? clamp01((serverNow - exitStartRef.current) / EXIT_DURATION_MS)
+        ? clamp01((serverNow - exitStartRef.current) / exitDur)
         : 0;
 
       for (let i = 0; i < frags.length; i++) {
@@ -109,9 +111,9 @@ const SvgScene = memo(function SvgScene({
 
         if (exitingRef.current) {
           const exitElapsed = serverNow - exitStartRef.current;
-          const rawT = clamp01(exitElapsed / EXIT_DURATION_MS);
+          const rawT = clamp01(exitElapsed / exitDur);
           const baseDelay = (frag.enterDelay / ENTER_DURATION_MS) * 0.3;
-          const customDelay = (frag.exitDelay ?? 0) / EXIT_DURATION_MS;
+          const customDelay = (frag.exitDelay ?? 0) / exitDur;
           const delayed = Math.max(0, rawT - baseDelay - customDelay);
           const eT = easeInCubic(Math.min(1, delayed / 0.7));
 
