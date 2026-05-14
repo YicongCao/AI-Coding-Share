@@ -19,6 +19,7 @@ const Defs = (
 
 const BrainIcon = (
   <g transform="translate(600, 300)">
+    <circle cx="0" cy="0" r="170" fill="#6EC8E6" opacity="0.10"/>
     {/* Outer glow */}
     <circle cx="0" cy="0" r="140" fill="#4A7BCC" opacity="0.06" stroke="#6A9BE0" strokeOpacity="0.3" strokeWidth="1"/>
     <circle cx="0" cy="0" r="110" fill="#4A7BCC" opacity="0.08" stroke="#6A9BE0" strokeOpacity="0.3" strokeWidth="1"/>

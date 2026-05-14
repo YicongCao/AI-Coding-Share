@@ -19,6 +19,7 @@ const Defs = (
 
 const SystemPromptDoc = (
   <g transform="translate(200, 60)">
+    <rect x="-15" y="-15" width="830" height="510" rx="20" fill="#555570" opacity="0.08"/>
     <rect x="0" y="0" width="800" height="480" rx="14" fill="#1E1E2E" stroke="#555570" strokeWidth="1.5"/>
     {/* Header */}
     <rect x="0" y="0" width="800" height="50" rx="14" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>

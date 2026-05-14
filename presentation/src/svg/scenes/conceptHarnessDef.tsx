@@ -62,6 +62,7 @@ const GearIcons = (
   <g>
     {[[100, 160, 20], [1100, 160, 18], [100, 480, 16], [1100, 480, 20]].map(([x, y, r], i) => (
       <g key={i} transform={`translate(${x},${y})`}>
+        <circle cx="0" cy="0" r={(r as number) * 2} fill="#555570" opacity="0.10"/>
         <circle cx="0" cy="0" r={r as number} fill="none" stroke="#555570" strokeWidth="1.5" opacity="0.4"/>
         <circle cx="0" cy="0" r={(r as number) * 0.4} fill="#555570" opacity="0.3"/>
         {[0, 60, 120, 180, 240, 300].map((a, j) => (

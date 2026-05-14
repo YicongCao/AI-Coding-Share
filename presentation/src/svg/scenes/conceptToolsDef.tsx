@@ -56,6 +56,7 @@ const SseArrow = (
 
 const FunctionBlocks = (
   <g transform="translate(720, 95)">
+    <rect x="-20" y="-20" width="390" height="450" rx="16" fill="#E8B84A" opacity="0.08"/>
     {[
       { name: "readFile()", color: "#5BAD7A", desc: "读取文件" },
       { name: "writeFile()", color: "#6EC8E6", desc: "写入文件" },

@@ -19,6 +19,7 @@ const Defs = (
 
 const MainProcess = (
   <g transform="translate(100, 110)">
+    <rect x="-15" y="-15" width="410" height="430" rx="20" fill="#4A7BCC" opacity="0.08"/>
     <rect x="0" y="0" width="380" height="400" rx="14" fill="#1E1E2E" stroke="#4A7BCC" strokeWidth="2"/>
     <text x="190" y="36" textAnchor="middle" fill="#4A7BCC" fontFamily="sans-serif" fontSize="18" fontWeight="bold">Main Process</text>
     <line x1="20" y1="52" x2="360" y2="52" stroke="#555570" strokeWidth="0.5"/>

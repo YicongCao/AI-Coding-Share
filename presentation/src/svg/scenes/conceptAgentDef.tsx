@@ -76,6 +76,7 @@ const NodeBoxes = (
 
 const CenterLabel = (
   <g>
+    <circle cx={cx} cy={cy} r="70" fill="#E8734A" opacity="0.10"/>
     <circle cx={cx} cy={cy} r="48" fill="#252538" stroke="#E8734A" strokeWidth="2"/>
     <text x={cx} y={cy - 4} textAnchor="middle" fill="#E8734A" fontFamily="sans-serif" fontSize="14" fontWeight="bold">ReAct</text>
     <text x={cx} y={cy + 14} textAnchor="middle" fill="#E8734A" fontFamily="sans-serif" fontSize="14" fontWeight="bold">Loop</text>
