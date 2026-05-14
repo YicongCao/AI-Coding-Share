@@ -23,6 +23,7 @@ const VennCircles = (
     <circle cx="120" cy="-60" r="160" fill="#5BAD7A" opacity="0.12" stroke="#5BAD7A" strokeWidth="2"/>
     <circle cx="0" cy="100" r="160" fill="#E8B84A" opacity="0.12" stroke="#E8B84A" strokeWidth="2"/>
     {/* Center overlap */}
+    <circle cx="0" cy="10" r="64" fill="#FFFFFF" opacity="0.08"/>
     <circle cx="0" cy="10" r="48" fill="#6EC8E6" opacity="0.2" stroke="#6EC8E6" strokeWidth="2"/>
     <text x="0" y="6" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="24" fontWeight="bold">Nex</text>
     <text x="0" y="28" textAnchor="middle" fill="#6EC8E6" fontFamily="sans-serif" fontSize="11" opacity="0.8">交叉点</text>

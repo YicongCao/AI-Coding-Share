@@ -48,7 +48,7 @@ const FlowNodes = (
   <g>
     {cardData.map((n, i) => (
       <g key={i} transform={`translate(${n.x}, ${n.y}) rotate(${n.rotate})`}>
-        <rect x="8" y="10" width="138" height="76" rx="12" fill="#11111D" opacity="0.38" stroke="#FFFFFF" strokeOpacity="0.08" strokeWidth="1"/>
+        <rect x="3" y="3" width="138" height="76" rx="12" fill="#11111D" opacity="0.15"/>
         <rect x="0" y="0" width="138" height="76" rx="12" fill="#1E1E2E" stroke={n.color} strokeWidth="2"/>
         <rect x="0" y="0" width="138" height="76" rx="12" fill={n.color} opacity="0.12"/>
         <rect x="16" y="-9" width="42" height="18" rx="4" fill="#FFFFFF" opacity="0.16"/>

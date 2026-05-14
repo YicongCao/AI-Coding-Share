@@ -92,6 +92,7 @@ const MeetingScreen = (
     <rect x="136" y="210" width="58" height="12" rx="3" fill="#555570" opacity="0.55"/>
     <rect x="102" y="224" width="126" height="8" rx="4" fill="#555570" opacity="0.35"/>
     <text x="165" y="258" textAnchor="middle" fill="#555570" fontFamily="sans-serif" fontSize="13">会议屏 / 投影</text>
+    <path d="M50,210 L0,330 L330,330 L280,210 Z" fill="#E8B84A" opacity="0.06"/>
   </g>
 );
 
