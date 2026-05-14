@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import type { SvgSceneDef } from "../SvgScene";
 
 const Background = (
@@ -16,33 +17,108 @@ const Defs = (
   </defs>
 );
 
+const TYPEWRITER_LINES = [
+  { text: "流式输出正在出现", color: "#FFFFFF", size: 24, weight: "bold" },
+  { text: "先看到方向，再看到细节", color: "#FFFFFF", size: 18, weight: "normal" },
+  { text: "token token token token token ", color: "#6EC8E6", size: 16, weight: "normal" },
+];
+
+const CHAR_INTERVAL_MS = 80;
+const LINE_PAUSE_MS = 600;
+const CYCLE_PAUSE_MS = 1800;
+
+function TypewriterConsole() {
+  const [lineIdx, setLineIdx] = useState(0);
+  const [charIdx, setCharIdx] = useState(0);
+  const [displayLines, setDisplayLines] = useState<string[]>([]);
+
+  useEffect(() => {
+    const line = TYPEWRITER_LINES[lineIdx];
+    if (!line) {
+      const timer = setTimeout(() => {
+        setDisplayLines([]);
+        setLineIdx(0);
+        setCharIdx(0);
+      }, CYCLE_PAUSE_MS);
+      return () => clearTimeout(timer);
+    }
+
+    if (charIdx <= line.text.length) {
+      const timer = setTimeout(() => {
+        setDisplayLines((prev) => {
+          const next = [...prev];
+          next[lineIdx] = line.text.slice(0, charIdx);
+          return next;
+        });
+        setCharIdx((c) => c + 1);
+      }, charIdx === 0 ? LINE_PAUSE_MS : CHAR_INTERVAL_MS);
+      return () => clearTimeout(timer);
+    }
+
+    const timer = setTimeout(() => {
+      setLineIdx((l) => l + 1);
+      setCharIdx(0);
+    }, LINE_PAUSE_MS);
+    return () => clearTimeout(timer);
+  }, [lineIdx, charIdx]);
+
+  const cursorLine = TYPEWRITER_LINES[lineIdx];
+  const cursorVisible = lineIdx < TYPEWRITER_LINES.length;
+
+  return (
+    <g transform="translate(250, 150)">
+      <rect x="0" y="0" width="700" height="330" rx="18" fill="#1E1E2E" stroke="#6EC8E6" strokeWidth="2"/>
+      <rect x="0" y="0" width="700" height="54" rx="18" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
+      <rect x="0" y="38" width="700" height="16" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
+      <circle cx="32" cy="27" r="6" fill="#E85650" stroke="#F07870" strokeOpacity="0.3" strokeWidth="1"/>
+      <circle cx="56" cy="27" r="6" fill="#E8B84A" stroke="#F0D070" strokeOpacity="0.3" strokeWidth="1"/>
+      <circle cx="80" cy="27" r="6" fill="#5BAD7A"/>
+      <text x="350" y="33" textAnchor="middle" fill="#555570" fontFamily="sans-serif" fontSize="13">response streaming</text>
+
+      <text x="48" y="98" fill="#5BAD7A" fontFamily="monospace" fontSize="18">$ cursor agent --stream</text>
+
+      {TYPEWRITER_LINES.map((line, i) => {
+        const y = 142 + i * 42;
+        const shown = displayLines[i] ?? "";
+        return (
+          <text
+            key={i}
+            x="48"
+            y={y}
+            fill={line.color}
+            fontFamily="monospace"
+            fontSize={line.size}
+            fontWeight={line.weight}
+            opacity={shown ? (line.color === "#FFFFFF" ? 0.85 : 0.85) : 0}
+          >
+            {shown}
+          </text>
+        );
+      })}
+
+      {cursorVisible && cursorLine && (
+        <rect
+          x={48 + (displayLines[lineIdx]?.length ?? 0) * (cursorLine.size * 0.6)}
+          y={142 + lineIdx * 42 - cursorLine.size + 2}
+          width="12"
+          height={cursorLine.size + 4}
+          rx="2"
+          fill="#5BAD7A"
+          opacity="0.85"
+        />
+      )}
+
+      {[0, 1, 2, 3].map(i => (
+        <rect key={i} x={48 + i * 120} y="270" width={88 - i * 8} height="8" rx="4" fill="#6EC8E6" opacity={0.45 - i * 0.07}/>
+      ))}
+    </g>
+  );
+}
 
 const StreamingRays = (
   <g opacity="0.2">
     {Array.from({ length: 9 }, (_, i) => (
       <line key={i} x1={110 + i * 12} y1={160 + i * 34} x2={1090 - i * 18} y2={105 + i * 46} stroke="#6EC8E6" strokeWidth={3 - i * 0.15} strokeLinecap="round"/>
-    ))}
-  </g>
-);
-
-const StreamingConsole = (
-  <g transform="translate(250, 150)">
-    <rect x="0" y="0" width="700" height="330" rx="18" fill="#1E1E2E" stroke="#6EC8E6" strokeWidth="2"/>
-    <rect x="0" y="0" width="700" height="54" rx="18" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
-    <rect x="0" y="38" width="700" height="16" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
-    <circle cx="32" cy="27" r="6" fill="#E85650" stroke="#F07870" strokeOpacity="0.3" strokeWidth="1"/>
-    <circle cx="56" cy="27" r="6" fill="#E8B84A" stroke="#F0D070" strokeOpacity="0.3" strokeWidth="1"/>
-    <circle cx="80" cy="27" r="6" fill="#5BAD7A"/>
-    <text x="350" y="33" textAnchor="middle" fill="#555570" fontFamily="sans-serif" fontSize="13">response streaming</text>
-
-    <text x="48" y="98" fill="#5BAD7A" fontFamily="monospace" fontSize="18">$ cursor agent --stream</text>
-    <text x="48" y="142" fill="#FFFFFF" fontFamily="monospace" fontSize="24" fontWeight="bold">流式输出正在出现</text>
-    <text x="48" y="184" fill="#FFFFFF" fontFamily="monospace" fontSize="18" opacity="0.75">先看到方向，再看到细节</text>
-    <text x="48" y="224" fill="#6EC8E6" fontFamily="monospace" fontSize="16" opacity="0.85">token token token token token...</text>
-    <rect x="405" y="205" width="12" height="24" rx="2" fill="#5BAD7A" opacity="0.85"/>
-
-    {[0, 1, 2, 3].map(i => (
-      <rect key={i} x={48 + i * 120} y="270" width={88 - i * 8} height="8" rx="4" fill="#6EC8E6" opacity={0.45 - i * 0.07}/>
     ))}
   </g>
 );
@@ -88,7 +164,7 @@ export const bulletTrainSceneDef: SvgSceneDef = {
   background: Background,
   fragments: [
     { id: "streamingRays", content: StreamingRays, enterFrom: { x: -600, y: 0 }, enterDelay: 0, floatAmp: { x: 10, y: 8 }, floatPeriod: { x: 7, y: 9 } },
-    { id: "console", content: StreamingConsole, enterFrom: { x: 0, y: 300 }, enterDelay: 100, floatAmp: { x: 10, y: 12 }, floatPeriod: { x: 6, y: 7 }, exitTo: { x: 0, y: 400 } },
+    { id: "console", content: <TypewriterConsole />, enterFrom: { x: 0, y: 300 }, enterDelay: 100, floatAmp: { x: 10, y: 12 }, floatPeriod: { x: 6, y: 7 }, exitTo: { x: 0, y: 400 } },
     { id: "tokens", content: TokenStream, enterFrom: { x: -300, y: 0 }, enterDelay: 250, floatAmp: { x: 14, y: 8 }, floatPeriod: { x: 5, y: 6 }, exitTo: { x: 300, y: 0 } },
     { id: "typewriter", content: TypewriterEffect, enterFrom: { x: 300, y: 80 }, enterDelay: 350, floatAmp: { x: 10, y: 14 }, floatPeriod: { x: 5.5, y: 6.5 }, exitTo: { x: 300, y: 120 } },
     { id: "badge", content: SpeedBadge, enterFrom: { x: 300, y: 200 }, enterDelay: 450, floatAmp: { x: 18, y: 20 }, floatPeriod: { x: 4, y: 5 }, floatRotate: 1.5, exitTo: { x: 300, y: 200 }, exitSpin: 8 },
