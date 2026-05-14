@@ -522,6 +522,17 @@ function AdminConsole({ onLogout }: { onLogout: () => void }) {
               </div>
             );
           })}
+          <div className="paragraph" style={{ marginTop: 8 }}>
+            <span
+              className={`sentence ${currentIndex === totalSlides - 1 ? "is-current" : ""}`}
+              onClick={() => send({ type: "jumpTo", index: totalSlides - 1 })}
+              title="点击跳转到 Signup 页"
+              style={{ cursor: "pointer" }}
+            >
+              NEX 体验报名
+              <code className="sentence-code">#{totalSlides}·signup</code>
+            </span>
+          </div>
         </div>
 
         <div className="signup-admin-section">
