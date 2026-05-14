@@ -20,7 +20,7 @@ const Defs = (
 const CenterLabel = (
   <g transform="translate(600, 337)">
     <circle cx="0" cy="0" r="60" fill="#1E1E2E" stroke="#5BAD7A" strokeWidth="2.5"/>
-    <circle cx="0" cy="0" r="50" fill="#252538"/>
+    <circle cx="0" cy="0" r="50" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <text x="0" y="-5" textAnchor="middle" fill="#5BAD7A" fontFamily="sans-serif" fontSize="28" fontWeight="bold">优化</text>
     <text x="0" y="20" textAnchor="middle" fill="#555570" fontFamily="sans-serif" fontSize="12">Optimizations</text>
   </g>

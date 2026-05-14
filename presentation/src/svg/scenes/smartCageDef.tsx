@@ -27,8 +27,8 @@ const Divider = (
 const CagedPerson = (
   <g transform="translate(140, 160)">
     {/* Person */}
-    <circle cx="120" cy="120" r="24" fill="#E85650" opacity="0.7"/>
-    <rect x="102" y="148" width="36" height="55" rx="10" fill="#E85650" opacity="0.6"/>
+    <circle cx="120" cy="120" r="24" fill="#E85650" opacity="0.7" stroke="#F07870" strokeOpacity="0.3" strokeWidth="1"/>
+    <rect x="102" y="148" width="36" height="55" rx="10" fill="#E85650" opacity="0.6" stroke="#F07870" strokeOpacity="0.3" strokeWidth="1"/>
     <circle cx="110" cy="116" r="3" fill="#2B2B3D"/>
     <circle cx="130" cy="116" r="3" fill="#2B2B3D"/>
     <path d="M110,132 Q120,126 130,132" fill="none" stroke="#2B2B3D" strokeWidth="2" strokeLinecap="round"/>
@@ -59,15 +59,15 @@ const CageLabel = (
 const RelaxedPerson = (
   <g transform="translate(740, 180)">
     {/* Person leaning back */}
-    <circle cx="100" cy="100" r="24" fill="#5BAD7A" opacity="0.7"/>
-    <rect x="82" y="128" width="36" height="55" rx="10" fill="#5BAD7A" opacity="0.6"/>
+    <circle cx="100" cy="100" r="24" fill="#5BAD7A" opacity="0.7" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
+    <rect x="82" y="128" width="36" height="55" rx="10" fill="#5BAD7A" opacity="0.6" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
     <circle cx="90" cy="96" r="3" fill="#2B2B3D"/>
     <circle cx="110" cy="96" r="3" fill="#2B2B3D"/>
     <path d="M92,112 Q100,120 108,112" fill="none" stroke="#2B2B3D" strokeWidth="2" strokeLinecap="round"/>
     {/* Arm holding tea cup */}
     <path d="M118,148 L150,165" fill="none" stroke="#5BAD7A" strokeWidth="4" strokeLinecap="round" opacity="0.6"/>
     {/* Tea cup */}
-    <rect x="145" y="155" width="35" height="28" rx="4" fill="#E8B84A" opacity="0.7"/>
+    <rect x="145" y="155" width="35" height="28" rx="4" fill="#E8B84A" opacity="0.7" stroke="#F0D070" strokeOpacity="0.3" strokeWidth="1"/>
     <path d="M180,162 Q195,170 180,178" fill="none" stroke="#E8B84A" strokeWidth="2" opacity="0.5"/>
     <path d="M155,150 Q158,140 162,150" fill="none" stroke="#FFFFFF" strokeWidth="1.5" opacity="0.3"/>
     <path d="M165,148 Q168,136 172,148" fill="none" stroke="#FFFFFF" strokeWidth="1.5" opacity="0.25"/>
@@ -79,7 +79,7 @@ const RelaxedPerson = (
 const WorkingAI = (
   <g transform="translate(780, 380)">
     <rect x="0" y="0" width="140" height="80" rx="12" fill="#1E1E2E" stroke="#6EC8E6" strokeWidth="2"/>
-    <circle cx="40" cy="30" r="10" fill="#6EC8E6" opacity="0.5"/>
+    <circle cx="40" cy="30" r="10" fill="#6EC8E6" opacity="0.5" stroke="#90D8F0" strokeOpacity="0.3" strokeWidth="1"/>
     <circle cx="70" cy="30" r="10" fill="#6EC8E6" opacity="0.5"/>
     <path d="M36,48 Q55,58 74,48" fill="none" stroke="#6EC8E6" strokeWidth="2" strokeLinecap="round" opacity="0.5"/>
     <text x="70" y="72" textAnchor="middle" fill="#6EC8E6" fontFamily="sans-serif" fontSize="12" fontWeight="bold">AI Working</text>

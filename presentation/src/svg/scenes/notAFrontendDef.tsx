@@ -19,9 +19,9 @@ const Defs = (
 
 const PersonFigure = (
   <g transform="translate(140, 280)">
-    <circle cx="40" cy="15" r="18" fill="#6EC8E6" opacity="0.8"/>
+    <circle cx="40" cy="15" r="18" fill="#6EC8E6" opacity="0.8" stroke="#90D8F0" strokeOpacity="0.3" strokeWidth="1"/>
     <path d="M40,33 L40,80 M40,50 L18,68 M40,50 L62,68 M40,80 L25,110 M40,80 L55,110" fill="none" stroke="#6EC8E6" strokeWidth="3" strokeLinecap="round" opacity="0.8"/>
-    <rect x="-10" y="125" width="100" height="28" rx="6" fill="#E85650" opacity="0.15"/>
+    <rect x="-10" y="125" width="100" height="28" rx="6" fill="#E85650" opacity="0.15" stroke="#F07870" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="40" y="144" textAnchor="middle" fill="#E85650" fontFamily="sans-serif" fontSize="13" fontWeight="bold">非前端开发</text>
     <line x1="-5" y1="139" x2="85" y2="139" stroke="#E85650" strokeWidth="1.5" opacity="0.6"/>
   </g>
@@ -48,7 +48,7 @@ const EnablingLabel = (
 const AchievementStar = (
   <g transform="translate(895, 120)">
     <polygon points="30,0 38,20 60,22 44,36 48,58 30,48 12,58 16,36 0,22 22,20" fill="#E8B84A" opacity="0.8"/>
-    <circle cx="30" cy="28" r="40" fill="#E8B84A" opacity="0.08"/>
+    <circle cx="30" cy="28" r="40" fill="#E8B84A" opacity="0.08" stroke="#F0D070" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="30" y="84" textAnchor="middle" fill="#E8B84A" fontFamily="sans-serif" fontSize="12" fontWeight="bold">达成</text>
   </g>
 );

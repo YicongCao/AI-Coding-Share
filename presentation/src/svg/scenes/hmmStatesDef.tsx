@@ -103,7 +103,7 @@ const ProbTag = (
 
 const FormulaHint = (
   <g opacity="0.5">
-    <rect x="900" y="520" width="220" height="58" rx="8" fill="#1E1E2E"/>
+    <rect x="900" y="520" width="220" height="58" rx="8" fill="#1E1E2E" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <text x="1010" y="543" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="13">P(O|λ) = Σ P(O|Q,λ)P(Q|λ)</text>
     <text x="1010" y="564" textAnchor="middle" fill="#555570" fontFamily="sans-serif" fontSize="11">前向算法 Forward Algorithm</text>
   </g>

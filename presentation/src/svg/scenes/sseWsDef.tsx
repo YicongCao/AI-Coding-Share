@@ -28,7 +28,7 @@ const Defs = (
 const Title = (
   <g>
     <text x="600" y="50" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="24" fontWeight="bold">Phase 2</text>
-    <rect x="460" y="62" width="280" height="30" rx="8" fill="#5BAD7A" opacity="0.15"/>
+    <rect x="460" y="62" width="280" height="30" rx="8" fill="#5BAD7A" opacity="0.15" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="600" y="84" textAnchor="middle" fill="#5BAD7A" fontFamily="sans-serif" fontSize="18" fontWeight="bold">SSE + WebSocket</text>
   </g>
 );
@@ -37,11 +37,11 @@ const AgentBox = (
   <g>
     <rect x="40" y="150" width="200" height="400" rx="14" fill="#1E1E2E" stroke="#E8734A" strokeWidth="2"/>
     <text x="140" y="185" textAnchor="middle" fill="#E8734A" fontFamily="sans-serif" fontSize="20" fontWeight="bold">Agent</text>
-    <rect x="60" y="210" width="160" height="40" rx="6" fill="#252538"/>
+    <rect x="60" y="210" width="160" height="40" rx="6" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <text x="140" y="235" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="12" opacity="0.7">LLM Engine</text>
-    <rect x="60" y="270" width="160" height="40" rx="6" fill="#252538"/>
+    <rect x="60" y="270" width="160" height="40" rx="6" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <text x="140" y="295" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="12" opacity="0.7">Tool Executor</text>
-    <rect x="60" y="330" width="160" height="40" rx="6" fill="#252538"/>
+    <rect x="60" y="330" width="160" height="40" rx="6" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <text x="140" y="355" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="12" opacity="0.7">State Manager</text>
   </g>
 );
@@ -50,9 +50,9 @@ const FrontendBox = (
   <g>
     <rect x="960" y="150" width="200" height="400" rx="14" fill="#1E1E2E" stroke="#4A7BCC" strokeWidth="2"/>
     <text x="1060" y="185" textAnchor="middle" fill="#4A7BCC" fontFamily="sans-serif" fontSize="20" fontWeight="bold">Frontend</text>
-    <rect x="980" y="210" width="160" height="40" rx="6" fill="#252538"/>
+    <rect x="980" y="210" width="160" height="40" rx="6" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <text x="1060" y="235" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="12" opacity="0.7">Renderer</text>
-    <rect x="980" y="270" width="160" height="40" rx="6" fill="#252538"/>
+    <rect x="980" y="270" width="160" height="40" rx="6" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <text x="1060" y="295" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="12" opacity="0.7">UI Controls</text>
     <rect x="980" y="330" width="160" height="40" rx="6" fill="#252538"/>
     <text x="1060" y="355" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="12" opacity="0.7">File Manager</text>

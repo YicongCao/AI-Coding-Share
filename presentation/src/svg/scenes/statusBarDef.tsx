@@ -27,11 +27,11 @@ const Title = (
 const StatusBarUI = (
   <g transform="translate(150, 200)">
     <rect x="0" y="0" width="900" height="200" rx="16" fill="#1E1E2E" stroke="#555570" strokeWidth="2"/>
-    <rect x="0" y="0" width="900" height="48" rx="16" fill="#252538"/>
-    <rect x="0" y="32" width="900" height="16" fill="#252538"/>
-    <circle cx="28" cy="24" r="6" fill="#E85650"/>
-    <circle cx="50" cy="24" r="6" fill="#E8B84A"/>
-    <circle cx="72" cy="24" r="6" fill="#5BAD7A"/>
+    <rect x="0" y="0" width="900" height="48" rx="16" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
+    <rect x="0" y="32" width="900" height="16" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
+    <circle cx="28" cy="24" r="6" fill="#E85650" stroke="#F07870" strokeOpacity="0.3" strokeWidth="1"/>
+    <circle cx="50" cy="24" r="6" fill="#E8B84A" stroke="#F0D070" strokeOpacity="0.3" strokeWidth="1"/>
+    <circle cx="72" cy="24" r="6" fill="#5BAD7A" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="450" y="30" textAnchor="middle" fill="#555570" fontFamily="sans-serif" fontSize="13">Agent Status Panel</text>
 
     <g transform="translate(30, 65)">
@@ -75,7 +75,7 @@ const TypewriterDots = (
 
 const ExpectationLabel = (
   <g transform="translate(150, 500)">
-    <rect x="0" y="0" width="200" height="50" rx="25" fill="#E8B84A" opacity="0.15"/>
+    <rect x="0" y="0" width="200" height="50" rx="25" fill="#E8B84A" opacity="0.15" stroke="#F0D070" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="100" y="32" textAnchor="middle" fill="#E8B84A" fontFamily="sans-serif" fontSize="18" fontWeight="bold">给用户期待</text>
   </g>
 );

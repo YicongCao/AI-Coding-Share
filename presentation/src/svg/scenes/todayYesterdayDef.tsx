@@ -45,7 +45,7 @@ const TodayCard = (
     <text x="210" y="50" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="24" fontWeight="bold">今天</text>
     <text x="210" y="76" textAnchor="middle" fill="#5BAD7A" fontFamily="sans-serif" fontSize="13">Today</text>
     <line x1="40" y1="95" x2="380" y2="95" stroke="#555570" strokeWidth="0.5" opacity="0.4"/>
-    <circle cx="210" cy="170" r="40" fill="#5BAD7A" opacity="0.1"/>
+    <circle cx="210" cy="170" r="40" fill="#5BAD7A" opacity="0.1" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
     <path d="M210,140 L210,200 M190,160 L210,140 L230,160" fill="none" stroke="#5BAD7A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.6"/>
     {[210, 240, 270, 300, 330].map((y, i) => (
       <rect key={i} x="60" y={y} width={200 + (i % 3) * 40} height="6" rx="3" fill="#555570" opacity={0.15 + (i % 3) * 0.05}/>
@@ -56,9 +56,9 @@ const TodayCard = (
 
 const AIBadge = (
   <g transform="translate(840, 115)">
-    <rect x="0" y="0" width="60" height="30" rx="15" fill="#E8B84A"/>
+    <rect x="0" y="0" width="60" height="30" rx="15" fill="#E8B84A" stroke="#F0D070" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="30" y="21" textAnchor="middle" fill="#1E1E2E" fontFamily="sans-serif" fontSize="15" fontWeight="900">AI</text>
-    <circle cx="60" cy="0" r="8" fill="#E8B84A" opacity="0.4"/>
+    <circle cx="60" cy="0" r="8" fill="#E8B84A" opacity="0.4" stroke="#F0D070" strokeOpacity="0.3" strokeWidth="1"/>
     <circle cx="66" cy="-8" r="5" fill="#E8B84A" opacity="0.25"/>
   </g>
 );

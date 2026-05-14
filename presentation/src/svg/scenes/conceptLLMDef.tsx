@@ -20,8 +20,8 @@ const Defs = (
 const BrainIcon = (
   <g transform="translate(600, 300)">
     {/* Outer glow */}
-    <circle cx="0" cy="0" r="140" fill="#4A7BCC" opacity="0.06"/>
-    <circle cx="0" cy="0" r="110" fill="#4A7BCC" opacity="0.08"/>
+    <circle cx="0" cy="0" r="140" fill="#4A7BCC" opacity="0.06" stroke="#6A9BE0" strokeOpacity="0.3" strokeWidth="1"/>
+    <circle cx="0" cy="0" r="110" fill="#4A7BCC" opacity="0.08" stroke="#6A9BE0" strokeOpacity="0.3" strokeWidth="1"/>
     {/* Brain shape - left hemisphere */}
     <path d="M-8,-85 Q-60,-80 -80,-40 Q-100,0 -85,40 Q-70,75 -40,85 Q-15,92 -8,60" fill="none" stroke="#6EC8E6" strokeWidth="3" opacity="0.8"/>
     {/* Brain shape - right hemisphere */}
@@ -77,7 +77,7 @@ const ThoughtBubbles = (
 
 const TitleLabel = (
   <g>
-    <rect x="480" y="560" width="240" height="48" rx="10" fill="#252538"/>
+    <rect x="480" y="560" width="240" height="48" rx="10" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <text x="600" y="590" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="22" fontWeight="bold">大脑</text>
     <text x="600" y="624" textAnchor="middle" fill="#555570" fontFamily="sans-serif" fontSize="13">The Only Part That Truly "Thinks"</text>
   </g>

@@ -21,8 +21,8 @@ const SystemPromptDoc = (
   <g transform="translate(200, 60)">
     <rect x="0" y="0" width="800" height="480" rx="14" fill="#1E1E2E" stroke="#555570" strokeWidth="1.5"/>
     {/* Header */}
-    <rect x="0" y="0" width="800" height="50" rx="14" fill="#252538"/>
-    <rect x="0" y="30" width="800" height="20" fill="#252538"/>
+    <rect x="0" y="0" width="800" height="50" rx="14" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
+    <rect x="0" y="30" width="800" height="20" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <text x="400" y="34" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="18" fontWeight="bold">System Prompt</text>
     {/* Divider */}
     <line x1="400" y1="60" x2="400" y2="470" stroke="#555570" strokeWidth="1" strokeDasharray="6 4"/>
@@ -90,7 +90,7 @@ const SkillsIcon = (
 
 const TitleLabel = (
   <g>
-    <rect x="370" y="625" width="260" height="38" rx="8" fill="#252538"/>
+    <rect x="370" y="625" width="260" height="38" rx="8" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <text x="500" y="650" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="15" fontWeight="bold">Rules + Skills → System Prompt</text>
   </g>
 );

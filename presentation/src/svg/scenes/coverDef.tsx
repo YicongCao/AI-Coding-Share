@@ -40,7 +40,7 @@ const Background = (
 // ── Fragment 1: Main UI/design window ──
 const MainWindow = (
   <g filter="url(#shadow)">
-    <rect x="400" y="55" width="720" height="450" rx="12" fill="#1E1E2E"/>
+    <rect x="400" y="55" width="720" height="450" rx="12" fill="#1E1E2E" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <circle cx="428" cy="79" r="5" fill="#E85650"/>
     <circle cx="446" cy="79" r="5" fill="#E8B84A"/>
     <circle cx="464" cy="79" r="5" fill="#5BAD7A"/>
@@ -87,17 +87,17 @@ const MainWindow = (
       <circle cx="520" cy="245" r="4" fill="#555570"/>
       <circle cx="670" cy="400" r="48" fill="none" stroke="#555570" strokeWidth="2"/>
       <g>
-        <rect x="445" y="330" width="105" height="72" rx="6" fill="#252538"/>
+        <rect x="445" y="330" width="105" height="72" rx="6" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
         <circle cx="465" cy="350" r="9" fill="#555570"/>
         <rect x="482" y="345" width="52" height="4" rx="2" fill="#555570"/>
         <rect x="482" y="355" width="36" height="4" rx="2" fill="#555570" opacity="0.6"/>
         <rect x="455" y="370" width="82" height="4" rx="2" fill="#555570" opacity="0.4"/>
         <rect x="455" y="380" width="62" height="4" rx="2" fill="#555570" opacity="0.3"/>
       </g>
-      <rect x="600" y="205" width="125" height="38" rx="6" fill="#4A7BCC"/>
+      <rect x="600" y="205" width="125" height="38" rx="6" fill="#4A7BCC" stroke="#6A9BE0" strokeOpacity="0.3" strokeWidth="1"/>
       <rect x="740" y="300" width="42" height="42" rx="4" fill="#E85650"/>
       <g>
-        <rect x="830" y="130" width="58" height="58" rx="8" fill="#E8B84A"/>
+        <rect x="830" y="130" width="58" height="58" rx="8" fill="#E8B84A" stroke="#F0D070" strokeOpacity="0.3" strokeWidth="1"/>
         <text x="859" y="167" textAnchor="middle" fill="#1E1E2E" fontFamily="monospace" fontSize="18" fontWeight="bold">{"</>"}</text>
       </g>
       <g>
@@ -115,7 +115,7 @@ const MainWindow = (
           <line x1="-5.7" y1="5.7" x2="-8.5" y2="8.5"/>
         </g>
       </g>
-      <rect x="1020" y="275" width="85" height="135" rx="6" fill="#2D4A3D"/>
+      <rect x="1020" y="275" width="85" height="135" rx="6" fill="#2D4A3D" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
       <rect x="1033" y="292" width="58" height="4" rx="2" fill="#5BAD7A" opacity="0.6"/>
       <rect x="1033" y="304" width="46" height="4" rx="2" fill="#5BAD7A" opacity="0.4"/>
       <rect x="1033" y="316" width="58" height="4" rx="2" fill="#5BAD7A" opacity="0.5"/>
@@ -263,7 +263,7 @@ const Woman = (
 // ── Fragment 5: Bar chart icon ──
 const BarChart = (
   <g transform="translate(810, 510)">
-    <rect x="0" y="0" width="62" height="62" rx="6" fill="#2D4A3D"/>
+    <rect x="0" y="0" width="62" height="62" rx="6" fill="#2D4A3D" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <rect x="12" y="30" width="11" height="24" rx="2" fill="url(#barGrad)"/>
     <rect x="26" y="16" width="11" height="38" rx="2" fill="url(#barGrad)"/>
     <rect x="40" y="22" width="11" height="32" rx="2" fill="url(#barGrad)"/>
@@ -328,7 +328,7 @@ export const coverSceneDef: SvgSceneDef = {
       enterFrom: { x: 400, y: -300 },
       enterDelay: 250,
       floatAmp: { x: 14, y: 18 },
-      floatPeriod: { x: 6.0, y: 4.2 },
+      floatPeriod: { x: 6.0, y: 4.2 }, floatRotate: 1,
       exitTo: { x: -520, y: -260 },
       exitSpin: -8,
     },
@@ -338,7 +338,7 @@ export const coverSceneDef: SvgSceneDef = {
       enterFrom: { x: 0, y: 400 },
       enterDelay: 350,
       floatAmp: { x: 12, y: 16 },
-      floatPeriod: { x: 5.8, y: 7.0 },
+      floatPeriod: { x: 5.8, y: 7.0 }, floatRotate: 0.8,
       exitTo: { x: 0, y: 420 },
       exitSpin: 6,
     },
@@ -348,7 +348,7 @@ export const coverSceneDef: SvgSceneDef = {
       enterFrom: { x: 0, y: 300 },
       enterDelay: 450,
       floatAmp: { x: 18, y: 22 },
-      floatPeriod: { x: 3.5, y: 4.8 },
+      floatPeriod: { x: 3.5, y: 4.8 }, floatRotate: 2.5,
       exitTo: { x: 120, y: 360 },
       exitSpin: 12,
     },
@@ -358,7 +358,7 @@ export const coverSceneDef: SvgSceneDef = {
       enterFrom: { x: 300, y: 300 },
       enterDelay: 550,
       floatAmp: { x: 22, y: 28 },
-      floatPeriod: { x: 3.0, y: 3.6 },
+      floatPeriod: { x: 3.0, y: 3.6 }, floatRotate: 3,
       exitTo: { x: 420, y: 420 },
       exitSpin: 18,
     },
@@ -368,7 +368,7 @@ export const coverSceneDef: SvgSceneDef = {
       enterFrom: { x: 0, y: 0 },
       enterDelay: 600,
       floatAmp: { x: 4, y: 5 },
-      floatPeriod: { x: 8.0, y: 9.0 },
+      floatPeriod: { x: 8.0, y: 9.0 }, floatRotate: 2,
     },
   ],
 };

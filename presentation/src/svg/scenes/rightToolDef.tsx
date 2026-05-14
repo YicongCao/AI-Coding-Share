@@ -30,7 +30,7 @@ const Toolbox = (
     {/* Hammer */}
     <g transform="translate(160, 90)">
       <rect x="20" y="0" width="8" height="50" rx="3" fill="#E8734A" opacity="0.7"/>
-      <rect x="0" y="-4" width="50" height="16" rx="4" fill="#E8734A" opacity="0.8"/>
+      <rect x="0" y="-4" width="50" height="16" rx="4" fill="#E8734A" opacity="0.8" stroke="#F09570" strokeOpacity="0.3" strokeWidth="1"/>
     </g>
     {/* Terminal */}
     <g transform="translate(50, 200)">
@@ -47,7 +47,7 @@ const Toolbox = (
     {/* Gear */}
     <g transform="translate(90, 310)">
       <circle cx="20" cy="20" r="16" fill="none" stroke="#4A7BCC" strokeWidth="2.5"/>
-      <circle cx="20" cy="20" r="7" fill="#4A7BCC" opacity="0.5"/>
+      <circle cx="20" cy="20" r="7" fill="#4A7BCC" opacity="0.5" stroke="#6A9BE0" strokeOpacity="0.3" strokeWidth="1"/>
       {[0, 45, 90, 135].map((a, i) => (
         <line key={i} x1={20 + 14 * Math.cos(a * Math.PI / 180)} y1={20 + 14 * Math.sin(a * Math.PI / 180)}
               x2={20 + 22 * Math.cos(a * Math.PI / 180)} y2={20 + 22 * Math.sin(a * Math.PI / 180)}
@@ -91,7 +91,7 @@ const Checklist = (
 
 const TitleLabel = (
   <g>
-    <rect x="470" y="580" width="260" height="48" rx="10" fill="#252538"/>
+    <rect x="470" y="580" width="260" height="48" rx="10" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <text x="600" y="610" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="22" fontWeight="bold">合适的工具</text>
     <text x="600" y="648" textAnchor="middle" fill="#555570" fontFamily="sans-serif" fontSize="13">Right Tool for the Right Job</text>
   </g>

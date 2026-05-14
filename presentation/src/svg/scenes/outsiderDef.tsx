@@ -20,7 +20,7 @@ const Defs = (
 const CommunityCircle = (
   <g transform="translate(520, 310)">
     <ellipse cx="0" cy="0" rx="220" ry="200" fill="none" stroke="#5BAD7A" strokeWidth="2.5" strokeDasharray="12 6" opacity="0.5"/>
-    <ellipse cx="0" cy="0" rx="220" ry="200" fill="#1E1E2E" opacity="0.3"/>
+    <ellipse cx="0" cy="0" rx="220" ry="200" fill="#1E1E2E" opacity="0.3" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <text x="0" y="-160" textAnchor="middle" fill="#5BAD7A" fontFamily="sans-serif" fontSize="14" opacity="0.7">Agent Dev Community</text>
     {/* silhouettes inside */}
     <g fill="#555570" opacity="0.6">
@@ -37,8 +37,8 @@ const CommunityCircle = (
 
 const OutsiderPerson = (
   <g transform="translate(920, 320)">
-    <circle cx="0" cy="-30" r="22" fill="#6EC8E6"/>
-    <rect x="-18" y="-4" width="36" height="56" rx="12" fill="#4A7BCC"/>
+    <circle cx="0" cy="-30" r="22" fill="#6EC8E6" stroke="#90D8F0" strokeOpacity="0.3" strokeWidth="1"/>
+    <rect x="-18" y="-4" width="36" height="56" rx="12" fill="#4A7BCC" stroke="#6A9BE0" strokeOpacity="0.3" strokeWidth="1"/>
     <circle cx="0" cy="-30" r="18" fill="#F5C5A3"/>
     <ellipse cx="-6" cy="-34" rx="2.5" ry="3" fill="#2B2B3D"/>
     <ellipse cx="6" cy="-34" rx="2.5" ry="3" fill="#2B2B3D"/>

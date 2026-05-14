@@ -54,8 +54,8 @@ const FlowArrows = (
 const IntentBox = (
   <g transform="translate(280, 250)">
     <rect x="0" y="0" width="280" height="145" rx="10" fill="#1E1E2E" stroke="#E8734A" strokeWidth="2"/>
-    <rect x="0" y="0" width="280" height="36" rx="10" fill="#E8734A" opacity="0.15"/>
-    <rect x="0" y="26" width="280" height="10" fill="#E8734A" opacity="0.15"/>
+    <rect x="0" y="0" width="280" height="36" rx="10" fill="#E8734A" opacity="0.15" stroke="#F09570" strokeOpacity="0.3" strokeWidth="1"/>
+    <rect x="0" y="26" width="280" height="10" fill="#E8734A" opacity="0.15" stroke="#F09570" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="140" y="25" textAnchor="middle" fill="#E8734A" fontFamily="sans-serif" fontSize="14" fontWeight="bold">Intent 意图识别</text>
     {/* Classification results */}
     <text x="24" y="62" fill="#FFFFFF" fontFamily="sans-serif" fontSize="12" opacity="0.8">Classification:</text>
@@ -71,14 +71,14 @@ const IntentBox = (
 const SlotBox = (
   <g transform="translate(640, 250)">
     <rect x="0" y="0" width="280" height="145" rx="10" fill="#1E1E2E" stroke="#6EC8E6" strokeWidth="2"/>
-    <rect x="0" y="0" width="280" height="36" rx="10" fill="#6EC8E6" opacity="0.15"/>
-    <rect x="0" y="26" width="280" height="10" fill="#6EC8E6" opacity="0.15"/>
+    <rect x="0" y="0" width="280" height="36" rx="10" fill="#6EC8E6" opacity="0.15" stroke="#90D8F0" strokeOpacity="0.3" strokeWidth="1"/>
+    <rect x="0" y="26" width="280" height="10" fill="#6EC8E6" opacity="0.15" stroke="#90D8F0" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="140" y="25" textAnchor="middle" fill="#6EC8E6" fontFamily="sans-serif" fontSize="14" fontWeight="bold">Slot 槽位提取</text>
     {/* Extraction results */}
     <text x="24" y="62" fill="#FFFFFF" fontFamily="sans-serif" fontSize="12" opacity="0.8">Extraction:</text>
-    <rect x="24" y="72" width="110" height="24" rx="5" fill="#E8B84A" opacity="0.2"/>
+    <rect x="24" y="72" width="110" height="24" rx="5" fill="#E8B84A" opacity="0.2" stroke="#F0D070" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="79" y="88" textAnchor="middle" fill="#E8B84A" fontFamily="sans-serif" fontSize="11">artist: 周杰伦</text>
-    <rect x="144" y="72" width="110" height="24" rx="5" fill="#6EC8E6" opacity="0.2"/>
+    <rect x="144" y="72" width="110" height="24" rx="5" fill="#6EC8E6" opacity="0.2" stroke="#90D8F0" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="199" y="88" textAnchor="middle" fill="#6EC8E6" fontFamily="sans-serif" fontSize="11">type: 歌曲</text>
     <rect x="24" y="108" width="230" height="6" rx="3" fill="#555570" opacity="0.3"/>
     <text x="24" y="130" fill="#555570" fontFamily="sans-serif" fontSize="11" opacity="0.6">B-artist I-artist O B-type</text>

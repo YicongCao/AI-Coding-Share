@@ -56,8 +56,8 @@ const StepVerify = (
 const AgentIcon = (
   <g transform="translate(560, 270)">
     <rect x="0" y="0" width="80" height="80" rx="16" fill="#252538" stroke="#4A7BCC" strokeWidth="2"/>
-    <circle cx="28" cy="30" r="6" fill="#4A7BCC" opacity="0.8"/>
-    <circle cx="52" cy="30" r="6" fill="#4A7BCC" opacity="0.8"/>
+    <circle cx="28" cy="30" r="6" fill="#4A7BCC" opacity="0.8" stroke="#6A9BE0" strokeOpacity="0.3" strokeWidth="1"/>
+    <circle cx="52" cy="30" r="6" fill="#4A7BCC" opacity="0.8" stroke="#6A9BE0" strokeOpacity="0.3" strokeWidth="1"/>
     <path d="M24,52 Q40,65 56,52" fill="none" stroke="#4A7BCC" strokeWidth="2.5" strokeLinecap="round" opacity="0.7"/>
     <text x="40" y="105" textAnchor="middle" fill="#4A7BCC" fontFamily="sans-serif" fontSize="14" fontWeight="bold">Agent</text>
   </g>
@@ -98,7 +98,7 @@ export const closedLoopAutoSceneDef: SvgSceneDef = {
     { id: "verify", content: StepVerify, enterFrom: { x: 0, y: 300 }, enterDelay: 300, floatAmp: { x: 12, y: 14 }, floatPeriod: { x: 5.5, y: 6 }, exitTo: { x: 0, y: 400 } },
     { id: "agent", content: AgentIcon, enterFrom: { x: 0, y: 0 }, enterDelay: 200, floatAmp: { x: 10, y: 12 }, floatPeriod: { x: 6, y: 7 }, exitTo: { x: 0, y: -300 }, exitScale: 1.2 },
     { id: "check", content: GreenCheck, enterFrom: { x: -300, y: 0 }, enterDelay: 400, floatAmp: { x: 16, y: 20 }, floatPeriod: { x: 4, y: 5 }, exitTo: { x: -400, y: 0 } },
-    { id: "noPerson", content: NoPerson, enterFrom: { x: -200, y: -200 }, enterDelay: 350, floatAmp: { x: 14, y: 16 }, floatPeriod: { x: 4.5, y: 5.5 }, exitTo: { x: -300, y: -200 } },
-    { id: "autoLabel", content: AutoLabel, enterFrom: { x: 0, y: 200 }, enterDelay: 500, floatAmp: { x: 8, y: 10 }, floatPeriod: { x: 7, y: 9 }, exitTo: { x: 0, y: 300 } },
+    { id: "noPerson", content: NoPerson, enterFrom: { x: -200, y: -200 }, enterDelay: 350, floatAmp: { x: 14, y: 16 }, floatPeriod: { x: 4.5, y: 5.5 }, floatRotate: 1.5, exitTo: { x: -300, y: -200 } },
+    { id: "autoLabel", content: AutoLabel, enterFrom: { x: 0, y: 200 }, enterDelay: 500, floatAmp: { x: 8, y: 10 }, floatPeriod: { x: 7, y: 9 }, floatRotate: 1, exitTo: { x: 0, y: 300 } },
   ],
 };

@@ -22,8 +22,8 @@ const VistaWindow = (
     <rect x="250" y="70" width="700" height="470" rx="12" fill="#121A2A" stroke="#4A7BCC" strokeWidth="1.4" opacity="0.95"/>
     <path d="M250,420 C350,350 470,390 560,310 C650,230 780,260 950,150 L950,492 L250,492 Z" fill="#4A7BCC" opacity="0.14"/>
     <path d="M250,230 C390,180 460,230 560,170 C650,120 780,135 950,82" fill="none" stroke="#6EC8E6" strokeWidth="1.2" opacity="0.18"/>
-    <rect x="250" y="492" width="700" height="48" rx="0" fill="#172033" opacity="0.96"/>
-    <rect x="250" y="520" width="700" height="20" rx="12" fill="#172033"/>
+    <rect x="250" y="492" width="700" height="48" rx="0" fill="#172033" opacity="0.96" stroke="#FFFFFF" strokeOpacity="0.08" strokeWidth="1"/>
+    <rect x="250" y="520" width="700" height="20" rx="12" fill="#172033" stroke="#FFFFFF" strokeOpacity="0.08" strokeWidth="1"/>
     <g opacity="0.92">
       <rect x="282" y="508" width="9" height="9" fill="#FFFFFF"/>
       <rect x="294" y="508" width="9" height="9" fill="#FFFFFF"/>
@@ -45,7 +45,7 @@ const VistaWindow = (
       <text x="17" y="45" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="9" opacity="0.6">Files</text>
     </g>
     <rect x="350" y="115" width="500" height="300" rx="6" fill="#1E1E2E" stroke="#6EC8E6" strokeWidth="1.2"/>
-    <rect x="350" y="115" width="500" height="34" rx="6" fill="#252538"/>
+    <rect x="350" y="115" width="500" height="34" rx="6" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <rect x="350" y="141" width="500" height="8" fill="#252538"/>
     <text x="374" y="137" fill="#FFFFFF" fontFamily="sans-serif" fontSize="12" opacity="0.78">Voice Assistant - Windows Desktop</text>
     <g transform="translate(754, 115)">
@@ -57,7 +57,7 @@ const VistaWindow = (
       <line x1="75" y1="12" x2="85" y2="22" stroke="#FFFFFF" strokeWidth="1.4" strokeLinecap="round"/>
       <line x1="85" y1="12" x2="75" y2="22" stroke="#FFFFFF" strokeWidth="1.4" strokeLinecap="round"/>
     </g>
-    <rect x="365" y="168" width="470" height="220" rx="6" fill="#151A28"/>
+    <rect x="365" y="168" width="470" height="220" rx="6" fill="#151A28" stroke="#FFFFFF" strokeOpacity="0.08" strokeWidth="1"/>
     <rect x="385" y="190" width="170" height="12" rx="6" fill="#6EC8E6" opacity="0.42"/>
     <rect x="385" y="222" width="150" height="8" rx="4" fill="#FFFFFF" opacity="0.22"/>
     <rect x="385" y="246" width="132" height="8" rx="4" fill="#FFFFFF" opacity="0.16"/>
@@ -71,7 +71,7 @@ const VistaWindow = (
 
 const Sidebar = (
   <g>
-    <rect x="365" y="168" width="210" height="220" fill="#202638" opacity="0.94"/>
+    <rect x="365" y="168" width="210" height="220" fill="#202638" opacity="0.94" stroke="#FFFFFF" strokeOpacity="0.08" strokeWidth="1"/>
     <text x="385" y="192" fill="#FFFFFF" fontFamily="sans-serif" fontSize="12" opacity="0.72">Start Menu</text>
     <rect x="385" y="214" width="150" height="8" rx="4" fill="#555570" opacity="0.5"/>
     <rect x="385" y="238" width="130" height="6" rx="3" fill="#555570" opacity="0.35"/>
@@ -87,7 +87,7 @@ const Sidebar = (
 const VoiceIcon = (
   <g transform="translate(600, 310)">
     <circle r="52" fill="none" stroke="#6EC8E6" strokeWidth="2.5" opacity="0.6"/>
-    <circle r="38" fill="#252538"/>
+    <circle r="38" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     {/* Microphone */}
     <rect x="-8" y="-20" width="16" height="28" rx="8" fill="#6EC8E6"/>
     <path d="M-14,4 C-14,18 -4,26 0,26 C4,26 14,18 14,4" fill="none" stroke="#6EC8E6" strokeWidth="2.5" strokeLinecap="round"/>
@@ -134,9 +134,9 @@ export const vistaWindowSceneDef: SvgSceneDef = {
   fragments: [
     { id: "vistaWindow", content: VistaWindow, enterFrom: { x: 600, y: 0 }, enterDelay: 0, floatAmp: { x: 10, y: 12 }, floatPeriod: { x: 5.5, y: 7.0 }, exitTo: { x: -700, y: -80 }, exitSpin: -3 },
     { id: "sidebar", content: Sidebar, enterFrom: { x: -400, y: 0 }, enterDelay: 100, floatAmp: { x: 10, y: 12 }, floatPeriod: { x: 5.5, y: 7.0 }, exitTo: { x: -700, y: -80 }, exitSpin: -3 },
-    { id: "voiceIcon", content: VoiceIcon, enterFrom: { x: 0, y: -350 }, enterDelay: 200, floatAmp: { x: 14, y: 16 }, floatPeriod: { x: 4.2, y: 5.8 }, exitTo: { x: 0, y: -400 }, exitScale: 0.6 },
-    { id: "yearTag", content: YearTag, enterFrom: { x: -300, y: -200 }, enterDelay: 300, floatAmp: { x: 18, y: 14 }, floatPeriod: { x: 3.8, y: 5.2 }, exitTo: { x: -350, y: -250 }, exitSpin: -12 },
-    { id: "waveform", content: Waveform, enterFrom: { x: 0, y: 300 }, enterDelay: 400, floatAmp: { x: 8, y: 10 }, floatPeriod: { x: 6.0, y: 8.0 }, exitTo: { x: 0, y: 380 }, exitSpin: 4 },
+    { id: "voiceIcon", content: VoiceIcon, enterFrom: { x: 0, y: -350 }, enterDelay: 200, floatAmp: { x: 14, y: 16 }, floatPeriod: { x: 4.2, y: 5.8 }, floatRotate: 1.5, exitTo: { x: 0, y: -400 }, exitScale: 0.6 },
+    { id: "yearTag", content: YearTag, enterFrom: { x: -300, y: -200 }, enterDelay: 300, floatAmp: { x: 18, y: 14 }, floatPeriod: { x: 3.8, y: 5.2 }, floatRotate: 1.5, exitTo: { x: -350, y: -250 }, exitSpin: -12 },
+    { id: "waveform", content: Waveform, enterFrom: { x: 0, y: 300 }, enterDelay: 400, floatAmp: { x: 8, y: 10 }, floatPeriod: { x: 6.0, y: 8.0 }, floatRotate: 1, exitTo: { x: 0, y: 380 }, exitSpin: 4 },
     { id: "vistaLabel", content: VistaLabel, enterFrom: { x: 300, y: 200 }, enterDelay: 500, floatAmp: { x: 12, y: 10 }, floatPeriod: { x: 5.0, y: 6.5 }, exitTo: { x: 350, y: 250 }, exitSpin: 8 },
     { id: "assistantText", content: AssistantText, enterFrom: { x: -250, y: 200 }, enterDelay: 600, floatAmp: { x: 10, y: 8 }, floatPeriod: { x: 7.0, y: 8.5 }, exitTo: { x: -300, y: 250 } },
   ],

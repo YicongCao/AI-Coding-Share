@@ -75,7 +75,7 @@ const PodiumAndTeacher = (
       <rect x="0" y="56" width="160" height="96" rx="12" fill="#252538" stroke="#555570" strokeWidth="1.5"/>
       <rect x="18" y="76" width="124" height="8" rx="4" fill="#555570" opacity="0.35"/>
       <rect x="18" y="96" width="90" height="6" rx="3" fill="#6EC8E6" opacity="0.45"/>
-      <rect x="52" y="24" width="56" height="46" rx="18" fill="#3A3A50"/>
+      <rect x="52" y="24" width="56" height="46" rx="18" fill="#3A3A50" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
       <circle cx="80" cy="8" r="24" fill="#F5C5A3"/>
       <path d="M56,2 Q66,-22 92,-14 Q106,-6 103,10 Q84,0 56,14 Z" fill="#555570"/>
       <path d="M37,76 Q14,58 8,34" fill="none" stroke="#F5C5A3" strokeWidth="8" strokeLinecap="round" opacity="0.85"/>
@@ -109,7 +109,7 @@ const ClassroomDetails = (
   <g>
     <g transform="translate(88, 126)" opacity="0.7">
       <rect x="0" y="0" width="92" height="150" rx="14" fill="#1E1E2E" stroke="#3A3A50" strokeWidth="1.5"/>
-      <rect x="14" y="22" width="64" height="88" rx="6" fill="#252538"/>
+      <rect x="14" y="22" width="64" height="88" rx="6" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
       <rect x="24" y="42" width="44" height="6" rx="3" fill="#4A7BCC"/>
       <rect x="24" y="58" width="34" height="6" rx="3" fill="#5BAD7A" opacity="0.75"/>
       <circle cx="46" cy="126" r="7" fill="none" stroke="#555570" strokeWidth="1.5"/>

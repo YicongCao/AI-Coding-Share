@@ -35,7 +35,7 @@ const AsrSide = (
   <g>
     {/* Microphone icon */}
     <rect x="920" y="200" width="160" height="120" rx="12" fill="#1E1E2E" stroke="#6EC8E6" strokeWidth="1.5"/>
-    <rect x="985" y="228" width="30" height="48" rx="15" fill="#6EC8E6"/>
+    <rect x="985" y="228" width="30" height="48" rx="15" fill="#6EC8E6" stroke="#90D8F0" strokeOpacity="0.3" strokeWidth="1"/>
     <path d="M975,260 Q975,290 1000,290 Q1025,290 1025,260" fill="none" stroke="#6EC8E6" strokeWidth="2.5" strokeLinecap="round"/>
     <line x1="1000" y1="290" x2="1000" y2="305" stroke="#6EC8E6" strokeWidth="2.5"/>
     <line x1="988" y1="305" x2="1012" y2="305" stroke="#6EC8E6" strokeWidth="2.5" strokeLinecap="round"/>
@@ -57,9 +57,9 @@ const CenterRobot = (
     {/* Robot body */}
     <rect x="545" y="200" width="110" height="90" rx="14" fill="#252538" stroke="#E8B84A" strokeWidth="1.5"/>
     {/* Screen face */}
-    <rect x="563" y="215" width="74" height="40" rx="6" fill="#1E1E2E"/>
-    <circle cx="582" cy="235" r="6" fill="#6EC8E6" opacity="0.9"/>
-    <circle cx="618" cy="235" r="6" fill="#5BAD7A" opacity="0.9"/>
+    <rect x="563" y="215" width="74" height="40" rx="6" fill="#1E1E2E" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
+    <circle cx="582" cy="235" r="6" fill="#6EC8E6" opacity="0.9" stroke="#90D8F0" strokeOpacity="0.3" strokeWidth="1"/>
+    <circle cx="618" cy="235" r="6" fill="#5BAD7A" opacity="0.9" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
     <rect x="573" y="248" width="54" height="3" rx="1.5" fill="#E8B84A" opacity="0.5"/>
     {/* Antenna */}
     <line x1="600" y1="200" x2="600" y2="178" stroke="#E8B84A" strokeWidth="2"/>
@@ -86,12 +86,12 @@ const Waveform = (
 const TextBlocks = (
   <g>
     {/* Text input block (left) */}
-    <rect x="100" y="430" width="200" height="28" rx="6" fill="#1E1E2E" opacity="0.8"/>
+    <rect x="100" y="430" width="200" height="28" rx="6" fill="#1E1E2E" opacity="0.8" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <rect x="112" y="440" width="60" height="5" rx="2.5" fill="#FFFFFF" opacity="0.4"/>
     <rect x="180" y="440" width="45" height="5" rx="2.5" fill="#FFFFFF" opacity="0.3"/>
     <rect x="232" y="440" width="30" height="5" rx="2.5" fill="#FFFFFF" opacity="0.25"/>
     {/* Text output block (right) */}
-    <rect x="900" y="430" width="200" height="28" rx="6" fill="#1E1E2E" opacity="0.8"/>
+    <rect x="900" y="430" width="200" height="28" rx="6" fill="#1E1E2E" opacity="0.8" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <rect x="912" y="440" width="55" height="5" rx="2.5" fill="#FFFFFF" opacity="0.4"/>
     <rect x="975" y="440" width="40" height="5" rx="2.5" fill="#FFFFFF" opacity="0.3"/>
     <rect x="1022" y="440" width="50" height="5" rx="2.5" fill="#FFFFFF" opacity="0.25"/>
@@ -122,7 +122,7 @@ export const ttsAsrSplitSceneDef: SvgSceneDef = {
     { id: "tts", content: TtsSide, enterFrom: { x: -500, y: 0 }, enterDelay: 100, floatAmp: { x: 12, y: 14 }, floatPeriod: { x: 5.0, y: 6.2 }, exitTo: { x: -600, y: 0 }, exitSpin: -3 },
     { id: "asr", content: AsrSide, enterFrom: { x: 500, y: 0 }, enterDelay: 100, floatAmp: { x: 12, y: 14 }, floatPeriod: { x: 5.2, y: 6.0 }, exitTo: { x: 600, y: 0 }, exitSpin: 3 },
     { id: "robot", content: CenterRobot, enterFrom: { x: 0, y: -350 }, enterDelay: 300, floatAmp: { x: 10, y: 16 }, floatPeriod: { x: 4.5, y: 5.8 }, exitTo: { x: 0, y: -400 }, exitScale: 0.6 },
-    { id: "waveform", content: Waveform, enterFrom: { x: 0, y: 300 }, enterDelay: 450, floatAmp: { x: 14, y: 10 }, floatPeriod: { x: 3.8, y: 5.0 }, exitTo: { x: 0, y: 350 } },
+    { id: "waveform", content: Waveform, enterFrom: { x: 0, y: 300 }, enterDelay: 450, floatAmp: { x: 14, y: 10 }, floatPeriod: { x: 3.8, y: 5.0 }, floatRotate: 1, exitTo: { x: 0, y: 350 } },
     { id: "textBlocks", content: TextBlocks, enterFrom: { x: 0, y: 250 }, enterDelay: 550, floatAmp: { x: 8, y: 12 }, floatPeriod: { x: 6.5, y: 7.8 }, exitTo: { x: 0, y: 300 } },
   ],
 };

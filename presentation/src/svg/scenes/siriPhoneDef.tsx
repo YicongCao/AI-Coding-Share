@@ -22,7 +22,7 @@ const IPhone = (
     {/* Phone body */}
     <rect x="0" y="0" width="240" height="480" rx="28" fill="#252538" stroke="#555570" strokeWidth="2"/>
     {/* Screen */}
-    <rect x="14" y="50" width="212" height="370" rx="4" fill="#1E1E2E"/>
+    <rect x="14" y="50" width="212" height="370" rx="4" fill="#1E1E2E" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     {/* Top notch area */}
     <rect x="80" y="14" width="80" height="6" rx="3" fill="#555570" opacity="0.5"/>
     <circle cx="120" cy="32" r="5" fill="#555570" opacity="0.4"/>
@@ -30,7 +30,7 @@ const IPhone = (
     <circle cx="120" cy="450" r="18" fill="none" stroke="#555570" strokeWidth="1.5"/>
     <rect x="110" y="442" width="20" height="16" rx="4" fill="none" stroke="#555570" strokeWidth="1" opacity="0.5"/>
     {/* Screen content - gradient background */}
-    <rect x="14" y="50" width="212" height="370" rx="4" fill="#1E1E2E"/>
+    <rect x="14" y="50" width="212" height="370" rx="4" fill="#1E1E2E" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     {/* Status bar */}
     <rect x="24" y="56" width="30" height="4" rx="2" fill="#FFFFFF" opacity="0.3"/>
     <rect x="180" y="56" width="36" height="4" rx="2" fill="#FFFFFF" opacity="0.3"/>
@@ -42,8 +42,8 @@ const SiriRipples = (
     <circle r="96" fill="none" stroke="#6EC8E6" strokeWidth="2" opacity="0.12"/>
     <circle r="72" fill="none" stroke="#6EC8E6" strokeWidth="2.5" opacity="0.2"/>
     <circle r="48" fill="none" stroke="#6EC8E6" strokeWidth="3" opacity="0.34"/>
-    <circle r="28" fill="#4A7BCC" opacity="0.62"/>
-    <circle r="14" fill="#6EC8E6" opacity="0.85"/>
+    <circle r="28" fill="#4A7BCC" opacity="0.62" stroke="#6A9BE0" strokeOpacity="0.3" strokeWidth="1"/>
+    <circle r="14" fill="#6EC8E6" opacity="0.85" stroke="#90D8F0" strokeOpacity="0.3" strokeWidth="1"/>
   </g>
 );
 
@@ -56,7 +56,7 @@ const HeySiriText = (
 
 const YearTag = (
   <g transform="translate(80, 120)">
-    <rect x="0" y="0" width="100" height="44" rx="8" fill="#5BAD7A"/>
+    <rect x="0" y="0" width="100" height="44" rx="8" fill="#5BAD7A" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="50" y="29" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="20" fontWeight="bold">2010</text>
   </g>
 );
@@ -77,7 +77,7 @@ export const siriPhoneSceneDef: SvgSceneDef = {
     { id: "iPhone", content: IPhone, enterFrom: { x: 0, y: 500 }, enterDelay: 0, floatAmp: { x: 8, y: 12 }, floatPeriod: { x: 5.5, y: 7.0 }, exitTo: { x: 0, y: -550 }, exitSpin: -2 },
     { id: "siriRipples", content: SiriRipples, enterFrom: { x: 0, y: 0 }, enterDelay: 200, floatAmp: { x: 10, y: 10 }, floatPeriod: { x: 4.0, y: 5.0 }, exitTo: { x: 0, y: -400 }, exitScale: 1.5 },
     { id: "heySiriText", content: HeySiriText, enterFrom: { x: 0, y: 300 }, enterDelay: 300, floatAmp: { x: 12, y: 8 }, floatPeriod: { x: 6.0, y: 7.5 }, exitTo: { x: 0, y: 350 } },
-    { id: "yearTag", content: YearTag, enterFrom: { x: -300, y: -200 }, enterDelay: 150, floatAmp: { x: 18, y: 14 }, floatPeriod: { x: 3.5, y: 4.8 }, exitTo: { x: -350, y: -250 }, exitSpin: -10 },
+    { id: "yearTag", content: YearTag, enterFrom: { x: -300, y: -200 }, enterDelay: 150, floatAmp: { x: 18, y: 14 }, floatPeriod: { x: 3.5, y: 4.8 }, floatRotate: 1.5, exitTo: { x: -350, y: -250 }, exitSpin: -10 },
     { id: "iPhoneLabel", content: IPhoneLabel, enterFrom: { x: -300, y: 200 }, enterDelay: 600, floatAmp: { x: 10, y: 8 }, floatPeriod: { x: 7.0, y: 9.0 }, exitTo: { x: -350, y: 250 } },
   ],
 };

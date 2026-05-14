@@ -66,7 +66,7 @@ const TitleLabel = (
 
 const SubtitleQuote = (
   <g transform="translate(250, 560)">
-    <rect x="0" y="0" width="700" height="44" rx="8" fill="#252538" opacity="0.7"/>
+    <rect x="0" y="0" width="700" height="44" rx="8" fill="#252538" opacity="0.7" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <text x="350" y="30" textAnchor="middle" fontSize="16" fill="#555570" fontFamily="sans-serif">Vector("King") − Vector("Man") + Vector("Woman") ≈ Vector("Queen")</text>
   </g>
 );

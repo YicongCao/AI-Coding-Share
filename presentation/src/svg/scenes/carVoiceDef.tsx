@@ -21,19 +21,19 @@ const CockpitView = (
   <g>
     <path d="M150,68 L1050,68 L972,382 L228,382 Z" fill="#101827" stroke="#4A7BCC" strokeWidth="1.4"/>
     <path d="M210,330 C360,258 480,240 600,240 C720,240 840,258 990,330 L972,382 L228,382 Z" fill="#182235" opacity="0.75"/>
-    <rect x="240" y="108" width="720" height="56" rx="28" fill="#6EC8E6" opacity="0.12"/>
+    <rect x="240" y="108" width="720" height="56" rx="28" fill="#6EC8E6" opacity="0.12" stroke="#90D8F0" strokeOpacity="0.3" strokeWidth="1"/>
     <path d="M420,382 L522,170 L678,170 L780,382 Z" fill="#1E1E2E"/>
     <path d="M566,382 L586,170" stroke="#E8B84A" strokeWidth="3" opacity="0.55" strokeDasharray="16 14"/>
     <path d="M634,382 L614,170" stroke="#E8B84A" strokeWidth="3" opacity="0.55" strokeDasharray="16 14"/>
     <path d="M214,316 C302,276 372,252 452,236" fill="none" stroke="#5BAD7A" strokeWidth="3" opacity="0.45"/>
     <path d="M986,316 C898,276 828,252 748,236" fill="none" stroke="#5BAD7A" strokeWidth="3" opacity="0.45"/>
-    <circle cx="360" cy="146" r="20" fill="#E8B84A" opacity="0.18"/>
+    <circle cx="360" cy="146" r="20" fill="#E8B84A" opacity="0.18" stroke="#F0D070" strokeOpacity="0.3" strokeWidth="1"/>
     <rect x="180" y="382" width="840" height="160" rx="42" fill="#111827" stroke="#555570" strokeWidth="1.2"/>
     <path d="M180,382 C300,432 900,432 1020,382 L1020,542 L180,542 Z" fill="#1E1E2E" opacity="0.92"/>
     <path d="M150,68 L252,382 L176,542 L72,122 Z" fill="#252538" stroke="#555570" strokeWidth="1.2"/>
     <path d="M1050,68 L948,382 L1024,542 L1128,122 Z" fill="#252538" stroke="#555570" strokeWidth="1.2"/>
     <rect x="282" y="346" width="230" height="84" rx="38" fill="#151A28" stroke="#555570" strokeWidth="1.2"/>
-    <rect x="310" y="366" width="174" height="42" rx="21" fill="#0F172A"/>
+    <rect x="310" y="366" width="174" height="42" rx="21" fill="#0F172A" stroke="#FFFFFF" strokeOpacity="0.08" strokeWidth="1"/>
     <path d="M330,394 A68,68 0 0 1 462,394" fill="none" stroke="#6EC8E6" strokeWidth="2" opacity="0.55"/>
     <line x1="396" y1="386" x2="430" y2="374" stroke="#E8B84A" strokeWidth="2" strokeLinecap="round"/>
     <text x="396" y="406" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="11" opacity="0.68">Instrument Cluster</text>
@@ -44,7 +44,7 @@ const CockpitView = (
     <path d="M430,520 L498,556" stroke="#555570" strokeWidth="8" strokeLinecap="round"/>
     <text x="390" y="506" textAnchor="middle" fill="#6EC8E6" fontFamily="sans-serif" fontSize="12" fontWeight="bold">Driver</text>
     <rect x="658" y="328" width="268" height="138" rx="14" fill="#0F172A" stroke="#6EC8E6" strokeWidth="1.6"/>
-    <rect x="674" y="344" width="236" height="106" rx="10" fill="#1E1E2E"/>
+    <rect x="674" y="344" width="236" height="106" rx="10" fill="#1E1E2E" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <text x="792" y="370" textAnchor="middle" fill="#6EC8E6" fontFamily="sans-serif" fontSize="13" fontWeight="bold">Infotainment</text>
     <text x="792" y="394" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="12" opacity="0.68">车机中控屏</text>
   </g>
@@ -59,7 +59,7 @@ const DashboardVoice = (
     <line x1="15" y1="52" x2="33" y2="52" stroke="#6EC8E6" strokeWidth="1.8" strokeLinecap="round"/>
     <text x="128" y="18" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="13" fontWeight="bold">Car Voice Assistant</text>
     <text x="128" y="40" textAnchor="middle" fill="#5BAD7A" fontFamily="sans-serif" fontSize="11">导航到最近充电站</text>
-    <rect x="68" y="58" width="120" height="10" rx="5" fill="#5BAD7A" opacity="0.35"/>
+    <rect x="68" y="58" width="120" height="10" rx="5" fill="#5BAD7A" opacity="0.35" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
   </g>
 );
 
@@ -103,7 +103,7 @@ const TechStack = (
   <g transform="translate(900, 440)">
     <rect x="0" y="0" width="180" height="90" rx="8" fill="#1E1E2E" stroke="#555570" strokeWidth="1"/>
     <text x="90" y="22" textAnchor="middle" fill="#555570" fontFamily="sans-serif" fontSize="11">ASR + NLU + TTS</text>
-    <rect x="16" y="34" width="60" height="18" rx="4" fill="#E8734A" opacity="0.2"/>
+    <rect x="16" y="34" width="60" height="18" rx="4" fill="#E8734A" opacity="0.2" stroke="#F09570" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="46" y="47" textAnchor="middle" fill="#E8734A" fontFamily="sans-serif" fontSize="10">ASR</text>
     <rect x="84" y="34" width="60" height="18" rx="4" fill="#6EC8E6" opacity="0.2"/>
     <text x="114" y="47" textAnchor="middle" fill="#6EC8E6" fontFamily="sans-serif" fontSize="10">NLU</text>

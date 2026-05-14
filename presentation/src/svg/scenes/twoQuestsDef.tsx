@@ -22,10 +22,10 @@ const Computer = (
     {/* Monitor body */}
     <rect x="0" y="0" width="240" height="180" rx="14" fill="#1E1E2E" stroke="#555570" strokeWidth="2"/>
     {/* Screen */}
-    <rect x="14" y="14" width="212" height="130" rx="6" fill="#252538"/>
+    <rect x="14" y="14" width="212" height="130" rx="6" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     {/* Face on screen */}
-    <circle cx="90" cy="70" r="6" fill="#6EC8E6" opacity="0.7"/>
-    <circle cx="150" cy="70" r="6" fill="#6EC8E6" opacity="0.7"/>
+    <circle cx="90" cy="70" r="6" fill="#6EC8E6" opacity="0.7" stroke="#90D8F0" strokeOpacity="0.3" strokeWidth="1"/>
+    <circle cx="150" cy="70" r="6" fill="#6EC8E6" opacity="0.7" stroke="#90D8F0" strokeOpacity="0.3" strokeWidth="1"/>
     <path d="M90,100 Q120,125 150,100" fill="none" stroke="#5BAD7A" strokeWidth="2.5" strokeLinecap="round" opacity="0.6"/>
     {/* Stand */}
     <rect x="90" y="180" width="60" height="14" rx="2" fill="#555570"/>
@@ -36,7 +36,7 @@ const Computer = (
 const SpeakerIcon = (
   <g transform="translate(100, 200)">
     {/* Speaker body */}
-    <rect x="40" y="60" width="50" height="70" rx="6" fill="#4A7BCC" opacity="0.8"/>
+    <rect x="40" y="60" width="50" height="70" rx="6" fill="#4A7BCC" opacity="0.8" stroke="#6A9BE0" strokeOpacity="0.3" strokeWidth="1"/>
     <path d="M90,60 L130,30 L130,160 L90,130 Z" fill="#4A7BCC" opacity="0.65"/>
     {/* Sound waves */}
     <path d="M145,70 Q170,95 145,120" fill="none" stroke="#6EC8E6" strokeWidth="2.5" strokeLinecap="round" opacity="0.6"/>
@@ -51,7 +51,7 @@ const SpeakerIcon = (
 const MicrophoneIcon = (
   <g transform="translate(860, 200)">
     {/* Mic body */}
-    <rect x="35" y="30" width="50" height="80" rx="25" fill="#E8734A" opacity="0.8"/>
+    <rect x="35" y="30" width="50" height="80" rx="25" fill="#E8734A" opacity="0.8" stroke="#F09570" strokeOpacity="0.3" strokeWidth="1"/>
     <rect x="47" y="42" width="26" height="10" rx="3" fill="#FFFFFF" opacity="0.2"/>
     {/* Mic stand */}
     <path d="M25,110 Q25,140 60,140 Q95,140 95,110" fill="none" stroke="#E8734A" strokeWidth="2.5" opacity="0.6"/>
@@ -105,6 +105,6 @@ export const twoQuestsSceneDef: SvgSceneDef = {
     { id: "mic", content: MicrophoneIcon, enterFrom: { x: 400, y: 0 }, enterDelay: 250, floatAmp: { x: 14, y: 12 }, floatPeriod: { x: 5.0, y: 4.8 }, exitTo: { x: 620, y: -80 }, exitSpin: 8 },
     { id: "human", content: HumanFigure, enterFrom: { x: 300, y: 0 }, enterDelay: 350, floatAmp: { x: 10, y: 14 }, floatPeriod: { x: 5.5, y: 6.0 }, exitTo: { x: 460, y: 140 }, exitSpin: 5 },
     { id: "arrows", content: Arrows, enterFrom: { x: 0, y: 200 }, enterDelay: 400, floatAmp: { x: 6, y: 8 }, floatPeriod: { x: 7.0, y: 8.0 }, exitTo: { x: 0, y: 0 }, exitScale: 1.35, exitOpacity: 1.4 },
-    { id: "question", content: QuestionBubble, enterFrom: { x: 0, y: -300 }, enterDelay: 500, floatAmp: { x: 18, y: 22 }, floatPeriod: { x: 3.5, y: 4.2 }, exitTo: { x: 0, y: -520 }, exitSpin: 20, exitScale: 1.25 },
+    { id: "question", content: QuestionBubble, enterFrom: { x: 0, y: -300 }, enterDelay: 500, floatAmp: { x: 18, y: 22 }, floatPeriod: { x: 3.5, y: 4.2 }, floatRotate: 3, exitTo: { x: 0, y: -520 }, exitSpin: 20, exitScale: 1.25 },
   ],
 };

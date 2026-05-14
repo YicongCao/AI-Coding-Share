@@ -24,7 +24,7 @@ const EncoderBox = (
     {[0, 1, 2, 3, 4].map(i => (
       <g key={i}>
         <rect x="60" y={70 + i * 48} width="160" height="32" rx="8" fill="#252538" stroke="#6EC8E6" strokeWidth="1" opacity="0.7"/>
-        <circle cx="100" cy={86 + i * 48} r="6" fill="#6EC8E6" opacity={0.5 + i * 0.1}/>
+        <circle cx="100" cy={86 + i * 48} r="6" fill="#6EC8E6" opacity={0.5 + i * 0.1} stroke="#90D8F0" strokeOpacity="0.3" strokeWidth="1"/>
         <rect x="116" y={82 + i * 48} width="80" height="8" rx="4" fill="#6EC8E6" opacity="0.3"/>
       </g>
     ))}
@@ -39,7 +39,7 @@ const DecoderBox = (
     {[0, 1, 2, 3, 4].map(i => (
       <g key={i}>
         <rect x="60" y={70 + i * 48} width="160" height="32" rx="8" fill="#252538" stroke="#5BAD7A" strokeWidth="1" opacity="0.7"/>
-        <circle cx="100" cy={86 + i * 48} r="6" fill="#5BAD7A" opacity={0.5 + i * 0.1}/>
+        <circle cx="100" cy={86 + i * 48} r="6" fill="#5BAD7A" opacity={0.5 + i * 0.1} stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
         <rect x="116" y={82 + i * 48} width="80" height="8" rx="4" fill="#5BAD7A" opacity="0.3"/>
       </g>
     ))}

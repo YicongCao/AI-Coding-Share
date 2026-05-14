@@ -20,8 +20,8 @@ const Defs = (
 const PrechatStage = (
   <g transform="translate(80, 200)">
     <rect x="0" y="0" width="240" height="180" rx="14" fill="#1E1E2E" stroke="#4A7BCC" strokeWidth="2"/>
-    <rect x="0" y="0" width="240" height="40" rx="14" fill="#4A7BCC" opacity="0.15"/>
-    <rect x="0" y="26" width="240" height="14" fill="#4A7BCC" opacity="0.15"/>
+    <rect x="0" y="0" width="240" height="40" rx="14" fill="#4A7BCC" opacity="0.15" stroke="#6A9BE0" strokeOpacity="0.3" strokeWidth="1"/>
+    <rect x="0" y="26" width="240" height="14" fill="#4A7BCC" opacity="0.15" stroke="#6A9BE0" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="120" y="28" textAnchor="middle" fill="#4A7BCC" fontFamily="sans-serif" fontSize="16" fontWeight="bold">Prechat</text>
     <circle cx="120" cy="90" r="22" fill="#252538" stroke="#4A7BCC" strokeWidth="1.5"/>
     <text x="120" y="95" textAnchor="middle" fill="#4A7BCC" fontFamily="sans-serif" fontSize="11" fontWeight="bold">小模型</text>
@@ -34,8 +34,8 @@ const PrechatStage = (
 const MainAgent = (
   <g transform="translate(440, 180)">
     <rect x="0" y="0" width="280" height="220" rx="14" fill="#1E1E2E" stroke="#5BAD7A" strokeWidth="2.5"/>
-    <rect x="0" y="0" width="280" height="44" rx="14" fill="#5BAD7A" opacity="0.12"/>
-    <rect x="0" y="30" width="280" height="14" fill="#5BAD7A" opacity="0.12"/>
+    <rect x="0" y="0" width="280" height="44" rx="14" fill="#5BAD7A" opacity="0.12" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
+    <rect x="0" y="30" width="280" height="14" fill="#5BAD7A" opacity="0.12" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="140" y="30" textAnchor="middle" fill="#5BAD7A" fontFamily="sans-serif" fontSize="18" fontWeight="bold">Main Agent</text>
     <circle cx="140" cy="100" r="30" fill="#252538" stroke="#5BAD7A" strokeWidth="2"/>
     <text x="140" y="96" textAnchor="middle" fill="#5BAD7A" fontFamily="sans-serif" fontSize="22" fontWeight="bold">AI</text>
@@ -50,8 +50,8 @@ const MainAgent = (
 const PostchatStage = (
   <g transform="translate(840, 200)">
     <rect x="0" y="0" width="240" height="180" rx="14" fill="#1E1E2E" stroke="#E8B84A" strokeWidth="2"/>
-    <rect x="0" y="0" width="240" height="40" rx="14" fill="#E8B84A" opacity="0.15"/>
-    <rect x="0" y="26" width="240" height="14" fill="#E8B84A" opacity="0.15"/>
+    <rect x="0" y="0" width="240" height="40" rx="14" fill="#E8B84A" opacity="0.15" stroke="#F0D070" strokeOpacity="0.3" strokeWidth="1"/>
+    <rect x="0" y="26" width="240" height="14" fill="#E8B84A" opacity="0.15" stroke="#F0D070" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="120" y="28" textAnchor="middle" fill="#E8B84A" fontFamily="sans-serif" fontSize="16" fontWeight="bold">Postchat</text>
     <circle cx="120" cy="90" r="22" fill="#252538" stroke="#E8B84A" strokeWidth="1.5"/>
     <text x="120" y="95" textAnchor="middle" fill="#E8B84A" fontFamily="sans-serif" fontSize="11" fontWeight="bold">小模型</text>

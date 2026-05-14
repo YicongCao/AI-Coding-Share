@@ -22,23 +22,23 @@ const GearCluster = (
     {/* Large gear */}
     <circle cx="200" cy="200" r="100" fill="none" stroke="#6EC8E6" strokeWidth="3" opacity="0.6"/>
     <circle cx="200" cy="200" r="75" fill="#1E1E2E" stroke="#6EC8E6" strokeWidth="2" opacity="0.5"/>
-    <circle cx="200" cy="200" r="20" fill="#6EC8E6" opacity="0.4"/>
+    <circle cx="200" cy="200" r="20" fill="#6EC8E6" opacity="0.4" stroke="#90D8F0" strokeOpacity="0.3" strokeWidth="1"/>
     {[0, 45, 90, 135, 180, 225, 270, 315].map((deg, i) => {
       const rad = (deg * Math.PI) / 180;
-      return <rect key={i} x={200 + Math.cos(rad) * 88 - 12} y={200 + Math.sin(rad) * 88 - 8} width="24" height="16" rx="3" fill="#6EC8E6" opacity="0.5" transform={`rotate(${deg}, ${200 + Math.cos(rad) * 88}, ${200 + Math.sin(rad) * 88})`}/>;
+      return <rect key={i} x={200 + Math.cos(rad) * 88 - 12} y={200 + Math.sin(rad) * 88 - 8} width="24" height="16" rx="3" fill="#6EC8E6" opacity="0.5" transform={`rotate(${deg}, ${200 + Math.cos(rad) * 88}, ${200 + Math.sin(rad) * 88})`} stroke="#90D8F0" strokeOpacity="0.3" strokeWidth="1"/>;
     })}
     {/* Medium gear */}
     <circle cx="370" cy="130" r="65" fill="none" stroke="#5BAD7A" strokeWidth="2.5" opacity="0.6"/>
     <circle cx="370" cy="130" r="45" fill="#1E1E2E" stroke="#5BAD7A" strokeWidth="1.5" opacity="0.5"/>
-    <circle cx="370" cy="130" r="14" fill="#5BAD7A" opacity="0.4"/>
+    <circle cx="370" cy="130" r="14" fill="#5BAD7A" opacity="0.4" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
     {[0, 60, 120, 180, 240, 300].map((deg, i) => {
       const rad = (deg * Math.PI) / 180;
-      return <rect key={i} x={370 + Math.cos(rad) * 55 - 10} y={130 + Math.sin(rad) * 55 - 7} width="20" height="14" rx="3" fill="#5BAD7A" opacity="0.5" transform={`rotate(${deg}, ${370 + Math.cos(rad) * 55}, ${130 + Math.sin(rad) * 55})`}/>;
+      return <rect key={i} x={370 + Math.cos(rad) * 55 - 10} y={130 + Math.sin(rad) * 55 - 7} width="20" height="14" rx="3" fill="#5BAD7A" opacity="0.5" transform={`rotate(${deg}, ${370 + Math.cos(rad) * 55}, ${130 + Math.sin(rad) * 55})`} stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>;
     })}
     {/* Small gear */}
     <circle cx="90" cy="310" r="50" fill="none" stroke="#E8B84A" strokeWidth="2" opacity="0.6"/>
     <circle cx="90" cy="310" r="35" fill="#1E1E2E" stroke="#E8B84A" strokeWidth="1.5" opacity="0.5"/>
-    <circle cx="90" cy="310" r="10" fill="#E8B84A" opacity="0.4"/>
+    <circle cx="90" cy="310" r="10" fill="#E8B84A" opacity="0.4" stroke="#F0D070" strokeOpacity="0.3" strokeWidth="1"/>
     {[0, 72, 144, 216, 288].map((deg, i) => {
       const rad = (deg * Math.PI) / 180;
       return <rect key={i} x={90 + Math.cos(rad) * 42 - 8} y={310 + Math.sin(rad) * 42 - 6} width="16" height="12" rx="2" fill="#E8B84A" opacity="0.5" transform={`rotate(${deg}, ${90 + Math.cos(rad) * 42}, ${310 + Math.sin(rad) * 42})`}/>;
@@ -49,7 +49,7 @@ const GearCluster = (
 const ProgressBar = (
   <g transform="translate(200, 530)">
     <rect x="0" y="0" width="800" height="28" rx="14" fill="#252538" stroke="#555570" strokeWidth="1"/>
-    <rect x="4" y="4" width="620" height="20" rx="10" fill="#5BAD7A" opacity="0.75"/>
+    <rect x="4" y="4" width="620" height="20" rx="10" fill="#5BAD7A" opacity="0.75" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="400" y="19" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="12" fontWeight="bold" opacity="0.9">78%</text>
   </g>
 );

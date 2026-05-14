@@ -76,13 +76,13 @@ const YearsLabel = (
 
 const BooksStack = (
   <g transform="translate(850, 380)">
-    <rect x="0" y="0" width="100" height="18" rx="3" fill="#4A7BCC" opacity="0.7"/>
-    <rect x="5" y="-22" width="90" height="18" rx="3" fill="#5BAD7A" opacity="0.65"/>
-    <rect x="10" y="-44" width="80" height="18" rx="3" fill="#6EC8E6" opacity="0.6"/>
-    <rect x="15" y="-66" width="70" height="18" rx="3" fill="#E8B84A" opacity="0.55"/>
-    <rect x="20" y="-88" width="60" height="18" rx="3" fill="#E8734A" opacity="0.5"/>
+    <rect x="0" y="0" width="100" height="18" rx="3" fill="#4A7BCC" opacity="0.7" stroke="#6A9BE0" strokeOpacity="0.3" strokeWidth="1"/>
+    <rect x="5" y="-22" width="90" height="18" rx="3" fill="#5BAD7A" opacity="0.65" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
+    <rect x="10" y="-44" width="80" height="18" rx="3" fill="#6EC8E6" opacity="0.6" stroke="#90D8F0" strokeOpacity="0.3" strokeWidth="1"/>
+    <rect x="15" y="-66" width="70" height="18" rx="3" fill="#E8B84A" opacity="0.55" stroke="#F0D070" strokeOpacity="0.3" strokeWidth="1"/>
+    <rect x="20" y="-88" width="60" height="18" rx="3" fill="#E8734A" opacity="0.5" stroke="#F09570" strokeOpacity="0.3" strokeWidth="1"/>
     {/* Glow atop books */}
-    <circle cx="50" cy="-100" r="16" fill="#E8B84A" opacity="0.12"/>
+    <circle cx="50" cy="-100" r="16" fill="#E8B84A" opacity="0.12" stroke="#F0D070" strokeOpacity="0.3" strokeWidth="1"/>
     <circle cx="50" cy="-100" r="8" fill="#E8B84A" opacity="0.2"/>
   </g>
 );

@@ -32,7 +32,7 @@ const TitleLabel = (
 
 const CenterAura = (
   <g opacity="0.75">
-    <circle cx="600" cy="355" r="178" fill="#E8B84A" opacity="0.05"/>
+    <circle cx="600" cy="355" r="178" fill="#E8B84A" opacity="0.05" stroke="#F0D070" strokeOpacity="0.3" strokeWidth="1"/>
     <circle cx="600" cy="355" r="132" fill="none" stroke="#555570" strokeWidth="1.5" strokeDasharray="7 8" opacity="0.55"/>
     <circle cx="600" cy="355" r="96" fill="none" stroke="#E8B84A" strokeWidth="1" strokeDasharray="4 6" opacity="0.28"/>
   </g>
@@ -40,13 +40,13 @@ const CenterAura = (
 
 const PersonFigure = (
   <g transform="translate(600, 372)">
-    <ellipse cx="0" cy="136" rx="136" ry="28" fill="#1E1E2E" opacity="0.55"/>
+    <ellipse cx="0" cy="136" rx="136" ry="28" fill="#1E1E2E" opacity="0.55" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <path d="M-86,4 Q0,-48 86,4 L104,132 Q0,160 -104,132 Z" fill="#252538" stroke="#E8B84A" strokeWidth="2"/>
     <path d="M-72,28 Q0,70 72,28" fill="none" stroke="#E8B84A" strokeWidth="3" opacity="0.5"/>
     <path d="M-82,48 L-132,86" fill="none" stroke="#E8B84A" strokeWidth="10" strokeLinecap="round" opacity="0.72"/>
     <path d="M82,48 L132,86" fill="none" stroke="#E8B84A" strokeWidth="10" strokeLinecap="round" opacity="0.72"/>
     <rect x="-54" y="-34" width="108" height="42" rx="18" fill="#D9A83F" opacity="0.65"/>
-    <circle cx="0" cy="-116" r="54" fill="#E8B84A"/>
+    <circle cx="0" cy="-116" r="54" fill="#E8B84A" stroke="#F0D070" strokeOpacity="0.3" strokeWidth="1"/>
     <circle cx="-18" cy="-126" r="5" fill="#2B2B3D"/>
     <circle cx="18" cy="-126" r="5" fill="#2B2B3D"/>
     <path d="M-20,-102 Q0,-88 20,-102" fill="none" stroke="#2B2B3D" strokeWidth="3" strokeLinecap="round"/>
@@ -62,11 +62,11 @@ const RoleHats = (
       <text x="0" y="28" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="19" fontWeight="900">PM</text>
     </g>
     <g transform="translate(0, 42) rotate(4)">
-      <rect x="-94" y="0" width="188" height="46" rx="14" fill="#5BAD7A" opacity="0.95"/>
+      <rect x="-94" y="0" width="188" height="46" rx="14" fill="#5BAD7A" opacity="0.95" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
       <text x="0" y="29" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="19" fontWeight="900">产品 Product</text>
     </g>
     <g transform="translate(0, 86) rotate(-2)">
-      <rect x="-110" y="0" width="220" height="50" rx="15" fill="#6EC8E6" opacity="0.96"/>
+      <rect x="-110" y="0" width="220" height="50" rx="15" fill="#6EC8E6" opacity="0.96" stroke="#90D8F0" strokeOpacity="0.3" strokeWidth="1"/>
       <text x="0" y="31" textAnchor="middle" fill="#1E1E2E" fontFamily="sans-serif" fontSize="20" fontWeight="900">研发 Developer</text>
     </g>
     <rect x="-122" y="132" width="244" height="10" rx="5" fill="#1E1E2E" opacity="0.18"/>
@@ -90,7 +90,7 @@ const RoleSignals = (
 
 const SubtitleNote = (
   <g transform="translate(600, 628)">
-    <rect x="-190" y="-22" width="380" height="42" rx="21" fill="#252538" opacity="0.9"/>
+    <rect x="-190" y="-22" width="380" height="42" rx="21" fill="#252538" opacity="0.9" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <text x="0" y="5" textAnchor="middle" fill="#E8B84A" fontFamily="sans-serif" fontSize="16" fontWeight="bold">同一个人，同时戴三顶帽子</text>
   </g>
 );

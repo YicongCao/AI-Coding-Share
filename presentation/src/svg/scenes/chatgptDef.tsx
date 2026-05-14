@@ -53,7 +53,7 @@ const OpenAILogo = (
         />
       </g>
     ))}
-    <circle r="10" fill="#5BAD7A" opacity="0.72"/>
+    <circle r="10" fill="#5BAD7A" opacity="0.72" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
   </g>
 );
 
@@ -65,7 +65,7 @@ const Title = (
 
 const YearTag = (
   <g transform="translate(920, 80)">
-    <rect width="120" height="52" rx="12" fill="#E8734A"/>
+    <rect width="120" height="52" rx="12" fill="#E8734A" stroke="#F09570" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="60" y="36" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="28" fontWeight="bold">2023</text>
   </g>
 );
@@ -80,7 +80,7 @@ const QuoteLabel = (
 const Smartphone = (
   <g transform="translate(960, 300)">
     <rect width="70" height="120" rx="10" fill="#252538" stroke="#6EC8E6" strokeWidth="1.5"/>
-    <rect x="8" y="18" width="54" height="80" rx="4" fill="#1E1E2E"/>
+    <rect x="8" y="18" width="54" height="80" rx="4" fill="#1E1E2E" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <circle cx="35" cy="110" r="5" fill="none" stroke="#555570" strokeWidth="1.2"/>
     <rect x="22" y="6" width="26" height="4" rx="2" fill="#555570" opacity="0.5"/>
     <rect x="14" y="30" width="42" height="5" rx="2.5" fill="#5BAD7A" opacity="0.5"/>
@@ -116,9 +116,9 @@ export const chatgptSceneDef: SvgSceneDef = {
     { id: "chatBubble", content: ChatBubble, enterFrom: { x: 0, y: -400 }, enterDelay: 0, floatAmp: { x: 10, y: 14 }, floatPeriod: { x: 5.5, y: 7.0 }, exitTo: { x: 0, y: 500 }, exitSpin: -3 },
     { id: "openaiLogo", content: OpenAILogo, enterFrom: { x: -300, y: 0 }, enterDelay: 100, floatAmp: { x: 14, y: 18 }, floatPeriod: { x: 4.0, y: 5.5 }, exitTo: { x: -400, y: 0 }, exitSpin: 8 },
     { id: "title", content: Title, enterFrom: { x: 0, y: 200 }, enterDelay: 200, floatAmp: { x: 8, y: 10 }, floatPeriod: { x: 6.0, y: 8.0 }, exitTo: { x: 0, y: 300 } },
-    { id: "yearTag", content: YearTag, enterFrom: { x: 300, y: -200 }, enterDelay: 300, floatAmp: { x: 18, y: 22 }, floatPeriod: { x: 3.5, y: 4.5 }, exitTo: { x: 400, y: -300 }, exitScale: 1.2 },
+    { id: "yearTag", content: YearTag, enterFrom: { x: 300, y: -200 }, enterDelay: 300, floatAmp: { x: 18, y: 22 }, floatPeriod: { x: 3.5, y: 4.5 }, floatRotate: 1.5, exitTo: { x: 400, y: -300 }, exitScale: 1.2 },
     { id: "quoteLabel", content: QuoteLabel, enterFrom: { x: 0, y: 200 }, enterDelay: 400, floatAmp: { x: 10, y: 12 }, floatPeriod: { x: 5.0, y: 6.5 }, exitTo: { x: -200, y: 200 } },
     { id: "smartphone", content: Smartphone, enterFrom: { x: 300, y: 0 }, enterDelay: 200, floatAmp: { x: 16, y: 20 }, floatPeriod: { x: 4.2, y: 5.8 }, exitTo: { x: 400, y: 200 }, exitSpin: 6 },
-    { id: "sparkles", content: Sparkles, enterFrom: { x: 0, y: -100 }, enterDelay: 500, floatAmp: { x: 12, y: 16 }, floatPeriod: { x: 6.5, y: 8.5 }, exitTo: { x: 0, y: -200 } },
+    { id: "sparkles", content: Sparkles, enterFrom: { x: 0, y: -100 }, enterDelay: 500, floatAmp: { x: 12, y: 16 }, floatPeriod: { x: 6.5, y: 8.5 }, floatRotate: 3, exitTo: { x: 0, y: -200 } },
   ],
 };

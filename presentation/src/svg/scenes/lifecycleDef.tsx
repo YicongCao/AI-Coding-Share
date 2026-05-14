@@ -58,8 +58,8 @@ const FlowNodes = (
 
 const ProgressBar = (
   <g transform="translate(120, 480)">
-    <rect x="0" y="0" width="960" height="12" rx="6" fill="#252538"/>
-    <rect x="0" y="0" width="960" height="12" rx="6" fill="#5BAD7A" opacity="0.3"/>
+    <rect x="0" y="0" width="960" height="12" rx="6" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
+    <rect x="0" y="0" width="960" height="12" rx="6" fill="#5BAD7A" opacity="0.3" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
     {stages.map((stage, i) => (
       <circle key={i} cx={i * 180 + 40} cy={6} r="8" fill={stage.color} opacity="0.6"/>
     ))}
@@ -68,7 +68,7 @@ const ProgressBar = (
 
 const BoostLabel = (
   <g transform="translate(440, 530)">
-    <rect x="0" y="0" width="320" height="40" rx="20" fill="#5BAD7A" opacity="0.12"/>
+    <rect x="0" y="0" width="320" height="40" rx="20" fill="#5BAD7A" opacity="0.12" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="160" y="26" textAnchor="middle" fill="#5BAD7A" fontFamily="sans-serif" fontSize="15" fontWeight="bold">每个阶段都可用 AI boost</text>
   </g>
 );

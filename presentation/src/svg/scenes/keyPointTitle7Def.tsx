@@ -47,11 +47,11 @@ const ComfortZonePerson = (
   <g transform="translate(160, 420)">
     <ellipse cx="60" cy="60" rx="70" ry="50" fill="none" stroke="#555570" strokeWidth="2" strokeDasharray="6 4" opacity="0.5"/>
     <text x="60" y="115" textAnchor="middle" fill="#555570" fontFamily="sans-serif" fontSize="11">Comfort Zone</text>
-    <circle cx="60" cy="30" r="14" fill="#6EC8E6" opacity="0.8"/>
+    <circle cx="60" cy="30" r="14" fill="#6EC8E6" opacity="0.8" stroke="#90D8F0" strokeOpacity="0.3" strokeWidth="1"/>
     <path d="M60,44 L60,75 M60,55 L42,68 M60,55 L78,68 M60,75 L48,98 M60,75 L72,98" fill="none" stroke="#6EC8E6" strokeWidth="2.5" strokeLinecap="round" opacity="0.8"/>
     <path d="M78,40 L130,20 L140,16" fill="none" stroke="#5BAD7A" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="5 3"/>
     <polygon points="140,10 148,18 138,20" fill="#5BAD7A"/>
-    <circle cx="160" cy="10" r="10" fill="#5BAD7A" opacity="0.3"/>
+    <circle cx="160" cy="10" r="10" fill="#5BAD7A" opacity="0.3" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="160" y="14" textAnchor="middle" fill="#5BAD7A" fontFamily="sans-serif" fontSize="10" fontWeight="bold">!</text>
   </g>
 );

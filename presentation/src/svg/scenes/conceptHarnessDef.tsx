@@ -86,7 +86,7 @@ const CrossedWrench = (
 
 const TitleLabel = (
   <g>
-    <rect x="420" y="570" width="360" height="48" rx="10" fill="#252538"/>
+    <rect x="420" y="570" width="360" height="48" rx="10" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <text x="600" y="594" textAnchor="middle" fill="#E8B84A" fontFamily="sans-serif" fontSize="16" fontWeight="bold">方法论</text>
     <text x="600" y="612" textAnchor="middle" fill="#555570" fontFamily="sans-serif" fontSize="12">Harness = Methodology for Using AI Effectively</text>
   </g>

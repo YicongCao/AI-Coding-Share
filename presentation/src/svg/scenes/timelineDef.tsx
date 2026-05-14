@@ -63,7 +63,7 @@ const Rocket = (
     {/* Rocket body */}
     <path d="M30,80 L30,30 Q30,5 50,0 Q70,5 70,30 L70,80 Z" fill="#E8734A" opacity="0.85"/>
     <rect x="36" y="40" width="28" height="14" rx="4" fill="#FFFFFF" opacity="0.3"/>
-    <circle cx="50" cy="46" r="6" fill="#4A7BCC" opacity="0.7"/>
+    <circle cx="50" cy="46" r="6" fill="#4A7BCC" opacity="0.7" stroke="#6A9BE0" strokeOpacity="0.3" strokeWidth="1"/>
     {/* Fins */}
     <path d="M30,70 L15,90 L30,80" fill="#E85650" opacity="0.7"/>
     <path d="M70,70 L85,90 L70,80" fill="#E85650" opacity="0.7"/>
@@ -115,8 +115,8 @@ export const timelineSceneDef: SvgSceneDef = {
   fragments: [
     { id: "axis", content: TimelineAxis, enterFrom: { x: -600, y: 0 }, enterDelay: 0, floatAmp: { x: 6, y: 8 }, floatPeriod: { x: 7.0, y: 9.0 }, exitTo: { x: 1220, y: 0 }, exitOpacity: 0.55 },
     { id: "milestones", content: MilestoneNodes, enterFrom: { x: 0, y: 300 }, enterDelay: 200, floatAmp: { x: 8, y: 10 }, floatPeriod: { x: 5.5, y: 6.5 }, exitTo: { x: 0, y: -520 }, exitSpin: 3 },
-    { id: "rocket", content: Rocket, enterFrom: { x: 300, y: -400 }, enterDelay: 400, floatAmp: { x: 16, y: 20 }, floatPeriod: { x: 3.5, y: 4.0 }, exitTo: { x: 420, y: -520 }, exitSpin: 16, exitScale: 1.15, exitOpacity: 0.5 },
-    { id: "boat", content: Boat, enterFrom: { x: -400, y: 300 }, enterDelay: 300, floatAmp: { x: 18, y: 14 }, floatPeriod: { x: 4.0, y: 5.5 }, exitTo: { x: -420, y: 340 }, exitSpin: -6 },
-    { id: "stars", content: Stars, enterFrom: { x: 0, y: -200 }, enterDelay: 500, floatAmp: { x: 10, y: 12 }, floatPeriod: { x: 6.0, y: 7.5 }, exitTo: { x: 0, y: -320 }, exitScale: 1.25 },
+    { id: "rocket", content: Rocket, enterFrom: { x: 300, y: -400 }, enterDelay: 400, floatAmp: { x: 16, y: 20 }, floatPeriod: { x: 3.5, y: 4.0 }, floatRotate: 2, exitTo: { x: 420, y: -520 }, exitSpin: 16, exitScale: 1.15, exitOpacity: 0.5 },
+    { id: "boat", content: Boat, enterFrom: { x: -400, y: 300 }, enterDelay: 300, floatAmp: { x: 18, y: 14 }, floatPeriod: { x: 4.0, y: 5.5 }, floatRotate: 1.5, exitTo: { x: -420, y: 340 }, exitSpin: -6 },
+    { id: "stars", content: Stars, enterFrom: { x: 0, y: -200 }, enterDelay: 500, floatAmp: { x: 10, y: 12 }, floatPeriod: { x: 6.0, y: 7.5 }, floatRotate: 3, exitTo: { x: 0, y: -320 }, exitScale: 1.25 },
   ],
 };

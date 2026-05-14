@@ -19,9 +19,9 @@ const Defs = (
 
 const CelebrationGlow = (
   <g transform="translate(600, 338)">
-    <circle cx="0" cy="0" r="270" fill="#E8B84A" opacity="0.05"/>
-    <circle cx="0" cy="0" r="190" fill="#6EC8E6" opacity="0.05"/>
-    <circle cx="0" cy="0" r="112" fill="#E8734A" opacity="0.06"/>
+    <circle cx="0" cy="0" r="270" fill="#E8B84A" opacity="0.05" stroke="#F0D070" strokeOpacity="0.3" strokeWidth="1"/>
+    <circle cx="0" cy="0" r="190" fill="#6EC8E6" opacity="0.05" stroke="#90D8F0" strokeOpacity="0.3" strokeWidth="1"/>
+    <circle cx="0" cy="0" r="112" fill="#E8734A" opacity="0.06" stroke="#F09570" strokeOpacity="0.3" strokeWidth="1"/>
     <path d="M-170,110 Q0,-40 170,110" fill="none" stroke="#FFFFFF" strokeWidth="2" opacity="0.08"/>
     <path d="M-210,140 Q0,-70 210,140" fill="none" stroke="#FFFFFF" strokeWidth="1.5" opacity="0.06"/>
   </g>
@@ -29,7 +29,7 @@ const CelebrationGlow = (
 
 const CompletionBadge = (
   <g transform="translate(600, 320)">
-    <circle cx="0" cy="0" r="54" fill="#5BAD7A" opacity="0.18"/>
+    <circle cx="0" cy="0" r="54" fill="#5BAD7A" opacity="0.18" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
     <circle cx="0" cy="0" r="38" fill="#1E1E2E" stroke="#5BAD7A" strokeWidth="2"/>
     <path d="M-18,-2 L-6,13 L22,-16" fill="none" stroke="#5BAD7A" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round"/>
     <text x="0" y="84" textAnchor="middle" fill="#5BAD7A" fontFamily="sans-serif" fontSize="14" fontWeight="bold">完成</text>
@@ -115,9 +115,9 @@ export const finaleSceneDef: SvgSceneDef = {
   background: Background,
   fragments: [
     { id: "glow", content: CelebrationGlow, enterFrom: { x: 0, y: 0 }, enterDelay: 0, floatAmp: { x: 8, y: 10 }, floatPeriod: { x: 8, y: 9 }, exitScale: 1.2 },
-    { id: "complete", content: CompletionBadge, enterFrom: { x: 0, y: -300 }, enterDelay: 100, floatAmp: { x: 10, y: 12 }, floatPeriod: { x: 6, y: 7 }, exitTo: { x: 0, y: -400 } },
-    { id: "confettiRain", content: ConfettiRain, enterFrom: { x: 0, y: -120 }, enterDelay: 180, floatAmp: { x: 14, y: 24 }, floatPeriod: { x: 5, y: 6 }, exitSpin: 8 },
-    { id: "confettiBurst", content: ConfettiBurst, enterFrom: { x: 0, y: 80 }, enterDelay: 300, floatAmp: { x: 18, y: 22 }, floatPeriod: { x: 3.5, y: 4.5 } },
-    { id: "thanks", content: ThankYouText, enterFrom: { x: 0, y: 200 }, enterDelay: 250, floatAmp: { x: 8, y: 10 }, floatPeriod: { x: 6.5, y: 7.5 }, exitTo: { x: 0, y: 300 } },
+    { id: "complete", content: CompletionBadge, enterFrom: { x: 0, y: -300 }, enterDelay: 100, floatAmp: { x: 10, y: 12 }, floatPeriod: { x: 6, y: 7 }, floatRotate: 1, exitTo: { x: 0, y: -400 } },
+    { id: "confettiRain", content: ConfettiRain, enterFrom: { x: 0, y: -120 }, enterDelay: 180, floatAmp: { x: 14, y: 24 }, floatPeriod: { x: 5, y: 6 }, floatRotate: 4, exitSpin: 8 },
+    { id: "confettiBurst", content: ConfettiBurst, enterFrom: { x: 0, y: 80 }, enterDelay: 300, floatAmp: { x: 18, y: 22 }, floatPeriod: { x: 3.5, y: 4.5 }, floatRotate: 3 },
+    { id: "thanks", content: ThankYouText, enterFrom: { x: 0, y: 200 }, enterDelay: 250, floatAmp: { x: 8, y: 10 }, floatPeriod: { x: 6.5, y: 7.5 }, floatRotate: 0.5, exitTo: { x: 0, y: 300 } },
   ],
 };

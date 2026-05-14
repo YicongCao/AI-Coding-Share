@@ -22,7 +22,7 @@ const Funnel = (
     {/* Top wide part */}
     <path d="M-200,-220 L200,-220 L60,-30 L60,30 L200,220 L-200,220 L-60,30 L-60,-30 Z" fill="#1E1E2E" stroke="#555570" strokeWidth="2"/>
     {/* Narrow neck highlight */}
-    <rect x="-60" y="-30" width="120" height="60" rx="4" fill="#E85650" opacity="0.15"/>
+    <rect x="-60" y="-30" width="120" height="60" rx="4" fill="#E85650" opacity="0.15" stroke="#F07870" strokeOpacity="0.3" strokeWidth="1"/>
     <line x1="-60" y1="-30" x2="-60" y2="30" stroke="#E85650" strokeWidth="2" opacity="0.6"/>
     <line x1="60" y1="-30" x2="60" y2="30" stroke="#E85650" strokeWidth="2" opacity="0.6"/>
     <text x="0" y="8" textAnchor="middle" fill="#E85650" fontFamily="sans-serif" fontSize="20" fontWeight="bold">瓶颈</text>
@@ -43,14 +43,14 @@ const PersonsStuck = (
 
 const AiFastSide = (
   <g transform="translate(180, 180)">
-    <rect x="0" y="0" width="180" height="100" rx="12" fill="#252538"/>
+    <rect x="0" y="0" width="180" height="100" rx="12" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <text x="90" y="35" textAnchor="middle" fill="#5BAD7A" fontFamily="sans-serif" fontSize="20" fontWeight="bold">AI Output</text>
     {/* Speed lines */}
     {[50, 62, 74, 86].map((y, i) => (
       <line key={i} x1={30 + i * 8} y1={y} x2={150 - i * 5} y2={y} stroke="#5BAD7A" strokeWidth="2" strokeLinecap="round" opacity={0.7 - i * 0.1}/>
     ))}
     <g transform="translate(70, 110)">
-      <rect x="0" y="0" width="80" height="30" rx="8" fill="#5BAD7A" opacity="0.2"/>
+      <rect x="0" y="0" width="80" height="30" rx="8" fill="#5BAD7A" opacity="0.2" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
       <text x="40" y="21" textAnchor="middle" fill="#5BAD7A" fontFamily="sans-serif" fontSize="16" fontWeight="bold">分钟</text>
     </g>
     {/* Fast arrow */}
@@ -61,7 +61,7 @@ const AiFastSide = (
 
 const HumanSlowSide = (
   <g transform="translate(820, 180)">
-    <rect x="0" y="0" width="180" height="100" rx="12" fill="#252538"/>
+    <rect x="0" y="0" width="180" height="100" rx="12" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <text x="90" y="35" textAnchor="middle" fill="#E8734A" fontFamily="sans-serif" fontSize="20" fontWeight="bold">Human Review</text>
     {/* Calendar icon */}
     <rect x="55" y="48" width="36" height="32" rx="4" fill="none" stroke="#E8734A" strokeWidth="1.5" opacity="0.6"/>
@@ -71,7 +71,7 @@ const HumanSlowSide = (
     <rect x="107" y="55" width="45" height="20" rx="4" fill="#E8734A" opacity="0.15"/>
     <text x="130" y="70" textAnchor="middle" fill="#E8734A" fontFamily="sans-serif" fontSize="12">排期</text>
     <g transform="translate(50, 110)">
-      <rect x="0" y="0" width="80" height="30" rx="8" fill="#E85650" opacity="0.2"/>
+      <rect x="0" y="0" width="80" height="30" rx="8" fill="#E85650" opacity="0.2" stroke="#F07870" strokeOpacity="0.3" strokeWidth="1"/>
       <text x="40" y="21" textAnchor="middle" fill="#E85650" fontFamily="sans-serif" fontSize="16" fontWeight="bold">天</text>
     </g>
     {/* Slow arrow */}
@@ -82,7 +82,7 @@ const HumanSlowSide = (
 
 const VsLabel = (
   <g transform="translate(564, 420)">
-    <rect x="0" y="0" width="72" height="36" rx="18" fill="#E8B84A" opacity="0.2"/>
+    <rect x="0" y="0" width="72" height="36" rx="18" fill="#E8B84A" opacity="0.2" stroke="#F0D070" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="36" y="25" textAnchor="middle" fill="#E8B84A" fontFamily="sans-serif" fontSize="18" fontWeight="bold">VS</text>
   </g>
 );

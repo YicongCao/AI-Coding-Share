@@ -28,10 +28,10 @@ const StreamingRays = (
 const StreamingConsole = (
   <g transform="translate(250, 150)">
     <rect x="0" y="0" width="700" height="330" rx="18" fill="#1E1E2E" stroke="#6EC8E6" strokeWidth="2"/>
-    <rect x="0" y="0" width="700" height="54" rx="18" fill="#252538"/>
-    <rect x="0" y="38" width="700" height="16" fill="#252538"/>
-    <circle cx="32" cy="27" r="6" fill="#E85650"/>
-    <circle cx="56" cy="27" r="6" fill="#E8B84A"/>
+    <rect x="0" y="0" width="700" height="54" rx="18" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
+    <rect x="0" y="38" width="700" height="16" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
+    <circle cx="32" cy="27" r="6" fill="#E85650" stroke="#F07870" strokeOpacity="0.3" strokeWidth="1"/>
+    <circle cx="56" cy="27" r="6" fill="#E8B84A" stroke="#F0D070" strokeOpacity="0.3" strokeWidth="1"/>
     <circle cx="80" cy="27" r="6" fill="#5BAD7A"/>
     <text x="350" y="33" textAnchor="middle" fill="#555570" fontFamily="sans-serif" fontSize="13">response streaming</text>
 
@@ -60,7 +60,7 @@ const TokenStream = (
 
 const TypewriterEffect = (
   <g transform="translate(845, 245)">
-    <rect x="0" y="0" width="210" height="92" rx="46" fill="#5BAD7A" opacity="0.16"/>
+    <rect x="0" y="0" width="210" height="92" rx="46" fill="#5BAD7A" opacity="0.16" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="105" y="36" textAnchor="middle" fill="#5BAD7A" fontFamily="sans-serif" fontSize="18" fontWeight="bold">打字机体验</text>
     <text x="105" y="62" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="13" opacity="0.55">不是等结果，是看它长出来</text>
   </g>
@@ -68,7 +68,7 @@ const TypewriterEffect = (
 
 const SpeedBadge = (
   <g transform="translate(870, 380)">
-    <rect x="0" y="0" width="160" height="48" rx="24" fill="#E8734A" opacity="0.2"/>
+    <rect x="0" y="0" width="160" height="48" rx="24" fill="#E8734A" opacity="0.2" stroke="#F09570" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="80" y="31" textAnchor="middle" fill="#E8734A" fontFamily="sans-serif" fontSize="16" fontWeight="bold">即时反馈</text>
   </g>
 );
@@ -91,7 +91,7 @@ export const bulletTrainSceneDef: SvgSceneDef = {
     { id: "console", content: StreamingConsole, enterFrom: { x: 0, y: 300 }, enterDelay: 100, floatAmp: { x: 10, y: 12 }, floatPeriod: { x: 6, y: 7 }, exitTo: { x: 0, y: 400 } },
     { id: "tokens", content: TokenStream, enterFrom: { x: -300, y: 0 }, enterDelay: 250, floatAmp: { x: 14, y: 8 }, floatPeriod: { x: 5, y: 6 }, exitTo: { x: 300, y: 0 } },
     { id: "typewriter", content: TypewriterEffect, enterFrom: { x: 300, y: 80 }, enterDelay: 350, floatAmp: { x: 10, y: 14 }, floatPeriod: { x: 5.5, y: 6.5 }, exitTo: { x: 300, y: 120 } },
-    { id: "badge", content: SpeedBadge, enterFrom: { x: 300, y: 200 }, enterDelay: 450, floatAmp: { x: 18, y: 20 }, floatPeriod: { x: 4, y: 5 }, exitTo: { x: 300, y: 200 }, exitSpin: 8 },
+    { id: "badge", content: SpeedBadge, enterFrom: { x: 300, y: 200 }, enterDelay: 450, floatAmp: { x: 18, y: 20 }, floatPeriod: { x: 4, y: 5 }, floatRotate: 1.5, exitTo: { x: 300, y: 200 }, exitSpin: 8 },
     { id: "particles", content: AccentParticles, enterFrom: { x: 0, y: 0 }, enterDelay: 550, floatAmp: { x: 16, y: 20 }, floatPeriod: { x: 3.5, y: 4.5 } },
   ],
 };

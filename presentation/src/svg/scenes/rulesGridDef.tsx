@@ -78,7 +78,7 @@ const Linguist = (
 
 const TitleLabel = (
   <g>
-    <rect x="60" y="400" width="130" height="38" rx="8" fill="#252538"/>
+    <rect x="60" y="400" width="130" height="38" rx="8" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <text x="125" y="425" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="16" fontWeight="bold">语法规则</text>
     <text x="125" y="460" textAnchor="middle" fill="#555570" fontFamily="sans-serif" fontSize="12">Grammar Rules</text>
   </g>

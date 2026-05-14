@@ -69,7 +69,7 @@ const Hourglass = (
 
 const StuckWarning = (
   <g transform="translate(850, 440)">
-    <rect x="0" y="0" width="180" height="70" rx="12" fill="#E85650" opacity="0.12"/>
+    <rect x="0" y="0" width="180" height="70" rx="12" fill="#E85650" opacity="0.12" stroke="#F07870" strokeOpacity="0.3" strokeWidth="1"/>
     <rect x="0" y="0" width="180" height="70" rx="12" fill="none" stroke="#E85650" strokeWidth="2" strokeDasharray="6 3"/>
     <text x="90" y="32" textAnchor="middle" fill="#E85650" fontFamily="sans-serif" fontSize="26" fontWeight="bold">卡住</text>
     <text x="90" y="55" textAnchor="middle" fill="#E85650" fontFamily="sans-serif" fontSize="13" opacity="0.7">Agent Stuck</text>

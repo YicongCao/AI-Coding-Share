@@ -21,14 +21,14 @@ const BackendColumn = (
     <line x1="40" y1="58" x2="360" y2="58" stroke="#555570" strokeWidth="0.5" opacity="0.5"/>
     {[{ label: "SSE", sub: "Server-Sent Events", y: 95 }, { label: "WebSocket", sub: "双向通信", y: 185 }, { label: "ReAct Loop", sub: "推理-行动循环", y: 275 }].map((item, i) => (
       <g key={i}>
-        <rect x="30" y={item.y} width="340" height="70" rx="10" fill="#252538"/>
-        <circle cx="70" cy={item.y + 35} r="18" fill="#4A7BCC" opacity="0.2"/>
+        <rect x="30" y={item.y} width="340" height="70" rx="10" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
+        <circle cx="70" cy={item.y + 35} r="18" fill="#4A7BCC" opacity="0.2" stroke="#6A9BE0" strokeOpacity="0.3" strokeWidth="1"/>
         <text x="70" y={item.y + 40} textAnchor="middle" fill="#4A7BCC" fontFamily="sans-serif" fontSize="14" fontWeight="bold">{i + 1}</text>
         <text x="110" y={item.y + 30} fill="#FFFFFF" fontFamily="sans-serif" fontSize="17" fontWeight="bold">{item.label}</text>
         <text x="110" y={item.y + 52} fill="#555570" fontFamily="sans-serif" fontSize="13">{item.sub}</text>
       </g>
     ))}
-    <rect x="30" y="365" width="340" height="50" rx="10" fill="#252538"/>
+    <rect x="30" y="365" width="340" height="50" rx="10" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <text x="200" y="396" textAnchor="middle" fill="#4A7BCC" fontFamily="sans-serif" fontSize="14">Prompt Engineering / Tool 注册</text>
   </g>
 );
@@ -40,14 +40,14 @@ const FrontendColumn = (
     <line x1="40" y1="58" x2="360" y2="58" stroke="#555570" strokeWidth="0.5" opacity="0.5"/>
     {[{ label: "State Machine", sub: "状态机管理", y: 95 }, { label: "Streaming", sub: "流式渲染", y: 185 }, { label: "Animation", sub: "交互动画", y: 275 }].map((item, i) => (
       <g key={i}>
-        <rect x="30" y={item.y} width="340" height="70" rx="10" fill="#252538"/>
-        <circle cx="70" cy={item.y + 35} r="18" fill="#5BAD7A" opacity="0.2"/>
+        <rect x="30" y={item.y} width="340" height="70" rx="10" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
+        <circle cx="70" cy={item.y + 35} r="18" fill="#5BAD7A" opacity="0.2" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
         <text x="70" y={item.y + 40} textAnchor="middle" fill="#5BAD7A" fontFamily="sans-serif" fontSize="14" fontWeight="bold">{i + 1}</text>
         <text x="110" y={item.y + 30} fill="#FFFFFF" fontFamily="sans-serif" fontSize="17" fontWeight="bold">{item.label}</text>
         <text x="110" y={item.y + 52} fill="#555570" fontFamily="sans-serif" fontSize="13">{item.sub}</text>
       </g>
     ))}
-    <rect x="30" y="365" width="340" height="50" rx="10" fill="#252538"/>
+    <rect x="30" y="365" width="340" height="50" rx="10" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <text x="200" y="396" textAnchor="middle" fill="#5BAD7A" fontFamily="sans-serif" fontSize="14">UX 反馈 / Error Boundary</text>
   </g>
 );

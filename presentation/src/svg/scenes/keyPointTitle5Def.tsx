@@ -46,7 +46,7 @@ const TitleCard = (
 const RocketIcon = (
   <g transform="translate(920, 440)">
     <path d="M0,50 Q0,20 20,0 Q40,-10 50,0 Q60,20 60,50 L45,65 L15,65 Z" fill="none" stroke="#E8734A" strokeWidth="2.5" strokeLinejoin="round"/>
-    <ellipse cx="30" cy="28" rx="8" ry="8" fill="#E8734A" opacity="0.4"/>
+    <ellipse cx="30" cy="28" rx="8" ry="8" fill="#E8734A" opacity="0.4" stroke="#F09570" strokeOpacity="0.3" strokeWidth="1"/>
     <path d="M15,65 L20,80 L30,72 L40,80 L45,65" fill="#E8B84A" opacity="0.6"/>
     <path d="M10,45 L-5,55 L8,55" fill="none" stroke="#E8734A" strokeWidth="1.5" opacity="0.5"/>
     <path d="M50,45 L65,55 L52,55" fill="none" stroke="#E8734A" strokeWidth="1.5" opacity="0.5"/>
@@ -79,7 +79,7 @@ export const keyPointTitle5SceneDef: SvgSceneDef = {
     { id: "grid", content: GridBg, enterFrom: { x: 0, y: -200 }, enterDelay: 0, floatAmp: { x: 8, y: 8 }, floatPeriod: { x: 9, y: 8 } },
     { id: "bigNumber", content: BigNumber, enterFrom: { x: -500, y: 0 }, enterDelay: 100, floatAmp: { x: 12, y: 16 }, floatPeriod: { x: 6, y: 7 }, exitTo: { x: -600, y: 0 }, exitSpin: -6 },
     { id: "titleCard", content: TitleCard, enterFrom: { x: 600, y: 0 }, enterDelay: 200, floatAmp: { x: 10, y: 12 }, floatPeriod: { x: 5.5, y: 6.5 }, exitTo: { x: 700, y: -100 }, exitScale: 0.9 },
-    { id: "rocket", content: RocketIcon, enterFrom: { x: 300, y: 300 }, enterDelay: 350, floatAmp: { x: 16, y: 20 }, floatPeriod: { x: 4, y: 5 }, exitTo: { x: 400, y: 300 }, exitSpin: 15 },
+    { id: "rocket", content: RocketIcon, enterFrom: { x: 300, y: 300 }, enterDelay: 350, floatAmp: { x: 16, y: 20 }, floatPeriod: { x: 4, y: 5 }, floatRotate: 2, exitTo: { x: 400, y: 300 }, exitSpin: 15 },
     { id: "lightning", content: LightningBolt, enterFrom: { x: -200, y: 200 }, enterDelay: 450, floatAmp: { x: 14, y: 18 }, floatPeriod: { x: 3.5, y: 4.5 }, exitTo: { x: -300, y: 200 }, exitSpin: -10 },
     { id: "speedLines", content: SpeedLines, enterFrom: { x: -400, y: 0 }, enterDelay: 550, floatAmp: { x: 10, y: 12 }, floatPeriod: { x: 5, y: 6 } },
   ],

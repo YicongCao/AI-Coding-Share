@@ -45,14 +45,14 @@ const VerticalLabel = (
 
 const DiffLabel = (
   <g transform="translate(480, 570)">
-    <rect x="0" y="0" width="240" height="44" rx="22" fill="#E8734A" opacity="0.15"/>
+    <rect x="0" y="0" width="240" height="44" rx="22" fill="#E8734A" opacity="0.15" stroke="#F09570" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="120" y="29" textAnchor="middle" fill="#E8734A" fontFamily="sans-serif" fontSize="18" fontWeight="bold">差异化竞争</text>
   </g>
 );
 
 const NexHint = (
   <g transform="translate(570, 230)">
-    <rect x="0" y="0" width="60" height="24" rx="6" fill="#6EC8E6" opacity="0.2"/>
+    <rect x="0" y="0" width="60" height="24" rx="6" fill="#6EC8E6" opacity="0.2" stroke="#90D8F0" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="30" y="17" textAnchor="middle" fill="#6EC8E6" fontFamily="sans-serif" fontSize="12" fontWeight="bold">Nex</text>
     <line x1="30" y1="24" x2="30" y2="50" stroke="#6EC8E6" strokeWidth="1" strokeDasharray="3 3" opacity="0.4"/>
   </g>
@@ -83,8 +83,8 @@ const ExperienceArrow = (
 
 const AccentGlow = (
   <g opacity="0.15">
-    <circle cx="600" cy="200" r="80" fill="#E8B84A"/>
-    <circle cx="600" cy="200" r="120" fill="#E8B84A" opacity="0.3"/>
+    <circle cx="600" cy="200" r="80" fill="#E8B84A" stroke="#F0D070" strokeOpacity="0.3" strokeWidth="1"/>
+    <circle cx="600" cy="200" r="120" fill="#E8B84A" opacity="0.3" stroke="#F0D070" strokeOpacity="0.3" strokeWidth="1"/>
   </g>
 );
 

@@ -20,7 +20,7 @@ const Defs = (
 const NotepadWindow = (
   <g>
     <rect x="105" y="90" width="450" height="360" rx="8" fill="#111827" stroke="#4A7BCC" strokeWidth="1.2"/>
-    <rect x="105" y="90" width="450" height="34" rx="8" fill="#252538"/>
+    <rect x="105" y="90" width="450" height="34" rx="8" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <rect x="105" y="116" width="450" height="8" fill="#252538"/>
     <text x="130" y="112" fill="#FFFFFF" fontFamily="sans-serif" fontSize="12" opacity="0.78">Notepad - Windows</text>
     <g transform="translate(459, 90)">
@@ -32,7 +32,7 @@ const NotepadWindow = (
       <line x1="75" y1="12" x2="85" y2="22" stroke="#FFFFFF" strokeWidth="1.4" strokeLinecap="round"/>
       <line x1="85" y1="12" x2="75" y2="22" stroke="#FFFFFF" strokeWidth="1.4" strokeLinecap="round"/>
     </g>
-    <rect x="105" y="124" width="450" height="34" fill="#1E1E2E"/>
+    <rect x="105" y="124" width="450" height="34" fill="#1E1E2E" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <text x="130" y="145" fill="#FFFFFF" fontFamily="sans-serif" fontSize="11" opacity="0.52">File</text>
     <text x="174" y="145" fill="#FFFFFF" fontFamily="sans-serif" fontSize="11" opacity="0.52">Edit</text>
     <text x="218" y="145" fill="#FFFFFF" fontFamily="sans-serif" fontSize="11" opacity="0.52">View</text>
@@ -56,7 +56,7 @@ const NotepadWindow = (
 const ContextMenu = (
   <g>
     <rect x="640" y="150" width="230" height="286" rx="8" fill="#111827" stroke="#6EC8E6" strokeWidth="1.2"/>
-    <rect x="640" y="150" width="230" height="34" rx="8" fill="#252538"/>
+    <rect x="640" y="150" width="230" height="34" rx="8" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <rect x="640" y="176" width="230" height="8" fill="#252538"/>
     <text x="662" y="172" fill="#FFFFFF" fontFamily="sans-serif" fontSize="12" opacity="0.8">Right-click Menu</text>
     <text x="848" y="172" textAnchor="end" fill="#6EC8E6" fontFamily="sans-serif" fontSize="10" opacity="0.8">右键菜单</text>
@@ -72,7 +72,7 @@ const ContextMenu = (
     <rect x="654" y="318" width="202" height="30" rx="4" fill="transparent"/>
     <text x="676" y="337" fill="#FFFFFF" fontFamily="sans-serif" fontSize="12" opacity="0.72">Open with</text>
     <text x="840" y="337" textAnchor="end" fill="#555570" fontFamily="sans-serif" fontSize="12">›</text>
-    <rect x="654" y="350" width="202" height="34" rx="5" fill="#4A7BCC" opacity="0.52"/>
+    <rect x="654" y="350" width="202" height="34" rx="5" fill="#4A7BCC" opacity="0.52" stroke="#6A9BE0" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="676" y="371" fill="#FFFFFF" fontFamily="sans-serif" fontSize="13" fontWeight="bold">Properties</text>
     <text x="840" y="371" textAnchor="end" fill="#FFFFFF" fontFamily="sans-serif" fontSize="11" opacity="0.74">属性</text>
     <line x1="654" y1="398" x2="856" y2="398" stroke="#555570" strokeWidth="0.6" opacity="0.45"/>
@@ -83,7 +83,7 @@ const ContextMenu = (
 
 const VoiceBubbleOpen = (
   <g transform="translate(160, 480)">
-    <rect x="0" y="0" width="200" height="50" rx="25" fill="#5BAD7A" opacity="0.9"/>
+    <rect x="0" y="0" width="200" height="50" rx="25" fill="#5BAD7A" opacity="0.9" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="100" y="22" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="13">"打开记事本"</text>
     <text x="100" y="40" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="11" opacity="0.7">Open Notepad</text>
   </g>
@@ -91,7 +91,7 @@ const VoiceBubbleOpen = (
 
 const VoiceBubbleClick = (
   <g transform="translate(620, 460)">
-    <rect x="0" y="0" width="240" height="50" rx="25" fill="#6EC8E6" opacity="0.9"/>
+    <rect x="0" y="0" width="240" height="50" rx="25" fill="#6EC8E6" opacity="0.9" stroke="#90D8F0" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="120" y="22" textAnchor="middle" fill="#1E1E2E" fontFamily="sans-serif" fontSize="13">"打开属性"</text>
     <text x="120" y="40" textAnchor="middle" fill="#1E1E2E" fontFamily="sans-serif" fontSize="11" opacity="0.7">Open Properties</text>
   </g>

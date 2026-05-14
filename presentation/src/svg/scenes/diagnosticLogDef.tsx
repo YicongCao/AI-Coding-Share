@@ -37,7 +37,7 @@ const Clipboard = (
       { label: "LLM Feedback", color: "#4A7BCC", y: 430 },
     ].map((section, i) => (
       <g key={i}>
-        <rect x="30" y={section.y} width="540" height="72" rx="8" fill="#252538"/>
+        <rect x="30" y={section.y} width="540" height="72" rx="8" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
         <rect x="30" y={section.y} width="6" height="72" rx="3" fill={section.color}/>
         <text x="56" y={section.y + 22} fill={section.color} fontFamily="sans-serif" fontSize="14" fontWeight="bold">{section.label}</text>
         <rect x="56" y={section.y + 34} width="180" height="5" rx="2.5" fill="#555570" opacity="0.4"/>
@@ -50,11 +50,11 @@ const Clipboard = (
 
 const CopyButton = (
   <g transform="translate(940, 280)">
-    <rect x="0" y="0" width="160" height="56" rx="12" fill="#5BAD7A"/>
+    <rect x="0" y="0" width="160" height="56" rx="12" fill="#5BAD7A" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
     <rect x="50" y="14" width="18" height="22" rx="3" fill="none" stroke="#FFFFFF" strokeWidth="2"/>
     <rect x="56" y="20" width="18" height="22" rx="3" fill="#5BAD7A" stroke="#FFFFFF" strokeWidth="2"/>
     <text x="80" y="56" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="14" fontWeight="bold">一键复制</text>
-    <circle cx="170" cy="-10" r="12" fill="#E8B84A" opacity="0.8"/>
+    <circle cx="170" cy="-10" r="12" fill="#E8B84A" opacity="0.8" stroke="#F0D070" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="170" y="-5" textAnchor="middle" fill="#1E1E2E" fontFamily="sans-serif" fontSize="14" fontWeight="bold">✓</text>
   </g>
 );
@@ -74,7 +74,7 @@ export const diagnosticLogSceneDef: SvgSceneDef = {
   fragments: [
     { id: "title", content: Title, enterFrom: { x: 0, y: -120 }, enterDelay: 0, floatAmp: { x: 8, y: 10 }, floatPeriod: { x: 7, y: 8 } },
     { id: "clipboard", content: Clipboard, enterFrom: { x: -400, y: 0 }, enterDelay: 100, floatAmp: { x: 10, y: 12 }, floatPeriod: { x: 6, y: 7 }, exitTo: { x: -500, y: 0 } },
-    { id: "copyBtn", content: CopyButton, enterFrom: { x: 300, y: 0 }, enterDelay: 300, floatAmp: { x: 14, y: 16 }, floatPeriod: { x: 4.5, y: 5.5 }, exitTo: { x: 400, y: 0 } },
-    { id: "ripple", content: ClickRipple, enterFrom: { x: 0, y: 0 }, enterDelay: 500, floatAmp: { x: 8, y: 10 }, floatPeriod: { x: 3, y: 4 } },
+    { id: "copyBtn", content: CopyButton, enterFrom: { x: 300, y: 0 }, enterDelay: 300, floatAmp: { x: 14, y: 16 }, floatPeriod: { x: 4.5, y: 5.5 }, floatRotate: 1.5, exitTo: { x: 400, y: 0 } },
+    { id: "ripple", content: ClickRipple, enterFrom: { x: 0, y: 0 }, enterDelay: 500, floatAmp: { x: 8, y: 10 }, floatPeriod: { x: 3, y: 4 }, floatRotate: 2 },
   ],
 };

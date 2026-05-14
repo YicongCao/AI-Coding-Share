@@ -52,8 +52,8 @@ const WarningTriangle = (
 
 const ImportantBadge = (
   <g transform="translate(860, 440)">
-    <rect x="0" y="0" width="140" height="44" rx="22" fill="#E85650" opacity="0.15"/>
-    <circle cx="24" cy="22" r="10" fill="#E85650" opacity="0.4"/>
+    <rect x="0" y="0" width="140" height="44" rx="22" fill="#E85650" opacity="0.15" stroke="#F07870" strokeOpacity="0.3" strokeWidth="1"/>
+    <circle cx="24" cy="22" r="10" fill="#E85650" opacity="0.4" stroke="#F07870" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="24" y="27" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="12" fontWeight="bold">!</text>
     <text x="88" y="28" textAnchor="middle" fill="#E85650" fontFamily="sans-serif" fontSize="14" fontWeight="bold">重要</text>
   </g>
@@ -77,7 +77,7 @@ export const keyPointTitle8SceneDef: SvgSceneDef = {
     { id: "bigNumber", content: BigNumber, enterFrom: { x: -500, y: 0 }, enterDelay: 100, floatAmp: { x: 12, y: 16 }, floatPeriod: { x: 6, y: 7 }, exitTo: { x: -600, y: 0 }, exitSpin: -6 },
     { id: "titleCard", content: TitleCard, enterFrom: { x: 600, y: 0 }, enterDelay: 200, floatAmp: { x: 10, y: 12 }, floatPeriod: { x: 5.5, y: 6.5 }, exitTo: { x: 700, y: -100 }, exitScale: 0.9 },
     { id: "warning", content: WarningTriangle, enterFrom: { x: -300, y: 300 }, enterDelay: 350, floatAmp: { x: 16, y: 20 }, floatPeriod: { x: 4, y: 5 }, exitTo: { x: -400, y: 300 }, exitSpin: -10 },
-    { id: "badge", content: ImportantBadge, enterFrom: { x: 300, y: 200 }, enterDelay: 400, floatAmp: { x: 14, y: 18 }, floatPeriod: { x: 4.5, y: 5.5 }, exitTo: { x: 400, y: 200 } },
+    { id: "badge", content: ImportantBadge, enterFrom: { x: 300, y: 200 }, enterDelay: 400, floatAmp: { x: 14, y: 18 }, floatPeriod: { x: 4.5, y: 5.5 }, floatRotate: 1.5, exitTo: { x: 400, y: 200 } },
     { id: "dots", content: AccentDots, enterFrom: { x: 0, y: 0 }, enterDelay: 500, floatAmp: { x: 14, y: 18 }, floatPeriod: { x: 3.5, y: 4.5 } },
   ],
 };

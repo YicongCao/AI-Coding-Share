@@ -36,7 +36,7 @@ const ClassicMac = (
 
     {/* Bezel and screen */}
     <rect x="38" y="34" width="220" height="166" rx="16" fill="#1E1E2E" stroke="#8D897E" strokeWidth="2"/>
-    <rect x="56" y="52" width="184" height="130" rx="8" fill="#1C3C30"/>
+    <rect x="56" y="52" width="184" height="130" rx="8" fill="#1C3C30" stroke="#FFFFFF" strokeOpacity="0.08" strokeWidth="1"/>
     <rect x="68" y="66" width="104" height="5" rx="2.5" fill="#5BAD7A" opacity="0.85"/>
     <rect x="68" y="84" width="142" height="5" rx="2.5" fill="#5BAD7A" opacity="0.62"/>
     <rect x="68" y="102" width="84" height="5" rx="2.5" fill="#5BAD7A" opacity="0.72"/>
@@ -45,7 +45,7 @@ const ClassicMac = (
 
     {/* Drive bay, vents, and front badge */}
     <rect x="72" y="224" width="154" height="14" rx="4" fill="#BDB8AB" stroke="#9C978C" strokeWidth="1.2"/>
-    <rect x="196" y="252" width="44" height="10" rx="5" fill="#BDB8AB" opacity="0.65"/>
+    <rect x="196" y="252" width="44" height="10" rx="5" fill="#BDB8AB" opacity="0.65" stroke="#FFFFFF" strokeOpacity="0.08" strokeWidth="1"/>
     {[252, 264, 276].map((y, i) => (
       <line key={i} x1="62" y1={y} x2="156" y2={y} stroke="#B8B4A8" strokeWidth="1.6" opacity="0.62"/>
     ))}
@@ -54,7 +54,7 @@ const ClassicMac = (
       <path d="M25,13 C26,5 32,1 38,1 C37,8 32,13 25,13 Z" fill="#8C887E"/>
       <circle cx="40" cy="20" r="5" fill="#E4E0D4"/>
     </g>
-    <rect x="-32" y="328" width="328" height="16" rx="5" fill="#C6C1B6"/>
+    <rect x="-32" y="328" width="328" height="16" rx="5" fill="#C6C1B6" stroke="#FFFFFF" strokeOpacity="0.08" strokeWidth="1"/>
   </g>
 );
 
@@ -120,9 +120,9 @@ export const jobsEnvelopeSceneDef: SvgSceneDef = {
   fragments: [
     { id: "curtains", content: Curtains, enterFrom: { x: 0, y: 0 }, enterDelay: 0, floatAmp: { x: 3, y: 4 }, floatPeriod: { x: 9.0, y: 10.0 }, exitTo: { x: 0, y: 0 }, exitScale: 1.08, exitOpacity: 0.6 },
     { id: "mac", content: ClassicMac, enterFrom: { x: -500, y: 0 }, enterDelay: 100, floatAmp: { x: 8, y: 10 }, floatPeriod: { x: 5.5, y: 7.0 }, exitTo: { x: -620, y: 0 }, exitSpin: -3 },
-    { id: "bubble", content: SpeechBubble, enterFrom: { x: 400, y: 0 }, enterDelay: 300, floatAmp: { x: 12, y: 14 }, floatPeriod: { x: 4.8, y: 6.0 }, exitTo: { x: 560, y: -80 }, exitScale: 1.1 },
+    { id: "bubble", content: SpeechBubble, enterFrom: { x: 400, y: 0 }, enterDelay: 300, floatAmp: { x: 12, y: 14 }, floatPeriod: { x: 4.8, y: 6.0 }, floatRotate: 2.5, exitTo: { x: 560, y: -80 }, exitScale: 1.1 },
     { id: "waves", content: SoundWaves, enterFrom: { x: -120, y: -80 }, enterDelay: 400, floatAmp: { x: 28, y: 10 }, floatPeriod: { x: 2.8, y: 4.5 }, exitTo: { x: 720, y: -120 }, exitSpin: 8, exitScale: 1.25, exitOpacity: 0 },
-    { id: "year", content: YearLabel, enterFrom: { x: -300, y: -200 }, enterDelay: 200, floatAmp: { x: 14, y: 16 }, floatPeriod: { x: 4.0, y: 5.0 }, exitTo: { x: -420, y: -260 }, exitSpin: -10 },
-    { id: "apple", content: AppleLogo, enterFrom: { x: 300, y: -200 }, enterDelay: 500, floatAmp: { x: 18, y: 22 }, floatPeriod: { x: 3.2, y: 4.0 }, exitTo: { x: 380, y: -320 }, exitSpin: 20, exitScale: 1.25 },
+    { id: "year", content: YearLabel, enterFrom: { x: -300, y: -200 }, enterDelay: 200, floatAmp: { x: 14, y: 16 }, floatPeriod: { x: 4.0, y: 5.0 }, floatRotate: 1.5, exitTo: { x: -420, y: -260 }, exitSpin: -10 },
+    { id: "apple", content: AppleLogo, enterFrom: { x: 300, y: -200 }, enterDelay: 500, floatAmp: { x: 18, y: 22 }, floatPeriod: { x: 3.2, y: 4.0 }, floatRotate: 2, exitTo: { x: 380, y: -320 }, exitSpin: 20, exitScale: 1.25 },
   ],
 };

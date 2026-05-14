@@ -105,8 +105,8 @@ export const bertSceneDef: SvgSceneDef = {
   fragments: [
     { id: "network", content: NeuralNetwork, enterFrom: { x: -500, y: 0 }, enterDelay: 0, floatAmp: { x: 10, y: 12 }, floatPeriod: { x: 6.5, y: 8 }, exitTo: { x: -600, y: 0 } },
     { id: "title", content: BertTitle, enterFrom: { x: 300, y: -200 }, enterDelay: 50, floatAmp: { x: 16, y: 10 }, floatPeriod: { x: 5, y: 6.5 }, exitTo: { x: 400, y: -250 }, exitSpin: 6 },
-    { id: "badge", content: ParameterBadge, enterFrom: { x: 200, y: -150 }, enterDelay: 200, floatAmp: { x: 12, y: 14 }, floatPeriod: { x: 4, y: 5 }, exitTo: { x: 300, y: -200 }, exitScale: 1.3 },
-    { id: "year", content: YearTag, enterFrom: { x: 250, y: -100 }, enterDelay: 300, floatAmp: { x: 9, y: 11 }, floatPeriod: { x: 5.5, y: 7 }, exitTo: { x: 300, y: -150 } },
+    { id: "badge", content: ParameterBadge, enterFrom: { x: 200, y: -150 }, enterDelay: 200, floatAmp: { x: 12, y: 14 }, floatPeriod: { x: 4, y: 5 }, floatRotate: 1.5, exitTo: { x: 300, y: -200 }, exitScale: 1.3 },
+    { id: "year", content: YearTag, enterFrom: { x: 250, y: -100 }, enterDelay: 300, floatAmp: { x: 9, y: 11 }, floatPeriod: { x: 5.5, y: 7 }, floatRotate: 1.5, exitTo: { x: 300, y: -150 } },
     { id: "scale-note", content: ScaleNote, enterFrom: { x: 200, y: 0 }, enterDelay: 260, floatAmp: { x: 9, y: 10 }, floatPeriod: { x: 5, y: 6.5 }, exitTo: { x: 300, y: 80 } },
     { id: "context", content: ContextLabel, enterFrom: { x: 200, y: 0 }, enterDelay: 150, floatAmp: { x: 11, y: 13 }, floatPeriod: { x: 6, y: 7.5 }, exitTo: { x: 300, y: 100 } },
     { id: "output", content: OutputBox, enterFrom: { x: 350, y: 200 }, enterDelay: 400, floatAmp: { x: 10, y: 14 }, floatPeriod: { x: 5, y: 6 }, exitTo: { x: 400, y: 300 } },

@@ -98,7 +98,7 @@ const DecoCircles = (
 
 const TitleLabel = (
   <g>
-    <rect x="470" y="570" width="260" height="44" rx="10" fill="#252538"/>
+    <rect x="470" y="570" width="260" height="44" rx="10" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <text x="600" y="598" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="18" fontWeight="bold">Agent = Prompt + LLM + Tools + Feedback</text>
   </g>
 );
@@ -111,7 +111,7 @@ export const conceptAgentSceneDef: SvgSceneDef = {
     { id: "decoCircles", content: DecoCircles, enterFrom: { x: 0, y: 0 }, enterDelay: 0, floatAmp: { x: 8, y: 8 }, floatPeriod: { x: 9, y: 8 } },
     { id: "loopArrows", content: LoopArrows, enterFrom: { x: 0, y: 0 }, enterDelay: 100, floatAmp: { x: 10, y: 12 }, floatPeriod: { x: 6, y: 7 }, exitTo: { x: 0, y: 300 } },
     { id: "nodeBoxes", content: NodeBoxes, enterFrom: { x: 0, y: 300 }, enterDelay: 150, floatAmp: { x: 12, y: 14 }, floatPeriod: { x: 5, y: 6 }, exitTo: { x: 0, y: -400 } },
-    { id: "centerLabel", content: CenterLabel, enterFrom: { x: 0, y: -200 }, enterDelay: 300, floatAmp: { x: 10, y: 10 }, floatPeriod: { x: 5.5, y: 6.5 }, exitTo: { x: 0, y: -300 }, exitScale: 0.8 },
+    { id: "centerLabel", content: CenterLabel, enterFrom: { x: 0, y: -200 }, enterDelay: 300, floatAmp: { x: 10, y: 10 }, floatPeriod: { x: 5.5, y: 6.5 }, floatRotate: 1, exitTo: { x: 0, y: -300 }, exitScale: 0.8 },
     { id: "agentTitle", content: AgentTitle, enterFrom: { x: 0, y: -150 }, enterDelay: 200, floatAmp: { x: 8, y: 8 }, floatPeriod: { x: 7, y: 8 }, exitTo: { x: 0, y: -200 } },
     { id: "titleLabel", content: TitleLabel, enterFrom: { x: 0, y: 200 }, enterDelay: 500, floatAmp: { x: 8, y: 10 }, floatPeriod: { x: 7, y: 8 }, exitTo: { x: 0, y: 300 } },
   ],

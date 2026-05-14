@@ -44,7 +44,7 @@ const RoleOverlap = (
 const ClarityPanel = (
   <g transform="translate(112, 174)">
     <rect x="0" y="0" width="300" height="250" rx="18" fill="#1E1E2E" stroke="#5BAD7A" strokeWidth="1.5"/>
-    <rect x="22" y="24" width="156" height="16" rx="5" fill="#5BAD7A" opacity="0.68"/>
+    <rect x="22" y="24" width="156" height="16" rx="5" fill="#5BAD7A" opacity="0.68" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="150" y="82" textAnchor="middle" fill="#5BAD7A" fontFamily="sans-serif" fontSize="28" fontWeight="bold">知道要做什么</text>
     <line x1="34" y1="112" x2="266" y2="112" stroke="#555570" strokeWidth="1" opacity="0.45"/>
     {[
@@ -53,7 +53,7 @@ const ClarityPanel = (
       "好不好用当天就能判断",
     ].map((text, i) => (
       <g key={text} transform={`translate(38, ${144 + i * 38})`}>
-        <circle cx="0" cy="-5" r="10" fill="#5BAD7A" opacity="0.18"/>
+        <circle cx="0" cy="-5" r="10" fill="#5BAD7A" opacity="0.18" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
         <path d="M-5,-5 L-1,0 L7,-9" fill="none" stroke="#5BAD7A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         <text x="24" y="0" fill="#FFFFFF" fontFamily="sans-serif" fontSize="14" opacity="0.78">{text}</text>
       </g>
@@ -68,7 +68,7 @@ const CompletionGauge = (
     <circle cx="120" cy="102" r="70" fill="none" stroke="#5BAD7A" strokeWidth="16" strokeDasharray="396 44" strokeLinecap="round" transform="rotate(-90 120 102)"/>
     <text x="120" y="96" textAnchor="middle" fill="#5BAD7A" fontFamily="sans-serif" fontSize="44" fontWeight="bold">90%</text>
     <text x="120" y="126" textAnchor="middle" fill="#555570" fontFamily="sans-serif" fontSize="13">成品完成度</text>
-    <rect x="40" y="190" width="160" height="36" rx="18" fill="#5BAD7A" opacity="0.15"/>
+    <rect x="40" y="190" width="160" height="36" rx="18" fill="#5BAD7A" opacity="0.15" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="120" y="214" textAnchor="middle" fill="#5BAD7A" fontFamily="sans-serif" fontSize="16" fontWeight="bold">已经能拿来用</text>
   </g>
 );
@@ -76,9 +76,9 @@ const CompletionGauge = (
 const FinishedProduct = (
   <g transform="translate(412, 462)">
     <rect x="0" y="0" width="376" height="82" rx="20" fill="#1E1E2E" stroke="#6EC8E6" strokeWidth="1.5"/>
-    <rect x="28" y="28" width="230" height="16" rx="6" fill="#6EC8E6" opacity="0.65"/>
+    <rect x="28" y="28" width="230" height="16" rx="6" fill="#6EC8E6" opacity="0.65" stroke="#90D8F0" strokeOpacity="0.3" strokeWidth="1"/>
     <rect x="28" y="56" width="286" height="8" rx="4" fill="#FFFFFF" opacity="0.12"/>
-    <rect x="286" y="20" width="58" height="42" rx="12" fill="#5BAD7A" opacity="0.2"/>
+    <rect x="286" y="20" width="58" height="42" rx="12" fill="#5BAD7A" opacity="0.2" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
     <path d="M302,42 L314,52 L334,28" fill="none" stroke="#5BAD7A" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
     <text x="188" y="118" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="16" fontWeight="bold" opacity="0.78">
       成品不是纸面方案，而是接近完成的可用结果

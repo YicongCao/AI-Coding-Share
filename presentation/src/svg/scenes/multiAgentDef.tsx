@@ -19,8 +19,8 @@ const Defs = (
 
 const CentralPerson = (
   <g transform="translate(550, 260)">
-    <circle cx="50" cy="20" r="26" fill="#E8B84A" opacity="0.8"/>
-    <rect x="26" y="50" width="48" height="65" rx="14" fill="#E8B84A" opacity="0.7"/>
+    <circle cx="50" cy="20" r="26" fill="#E8B84A" opacity="0.8" stroke="#F0D070" strokeOpacity="0.3" strokeWidth="1"/>
+    <rect x="26" y="50" width="48" height="65" rx="14" fill="#E8B84A" opacity="0.7" stroke="#F0D070" strokeOpacity="0.3" strokeWidth="1"/>
     <circle cx="38" cy="16" r="3" fill="#2B2B3D"/>
     <circle cx="62" cy="16" r="3" fill="#2B2B3D"/>
     <path d="M38,30 Q50,40 62,30" fill="none" stroke="#2B2B3D" strokeWidth="2" strokeLinecap="round"/>

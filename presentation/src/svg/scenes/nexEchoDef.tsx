@@ -19,12 +19,12 @@ const Defs = (
 
 const PMFigure = (
   <g transform="translate(135, 258)">
-    <circle cx="58" cy="18" r="28" fill="#6EC8E6" opacity="0.72"/>
+    <circle cx="58" cy="18" r="28" fill="#6EC8E6" opacity="0.72" stroke="#90D8F0" strokeOpacity="0.3" strokeWidth="1"/>
     <path d="M26,72 Q28,48 52,44 L64,44 Q88,48 90,72 L96,135 L20,135 Z" fill="#252538" stroke="#6EC8E6" strokeWidth="2"/>
     <circle cx="48" cy="14" r="3" fill="#1E1E2E"/>
     <circle cx="68" cy="14" r="3" fill="#1E1E2E"/>
     <path d="M49,28 Q58,35 67,28" fill="none" stroke="#1E1E2E" strokeWidth="2" strokeLinecap="round"/>
-    <rect x="8" y="142" width="104" height="36" rx="18" fill="#6EC8E6" opacity="0.16"/>
+    <rect x="8" y="142" width="104" height="36" rx="18" fill="#6EC8E6" opacity="0.16" stroke="#90D8F0" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="60" y="166" textAnchor="middle" fill="#6EC8E6" fontFamily="sans-serif" fontSize="18" fontWeight="bold">PM</text>
     <path d="M96,92 C136,82 158,90 182,116" fill="none" stroke="#6EC8E6" strokeWidth="2" opacity="0.65"/>
   </g>
@@ -33,13 +33,13 @@ const PMFigure = (
 const NexEditor = (
   <g transform="translate(330, 150)">
     <rect x="0" y="0" width="360" height="285" rx="14" fill="#1E1E2E" stroke="#555570" strokeWidth="1.5"/>
-    <rect x="0" y="0" width="360" height="36" rx="14" fill="#252538"/>
+    <rect x="0" y="0" width="360" height="36" rx="14" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <circle cx="22" cy="18" r="4" fill="#E85650" opacity="0.85"/>
     <circle cx="38" cy="18" r="4" fill="#E8B84A" opacity="0.85"/>
     <circle cx="54" cy="18" r="4" fill="#5BAD7A" opacity="0.85"/>
     <text x="180" y="23" textAnchor="middle" fill="#6EC8E6" fontFamily="sans-serif" fontSize="14" fontWeight="bold">Nex 编辑界面</text>
 
-    <rect x="18" y="54" width="88" height="212" rx="8" fill="#252538"/>
+    <rect x="18" y="54" width="88" height="212" rx="8" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     {["背景", "目标", "方案", "风险"].map((item, i) => (
       <g key={item} transform={`translate(32, ${76 + i * 42})`}>
         <rect x="0" y="0" width="58" height="24" rx="6" fill={i === 2 ? "#6EC8E6" : "#555570"} opacity={i === 2 ? 0.45 : 0.28}/>
@@ -81,13 +81,13 @@ const ReviewMaterials = (
 const MeetingScreen = (
   <g transform="translate(790, 118)">
     <rect x="0" y="0" width="330" height="210" rx="14" fill="#1E1E2E" stroke="#E8B84A" strokeWidth="2"/>
-    <rect x="18" y="18" width="294" height="158" rx="10" fill="#252538"/>
+    <rect x="18" y="18" width="294" height="158" rx="10" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <rect x="42" y="42" width="112" height="12" rx="4" fill="#E8B84A" opacity="0.72"/>
     <text x="98" y="78" textAnchor="middle" fill="#E8B84A" fontFamily="sans-serif" fontSize="18" fontWeight="bold">项目评审</text>
     <rect x="42" y="102" width="184" height="8" rx="3" fill="#FFFFFF" opacity="0.18"/>
     <rect x="42" y="126" width="220" height="8" rx="3" fill="#FFFFFF" opacity="0.14"/>
     <rect x="42" y="150" width="154" height="8" rx="3" fill="#FFFFFF" opacity="0.14"/>
-    <rect x="238" y="54" width="48" height="76" rx="8" fill="#6EC8E6" opacity="0.18"/>
+    <rect x="238" y="54" width="48" height="76" rx="8" fill="#6EC8E6" opacity="0.18" stroke="#90D8F0" strokeOpacity="0.3" strokeWidth="1"/>
     <path d="M250,112 L262,82 L274,112 Z" fill="#6EC8E6" opacity="0.55"/>
     <rect x="136" y="210" width="58" height="12" rx="3" fill="#555570" opacity="0.55"/>
     <rect x="102" y="224" width="126" height="8" rx="4" fill="#555570" opacity="0.35"/>

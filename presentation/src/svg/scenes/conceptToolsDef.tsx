@@ -75,7 +75,7 @@ const FunctionBlocks = (
 
 const TitleLabel = (
   <g>
-    <rect x="350" y="580" width="300" height="44" rx="10" fill="#252538"/>
+    <rect x="350" y="580" width="300" height="44" rx="10" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <text x="500" y="608" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="20" fontWeight="bold">Tools = 回调函数</text>
   </g>
 );

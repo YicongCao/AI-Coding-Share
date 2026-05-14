@@ -118,7 +118,7 @@ export const worstAgeSceneDef: SvgSceneDef = {
   defs: Defs,
   background: Background,
   fragments: [
-    { id: "barChart", content: BarChart, enterFrom: { x: -500, y: 0 }, enterDelay: 0, floatAmp: { x: 8, y: 12 }, floatPeriod: { x: 6.0, y: 7.5 }, exitTo: { x: -600, y: 0 }, exitSpin: -2 },
+    { id: "barChart", content: BarChart, enterFrom: { x: -500, y: 0 }, enterDelay: 0, floatAmp: { x: 8, y: 12 }, floatPeriod: { x: 6.0, y: 7.5 }, floatRotate: 2.5, exitTo: { x: -600, y: 0 }, exitSpin: -2 },
     { id: "personSilhouettes", content: PersonSilhouettes, enterFrom: { x: 400, y: 0 }, enterDelay: 100, floatAmp: { x: 10, y: 14 }, floatPeriod: { x: 5.0, y: 6.5 }, exitTo: { x: 500, y: 0 } },
     { id: "warningIndicators", content: WarningIndicators, enterFrom: { x: 0, y: -200 }, enterDelay: 200, floatAmp: { x: 16, y: 20 }, floatPeriod: { x: 3.5, y: 4.5 }, exitTo: { x: 0, y: -300 }, exitScale: 1.15 },
     { id: "layoffLabel", content: LayoffLabel, enterFrom: { x: 300, y: -200 }, enterDelay: 300, floatAmp: { x: 14, y: 18 }, floatPeriod: { x: 4.0, y: 5.5 }, exitTo: { x: 400, y: -300 } },

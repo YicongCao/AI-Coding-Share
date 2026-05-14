@@ -46,7 +46,7 @@ const TitleCard = (
 
 const TiredPerson = (
   <g transform="translate(140, 440)">
-    <circle cx="40" cy="15" r="18" fill="#E85650" opacity="0.7"/>
+    <circle cx="40" cy="15" r="18" fill="#E85650" opacity="0.7" stroke="#F07870" strokeOpacity="0.3" strokeWidth="1"/>
     <path d="M40,33 L40,80 M40,50 L18,70 M40,50 L62,70 M40,80 L25,110 M40,80 L55,110" fill="none" stroke="#E85650" strokeWidth="3" strokeLinecap="round" opacity="0.7"/>
     <path d="M30,8 L35,14" fill="none" stroke="#2B2B3D" strokeWidth="2.5" strokeLinecap="round"/>
     <path d="M45,8 L50,14" fill="none" stroke="#2B2B3D" strokeWidth="2.5" strokeLinecap="round"/>
@@ -58,9 +58,9 @@ const TiredPerson = (
 const WeightBurden = (
   <g transform="translate(830, 440)">
     <rect x="0" y="30" width="120" height="20" rx="4" fill="#555570" opacity="0.6"/>
-    <circle cx="10" cy="60" r="22" fill="#E85650" opacity="0.5"/>
-    <circle cx="110" cy="60" r="22" fill="#E85650" opacity="0.5"/>
-    <circle cx="60" cy="55" r="30" fill="#E85650" opacity="0.35"/>
+    <circle cx="10" cy="60" r="22" fill="#E85650" opacity="0.5" stroke="#F07870" strokeOpacity="0.3" strokeWidth="1"/>
+    <circle cx="110" cy="60" r="22" fill="#E85650" opacity="0.5" stroke="#F07870" strokeOpacity="0.3" strokeWidth="1"/>
+    <circle cx="60" cy="55" r="30" fill="#E85650" opacity="0.35" stroke="#F07870" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="60" y="62" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="16" fontWeight="bold">AI</text>
     <line x1="60" y1="0" x2="60" y2="30" stroke="#555570" strokeWidth="3"/>
     <text x="60" y="105" textAnchor="middle" fill="#555570" fontFamily="sans-serif" fontSize="13">负担</text>

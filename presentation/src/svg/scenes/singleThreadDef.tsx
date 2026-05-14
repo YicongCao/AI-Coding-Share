@@ -73,8 +73,8 @@ const TimelineDots = (
 
 const Utilization = (
   <g transform="translate(200, 420)">
-    <rect x="0" y="0" width="700" height="30" rx="8" fill="#252538"/>
-    <rect x="3" y="3" width="680" height="24" rx="6" fill="#5BAD7A" opacity="0.5"/>
+    <rect x="0" y="0" width="700" height="30" rx="8" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
+    <rect x="3" y="3" width="680" height="24" rx="6" fill="#5BAD7A" opacity="0.5" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="350" y="20" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="12" fontWeight="bold">利用率 97%</text>
   </g>
 );
@@ -94,7 +94,7 @@ export const singleThreadSceneDef: SvgSceneDef = {
     { id: "dots", content: TimelineDots, enterFrom: { x: 0, y: 200 }, enterDelay: 100, floatAmp: { x: 8, y: 10 }, floatPeriod: { x: 6, y: 7 } },
     { id: "thread", content: ThreadLine, enterFrom: { x: 0, y: -300 }, enterDelay: 150, floatAmp: { x: 10, y: 12 }, floatPeriod: { x: 5.5, y: 6.5 }, exitTo: { x: 0, y: -500 } },
     { id: "label", content: ThreadLabel, enterFrom: { x: 0, y: -400 }, enterDelay: 200, floatAmp: { x: 12, y: 14 }, floatPeriod: { x: 5, y: 6 }, exitTo: { x: 0, y: -500 }, exitScale: 0.9 },
-    { id: "badge", content: MaxBadge, enterFrom: { x: 300, y: -200 }, enterDelay: 350, floatAmp: { x: 14, y: 18 }, floatPeriod: { x: 4, y: 5 }, exitTo: { x: 300, y: -300 } },
+    { id: "badge", content: MaxBadge, enterFrom: { x: 300, y: -200 }, enterDelay: 350, floatAmp: { x: 14, y: 18 }, floatPeriod: { x: 4, y: 5 }, floatRotate: 1.5, exitTo: { x: 300, y: -300 } },
     { id: "util", content: Utilization, enterFrom: { x: 0, y: 200 }, enterDelay: 400, floatAmp: { x: 8, y: 10 }, floatPeriod: { x: 7, y: 8 }, exitTo: { x: 0, y: 300 } },
     { id: "subtitle", content: Subtitle, enterFrom: { x: 0, y: 200 }, enterDelay: 500, floatAmp: { x: 8, y: 10 }, floatPeriod: { x: 7, y: 9 } },
   ],

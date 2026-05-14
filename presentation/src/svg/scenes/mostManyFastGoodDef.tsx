@@ -33,7 +33,7 @@ const QuadrantGrid = (
 
 const QuadMore = (
   <g transform="translate(280, 150)">
-    <rect x="0" y="0" width="290" height="200" rx="14" fill="#1E1E2E"/>
+    <rect x="0" y="0" width="290" height="200" rx="14" fill="#1E1E2E" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <text x="145" y="55" textAnchor="middle" fill="#5BAD7A" fontFamily="sans-serif" fontSize="52" fontWeight="bold">多</text>
     <text x="145" y="80" textAnchor="middle" fill="#555570" fontFamily="sans-serif" fontSize="13">More</text>
     {/* Stack icon */}
@@ -41,27 +41,27 @@ const QuadMore = (
     <rect x="90" y="118" width="70" height="12" rx="3" fill="#5BAD7A" opacity="0.5"/>
     <rect x="80" y="136" width="90" height="12" rx="3" fill="#5BAD7A" opacity="0.6"/>
     {/* Checkmark */}
-    <circle cx="250" cy="40" r="20" fill="#5BAD7A" opacity="0.2"/>
+    <circle cx="250" cy="40" r="20" fill="#5BAD7A" opacity="0.2" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
     <path d="M240,40 L248,48 L262,32" fill="none" stroke="#5BAD7A" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
   </g>
 );
 
 const QuadFast = (
   <g transform="translate(630, 150)">
-    <rect x="0" y="0" width="290" height="200" rx="14" fill="#1E1E2E"/>
+    <rect x="0" y="0" width="290" height="200" rx="14" fill="#1E1E2E" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <text x="145" y="55" textAnchor="middle" fill="#6EC8E6" fontFamily="sans-serif" fontSize="52" fontWeight="bold">快</text>
     <text x="145" y="80" textAnchor="middle" fill="#555570" fontFamily="sans-serif" fontSize="13">Fast</text>
     {/* Lightning icon */}
     <path d="M135,95 L150,125 L140,125 L155,160 L130,125 L142,125 Z" fill="#6EC8E6" opacity="0.5"/>
     {/* Checkmark */}
-    <circle cx="250" cy="40" r="20" fill="#6EC8E6" opacity="0.2"/>
+    <circle cx="250" cy="40" r="20" fill="#6EC8E6" opacity="0.2" stroke="#90D8F0" strokeOpacity="0.3" strokeWidth="1"/>
     <path d="M240,40 L248,48 L262,32" fill="none" stroke="#6EC8E6" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
   </g>
 );
 
 const QuadGood = (
   <g transform="translate(280, 385)">
-    <rect x="0" y="0" width="290" height="200" rx="14" fill="#1E1E2E"/>
+    <rect x="0" y="0" width="290" height="200" rx="14" fill="#1E1E2E" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <text x="145" y="55" textAnchor="middle" fill="#E8B84A" fontFamily="sans-serif" fontSize="52" fontWeight="bold">好</text>
     <text x="145" y="80" textAnchor="middle" fill="#555570" fontFamily="sans-serif" fontSize="13">Good</text>
     {/* Star icon */}
@@ -74,7 +74,7 @@ const QuadGood = (
 
 const QuadSave = (
   <g transform="translate(630, 385)">
-    <rect x="0" y="0" width="290" height="200" rx="14" fill="#1E1E2E"/>
+    <rect x="0" y="0" width="290" height="200" rx="14" fill="#1E1E2E" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <text x="145" y="55" textAnchor="middle" fill="#E85650" fontFamily="sans-serif" fontSize="52" fontWeight="bold">省</text>
     <text x="145" y="80" textAnchor="middle" fill="#555570" fontFamily="sans-serif" fontSize="13">Save</text>
     {/* X mark */}

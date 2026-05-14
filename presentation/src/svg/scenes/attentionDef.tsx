@@ -106,7 +106,7 @@ export const attentionSceneDef: SvgSceneDef = {
     { id: "qkv", content: QKVBoxes, enterFrom: { x: -350, y: 0 }, enterDelay: 0, floatAmp: { x: 12, y: 14 }, floatPeriod: { x: 5, y: 6.5 }, exitTo: { x: -400, y: 0 } },
     { id: "lines", content: ConnectionLines, enterFrom: { x: -200, y: 0 }, enterDelay: 250, floatAmp: { x: 8, y: 10 }, floatPeriod: { x: 4.5, y: 5.5 }, exitTo: { x: -300, y: 0 } },
     { id: "title", content: TitleText, enterFrom: { x: 0, y: -200 }, enterDelay: 50, floatAmp: { x: 14, y: 9 }, floatPeriod: { x: 7, y: 9 }, exitTo: { x: 0, y: -300 }, exitSpin: 4 },
-    { id: "year", content: YearTag, enterFrom: { x: 200, y: -150 }, enterDelay: 200, floatAmp: { x: 10, y: 12 }, floatPeriod: { x: 5.5, y: 7.5 }, exitTo: { x: 300, y: -200 } },
+    { id: "year", content: YearTag, enterFrom: { x: 200, y: -150 }, enterDelay: 200, floatAmp: { x: 10, y: 12 }, floatPeriod: { x: 5.5, y: 7.5 }, floatRotate: 1.5, exitTo: { x: 300, y: -200 } },
     { id: "core-idea", content: CoreIdeaLabel, enterFrom: { x: 250, y: 0 }, enterDelay: 320, floatAmp: { x: 10, y: 12 }, floatPeriod: { x: 5.5, y: 6.5 }, exitTo: { x: 350, y: 0 } },
     { id: "output", content: OutputArrow, enterFrom: { x: 300, y: 0 }, enterDelay: 400, floatAmp: { x: 11, y: 13 }, floatPeriod: { x: 5, y: 6 }, exitTo: { x: 400, y: 0 } },
   ],

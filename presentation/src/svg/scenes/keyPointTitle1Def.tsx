@@ -49,10 +49,10 @@ const TitleCard = (
 const SprintIcon = (
   <g transform="translate(850, 440)">
     {/* Running figure */}
-    <circle cx="30" cy="10" r="12" fill="#E8734A" opacity="0.8"/>
+    <circle cx="30" cy="10" r="12" fill="#E8734A" opacity="0.8" stroke="#F09570" strokeOpacity="0.3" strokeWidth="1"/>
     <path d="M30,22 L30,55 M30,35 L10,50 M30,35 L50,50 M30,55 L15,80 M30,55 L45,80" fill="none" stroke="#E8734A" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" opacity="0.8"/>
     {/* Slow sign */}
-    <rect x="65" y="20" width="80" height="36" rx="8" fill="#E85650" opacity="0.85"/>
+    <rect x="65" y="20" width="80" height="36" rx="8" fill="#E85650" opacity="0.85" stroke="#F07870" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="105" y="45" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="16" fontWeight="bold">SLOW</text>
     <line x1="60" y1="38" x2="65" y2="38" stroke="#E85650" strokeWidth="2"/>
   </g>

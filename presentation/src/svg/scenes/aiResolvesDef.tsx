@@ -41,7 +41,7 @@ const ArrowPipeline = (
 const AIBrain = (
   <g transform="translate(460, 200)">
     <rect x="0" y="0" width="220" height="240" rx="16" fill="#1E1E2E" stroke="#4A7BCC" strokeWidth="2"/>
-    <circle cx="110" cy="80" r="45" fill="#4A7BCC" opacity="0.15"/>
+    <circle cx="110" cy="80" r="45" fill="#4A7BCC" opacity="0.15" stroke="#6A9BE0" strokeOpacity="0.3" strokeWidth="1"/>
     <path d="M85,65 Q90,45 110,42 Q130,45 135,65 Q138,80 130,95 Q120,105 110,108 Q100,105 90,95 Q82,80 85,65" fill="none" stroke="#4A7BCC" strokeWidth="2"/>
     <path d="M95,75 L108,85 L125,70" fill="none" stroke="#6EC8E6" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
     <line x1="110" y1="42" x2="110" y2="30" stroke="#4A7BCC" strokeWidth="1.5" opacity="0.5"/>
@@ -49,7 +49,7 @@ const AIBrain = (
     <line x1="135" y1="65" x2="145" y2="58" stroke="#4A7BCC" strokeWidth="1.5" opacity="0.5"/>
     <text x="110" y="145" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="18" fontWeight="bold">AI 分析</text>
     <text x="110" y="170" textAnchor="middle" fill="#555570" fontFamily="sans-serif" fontSize="12">AI 自己定位</text>
-    <rect x="30" y="190" width="160" height="30" rx="6" fill="#252538"/>
+    <rect x="30" y="190" width="160" height="30" rx="6" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <text x="110" y="210" textAnchor="middle" fill="#4A7BCC" fontFamily="sans-serif" fontSize="12">Root Cause Analysis</text>
   </g>
 );

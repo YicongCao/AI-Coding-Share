@@ -96,7 +96,7 @@ export const word2vecSceneDef: SvgSceneDef = {
     { id: "clusters", content: ClusterHighlights, enterFrom: { x: 0, y: 200 }, enterDelay: 350, floatAmp: { x: 12, y: 14 }, floatPeriod: { x: 6, y: 7.5 }, exitTo: { x: 0, y: -350 } },
     { id: "embedding", content: EmbeddingBadge, enterFrom: { x: 0, y: -180 }, enterDelay: 300, floatAmp: { x: 10, y: 9 }, floatPeriod: { x: 5.5, y: 6.5 }, exitTo: { x: 0, y: -260 }, exitScale: 1.1 },
     { id: "title", content: TitleTag, enterFrom: { x: 300, y: -200 }, enterDelay: 100, floatAmp: { x: 14, y: 10 }, floatPeriod: { x: 4, y: 5 }, exitTo: { x: 400, y: -300 }, exitSpin: 8 },
-    { id: "year", content: YearLabel, enterFrom: { x: 200, y: -150 }, enterDelay: 250, floatAmp: { x: 10, y: 8 }, floatPeriod: { x: 5.5, y: 7 }, exitTo: { x: 300, y: -200 } },
+    { id: "year", content: YearLabel, enterFrom: { x: 200, y: -150 }, enterDelay: 250, floatAmp: { x: 10, y: 8 }, floatPeriod: { x: 5.5, y: 7 }, floatRotate: 1.5, exitTo: { x: 300, y: -200 } },
     { id: "chinese", content: ChineseLabel, enterFrom: { x: 200, y: 0 }, enterDelay: 400, floatAmp: { x: 9, y: 11 }, floatPeriod: { x: 6.5, y: 8 }, exitTo: { x: 300, y: 100 } },
   ],
 };

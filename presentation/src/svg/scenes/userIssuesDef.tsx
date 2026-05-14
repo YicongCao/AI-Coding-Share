@@ -32,7 +32,7 @@ const BugFace = ({ cx, cy, label, color }: { cx: number; cy: number; label: stri
     <path d={`M${cx - 14},${cy + 14} Q${cx},${cy + 4} ${cx + 14},${cy + 14}`} fill="none" stroke={color} strokeWidth="2.5" strokeLinecap="round"/>
     <path d={`M${cx - 22},${cy - 22} L${cx - 12},${cy - 18}`} fill="none" stroke={color} strokeWidth="2" strokeLinecap="round"/>
     <path d={`M${cx + 22},${cy - 22} L${cx + 12},${cy - 18}`} fill="none" stroke={color} strokeWidth="2" strokeLinecap="round"/>
-    <rect x={cx - 45} y={cy + 72} width="90" height="26" rx="6" fill="#252538"/>
+    <rect x={cx - 45} y={cy + 72} width="90" height="26" rx="6" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <text x={cx} y={cy + 90} textAnchor="middle" fill={color} fontFamily="sans-serif" fontSize="13" fontWeight="bold">{label}</text>
   </g>
 );

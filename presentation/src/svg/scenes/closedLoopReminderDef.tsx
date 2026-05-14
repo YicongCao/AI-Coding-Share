@@ -9,7 +9,7 @@ const Background = (
 
 const ReminderBadge = (
   <g transform="translate(80, 60)">
-    <rect x="0" y="0" width="180" height="44" rx="22" fill="#E8B84A" opacity="0.15"/>
+    <rect x="0" y="0" width="180" height="44" rx="22" fill="#E8B84A" opacity="0.15" stroke="#F0D070" strokeOpacity="0.3" strokeWidth="1"/>
     <polygon points="22,10 30,26 14,26" fill="#E8B84A"/>
     <text x="100" y="28" textAnchor="middle" fill="#E8B84A" fontFamily="sans-serif" fontSize="15" fontWeight="bold">回顾第三点</text>
   </g>
@@ -38,7 +38,7 @@ const ClosedLoop = (
 
 const LightBulb = (
   <g transform="translate(980, 150)">
-    <circle cx="40" cy="40" r="32" fill="#E8B84A" opacity="0.15"/>
+    <circle cx="40" cy="40" r="32" fill="#E8B84A" opacity="0.15" stroke="#F0D070" strokeOpacity="0.3" strokeWidth="1"/>
     <path d="M40,14 L40,8 M18,22 L14,18 M62,22 L66,18 M12,42 L6,42 M68,42 L74,42" stroke="#E8B84A" strokeWidth="2" strokeLinecap="round" opacity="0.6"/>
     <path d="M28,48 Q28,22 40,18 Q52,22 52,48" fill="none" stroke="#E8B84A" strokeWidth="2.5"/>
     <rect x="30" y="48" width="20" height="8" rx="2" fill="#E8B84A" opacity="0.5"/>
@@ -75,7 +75,7 @@ export const closedLoopReminderSceneDef: SvgSceneDef = {
   defs: Defs,
   background: Background,
   fragments: [
-    { id: "badge", content: ReminderBadge, enterFrom: { x: -300, y: -100 }, enterDelay: 0, floatAmp: { x: 10, y: 12 }, floatPeriod: { x: 6, y: 7 } },
+    { id: "badge", content: ReminderBadge, enterFrom: { x: -300, y: -100 }, enterDelay: 0, floatAmp: { x: 10, y: 12 }, floatPeriod: { x: 6, y: 7 }, floatRotate: 1.5 },
     { id: "loop", content: ClosedLoop, enterFrom: { x: 0, y: 300 }, enterDelay: 150, floatAmp: { x: 10, y: 14 }, floatPeriod: { x: 5.5, y: 6.5 }, exitTo: { x: 0, y: -400 } },
     { id: "bulb", content: LightBulb, enterFrom: { x: 300, y: -200 }, enterDelay: 300, floatAmp: { x: 16, y: 18 }, floatPeriod: { x: 4, y: 5 }, exitTo: { x: 400, y: -200 } },
     { id: "star", content: StarIcon, enterFrom: { x: -200, y: 0 }, enterDelay: 200, floatAmp: { x: 20, y: 22 }, floatPeriod: { x: 3.5, y: 4.5 }, exitSpin: 15 },

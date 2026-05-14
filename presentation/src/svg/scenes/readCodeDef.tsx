@@ -41,9 +41,9 @@ const CodeWindow = (
 const MagnifyingGlass = (
   <g transform="translate(280, 220)">
     <circle cx="0" cy="0" r="80" fill="none" stroke="#6EC8E6" strokeWidth="4" opacity="0.7"/>
-    <circle cx="0" cy="0" r="74" fill="#6EC8E6" opacity="0.06"/>
+    <circle cx="0" cy="0" r="74" fill="#6EC8E6" opacity="0.06" stroke="#90D8F0" strokeOpacity="0.3" strokeWidth="1"/>
     <line x1="56" y1="56" x2="100" y2="100" stroke="#6EC8E6" strokeWidth="6" strokeLinecap="round" opacity="0.7"/>
-    <rect x="86" y="86" width="28" height="12" rx="4" fill="#6EC8E6" opacity="0.5" transform="rotate(45,100,92)"/>
+    <rect x="86" y="86" width="28" height="12" rx="4" fill="#6EC8E6" opacity="0.5" transform="rotate(45,100,92)" stroke="#90D8F0" strokeOpacity="0.3" strokeWidth="1"/>
   </g>
 );
 
@@ -64,7 +64,7 @@ const QuestionBubbles = (
 
 const Checkmark = (
   <g transform="translate(1040, 300)">
-    <circle cx="0" cy="0" r="32" fill="#5BAD7A" opacity="0.2"/>
+    <circle cx="0" cy="0" r="32" fill="#5BAD7A" opacity="0.2" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
     <circle cx="0" cy="0" r="26" fill="none" stroke="#5BAD7A" strokeWidth="3"/>
     <path d="M-12,2 L-4,12 L14,-8" fill="none" stroke="#5BAD7A" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
   </g>
@@ -72,7 +72,7 @@ const Checkmark = (
 
 const TitleLabel = (
   <g>
-    <rect x="490" y="530" width="220" height="48" rx="10" fill="#252538"/>
+    <rect x="490" y="530" width="220" height="48" rx="10" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <text x="600" y="560" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="22" fontWeight="bold">通读代码</text>
     <text x="600" y="600" textAnchor="middle" fill="#555570" fontFamily="sans-serif" fontSize="13">Read Code First</text>
   </g>
@@ -83,7 +83,7 @@ export const readCodeSceneDef: SvgSceneDef = {
   defs: Defs,
   background: Background,
   fragments: [
-    { id: "codeWindow", content: CodeWindow, enterFrom: { x: 0, y: 400 }, enterDelay: 0, floatAmp: { x: 10, y: 12 }, floatPeriod: { x: 6, y: 7 }, exitTo: { x: 0, y: -500 } },
+    { id: "codeWindow", content: CodeWindow, enterFrom: { x: 0, y: 400 }, enterDelay: 0, floatAmp: { x: 10, y: 12 }, floatPeriod: { x: 6, y: 7 }, floatRotate: 1, exitTo: { x: 0, y: -500 } },
     { id: "magnifyingGlass", content: MagnifyingGlass, enterFrom: { x: -400, y: -200 }, enterDelay: 150, floatAmp: { x: 16, y: 18 }, floatPeriod: { x: 5, y: 6 }, exitTo: { x: -500, y: -300 }, exitSpin: -10 },
     { id: "questionBubbles", content: QuestionBubbles, enterFrom: { x: 400, y: 0 }, enterDelay: 300, floatAmp: { x: 14, y: 20 }, floatPeriod: { x: 4.5, y: 5.5 }, exitTo: { x: 500, y: 0 } },
     { id: "checkmark", content: Checkmark, enterFrom: { x: 300, y: -200 }, enterDelay: 450, floatAmp: { x: 12, y: 16 }, floatPeriod: { x: 4, y: 5 }, exitTo: { x: 400, y: -300 }, exitScale: 1.3 },

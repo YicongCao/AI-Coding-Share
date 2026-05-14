@@ -26,9 +26,9 @@ const VibeCodingTitle = (
 
 const BrightHalf = (
   <g>
-    <rect x="40" y="110" width="520" height="470" rx="18" fill="#1E1E2E" opacity="0.6"/>
-    <circle cx="300" cy="340" r="180" fill="#E8B84A" opacity="0.06"/>
-    <circle cx="300" cy="340" r="120" fill="#E8B84A" opacity="0.08"/>
+    <rect x="40" y="110" width="520" height="470" rx="18" fill="#1E1E2E" opacity="0.6" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
+    <circle cx="300" cy="340" r="180" fill="#E8B84A" opacity="0.06" stroke="#F0D070" strokeOpacity="0.3" strokeWidth="1"/>
+    <circle cx="300" cy="340" r="120" fill="#E8B84A" opacity="0.08" stroke="#F0D070" strokeOpacity="0.3" strokeWidth="1"/>
     <g transform="translate(300, 360)">
       <ellipse cx="0" cy="-142" rx="56" ry="14" fill="none" stroke="#E8B84A" strokeWidth="6" opacity="0.92"/>
       <path d="M-78,-42 C-155,-104 -205,-45 -154,38 C-119,93 -70,70 -54,18 Z" fill="#F7DFA3" opacity="0.9"/>
@@ -55,9 +55,9 @@ const BrightHalf = (
 
 const DarkHalf = (
   <g>
-    <rect x="640" y="110" width="520" height="470" rx="18" fill="#1E1E2E" opacity="0.6"/>
-    <circle cx="900" cy="340" r="180" fill="#E85650" opacity="0.05"/>
-    <circle cx="900" cy="340" r="120" fill="#E85650" opacity="0.07"/>
+    <rect x="640" y="110" width="520" height="470" rx="18" fill="#1E1E2E" opacity="0.6" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
+    <circle cx="900" cy="340" r="180" fill="#E85650" opacity="0.05" stroke="#F07870" strokeOpacity="0.3" strokeWidth="1"/>
+    <circle cx="900" cy="340" r="120" fill="#E85650" opacity="0.07" stroke="#F07870" strokeOpacity="0.3" strokeWidth="1"/>
     <g transform="translate(900, 360)">
       <path d="M-72,-96 C-118,-154 -42,-147 -30,-105 Z" fill="#E85650" stroke="#E8734A" strokeWidth="2"/>
       <path d="M72,-96 C118,-154 42,-147 30,-105 Z" fill="#E85650" stroke="#E8734A" strokeWidth="2"/>

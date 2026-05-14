@@ -29,13 +29,13 @@ const Title = (
 const BrowserWindow = (
   <g>
     <rect x="60" y="120" width="420" height="440" rx="14" fill="#1E1E2E" stroke="#6EC8E6" strokeWidth="2"/>
-    <rect x="60" y="120" width="420" height="36" rx="14" fill="#252538"/>
+    <rect x="60" y="120" width="420" height="36" rx="14" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <circle cx="86" cy="138" r="5" fill="#E85650"/><circle cx="104" cy="138" r="5" fill="#E8B84A"/><circle cx="122" cy="138" r="5" fill="#5BAD7A"/>
-    <rect x="180" y="130" width="180" height="16" rx="8" fill="#1E1E2E"/>
+    <rect x="180" y="130" width="180" height="16" rx="8" fill="#1E1E2E" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <text x="270" y="143" textAnchor="middle" fill="#555570" fontFamily="sans-serif" fontSize="10">localhost:3000</text>
     <text x="270" y="108" textAnchor="middle" fill="#6EC8E6" fontFamily="sans-serif" fontSize="20" fontWeight="bold">Browser</text>
     {/* Code editor inside */}
-    <rect x="80" y="170" width="380" height="220" rx="6" fill="#252538"/>
+    <rect x="80" y="170" width="380" height="220" rx="6" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <g opacity="0.7">
       {[0,1,2,3,4,5,6,7,8].map((i) => (
         <g key={i}>
@@ -66,7 +66,7 @@ const ServerRack = (
         <text x="1040" y={188 + i * 80} textAnchor="middle" fill={["#5BAD7A","#6EC8E6","#E8B84A","#4A7BCC"][i]} fontFamily="sans-serif" fontSize="11">{["200","201","101","200"][i]}</text>
       </g>
     ))}
-    <rect x="750" y="490" width="360" height="50" rx="8" fill="#252538"/>
+    <rect x="750" y="490" width="360" height="50" rx="8" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <text x="930" y="521" textAnchor="middle" fill="#555570" fontFamily="sans-serif" fontSize="13">Database / Storage</text>
   </g>
 );

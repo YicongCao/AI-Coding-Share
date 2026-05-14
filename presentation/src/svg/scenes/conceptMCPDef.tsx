@@ -36,7 +36,7 @@ const MainProcess = (
     <rect x="30" y="260" width="320" height="50" rx="8" fill="#252538" stroke="#555570" strokeWidth="1"/>
     <text x="190" y="290" textAnchor="middle" fill="#555570" fontFamily="sans-serif" fontSize="13">System Prompt + Rules + Skills</text>
     {/* Process indicator */}
-    <circle cx="50" cy="350" r="6" fill="#5BAD7A" opacity="0.8"/>
+    <circle cx="50" cy="350" r="6" fill="#5BAD7A" opacity="0.8" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="66" y="354" fill="#555570" fontFamily="sans-serif" fontSize="12">PID: main</text>
   </g>
 );
@@ -58,7 +58,7 @@ const ExternalProcess = (
         <text x="190" y={srv.y + 50} textAnchor="middle" fill="#555570" fontFamily="sans-serif" fontSize="12">{srv.sub}</text>
       </g>
     ))}
-    <circle cx="50" cy="370" r="6" fill="#E8734A" opacity="0.8"/>
+    <circle cx="50" cy="370" r="6" fill="#E8734A" opacity="0.8" stroke="#F09570" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="66" y="374" fill="#555570" fontFamily="sans-serif" fontSize="12">PID: external</text>
   </g>
 );
@@ -82,7 +82,7 @@ const MCPTitle = (
 
 const TitleLabel = (
   <g>
-    <rect x="440" y="570" width="320" height="48" rx="10" fill="#252538"/>
+    <rect x="440" y="570" width="320" height="48" rx="10" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <text x="600" y="594" textAnchor="middle" fill="#E8734A" fontFamily="sans-serif" fontSize="16" fontWeight="bold">外部进程</text>
     <text x="600" y="612" textAnchor="middle" fill="#555570" fontFamily="sans-serif" fontSize="12">Model Context Protocol</text>
   </g>

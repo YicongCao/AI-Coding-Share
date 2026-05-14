@@ -39,9 +39,9 @@ const ConversationBubbles = (
     <g transform="translate(355, 370)">
       <rect width="138" height="72" rx="16" fill="#1E1E2E" stroke="#5BAD7A" strokeWidth="1.8"/>
       <path d="M96,72 L118,96 L112,72" fill="#1E1E2E" stroke="#5BAD7A" strokeWidth="1.8" strokeLinejoin="round"/>
-      <circle cx="38" cy="36" r="6" fill="#5BAD7A" opacity="0.72"/>
-      <circle cx="68" cy="36" r="6" fill="#5BAD7A" opacity="0.58"/>
-      <circle cx="98" cy="36" r="6" fill="#5BAD7A" opacity="0.44"/>
+      <circle cx="38" cy="36" r="6" fill="#5BAD7A" opacity="0.72" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
+      <circle cx="68" cy="36" r="6" fill="#5BAD7A" opacity="0.58" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
+      <circle cx="98" cy="36" r="6" fill="#5BAD7A" opacity="0.44" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
     </g>
   </g>
 );
@@ -59,8 +59,8 @@ const RobotIcon = (
     <line x1="0" y1="-42" x2="0" y2="-28" stroke="#6EC8E6" strokeWidth="2" strokeLinecap="round"/>
     <circle cx="0" cy="-46" r="5" fill="#6EC8E6" opacity="0.75"/>
     <rect x="-44" y="-28" width="88" height="64" rx="16" fill="#252538" stroke="#6EC8E6" strokeWidth="2.2"/>
-    <circle cx="-18" cy="-2" r="7" fill="#6EC8E6" opacity="0.85"/>
-    <circle cx="18" cy="-2" r="7" fill="#6EC8E6" opacity="0.85"/>
+    <circle cx="-18" cy="-2" r="7" fill="#6EC8E6" opacity="0.85" stroke="#90D8F0" strokeOpacity="0.3" strokeWidth="1"/>
+    <circle cx="18" cy="-2" r="7" fill="#6EC8E6" opacity="0.85" stroke="#90D8F0" strokeOpacity="0.3" strokeWidth="1"/>
     <path d="M-18,20 Q0,31 18,20" fill="none" stroke="#5BAD7A" strokeWidth="2.5" strokeLinecap="round"/>
     <line x1="-54" y1="-2" x2="-44" y2="-2" stroke="#6EC8E6" strokeWidth="2" strokeLinecap="round"/>
     <line x1="44" y1="-2" x2="54" y2="-2" stroke="#6EC8E6" strokeWidth="2" strokeLinecap="round"/>
@@ -69,7 +69,7 @@ const RobotIcon = (
 
 const CodingAgentLabel = (
   <g transform="translate(880, 50)">
-    <rect width="180" height="44" rx="10" fill="#4A7BCC"/>
+    <rect width="180" height="44" rx="10" fill="#4A7BCC" stroke="#6A9BE0" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="90" y="30" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="18" fontWeight="bold">Coding Agent</text>
   </g>
 );
@@ -106,6 +106,6 @@ export const breakthroughSceneDef: SvgSceneDef = {
     { id: "chatToAgentArrow", content: ChatToAgentArrow, enterFrom: { x: -120, y: 180 }, enterDelay: 200, floatAmp: { x: 10, y: 10 }, floatPeriod: { x: 5.0, y: 6.0 }, exitTo: { x: 180, y: -300 } },
     { id: "robotIcon", content: RobotIcon, enterFrom: { x: 300, y: -200 }, enterDelay: 350, floatAmp: { x: 16, y: 20 }, floatPeriod: { x: 4.0, y: 5.0 }, exitTo: { x: 400, y: -300 }, exitSpin: 5 },
     { id: "codingAgentLabel", content: CodingAgentLabel, enterFrom: { x: 300, y: -200 }, enterDelay: 450, floatAmp: { x: 18, y: 22 }, floatPeriod: { x: 3.5, y: 4.5 }, exitTo: { x: 400, y: -300 }, exitScale: 1.15 },
-    { id: "rocket", content: Rocket, enterFrom: { x: 200, y: -300 }, enterDelay: 550, floatAmp: { x: 20, y: 22 }, floatPeriod: { x: 3.0, y: 4.0 }, exitTo: { x: 300, y: -400 }, exitSpin: 12 },
+    { id: "rocket", content: Rocket, enterFrom: { x: 200, y: -300 }, enterDelay: 550, floatAmp: { x: 20, y: 22 }, floatPeriod: { x: 3.0, y: 4.0 }, floatRotate: 2, exitTo: { x: 300, y: -400 }, exitSpin: 12 },
   ],
 };

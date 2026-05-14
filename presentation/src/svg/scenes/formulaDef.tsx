@@ -69,7 +69,7 @@ const TimeCard = (
 
 const HighlightBar = (
   <g transform="translate(60, 460)">
-    <rect x="0" y="0" width="1080" height="60" rx="12" fill="#252538" opacity="0.7"/>
+    <rect x="0" y="0" width="1080" height="60" rx="12" fill="#252538" opacity="0.7" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <text x="540" y="40" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="24" fontWeight="bold" opacity="0.8">产出 = 输出速度 × 时间</text>
   </g>
 );

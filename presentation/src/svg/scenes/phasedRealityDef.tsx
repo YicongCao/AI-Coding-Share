@@ -35,7 +35,7 @@ const Staircase = (
       return (
         <g key={i}>
           <rect x={x} y={y} width="180" height={h} rx="8" fill="#1E1E2E" stroke={colors[i]} strokeWidth="2"/>
-          <rect x={x + 15} y={y + 14} width="150" height="28" rx="6" fill="#252538"/>
+          <rect x={x + 15} y={y + 14} width="150" height="28" rx="6" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
           <text x={x + 90} y={y + 34} textAnchor="middle" fill={colors[i]} fontFamily="sans-serif" fontSize="14" fontWeight="bold">
             {["Phase 1", "Phase 2", "Phase 3", "Phase 4", "Phase 5"][i]}
           </text>

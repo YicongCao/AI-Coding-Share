@@ -37,8 +37,8 @@ const Arrow1 = (
 
 const Person1 = (
   <g transform="translate(290, 210)">
-    <circle cx="55" cy="20" r="18" fill="#E85650" opacity="0.8"/>
-    <rect x="35" y="42" width="40" height="55" rx="10" fill="#E85650" opacity="0.7"/>
+    <circle cx="55" cy="20" r="18" fill="#E85650" opacity="0.8" stroke="#F07870" strokeOpacity="0.3" strokeWidth="1"/>
+    <rect x="35" y="42" width="40" height="55" rx="10" fill="#E85650" opacity="0.7" stroke="#F07870" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="55" y="120" textAnchor="middle" fill="#E85650" fontFamily="sans-serif" fontSize="13" fontWeight="bold">验证</text>
     <circle cx="55" cy="20" r="26" fill="none" stroke="#E85650" strokeWidth="2" opacity="0.4" strokeDasharray="4 3"/>
   </g>
@@ -86,8 +86,8 @@ const Arrow4 = (
 
 const Person2 = (
   <g transform="translate(860, 210)">
-    <circle cx="55" cy="20" r="18" fill="#E85650" opacity="0.8"/>
-    <rect x="35" y="42" width="40" height="55" rx="10" fill="#E85650" opacity="0.7"/>
+    <circle cx="55" cy="20" r="18" fill="#E85650" opacity="0.8" stroke="#F07870" strokeOpacity="0.3" strokeWidth="1"/>
+    <rect x="35" y="42" width="40" height="55" rx="10" fill="#E85650" opacity="0.7" stroke="#F07870" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="55" y="120" textAnchor="middle" fill="#E85650" fontFamily="sans-serif" fontSize="13" fontWeight="bold">验证</text>
     <circle cx="55" cy="20" r="26" fill="none" stroke="#E85650" strokeWidth="2" opacity="0.4" strokeDasharray="4 3"/>
   </g>

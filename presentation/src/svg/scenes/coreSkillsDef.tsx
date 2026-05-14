@@ -26,9 +26,9 @@ const Title = (
 
 const CenterPerson = (
   <g transform="translate(560, 280)">
-    <circle cx="40" cy="15" r="22" fill="#6EC8E6" opacity="0.8"/>
+    <circle cx="40" cy="15" r="22" fill="#6EC8E6" opacity="0.8" stroke="#90D8F0" strokeOpacity="0.3" strokeWidth="1"/>
     <path d="M40,37 L40,85 M40,55 L15,75 M40,55 L65,75 M40,85 L22,115 M40,85 L58,115" fill="none" stroke="#6EC8E6" strokeWidth="3" strokeLinecap="round" opacity="0.8"/>
-    <circle cx="40" cy="65" r="60" fill="#6EC8E6" opacity="0.06"/>
+    <circle cx="40" cy="65" r="60" fill="#6EC8E6" opacity="0.06" stroke="#90D8F0" strokeOpacity="0.3" strokeWidth="1"/>
   </g>
 );
 
@@ -53,7 +53,7 @@ const SkillNodes = (
 
 const IndependentLabel = (
   <g transform="translate(490, 610)">
-    <rect x="0" y="0" width="220" height="36" rx="18" fill="#6EC8E6" opacity="0.15"/>
+    <rect x="0" y="0" width="220" height="36" rx="18" fill="#6EC8E6" opacity="0.15" stroke="#90D8F0" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="110" y="24" textAnchor="middle" fill="#6EC8E6" fontFamily="sans-serif" fontSize="15" fontWeight="bold">独立完成</text>
   </g>
 );

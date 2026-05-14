@@ -22,7 +22,7 @@ const Defs = (
 const Title = (
   <g>
     <text x="600" y="50" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="24" fontWeight="bold">Phase 1</text>
-    <rect x="490" y="62" width="220" height="30" rx="8" fill="#E8734A" opacity="0.15"/>
+    <rect x="490" y="62" width="220" height="30" rx="8" fill="#E8734A" opacity="0.15" stroke="#F09570" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="600" y="84" textAnchor="middle" fill="#E8734A" fontFamily="sans-serif" fontSize="18" fontWeight="bold">SSE + XML</text>
   </g>
 );
@@ -53,11 +53,11 @@ const FrontendBox = (
     <text x="1000" y="215" textAnchor="middle" fill="#4A7BCC" fontFamily="sans-serif" fontSize="20" fontWeight="bold">Frontend</text>
     <line x1="880" y1="230" x2="1120" y2="230" stroke="#555570" strokeWidth="1" opacity="0.4"/>
     {/* Rendered blocks */}
-    <rect x="885" y="250" width="230" height="60" rx="8" fill="#252538"/>
+    <rect x="885" y="250" width="230" height="60" rx="8" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <rect x="900" y="262" width="80" height="5" rx="2.5" fill="#E8B84A" opacity="0.6"/>
     <rect x="900" y="274" width="140" height="5" rx="2.5" fill="#FFFFFF" opacity="0.3"/>
     <rect x="900" y="286" width="100" height="5" rx="2.5" fill="#FFFFFF" opacity="0.25"/>
-    <rect x="885" y="325" width="230" height="80" rx="8" fill="#252538"/>
+    <rect x="885" y="325" width="230" height="80" rx="8" fill="#252538" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <rect x="900" y="338" width="60" height="5" rx="2.5" fill="#5BAD7A" opacity="0.6"/>
     <rect x="900" y="350" width="180" height="5" rx="2.5" fill="#FFFFFF" opacity="0.35"/>
     <rect x="900" y="362" width="120" height="5" rx="2.5" fill="#FFFFFF" opacity="0.3"/>
@@ -73,7 +73,7 @@ const StreamArrow = (
     <line x1="350" y1="340" x2="845" y2="340" stroke="#E8734A" strokeWidth="3" markerEnd="url(#arrowOrange)"/>
     {/* stream packets */}
     {[0,1,2,3,4].map((i) => (
-      <rect key={i} x={400 + i * 90} y="330" width="40" height="20" rx="4" fill="#E8734A" opacity={0.2 + i * 0.1}/>
+      <rect key={i} x={400 + i * 90} y="330" width="40" height="20" rx="4" fill="#E8734A" opacity={0.2 + i * 0.1} stroke="#F09570" strokeOpacity="0.3" strokeWidth="1"/>
     ))}
     <text x="600" y="310" textAnchor="middle" fill="#E8734A" fontFamily="sans-serif" fontSize="14" fontWeight="bold">SSE text/event-stream</text>
     <rect x="550" y="370" width="100" height="26" rx="6" fill="#E85650" opacity="0.15" stroke="#E85650" strokeWidth="1"/>
