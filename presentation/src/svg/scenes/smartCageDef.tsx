@@ -33,7 +33,7 @@ const CagedPerson = (
     <circle cx="130" cy="116" r="3" fill="#2B2B3D"/>
     <path d="M110,132 Q120,126 130,132" fill="none" stroke="#2B2B3D" strokeWidth="2" strokeLinecap="round"/>
     {/* Cage bars */}
-    {[60, 90, 120, 150, 180].map((x, i) => (
+    {[60, 75, 90, 105, 120, 150, 165, 180].map((x, i) => (
       <line key={i} x1={x} y1="60" x2={x} y2="280" stroke="#555570" strokeWidth="4" strokeLinecap="round" opacity="0.6"/>
     ))}
     <line x1="50" y1="60" x2="190" y2="60" stroke="#555570" strokeWidth="4" opacity="0.6"/>
@@ -71,6 +71,9 @@ const RelaxedPerson = (
     <path d="M180,162 Q195,170 180,178" fill="none" stroke="#E8B84A" strokeWidth="2" opacity="0.5"/>
     <path d="M155,150 Q158,140 162,150" fill="none" stroke="#FFFFFF" strokeWidth="1.5" opacity="0.3"/>
     <path d="M165,148 Q168,136 172,148" fill="none" stroke="#FFFFFF" strokeWidth="1.5" opacity="0.25"/>
+    <path d="M150,142 Q153,130 157,142" fill="none" stroke="#FFFFFF" strokeWidth="1" opacity="0.15"/>
+    <path d="M160,138 Q163,125 167,138" fill="none" stroke="#FFFFFF" strokeWidth="1" opacity="0.15"/>
+    <path d="M170,140 Q173,128 177,140" fill="none" stroke="#FFFFFF" strokeWidth="1" opacity="0.15"/>
     {/* Chair suggestion */}
     <path d="M70,190 Q60,230 80,240 L120,240 Q140,230 130,190" fill="none" stroke="#555570" strokeWidth="2" opacity="0.3"/>
   </g>
