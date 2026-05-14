@@ -113,7 +113,7 @@ button:disabled {
 
 .signup-card {
   pointer-events: auto;
-  width: min(420px, 88vw);
+  width: min(35vw, 88vw);
   background: rgba(20, 22, 38, 0.85);
   backdrop-filter: blur(16px);
   border: 1px solid rgba(250, 204, 21, 0.2);
