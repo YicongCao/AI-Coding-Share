@@ -4,6 +4,10 @@ const Background = (
   <g>
     <rect width="1200" height="675" fill="#2B2B3D"/>
     <rect width="1200" height="675" fill="url(#jobsSpeakerBgGlow)"/>
+    <path d="M0,0 Q80,120 50,400 Q30,540 0,675 L0,0 Z" fill="#3A1828" opacity="0.3"/>
+    <path d="M0,0 Q60,100 40,350 Q25,500 0,675 L0,0 Z" fill="#4A2838" opacity="0.18"/>
+    <path d="M1200,0 Q1120,120 1150,400 Q1170,540 1200,675 L1200,0 Z" fill="#3A1828" opacity="0.3"/>
+    <path d="M1200,0 Q1140,100 1160,350 Q1175,500 1200,675 L1200,0 Z" fill="#4A2838" opacity="0.18"/>
   </g>
 );
 
@@ -19,8 +23,10 @@ const Defs = (
 
 const Spotlight = (
   <g>
+    <path d="M600,0 L360,450 L840,450 Z" fill="#E8B84A" opacity="0.02"/>
     <path d="M600,0 L420,450 L780,450 Z" fill="#E8B84A" opacity="0.04"/>
     <path d="M600,0 L480,450 L720,450 Z" fill="#E8B84A" opacity="0.06"/>
+    <path d="M600,0 L520,450 L680,450 Z" fill="#E8B84A" opacity="0.08"/>
     <circle cx="600" cy="0" r="30" fill="#E8B84A" opacity="0.15" stroke="#F0D070" strokeOpacity="0.3" strokeWidth="1"/>
     <text x="100" y="60" fill="#E8B84A" fontFamily="sans-serif" fontSize="14" opacity="0.5" fontWeight="bold">2008</text>
   </g>

@@ -40,8 +40,8 @@ const SpeakerIcon = (
     <path d="M90,60 L130,30 L130,160 L90,130 Z" fill="#4A7BCC" opacity="0.65"/>
     {/* Sound waves */}
     <path d="M145,70 Q170,95 145,120" fill="none" stroke="#6EC8E6" strokeWidth="2.5" strokeLinecap="round" opacity="0.6"/>
-    <path d="M160,50 Q195,95 160,140" fill="none" stroke="#6EC8E6" strokeWidth="2" strokeLinecap="round" opacity="0.4"/>
-    <path d="M175,35 Q220,95 175,155" fill="none" stroke="#6EC8E6" strokeWidth="1.5" strokeLinecap="round" opacity="0.25"/>
+    <path d="M160,50 Q195,95 160,140" fill="none" stroke="#6EC8E6" strokeWidth="2" strokeLinecap="round" opacity="0.35"/>
+    <path d="M175,35 Q220,95 175,155" fill="none" stroke="#6EC8E6" strokeWidth="1.5" strokeLinecap="round" opacity="0.15"/>
     {/* Label */}
     <rect x="0" y="150" width="160" height="44" rx="12" fill="#252538" stroke="#4A7BCC" strokeWidth="1.2" opacity="0.95"/>
     <text x="80" y="179" textAnchor="middle" fill="#4A7BCC" fontFamily="sans-serif" fontSize="22" fontWeight="bold" opacity="0.92">TTS 合成</text>
@@ -59,7 +59,7 @@ const MicrophoneIcon = (
     <line x1="40" y1="170" x2="80" y2="170" stroke="#E8734A" strokeWidth="2.5" opacity="0.5"/>
     {/* Sound waves (incoming) */}
     <path d="M-15,70 Q-40,95 -15,120" fill="none" stroke="#E8B84A" strokeWidth="2.5" strokeLinecap="round" opacity="0.6" transform="scale(-1,1) translate(-120,0)"/>
-    <path d="M-30,50 Q-65,95 -30,140" fill="none" stroke="#E8B84A" strokeWidth="2" strokeLinecap="round" opacity="0.4" transform="scale(-1,1) translate(-120,0)"/>
+    <path d="M-30,50 Q-65,95 -30,140" fill="none" stroke="#E8B84A" strokeWidth="2" strokeLinecap="round" opacity="0.35" transform="scale(-1,1) translate(-120,0)"/>
     {/* Label */}
     <rect x="-20" y="188" width="160" height="44" rx="12" fill="#252538" stroke="#E8734A" strokeWidth="1.2" opacity="0.95"/>
     <text x="60" y="217" textAnchor="middle" fill="#E8734A" fontFamily="sans-serif" fontSize="22" fontWeight="bold" opacity="0.92">ASR 识别</text>
@@ -80,11 +80,11 @@ const HumanFigure = (
 const Arrows = (
   <g>
     {/* Left arrow: computer -> speaker (speak) */}
-    <line x1="480" y1="310" x2="320" y2="310" stroke="#4A7BCC" strokeWidth="2" strokeDasharray="8 5" opacity="0.5"/>
-    <polygon points="320,310 335,304 335,316" fill="#4A7BCC" opacity="0.5"/>
+    <path d="M480,310 Q400,265 320,310" fill="none" stroke="#4A7BCC" strokeWidth="2" strokeDasharray="8 5" opacity="0.5"/>
+    <polygon points="320,310 335,300 330,316" fill="#4A7BCC" opacity="0.5"/>
     {/* Right arrow: mic -> computer (listen) */}
-    <line x1="720" y1="310" x2="860" y2="310" stroke="#E8734A" strokeWidth="2" strokeDasharray="8 5" opacity="0.5"/>
-    <polygon points="860,310 845,304 845,316" fill="#E8734A" opacity="0.5"/>
+    <path d="M720,310 Q790,355 860,310" fill="none" stroke="#E8734A" strokeWidth="2" strokeDasharray="8 5" opacity="0.5"/>
+    <polygon points="860,310 845,316 850,300" fill="#E8734A" opacity="0.5"/>
   </g>
 );
 

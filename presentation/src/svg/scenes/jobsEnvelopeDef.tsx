@@ -4,6 +4,7 @@ const Background = (
   <g>
     <rect width="1200" height="675" fill="#2B2B3D"/>
     <rect width="1200" height="675" fill="url(#jobsEnvelopeBgGlow)"/>
+    <rect width="1200" height="675" fill="url(#jobsEnvelopeRetroGrad)"/>
   </g>
 );
 
@@ -12,6 +13,10 @@ const Defs = (
     <radialGradient id="jobsEnvelopeBgGlow" cx="50%" cy="30%" r="60%">
       <stop offset="0%" stopColor="#E8B84A" stopOpacity="0.12"/>
       <stop offset="100%" stopColor="#E8B84A" stopOpacity="0"/>
+    </radialGradient>
+    <radialGradient id="jobsEnvelopeRetroGrad" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stopColor="#8B7355" stopOpacity="0.04"/>
+      <stop offset="100%" stopColor="#8B7355" stopOpacity="0"/>
     </radialGradient>
   </defs>
 );
@@ -41,7 +46,10 @@ const ClassicMac = (
     <rect x="68" y="84" width="142" height="5" rx="2.5" fill="#5BAD7A" opacity="0.62"/>
     <rect x="68" y="102" width="84" height="5" rx="2.5" fill="#5BAD7A" opacity="0.72"/>
     <rect x="68" y="120" width="124" height="5" rx="2.5" fill="#5BAD7A" opacity="0.5"/>
-    <rect x="68" y="150" width="24" height="9" rx="2" fill="#5BAD7A" opacity="0.9"/>
+    <rect x="68" y="136" width="96" height="5" rx="2.5" fill="#5BAD7A" opacity="0.58"/>
+    <rect x="68" y="150" width="130" height="5" rx="2.5" fill="#5BAD7A" opacity="0.45"/>
+    <rect x="68" y="164" width="68" height="5" rx="2.5" fill="#5BAD7A" opacity="0.55"/>
+    <rect x="68" y="174" width="24" height="9" rx="2" fill="#5BAD7A" opacity="0.9"/>
 
     {/* Drive bay, vents, and front badge */}
     <rect x="72" y="224" width="154" height="14" rx="4" fill="#BDB8AB" stroke="#9C978C" strokeWidth="1.2"/>

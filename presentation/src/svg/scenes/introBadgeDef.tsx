@@ -33,11 +33,17 @@ const Background = (
       <line x1="780" y1="462" x2="810" y2="675"/>
       <line x1="1020" y1="462" x2="1100" y2="675"/>
     </g>
+    <g stroke="#3A3A50" strokeWidth="1" strokeDasharray="8 6" opacity="0.06">
+      <line x1="200" y1="675" x2="600" y2="462"/>
+      <line x1="600" y1="675" x2="600" y2="462"/>
+      <line x1="1000" y1="675" x2="600" y2="462"/>
+    </g>
   </g>
 );
 
 const Blackboard = (
   <g filter="url(#introShadow)">
+    <rect x="216" y="68" width="768" height="338" rx="20" fill="#5BAD7A" opacity="0.04"/>
     <rect x="220" y="72" width="760" height="330" rx="18" fill="#121620" stroke="#3A3A50" strokeWidth="2"/>
     <rect x="242" y="96" width="716" height="282" rx="10" fill="url(#introBoardGrad)" stroke="#5BAD7A" strokeWidth="1.5" opacity="0.95"/>
     <text x="600" y="150" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="34" fontWeight="bold">Welcome to AI Coding</text>
@@ -92,14 +98,18 @@ const StudentRows = (
       { y: 604, scale: 0.88, opacity: 0.58 },
     ].map((row, rowIndex) => (
       <g key={rowIndex} transform={`translate(${rowIndex === 0 ? 150 : 226}, ${row.y}) scale(${row.scale})`} opacity={row.opacity}>
-        {[0, 140, 280, 560, 700, 840].map((x, i) => (
-          <g key={i} transform={`translate(${x}, 0)`}>
-            <path d="M0,44 L96,44 L112,74 L-16,74 Z" fill="#1E1E2E" stroke="#3A3A50" strokeWidth="1.2"/>
-            <circle cx="48" cy="0" r="18" fill="#555570"/>
-            <rect x="26" y="22" width="44" height="36" rx="12" fill="#555570"/>
-            <rect x="18" y="44" width="60" height="5" rx="2.5" fill={i % 2 === 0 ? "#4A7BCC" : "#5BAD7A"} opacity="0.5"/>
-          </g>
-        ))}
+        {[0, 140, 280, 560, 700, 840].map((x, i) => {
+          const hOff = [-3, 2, -1, 3, -2, 1][i];
+          const wOff = [2, -1, 2, -2, 1, -1][i];
+          return (
+            <g key={i} transform={`translate(${x}, ${hOff})`}>
+              <path d="M0,44 L96,44 L112,74 L-16,74 Z" fill="#1E1E2E" stroke="#3A3A50" strokeWidth="1.2"/>
+              <circle cx="48" cy="0" r={18 + wOff * 0.5} fill="#555570"/>
+              <rect x={26 - wOff / 2} y="22" width={44 + wOff} height={36 + hOff} rx="12" fill="#555570"/>
+              <rect x="18" y="44" width="60" height="5" rx="2.5" fill={i % 2 === 0 ? "#4A7BCC" : "#5BAD7A"} opacity="0.5"/>
+            </g>
+          );
+        })}
       </g>
     ))}
   </g>

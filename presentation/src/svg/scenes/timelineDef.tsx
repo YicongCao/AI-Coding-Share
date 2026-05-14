@@ -4,6 +4,7 @@ const Background = (
   <g>
     <rect width="1200" height="675" fill="#2B2B3D"/>
     <rect width="1200" height="675" fill="url(#timelineBgGlow)"/>
+    <rect y="670" width="1200" height="4" fill="url(#timelineHorizonGrad)"/>
   </g>
 );
 
@@ -13,13 +14,22 @@ const Defs = (
       <stop offset="0%" stopColor="#E8B84A" stopOpacity="0.12"/>
       <stop offset="100%" stopColor="#E8B84A" stopOpacity="0"/>
     </radialGradient>
+    <linearGradient id="timelineAxisGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stopColor="#3A3A50"/>
+      <stop offset="100%" stopColor="#8888A0"/>
+    </linearGradient>
+    <linearGradient id="timelineHorizonGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0"/>
+      <stop offset="50%" stopColor="#FFFFFF" stopOpacity="0.05"/>
+      <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0"/>
+    </linearGradient>
   </defs>
 );
 
 
 const TimelineAxis = (
   <g>
-    <line x1="80" y1="340" x2="1100" y2="340" stroke="#555570" strokeWidth="2.5"/>
+    <rect x="80" y="339" width="1020" height="3" rx="1.5" fill="url(#timelineAxisGrad)"/>
     <polygon points="1100,340 1080,330 1080,350" fill="#555570"/>
     {[140, 280, 420, 560, 700, 840, 980].map((x, i) => (
       <line key={i} x1={x} y1="332" x2={x} y2="348" stroke="#555570" strokeWidth="2"/>

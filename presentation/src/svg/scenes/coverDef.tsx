@@ -132,7 +132,7 @@ const MainWindow = (
 const CodeWindow = (
   <g filter="url(#shadow)">
     <rect x="870" y="150" width="280" height="340" rx="10" fill="#1E1E2E" stroke="#3A3A50" strokeWidth="1.5" strokeDasharray="6 4"/>
-    <g clipPath="url(#codeWindowClip)">
+    <g clipPath="url(#codeWindowClip)" transform="skewY(-2)">
       <rect x="895" y="180" width="60" height="6" rx="3" fill="#5BAD7A" opacity="0.8"/>
       <rect x="965" y="180" width="90" height="6" rx="3" fill="#5BAD7A" opacity="0.6"/>
       <rect x="895" y="198" width="45" height="6" rx="3" fill="#6EC8E6" opacity="0.7"/>
@@ -280,6 +280,13 @@ const Cursor = (
 // ── Fragment 7: Decorative dashes + text labels ──
 const Decorations = (
   <g>
+    <circle cx="150" cy="80" r="1.5" fill="#FFFFFF" opacity="0.2"/>
+    <circle cx="380" cy="45" r="1" fill="#FFFFFF" opacity="0.18"/>
+    <circle cx="680" cy="30" r="2" fill="#FFFFFF" opacity="0.15"/>
+    <circle cx="950" cy="60" r="1.5" fill="#FFFFFF" opacity="0.22"/>
+    <circle cx="1050" cy="200" r="1" fill="#FFFFFF" opacity="0.25"/>
+    <circle cx="300" cy="620" r="1.5" fill="#FFFFFF" opacity="0.17"/>
+    <circle cx="1100" cy="580" r="2" fill="#FFFFFF" opacity="0.2"/>
     <g stroke="#555570" strokeWidth="1" strokeDasharray="4 3" fill="none" opacity="0.4">
       <path d="M750,505 Q770,480 800,512"/>
       <path d="M440,585 Q450,600 480,595"/>
