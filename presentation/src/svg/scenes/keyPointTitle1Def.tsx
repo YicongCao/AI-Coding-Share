@@ -28,6 +28,7 @@ const BigNumber = (
   <g transform="translate(120, 100)">
     <path d="M80,0 L140,0 L140,420 L190,420 L190,470 L30,470 L30,420 L80,420 Z M80,0 L30,70 L30,130 L80,70 Z" fill="#4A7BCC" opacity="0.15"/>
     <path d="M85,5 L135,5 L135,415 L185,415 L185,465 L35,465 L35,415 L85,415 Z M85,5 L35,75 L35,125 L85,75 Z" fill="none" stroke="#4A7BCC" strokeWidth="3" opacity="0.6"/>
+    <text x="110" y="340" textAnchor="middle" fill="#4A7BCC" fontFamily="sans-serif" fontSize="340" fontWeight="900" opacity="0.1">1</text>
     <text x="110" y="340" textAnchor="middle" fill="#4A7BCC" fontFamily="sans-serif" fontSize="280" fontWeight="900" opacity="0.35">1</text>
   </g>
 );

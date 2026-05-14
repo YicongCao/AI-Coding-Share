@@ -16,6 +16,7 @@ const GridBg = (
 
 const BigNumber = (
   <g transform="translate(100, 90)">
+    <text x="130" y="330" textAnchor="middle" fill="#E8734A" fontFamily="sans-serif" fontSize="340" fontWeight="900" opacity="0.1">4</text>
     <text x="130" y="330" textAnchor="middle" fill="#E8734A" fontFamily="sans-serif" fontSize="280" fontWeight="900" opacity="0.35">4</text>
   </g>
 );

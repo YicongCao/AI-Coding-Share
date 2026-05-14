@@ -27,6 +27,7 @@ const GridBg = (
 const BigNumber = (
   <g transform="translate(120, 100)">
     <path d="M20,0 Q0,0 0,30 L0,140 Q0,170 20,170 L60,170 Q100,170 130,140 L130,120 Q130,90 120,80 Q100,60 60,60 L40,60 Q20,60 20,50 L20,30 Q20,20 40,20 L130,20 L130,0 Z M50,80 L90,80 Q110,80 110,100 L110,140 Q110,150 90,150 L20,150 L20,100 Q20,80 50,80 Z" fill="#E8734A" opacity="0.15"/>
+    <text x="80" y="340" textAnchor="middle" fill="#E8734A" fontFamily="sans-serif" fontSize="340" fontWeight="900" opacity="0.1">3</text>
     <text x="80" y="340" textAnchor="middle" fill="#E8734A" fontFamily="sans-serif" fontSize="280" fontWeight="900" opacity="0.35">3</text>
   </g>
 );
