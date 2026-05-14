@@ -20,6 +20,12 @@ const Defs = (
 const CockpitView = (
   <g>
     <path d="M150,68 L1050,68 L972,382 L228,382 Z" fill="#101827" stroke="#4A7BCC" strokeWidth="1.4"/>
+    <path d="M310,150 L330,88 L350,150 Z" fill="#5BAD7A" opacity="0.15"/>
+    <line x1="330" y1="150" x2="330" y2="168" stroke="#5BAD7A" strokeWidth="3" opacity="0.1"/>
+    <rect x="820" y="95" width="40" height="65" rx="2" fill="#555570" opacity="0.12"/>
+    <rect x="868" y="110" width="30" height="50" rx="2" fill="#555570" opacity="0.1"/>
+    <path d="M720,140 L740,84 L760,140 Z" fill="#5BAD7A" opacity="0.12"/>
+    <line x1="740" y1="140" x2="740" y2="156" stroke="#5BAD7A" strokeWidth="3" opacity="0.08"/>
     <path d="M210,330 C360,258 480,240 600,240 C720,240 840,258 990,330 L972,382 L228,382 Z" fill="#182235" opacity="0.75"/>
     <rect x="240" y="108" width="720" height="56" rx="28" fill="#6EC8E6" opacity="0.12" stroke="#90D8F0" strokeOpacity="0.3" strokeWidth="1"/>
     <path d="M420,382 L522,170 L678,170 L780,382 Z" fill="#1E1E2E"/>
@@ -47,6 +53,13 @@ const CockpitView = (
     <rect x="674" y="344" width="236" height="106" rx="10" fill="#1E1E2E" stroke="#FFFFFF" strokeOpacity="0.1" strokeWidth="1.5"/>
     <text x="792" y="370" textAnchor="middle" fill="#6EC8E6" fontFamily="sans-serif" fontSize="13" fontWeight="bold">Infotainment</text>
     <text x="792" y="394" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="12" opacity="0.68">车机中控屏</text>
+    <rect x="710" y="416" width="8" height="14" rx="2" fill="#6EC8E6" opacity="0.35"/>
+    <rect x="724" y="410" width="8" height="20" rx="2" fill="#6EC8E6" opacity="0.3"/>
+    <rect x="738" y="414" width="8" height="16" rx="2" fill="#6EC8E6" opacity="0.35"/>
+    <rect x="752" y="406" width="8" height="24" rx="2" fill="#6EC8E6" opacity="0.3"/>
+    <rect x="766" y="412" width="8" height="18" rx="2" fill="#6EC8E6" opacity="0.35"/>
+    <rect x="780" y="408" width="8" height="22" rx="2" fill="#6EC8E6" opacity="0.3"/>
+    <rect x="794" y="418" width="8" height="12" rx="2" fill="#6EC8E6" opacity="0.35"/>
   </g>
 );
 

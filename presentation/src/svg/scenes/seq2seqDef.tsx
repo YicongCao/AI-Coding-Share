@@ -10,8 +10,8 @@ const Background = (
 const Defs = (
   <defs>
     <radialGradient id="seq2seqBgGlow" cx="50%" cy="30%" r="60%">
-      <stop offset="0%" stopColor="#4A7BCC" stopOpacity="0.12"/>
-      <stop offset="100%" stopColor="#4A7BCC" stopOpacity="0"/>
+      <stop offset="0%" stopColor="#CC884A" stopOpacity="0.12"/>
+      <stop offset="100%" stopColor="#CC884A" stopOpacity="0"/>
     </radialGradient>
   </defs>
 );

@@ -23,13 +23,13 @@ const SentenceBar = (
     {/* Sentence with slot highlights */}
     <text x="40" y="35" fill="#FFFFFF" fontFamily="sans-serif" fontSize="20" opacity="0.9">
       <tspan fill="#FFFFFF">播放</tspan>
-      <tspan fill="#E8B84A"> 周杰伦 </tspan>
+      <tspan fill="#E8B84A" fontWeight="bold"> 周杰伦 </tspan>
       <tspan fill="#FFFFFF">的</tspan>
-      <tspan fill="#6EC8E6"> 歌</tspan>
+      <tspan fill="#6EC8E6" fontWeight="bold"> 歌</tspan>
     </text>
     {/* Slot highlight underlines */}
-    <rect x="88" y="44" width="72" height="3" rx="1.5" fill="#E8B84A" opacity="0.7"/>
-    <rect x="196" y="44" width="28" height="3" rx="1.5" fill="#6EC8E6" opacity="0.7"/>
+    <rect x="88" y="44" width="72" height="4" rx="2" fill="#E8B84A" opacity="0.8"/>
+    <rect x="196" y="44" width="28" height="4" rx="2" fill="#6EC8E6" opacity="0.8"/>
   </g>
 );
 

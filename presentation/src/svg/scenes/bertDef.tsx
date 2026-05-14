@@ -10,8 +10,8 @@ const Background = (
 const Defs = (
   <defs>
     <radialGradient id="bertBgGlow" cx="50%" cy="30%" r="60%">
-      <stop offset="0%" stopColor="#4A7BCC" stopOpacity="0.12"/>
-      <stop offset="100%" stopColor="#4A7BCC" stopOpacity="0"/>
+      <stop offset="0%" stopColor="#8B5AC8" stopOpacity="0.12"/>
+      <stop offset="100%" stopColor="#8B5AC8" stopOpacity="0"/>
     </radialGradient>
   </defs>
 );
@@ -28,7 +28,7 @@ const NeuralNetwork = (
             const y = node * 62 + 20;
             return (
               <g key={node}>
-                <circle cx={x + 40} cy={y} r="12" fill={colors[layer]} opacity={0.5 + (node % 3) * 0.15}/>
+                <circle cx={x + 40} cy={y} r="12" fill={colors[layer]} opacity={0.5 + (node % 3) * 0.15} stroke={colors[layer]} strokeWidth="1" strokeOpacity="0.3"/>
                 {layer < 3 && Array.from({ length: 7 }, (_, next) => (
                   <line
                     key={next}
@@ -54,7 +54,7 @@ const NeuralNetwork = (
 const BertTitle = (
   <g transform="translate(830, 100)">
     <text x="0" y="0" fontSize="56" fontWeight="bold" fill="#FFFFFF" fontFamily="sans-serif" opacity="0.95">BERT</text>
-    <rect x="0" y="15" width="180" height="4" rx="2" fill="#4A7BCC" opacity="0.5"/>
+    <rect x="0" y="15" width="180" height="4" rx="2" fill="#4A7BCC" opacity="0.5" stroke="#4A7BCC" strokeWidth="1" strokeOpacity="0.3"/>
   </g>
 );
 
@@ -91,8 +91,8 @@ const OutputBox = (
     <text x="20" y="35" fontSize="13" fill="#FFFFFF" fontFamily="sans-serif" opacity="0.7">[CLS] token representation</text>
     {[0, 1, 2, 3, 4].map(i => (
       <g key={i}>
-        <rect x="20" y={55 + i * 28} width={160 - i * 15} height="8" rx="4" fill="#4A7BCC" opacity={0.6 - i * 0.08}/>
-        <rect x="20" y={67 + i * 28} width={120 - i * 10} height="5" rx="2.5" fill="#555570" opacity="0.25"/>
+        <rect x="20" y={55 + i * 28} width={160 - i * 15} height="8" rx="4" fill="#4A7BCC" opacity={0.6 - i * 0.08} stroke="#4A7BCC" strokeWidth="1" strokeOpacity="0.2"/>
+        <rect x="20" y={67 + i * 28} width={120 - i * 10} height="5" rx="2.5" fill="#555570" opacity="0.25" stroke="#555570" strokeWidth="1" strokeOpacity="0.15"/>
       </g>
     ))}
   </g>

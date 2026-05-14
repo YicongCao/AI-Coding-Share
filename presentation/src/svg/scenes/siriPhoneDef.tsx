@@ -34,22 +34,24 @@ const IPhone = (
     {/* Status bar */}
     <rect x="24" y="56" width="30" height="4" rx="2" fill="#FFFFFF" opacity="0.3"/>
     <rect x="180" y="56" width="36" height="4" rx="2" fill="#FFFFFF" opacity="0.3"/>
+    <ellipse cx="120" cy="492" rx="100" ry="8" fill="#6EC8E6" opacity="0.06"/>
   </g>
 );
 
 const SiriRipples = (
   <g transform="translate(600, 300)">
-    <circle r="96" fill="none" stroke="#6EC8E6" strokeWidth="2" opacity="0.12"/>
-    <circle r="72" fill="none" stroke="#6EC8E6" strokeWidth="2.5" opacity="0.2"/>
-    <circle r="48" fill="none" stroke="#6EC8E6" strokeWidth="3" opacity="0.34"/>
-    <circle r="28" fill="#4A7BCC" opacity="0.62" stroke="#6A9BE0" strokeOpacity="0.3" strokeWidth="1"/>
-    <circle r="14" fill="#6EC8E6" opacity="0.85" stroke="#90D8F0" strokeOpacity="0.3" strokeWidth="1"/>
+    <circle r="110" fill="none" stroke="#6EC8E6" strokeWidth="1.5" strokeOpacity="0.15"/>
+    <circle r="96" fill="none" stroke="#6EC8E6" strokeWidth="2" strokeOpacity="0.2"/>
+    <circle r="72" fill="none" stroke="#6EC8E6" strokeWidth="2.5" strokeOpacity="0.35"/>
+    <circle r="48" fill="none" stroke="#6EC8E6" strokeWidth="3" strokeOpacity="0.5"/>
+    <circle r="28" fill="#4A7BCC" opacity="0.62" stroke="#6A9BE0" strokeOpacity="0.6" strokeWidth="1.5"/>
+    <circle r="14" fill="#6EC8E6" opacity="0.85" stroke="#90D8F0" strokeOpacity="0.6" strokeWidth="1"/>
   </g>
 );
 
 const HeySiriText = (
   <g transform="translate(520, 420)">
-    <text x="80" y="0" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="22" fontWeight="bold" opacity="0.9">Hey Siri</text>
+    <text x="80" y="0" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="26" fontWeight="bold" opacity="0.9">Hey Siri</text>
     <text x="80" y="28" textAnchor="middle" fill="#6EC8E6" fontFamily="sans-serif" fontSize="14" opacity="0.7">语音唤醒</text>
   </g>
 );

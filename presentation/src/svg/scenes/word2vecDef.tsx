@@ -10,8 +10,8 @@ const Background = (
 const Defs = (
   <defs>
     <radialGradient id="word2vecBgGlow" cx="50%" cy="30%" r="60%">
-      <stop offset="0%" stopColor="#4A7BCC" stopOpacity="0.12"/>
-      <stop offset="100%" stopColor="#4A7BCC" stopOpacity="0"/>
+      <stop offset="0%" stopColor="#C8A840" stopOpacity="0.12"/>
+      <stop offset="100%" stopColor="#C8A840" stopOpacity="0"/>
     </radialGradient>
   </defs>
 );
@@ -42,7 +42,7 @@ const WordDots = (
       { x: 330, y: 500, label: "dog", color: "#E8734A" },
     ].map((w, i) => (
       <g key={i}>
-        <circle cx={w.x} cy={w.y} r="6" fill={w.color} opacity="0.9"/>
+        <circle cx={w.x} cy={w.y} r="6" fill={w.color} opacity="0.9" stroke={w.color} strokeWidth="1" strokeOpacity="0.5"/>
         <text x={w.x + 10} y={w.y + 5} fontSize="13" fill={w.color} fontFamily="sans-serif" opacity="0.85">{w.label}</text>
       </g>
     ))}

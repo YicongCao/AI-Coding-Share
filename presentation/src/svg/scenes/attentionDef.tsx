@@ -33,6 +33,9 @@ const AttentionMatrix = (
             rx="4"
             fill="#6EC8E6"
             opacity={opacity}
+            stroke="#6EC8E6"
+            strokeWidth="1"
+            strokeOpacity="0.15"
           />
         );
       })
