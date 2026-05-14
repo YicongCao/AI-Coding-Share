@@ -181,15 +181,23 @@ const SvgScene = memo(function SvgScene({
             `<path d="M ${(x - 22).toFixed(1)} 330 L ${x.toFixed(1)} 340 L ${(x - 22).toFixed(1)} 350" fill="none" stroke="#6EC8E6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>`;
         } else if (exitingRef.current && sceneDef.transitionEffect === "curtain") {
           zg.setAttribute("opacity", "1");
-          const half = 600 * exitRawT;
-          const foldW = 30 * exitRawT;
-          zg.innerHTML =
-            `<rect x="0" y="0" width="${half.toFixed(1)}" height="675" fill="#5A1525" opacity="0.92"/>` +
-            `<rect x="${(half - foldW).toFixed(1)}" y="0" width="${foldW.toFixed(1)}" height="675" fill="#7A2040" opacity="0.5"/>` +
-            `<rect x="${(1200 - half).toFixed(1)}" y="0" width="${half.toFixed(1)}" height="675" fill="#5A1525" opacity="0.92"/>` +
-            `<rect x="${(1200 - half).toFixed(1)}" y="0" width="${foldW.toFixed(1)}" height="675" fill="#7A2040" opacity="0.5"/>` +
-            `<line x1="${half.toFixed(1)}" y1="0" x2="${half.toFixed(1)}" y2="675" stroke="#3A0A15" stroke-width="2" opacity="${Math.min(1, exitRawT * 2).toFixed(2)}"/>` +
-            `<line x1="${(1200 - half).toFixed(1)}" y1="0" x2="${(1200 - half).toFixed(1)}" y2="675" stroke="#3A0A15" stroke-width="2" opacity="${Math.min(1, exitRawT * 2).toFixed(2)}"/>`;
+          const closeT = Math.min(1, exitRawT * 2);
+          const openT = Math.max(0, exitRawT * 2 - 1);
+          const half = 600 * (closeT - openT);
+          const foldW = 30 * closeT * (1 - openT);
+          if (half < 0.5) {
+            zg.innerHTML = "";
+            zg.setAttribute("opacity", "0");
+          } else {
+            const edgeOp = Math.min(1, closeT * 2) * (1 - openT);
+            zg.innerHTML =
+              `<rect x="0" y="0" width="${half.toFixed(1)}" height="675" fill="#5A1525" opacity="0.92"/>` +
+              `<rect x="${(half - foldW).toFixed(1)}" y="0" width="${Math.max(0, foldW).toFixed(1)}" height="675" fill="#7A2040" opacity="0.5"/>` +
+              `<rect x="${(1200 - half).toFixed(1)}" y="0" width="${half.toFixed(1)}" height="675" fill="#5A1525" opacity="0.92"/>` +
+              `<rect x="${(1200 - half).toFixed(1)}" y="0" width="${Math.max(0, foldW).toFixed(1)}" height="675" fill="#7A2040" opacity="0.5"/>` +
+              `<line x1="${half.toFixed(1)}" y1="0" x2="${half.toFixed(1)}" y2="675" stroke="#3A0A15" stroke-width="2" opacity="${edgeOp.toFixed(2)}"/>` +
+              `<line x1="${(1200 - half).toFixed(1)}" y1="0" x2="${(1200 - half).toFixed(1)}" y2="675" stroke="#3A0A15" stroke-width="2" opacity="${edgeOp.toFixed(2)}"/>`;
+          }
         } else {
           zg.setAttribute("opacity", "0");
           zg.innerHTML = "";

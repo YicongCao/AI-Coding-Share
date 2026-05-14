@@ -51,9 +51,9 @@ const Clipboard = (
 const CopyButton = (
   <g transform="translate(940, 260)">
     <rect x="0" y="0" width="180" height="76" rx="14" fill="#5BAD7A" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
-    {/* Copy icon centered */}
-    <rect x="48" y="14" width="18" height="22" rx="3" fill="none" stroke="#FFFFFF" strokeWidth="2"/>
-    <rect x="54" y="20" width="18" height="22" rx="3" fill="#5BAD7A" stroke="#FFFFFF" strokeWidth="2"/>
+    {/* Copy icon centered at x=90 */}
+    <rect x="78" y="14" width="18" height="22" rx="3" fill="none" stroke="#FFFFFF" strokeWidth="2"/>
+    <rect x="84" y="20" width="18" height="22" rx="3" fill="#5BAD7A" stroke="#FFFFFF" strokeWidth="2"/>
     {/* Label centered below icon */}
     <text x="90" y="62" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="15" fontWeight="bold">一键复制</text>
     {/* Checkmark badge */}
