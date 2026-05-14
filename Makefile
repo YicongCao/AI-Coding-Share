@@ -5,7 +5,7 @@ CONTAINER   := $(IMAGE_NAME)-run
 PORT        ?= 5174
 EXPORT_FILE := $(IMAGE_NAME)-$(IMAGE_TAG).tar.gz
 
-.PHONY: build run run-bg push export stop clean help
+.PHONY: build run run-bg push export stop clean help local-deploy local-redeploy
 
 help: ## 显示帮助
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
@@ -34,3 +34,13 @@ export: build ## 导出镜像为 tar.gz
 
 clean: stop ## 删除容器和本地镜像
 	-docker rmi $(FULL_IMAGE)
+
+local-deploy: build ## 首次部署：构建并启动容器（绑定 localhost，开机自启）
+	docker run -d -p 127.0.0.1:$(PORT):5174 --restart unless-stopped --name $(CONTAINER) $(FULL_IMAGE)
+	@echo "Deployed at http://127.0.0.1:$(PORT)/"
+
+local-redeploy: build ## 更新部署：停旧容器 → 重建镜像 → 启动新容器
+	-docker stop $(CONTAINER)
+	-docker rm $(CONTAINER)
+	docker run -d -p 127.0.0.1:$(PORT):5174 --restart unless-stopped --name $(CONTAINER) $(FULL_IMAGE)
+	@echo "Redeployed at http://127.0.0.1:$(PORT)/"
