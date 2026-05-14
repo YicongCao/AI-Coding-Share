@@ -1,6 +1,21 @@
 import type { SvgSceneDef } from "../SvgScene";
 
-const Background = <rect width="1200" height="675" fill="#2B2B3D"/>;
+const Background = (
+  <g>
+    <rect width="1200" height="675" fill="#2B2B3D"/>
+    <rect width="1200" height="675" fill="url(#bottleneckBgGlow)"/>
+  </g>
+);
+
+const Defs = (
+  <defs>
+    <radialGradient id="bottleneckBgGlow" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stopColor="#E8734A" stopOpacity="0.12"/>
+      <stop offset="100%" stopColor="#E8734A" stopOpacity="0"/>
+    </radialGradient>
+  </defs>
+);
+
 
 const Funnel = (
   <g transform="translate(600, 337)">
@@ -80,7 +95,7 @@ const Caption = (
 
 export const bottleneckSceneDef: SvgSceneDef = {
   viewBox: "0 0 1200 675",
-  defs: <defs/>,
+  defs: Defs,
   background: Background,
   fragments: [
     { id: "funnel", content: Funnel, enterFrom: { x: 0, y: -400 }, enterDelay: 0, floatAmp: { x: 8, y: 12 }, floatPeriod: { x: 7, y: 8 }, exitTo: { x: 0, y: 500 }, exitScale: 0.85 },

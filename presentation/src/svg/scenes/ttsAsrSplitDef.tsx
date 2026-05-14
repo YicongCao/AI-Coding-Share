@@ -1,6 +1,11 @@
 import type { SvgSceneDef } from "../SvgScene";
 
-const Background = <rect width="1200" height="675" fill="#2B2B3D"/>;
+const Background = (
+  <g>
+    <rect width="1200" height="675" fill="#2B2B3D"/>
+    <rect width="1200" height="675" fill="url(#ttsAsrSplitBgGlow)"/>
+  </g>
+);
 
 const DividerLine = (
   <g>
@@ -101,6 +106,10 @@ const Defs = (
     <marker id="arrowCyan" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 Z" fill="#6EC8E6"/>
     </marker>
+    <radialGradient id="ttsAsrSplitBgGlow" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stopColor="#4A7BCC" stopOpacity="0.12"/>
+      <stop offset="100%" stopColor="#4A7BCC" stopOpacity="0"/>
+    </radialGradient>
   </defs>
 );
 

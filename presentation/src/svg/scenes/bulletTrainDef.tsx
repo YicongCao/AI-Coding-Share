@@ -1,6 +1,21 @@
 import type { SvgSceneDef } from "../SvgScene";
 
-const Background = <rect width="1200" height="675" fill="#2B2B3D"/>;
+const Background = (
+  <g>
+    <rect width="1200" height="675" fill="#2B2B3D"/>
+    <rect width="1200" height="675" fill="url(#bulletTrainBgGlow)"/>
+  </g>
+);
+
+const Defs = (
+  <defs>
+    <radialGradient id="bulletTrainBgGlow" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stopColor="#6EC8E6" stopOpacity="0.12"/>
+      <stop offset="100%" stopColor="#6EC8E6" stopOpacity="0"/>
+    </radialGradient>
+  </defs>
+);
+
 
 const StreamingRays = (
   <g opacity="0.2">
@@ -69,7 +84,7 @@ const AccentParticles = (
 
 export const bulletTrainSceneDef: SvgSceneDef = {
   viewBox: "0 0 1200 675",
-  defs: <defs/>,
+  defs: Defs,
   background: Background,
   fragments: [
     { id: "streamingRays", content: StreamingRays, enterFrom: { x: -600, y: 0 }, enterDelay: 0, floatAmp: { x: 10, y: 8 }, floatPeriod: { x: 7, y: 9 } },

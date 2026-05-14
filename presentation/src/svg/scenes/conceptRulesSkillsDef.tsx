@@ -1,6 +1,21 @@
 import type { SvgSceneDef } from "../SvgScene";
 
-const Background = <rect width="1200" height="675" fill="#2B2B3D"/>;
+const Background = (
+  <g>
+    <rect width="1200" height="675" fill="#2B2B3D"/>
+    <rect width="1200" height="675" fill="url(#conceptRulesSkillsBgGlow)"/>
+  </g>
+);
+
+const Defs = (
+  <defs>
+    <radialGradient id="conceptRulesSkillsBgGlow" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stopColor="#4A7BCC" stopOpacity="0.12"/>
+      <stop offset="100%" stopColor="#4A7BCC" stopOpacity="0"/>
+    </radialGradient>
+  </defs>
+);
+
 
 const SystemPromptDoc = (
   <g transform="translate(200, 60)">
@@ -82,7 +97,7 @@ const TitleLabel = (
 
 export const conceptRulesSkillsSceneDef: SvgSceneDef = {
   viewBox: "0 0 1200 675",
-  defs: <defs/>,
+  defs: Defs,
   background: Background,
   fragments: [
     { id: "systemPromptDoc", content: SystemPromptDoc, enterFrom: { x: 0, y: 400 }, enterDelay: 0, floatAmp: { x: 10, y: 12 }, floatPeriod: { x: 6, y: 7 }, exitTo: { x: 0, y: -500 } },

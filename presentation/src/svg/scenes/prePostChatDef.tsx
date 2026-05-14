@@ -1,6 +1,21 @@
 import type { SvgSceneDef } from "../SvgScene";
 
-const Background = <rect width="1200" height="675" fill="#2B2B3D"/>;
+const Background = (
+  <g>
+    <rect width="1200" height="675" fill="#2B2B3D"/>
+    <rect width="1200" height="675" fill="url(#prePostChatBgGlow)"/>
+  </g>
+);
+
+const Defs = (
+  <defs>
+    <radialGradient id="prePostChatBgGlow" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stopColor="#6EC8E6" stopOpacity="0.12"/>
+      <stop offset="100%" stopColor="#6EC8E6" stopOpacity="0"/>
+    </radialGradient>
+  </defs>
+);
+
 
 const PrechatStage = (
   <g transform="translate(80, 200)">
@@ -70,7 +85,7 @@ const Caption = (
 
 export const prePostChatSceneDef: SvgSceneDef = {
   viewBox: "0 0 1200 675",
-  defs: <defs/>,
+  defs: Defs,
   background: Background,
   fragments: [
     { id: "prechat", content: PrechatStage, enterFrom: { x: -500, y: 0 }, enterDelay: 0, floatAmp: { x: 10, y: 12 }, floatPeriod: { x: 6, y: 7 }, exitTo: { x: -600, y: 0 }, exitSpin: -4 },

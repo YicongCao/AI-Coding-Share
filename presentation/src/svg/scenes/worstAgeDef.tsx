@@ -1,6 +1,21 @@
 import type { SvgSceneDef } from "../SvgScene";
 
-const Background = <rect width="1200" height="675" fill="#2B2B3D"/>;
+const Background = (
+  <g>
+    <rect width="1200" height="675" fill="#2B2B3D"/>
+    <rect width="1200" height="675" fill="url(#worstAgeBgGlow)"/>
+  </g>
+);
+
+const Defs = (
+  <defs>
+    <radialGradient id="worstAgeBgGlow" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stopColor="#E8734A" stopOpacity="0.12"/>
+      <stop offset="100%" stopColor="#E8734A" stopOpacity="0"/>
+    </radialGradient>
+  </defs>
+);
+
 
 const BarChart = (
   <g transform="translate(80, 140)">
@@ -100,7 +115,7 @@ const SomberCaption = (
 
 export const worstAgeSceneDef: SvgSceneDef = {
   viewBox: "0 0 1200 675",
-  defs: <defs/>,
+  defs: Defs,
   background: Background,
   fragments: [
     { id: "barChart", content: BarChart, enterFrom: { x: -500, y: 0 }, enterDelay: 0, floatAmp: { x: 8, y: 12 }, floatPeriod: { x: 6.0, y: 7.5 }, exitTo: { x: -600, y: 0 }, exitSpin: -2 },

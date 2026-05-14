@@ -1,6 +1,21 @@
 import type { SvgSceneDef } from "../SvgScene";
 
-const Background = <rect width="1200" height="675" fill="#2B2B3D"/>;
+const Background = (
+  <g>
+    <rect width="1200" height="675" fill="#2B2B3D"/>
+    <rect width="1200" height="675" fill="url(#bertBgGlow)"/>
+  </g>
+);
+
+const Defs = (
+  <defs>
+    <radialGradient id="bertBgGlow" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stopColor="#4A7BCC" stopOpacity="0.12"/>
+      <stop offset="100%" stopColor="#4A7BCC" stopOpacity="0"/>
+    </radialGradient>
+  </defs>
+);
+
 
 const NeuralNetwork = (
   <g transform="translate(200, 130)">
@@ -85,7 +100,7 @@ const OutputBox = (
 
 export const bertSceneDef: SvgSceneDef = {
   viewBox: "0 0 1200 675",
-  defs: <defs/>,
+  defs: Defs,
   background: Background,
   fragments: [
     { id: "network", content: NeuralNetwork, enterFrom: { x: -500, y: 0 }, enterDelay: 0, floatAmp: { x: 10, y: 12 }, floatPeriod: { x: 6.5, y: 8 }, exitTo: { x: -600, y: 0 } },

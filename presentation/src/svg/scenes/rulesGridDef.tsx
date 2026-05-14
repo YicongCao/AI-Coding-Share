@@ -1,6 +1,21 @@
 import type { SvgSceneDef } from "../SvgScene";
 
-const Background = <rect width="1200" height="675" fill="#2B2B3D"/>;
+const Background = (
+  <g>
+    <rect width="1200" height="675" fill="#2B2B3D"/>
+    <rect width="1200" height="675" fill="url(#rulesGridBgGlow)"/>
+  </g>
+);
+
+const Defs = (
+  <defs>
+    <radialGradient id="rulesGridBgGlow" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stopColor="#E8734A" stopOpacity="0.12"/>
+      <stop offset="100%" stopColor="#E8734A" stopOpacity="0"/>
+    </radialGradient>
+  </defs>
+);
+
 
 const RuleCards = (
   <g>
@@ -87,7 +102,7 @@ const DecoArrows = (
 
 export const rulesGridSceneDef: SvgSceneDef = {
   viewBox: "0 0 1200 675",
-  defs: <defs/>,
+  defs: Defs,
   background: Background,
   fragments: [
     { id: "ruleCards", content: RuleCards, enterFrom: { x: 0, y: 400 }, enterDelay: 0, floatAmp: { x: 10, y: 12 }, floatPeriod: { x: 6.0, y: 7.5 }, exitTo: { x: 0, y: -500 }, exitSpin: 2 },

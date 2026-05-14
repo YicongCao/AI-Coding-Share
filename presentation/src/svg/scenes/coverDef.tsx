@@ -23,11 +23,18 @@ const SharedDefs = (
     <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
       <feDropShadow dx="0" dy="4" stdDeviation="8" floodColor="#000" floodOpacity="0.3"/>
     </filter>
+    <radialGradient id="coverBgGlow" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stopColor="#6EC8E6" stopOpacity="0.12"/>
+      <stop offset="100%" stopColor="#6EC8E6" stopOpacity="0"/>
+    </radialGradient>
   </defs>
 );
 
 const Background = (
-  <rect width="1200" height="675" fill="#2B2B3D"/>
+  <g>
+    <rect width="1200" height="675" fill="#2B2B3D"/>
+    <rect width="1200" height="675" fill="url(#coverBgGlow)"/>
+  </g>
 );
 
 // ── Fragment 1: Main UI/design window ──

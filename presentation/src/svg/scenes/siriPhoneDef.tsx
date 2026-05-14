@@ -1,6 +1,21 @@
 import type { SvgSceneDef } from "../SvgScene";
 
-const Background = <rect width="1200" height="675" fill="#2B2B3D"/>;
+const Background = (
+  <g>
+    <rect width="1200" height="675" fill="#2B2B3D"/>
+    <rect width="1200" height="675" fill="url(#siriPhoneBgGlow)"/>
+  </g>
+);
+
+const Defs = (
+  <defs>
+    <radialGradient id="siriPhoneBgGlow" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stopColor="#6EC8E6" stopOpacity="0.12"/>
+      <stop offset="100%" stopColor="#6EC8E6" stopOpacity="0"/>
+    </radialGradient>
+  </defs>
+);
+
 
 const IPhone = (
   <g transform="translate(480, 60)">
@@ -56,7 +71,7 @@ const IPhoneLabel = (
 
 export const siriPhoneSceneDef: SvgSceneDef = {
   viewBox: "0 0 1200 675",
-  defs: <defs/>,
+  defs: Defs,
   background: Background,
   fragments: [
     { id: "iPhone", content: IPhone, enterFrom: { x: 0, y: 500 }, enterDelay: 0, floatAmp: { x: 8, y: 12 }, floatPeriod: { x: 5.5, y: 7.0 }, exitTo: { x: 0, y: -550 }, exitSpin: -2 },

@@ -13,12 +13,17 @@ const SharedDefs = (
     <filter id="introShadow" x="-8%" y="-8%" width="116%" height="116%">
       <feDropShadow dx="0" dy="8" stdDeviation="10" floodColor="#000" floodOpacity="0.28"/>
     </filter>
+    <radialGradient id="introBadgeBgGlow" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stopColor="#6EC8E6" stopOpacity="0.12"/>
+      <stop offset="100%" stopColor="#6EC8E6" stopOpacity="0"/>
+    </radialGradient>
   </defs>
 );
 
 const Background = (
   <g>
     <rect width="1200" height="675" fill="#2B2B3D"/>
+    <rect width="1200" height="675" fill="url(#introBadgeBgGlow)"/>
     <rect y="462" width="1200" height="213" fill="url(#introFloorGrad)"/>
     <g stroke="#3A3A50" strokeWidth="1" opacity="0.45">
       <line x1="0" y1="520" x2="1200" y2="520"/>

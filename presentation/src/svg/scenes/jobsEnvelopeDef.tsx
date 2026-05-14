@@ -1,6 +1,21 @@
 import type { SvgSceneDef } from "../SvgScene";
 
-const Background = <rect width="1200" height="675" fill="#2B2B3D"/>;
+const Background = (
+  <g>
+    <rect width="1200" height="675" fill="#2B2B3D"/>
+    <rect width="1200" height="675" fill="url(#jobsEnvelopeBgGlow)"/>
+  </g>
+);
+
+const Defs = (
+  <defs>
+    <radialGradient id="jobsEnvelopeBgGlow" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stopColor="#E8B84A" stopOpacity="0.12"/>
+      <stop offset="100%" stopColor="#E8B84A" stopOpacity="0"/>
+    </radialGradient>
+  </defs>
+);
+
 
 const Curtains = (
   <g>
@@ -100,7 +115,7 @@ const AppleLogo = (
 
 export const jobsEnvelopeSceneDef: SvgSceneDef = {
   viewBox: "0 0 1200 675",
-  defs: <defs/>,
+  defs: Defs,
   background: Background,
   fragments: [
     { id: "curtains", content: Curtains, enterFrom: { x: 0, y: 0 }, enterDelay: 0, floatAmp: { x: 3, y: 4 }, floatPeriod: { x: 9.0, y: 10.0 }, exitTo: { x: 0, y: 0 }, exitScale: 1.08, exitOpacity: 0.6 },

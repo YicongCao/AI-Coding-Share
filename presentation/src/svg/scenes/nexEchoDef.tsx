@@ -1,6 +1,21 @@
 import type { SvgSceneDef } from "../SvgScene";
 
-const Background = <rect width="1200" height="675" fill="#2B2B3D"/>;
+const Background = (
+  <g>
+    <rect width="1200" height="675" fill="#2B2B3D"/>
+    <rect width="1200" height="675" fill="url(#nexEchoBgGlow)"/>
+  </g>
+);
+
+const Defs = (
+  <defs>
+    <radialGradient id="nexEchoBgGlow" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stopColor="#5BAD7A" stopOpacity="0.12"/>
+      <stop offset="100%" stopColor="#5BAD7A" stopOpacity="0"/>
+    </radialGradient>
+  </defs>
+);
+
 
 const PMFigure = (
   <g transform="translate(135, 258)">
@@ -114,7 +129,7 @@ const Labels = (
 
 export const nexEchoSceneDef: SvgSceneDef = {
   viewBox: "0 0 1200 675",
-  defs: <defs/>,
+  defs: Defs,
   background: Background,
   fragments: [
     { id: "person", content: PMFigure, enterFrom: { x: -400, y: 80 }, enterDelay: 0, floatAmp: { x: 8, y: 12 }, floatPeriod: { x: 6, y: 7 }, exitTo: { x: -500, y: 0 }, exitScale: 0.9 },

@@ -1,6 +1,11 @@
 import type { SvgSceneDef } from "../SvgScene";
 
-const Background = <rect width="1200" height="675" fill="#2B2B3D"/>;
+const Background = (
+  <g>
+    <rect width="1200" height="675" fill="#2B2B3D"/>
+    <rect width="1200" height="675" fill="url(#bestAgeBgGlow)"/>
+  </g>
+);
 
 const Defs = (
   <defs>
@@ -8,6 +13,10 @@ const Defs = (
       <stop offset="0%" stopColor="#E8B84A" stopOpacity="0.15"/>
       <stop offset="100%" stopColor="#E8B84A" stopOpacity="0"/>
     </linearGradient>
+    <radialGradient id="bestAgeBgGlow" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stopColor="#E8734A" stopOpacity="0.12"/>
+      <stop offset="100%" stopColor="#E8734A" stopOpacity="0"/>
+    </radialGradient>
   </defs>
 );
 

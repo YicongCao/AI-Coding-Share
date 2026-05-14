@@ -1,6 +1,21 @@
 import type { SvgSceneDef } from "../SvgScene";
 
-const Background = <rect width="1200" height="675" fill="#2B2B3D"/>;
+const Background = (
+  <g>
+    <rect width="1200" height="675" fill="#2B2B3D"/>
+    <rect width="1200" height="675" fill="url(#closedLoopManualBgGlow)"/>
+  </g>
+);
+
+const Defs = (
+  <defs>
+    <radialGradient id="closedLoopManualBgGlow" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stopColor="#4A7BCC" stopOpacity="0.12"/>
+      <stop offset="100%" stopColor="#4A7BCC" stopOpacity="0"/>
+    </radialGradient>
+  </defs>
+);
+
 
 const CodeBox1 = (
   <g transform="translate(60, 220)">
@@ -101,7 +116,7 @@ const InfinityHint = (
 
 export const closedLoopManualSceneDef: SvgSceneDef = {
   viewBox: "0 0 1200 675",
-  defs: <defs/>,
+  defs: Defs,
   background: Background,
   fragments: [
     { id: "code1", content: CodeBox1, enterFrom: { x: -300, y: 0 }, enterDelay: 0, floatAmp: { x: 8, y: 12 }, floatPeriod: { x: 6, y: 7 }, exitTo: { x: -400, y: -100 } },

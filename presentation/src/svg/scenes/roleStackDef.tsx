@@ -1,6 +1,21 @@
 import type { SvgSceneDef } from "../SvgScene";
 
-const Background = <rect width="1200" height="675" fill="#2B2B3D"/>;
+const Background = (
+  <g>
+    <rect width="1200" height="675" fill="#2B2B3D"/>
+    <rect width="1200" height="675" fill="url(#roleStackBgGlow)"/>
+  </g>
+);
+
+const Defs = (
+  <defs>
+    <radialGradient id="roleStackBgGlow" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stopColor="#6EC8E6" stopOpacity="0.12"/>
+      <stop offset="100%" stopColor="#6EC8E6" stopOpacity="0"/>
+    </radialGradient>
+  </defs>
+);
+
 
 const roleCards = [
   { x: 128, y: 250, width: 220, label: "研发", sub: "把想法落成代码", color: "#6EC8E6", path: "M348,289 C420,282 476,305 522,342" },
@@ -82,7 +97,7 @@ const SubtitleNote = (
 
 export const roleStackSceneDef: SvgSceneDef = {
   viewBox: "0 0 1200 675",
-  defs: <defs/>,
+  defs: Defs,
   background: Background,
   fragments: [
     { id: "title", content: TitleLabel, enterFrom: { x: 0, y: -120 }, enterDelay: 0, floatAmp: { x: 6, y: 7 }, floatPeriod: { x: 8, y: 9 }, exitTo: { x: 0, y: -220 } },

@@ -1,6 +1,21 @@
 import type { SvgSceneDef } from "../SvgScene";
 
-const Background = <rect width="1200" height="675" fill="#2B2B3D"/>;
+const Background = (
+  <g>
+    <rect width="1200" height="675" fill="#2B2B3D"/>
+    <rect width="1200" height="675" fill="url(#keyPointTitle2BgGlow)"/>
+  </g>
+);
+
+const Defs = (
+  <defs>
+    <radialGradient id="keyPointTitle2BgGlow" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stopColor="#E8B84A" stopOpacity="0.12"/>
+      <stop offset="100%" stopColor="#E8B84A" stopOpacity="0"/>
+    </radialGradient>
+  </defs>
+);
+
 
 const GridBg = (
   <g opacity="0.12">
@@ -50,7 +65,7 @@ const AccentDots = (
 
 export const keyPointTitle2SceneDef: SvgSceneDef = {
   viewBox: "0 0 1200 675",
-  defs: <defs/>,
+  defs: Defs,
   background: Background,
   fragments: [
     { id: "grid", content: GridBg, enterFrom: { x: 0, y: -200 }, enterDelay: 0, floatAmp: { x: 8, y: 8 }, floatPeriod: { x: 9, y: 8 } },

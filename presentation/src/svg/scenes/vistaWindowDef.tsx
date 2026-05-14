@@ -1,6 +1,21 @@
 import type { SvgSceneDef } from "../SvgScene";
 
-const Background = <rect width="1200" height="675" fill="#2B2B3D"/>;
+const Background = (
+  <g>
+    <rect width="1200" height="675" fill="#2B2B3D"/>
+    <rect width="1200" height="675" fill="url(#vistaWindowBgGlow)"/>
+  </g>
+);
+
+const Defs = (
+  <defs>
+    <radialGradient id="vistaWindowBgGlow" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stopColor="#E8B84A" stopOpacity="0.12"/>
+      <stop offset="100%" stopColor="#E8B84A" stopOpacity="0"/>
+    </radialGradient>
+  </defs>
+);
+
 
 const VistaWindow = (
   <g>
@@ -114,7 +129,7 @@ const AssistantText = (
 
 export const vistaWindowSceneDef: SvgSceneDef = {
   viewBox: "0 0 1200 675",
-  defs: <defs/>,
+  defs: Defs,
   background: Background,
   fragments: [
     { id: "vistaWindow", content: VistaWindow, enterFrom: { x: 600, y: 0 }, enterDelay: 0, floatAmp: { x: 10, y: 12 }, floatPeriod: { x: 5.5, y: 7.0 }, exitTo: { x: -700, y: -80 }, exitSpin: -3 },

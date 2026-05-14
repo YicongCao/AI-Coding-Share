@@ -1,6 +1,21 @@
 import type { SvgSceneDef } from "../SvgScene";
 
-const Background = <rect width="1200" height="675" fill="#2B2B3D"/>;
+const Background = (
+  <g>
+    <rect width="1200" height="675" fill="#2B2B3D"/>
+    <rect width="1200" height="675" fill="url(#chatgptBgGlow)"/>
+  </g>
+);
+
+const Defs = (
+  <defs>
+    <radialGradient id="chatgptBgGlow" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stopColor="#5BAD7A" stopOpacity="0.12"/>
+      <stop offset="100%" stopColor="#5BAD7A" stopOpacity="0"/>
+    </radialGradient>
+  </defs>
+);
+
 
 const ChatBubble = (
   <g transform="translate(340, 120)">
@@ -95,7 +110,7 @@ const Sparkles = (
 
 export const chatgptSceneDef: SvgSceneDef = {
   viewBox: "0 0 1200 675",
-  defs: <defs/>,
+  defs: Defs,
   background: Background,
   fragments: [
     { id: "chatBubble", content: ChatBubble, enterFrom: { x: 0, y: -400 }, enterDelay: 0, floatAmp: { x: 10, y: 14 }, floatPeriod: { x: 5.5, y: 7.0 }, exitTo: { x: 0, y: 500 }, exitSpin: -3 },
