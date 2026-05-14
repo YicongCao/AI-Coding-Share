@@ -49,13 +49,16 @@ const Clipboard = (
 );
 
 const CopyButton = (
-  <g transform="translate(940, 280)">
-    <rect x="0" y="0" width="160" height="56" rx="12" fill="#5BAD7A" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
-    <rect x="50" y="14" width="18" height="22" rx="3" fill="none" stroke="#FFFFFF" strokeWidth="2"/>
-    <rect x="56" y="20" width="18" height="22" rx="3" fill="#5BAD7A" stroke="#FFFFFF" strokeWidth="2"/>
-    <text x="80" y="56" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="14" fontWeight="bold">一键复制</text>
-    <circle cx="170" cy="-10" r="12" fill="#E8B84A" opacity="0.8" stroke="#F0D070" strokeOpacity="0.3" strokeWidth="1"/>
-    <text x="170" y="-5" textAnchor="middle" fill="#1E1E2E" fontFamily="sans-serif" fontSize="14" fontWeight="bold">✓</text>
+  <g transform="translate(940, 260)">
+    <rect x="0" y="0" width="180" height="76" rx="14" fill="#5BAD7A" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
+    {/* Copy icon centered */}
+    <rect x="48" y="14" width="18" height="22" rx="3" fill="none" stroke="#FFFFFF" strokeWidth="2"/>
+    <rect x="54" y="20" width="18" height="22" rx="3" fill="#5BAD7A" stroke="#FFFFFF" strokeWidth="2"/>
+    {/* Label centered below icon */}
+    <text x="90" y="62" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="15" fontWeight="bold">一键复制</text>
+    {/* Checkmark badge */}
+    <circle cx="190" cy="-10" r="12" fill="#E8B84A" opacity="0.8" stroke="#F0D070" strokeOpacity="0.3" strokeWidth="1"/>
+    <text x="190" y="-5" textAnchor="middle" fill="#1E1E2E" fontFamily="sans-serif" fontSize="14" fontWeight="bold">✓</text>
   </g>
 );
 

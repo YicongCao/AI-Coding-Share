@@ -25,12 +25,12 @@ const Title = (
 );
 
 const stages = [
-  { label: "构思", color: "#E8734A" },
-  { label: "创意", color: "#E8B84A" },
-  { label: "方案", color: "#5BAD7A" },
-  { label: "设计", color: "#4A7BCC" },
-  { label: "施工", color: "#6EC8E6" },
-  { label: "验收", color: "#E85650" },
+  { label: "构思", color: "#E8734A", dx: -8, dy: 12, rot: -4 },
+  { label: "创意", color: "#E8B84A", dx: 6, dy: -18, rot: 3 },
+  { label: "方案", color: "#5BAD7A", dx: -12, dy: 8, rot: -2 },
+  { label: "设计", color: "#4A7BCC", dx: 10, dy: -14, rot: 5 },
+  { label: "施工", color: "#6EC8E6", dx: -6, dy: 16, rot: -3 },
+  { label: "验收", color: "#E85650", dx: 8, dy: -10, rot: 4 },
 ];
 
 const FlowNodes = (
@@ -38,11 +38,14 @@ const FlowNodes = (
     {stages.map((stage, i) => {
       const x = i * 180;
       return (
-        <g key={i}>
+        <g key={i} transform={`translate(${stage.dx}, ${stage.dy}) rotate(${stage.rot}, ${x + 40}, 70)`}>
           {i < 5 && (
             <g>
-              <line x1={x + 80} y1={70} x2={x + 120} y2={70} stroke="#555570" strokeWidth="2"/>
-              <polygon points={`${x + 118},64 ${x + 130},70 ${x + 118},76`} fill="#555570"/>
+              <path
+                d={`M ${x + 80} 70 Q ${x + 100} ${55 + (i % 2) * 30} ${x + 120} 70`}
+                fill="none" stroke="#555570" strokeWidth="2" strokeDasharray="6 4" opacity="0.5"
+              />
+              <polygon points={`${x + 118},64 ${x + 130},70 ${x + 118},76`} fill="#555570" opacity="0.5"/>
             </g>
           )}
           <rect x={x} y={20} width="80" height="100" rx="12" fill="#1E1E2E" stroke={stage.color} strokeWidth="2"/>

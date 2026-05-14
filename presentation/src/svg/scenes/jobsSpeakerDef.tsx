@@ -125,6 +125,7 @@ export const jobsSpeakerSceneDef: SvgSceneDef = {
   viewBox: "0 0 1200 675",
   defs: Defs,
   background: Background,
+  transitionEffect: "curtain",
   fragments: [
     { id: "spotlight", content: Spotlight, enterFrom: { x: 0, y: -300 }, enterDelay: 0, floatAmp: { x: 4, y: 6 }, floatPeriod: { x: 8.0, y: 10.0 }, exitTo: { x: 0, y: -420 }, exitOpacity: 1.4 },
     { id: "stage", content: Stage, enterFrom: { x: 0, y: 400 }, enterDelay: 100, floatAmp: { x: 4, y: 6 }, floatPeriod: { x: 8.0, y: 9.0 }, exitTo: { x: 0, y: 420 } },
