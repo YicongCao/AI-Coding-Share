@@ -114,6 +114,7 @@ button:disabled {
 .signup-card {
   pointer-events: auto;
   width: min(35vw, 88vw);
+  animation: signupFloatIn 0.8s ease-out both;
   background: rgba(20, 22, 38, 0.85);
   backdrop-filter: blur(16px);
   border: 1px solid rgba(250, 204, 21, 0.2);
@@ -840,4 +841,15 @@ button:disabled {
 
 .login-submit:hover {
   filter: brightness(1.05);
+}
+
+@keyframes signupFloatIn {
+  0% {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
