@@ -107,7 +107,7 @@ button:disabled {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding-top: 28vh;
+  padding-top: 48vh;
   pointer-events: none;
 }
 

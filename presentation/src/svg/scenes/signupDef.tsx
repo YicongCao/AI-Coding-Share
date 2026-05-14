@@ -32,31 +32,35 @@ const TitleText = (
   </g>
 );
 
+{/* s1: 1024x586 → 504x288 */}
 const ScreenshotTL = (
-  <g transform="translate(20, 20) rotate(-6)">
-    <rect x="0" y="0" width="260" height="170" rx="10" fill="#1E1E2E" stroke="#FFFFFF" strokeOpacity="0.08" strokeWidth="1"/>
-    <image href="/screenshots/s1.png" x="4" y="4" width="252" height="162" preserveAspectRatio="xMidYMid meet" opacity="0.7"/>
+  <g transform="translate(-10, 10) rotate(-6)">
+    <rect x="0" y="0" width="512" height="296" rx="10" fill="#1E1E2E" stroke="#FFFFFF" strokeOpacity="0.08" strokeWidth="1"/>
+    <image href="/screenshots/s1.png" x="4" y="4" width="504" height="288" preserveAspectRatio="xMidYMid meet" opacity="0.7"/>
   </g>
 );
 
+{/* s2: 724x1024 → 240x340 (constrained by max height) */}
 const ScreenshotTR = (
-  <g transform="translate(920, 30) rotate(4)">
-    <rect x="0" y="0" width="260" height="170" rx="10" fill="#1E1E2E" stroke="#FFFFFF" strokeOpacity="0.08" strokeWidth="1"/>
-    <image href="/screenshots/s2.png" x="4" y="4" width="252" height="162" preserveAspectRatio="xMidYMid meet" opacity="0.7"/>
+  <g transform="translate(940, 10) rotate(4)">
+    <rect x="0" y="0" width="248" height="348" rx="10" fill="#1E1E2E" stroke="#FFFFFF" strokeOpacity="0.08" strokeWidth="1"/>
+    <image href="/screenshots/s2.png" x="4" y="4" width="240" height="340" preserveAspectRatio="xMidYMid meet" opacity="0.7"/>
   </g>
 );
 
+{/* s3: 864x1024 → 286x340 (constrained by max height) */}
 const ScreenshotBL = (
-  <g transform="translate(30, 480) rotate(5)">
-    <rect x="0" y="0" width="260" height="170" rx="10" fill="#1E1E2E" stroke="#FFFFFF" strokeOpacity="0.08" strokeWidth="1"/>
-    <image href="/screenshots/s3.png" x="4" y="4" width="252" height="162" preserveAspectRatio="xMidYMid meet" opacity="0.7"/>
+  <g transform="translate(10, 320) rotate(5)">
+    <rect x="0" y="0" width="294" height="348" rx="10" fill="#1E1E2E" stroke="#FFFFFF" strokeOpacity="0.08" strokeWidth="1"/>
+    <image href="/screenshots/s3.png" x="4" y="4" width="286" height="340" preserveAspectRatio="xMidYMid meet" opacity="0.7"/>
   </g>
 );
 
+{/* s4: 1024x295 → 504x145 */}
 const ScreenshotBR = (
-  <g transform="translate(910, 480) rotate(-3)">
-    <rect x="0" y="0" width="260" height="170" rx="10" fill="#1E1E2E" stroke="#FFFFFF" strokeOpacity="0.08" strokeWidth="1"/>
-    <image href="/screenshots/s4.png" x="4" y="4" width="252" height="162" preserveAspectRatio="xMidYMid meet" opacity="0.7"/>
+  <g transform="translate(680, 510) rotate(-3)">
+    <rect x="0" y="0" width="512" height="153" rx="10" fill="#1E1E2E" stroke="#FFFFFF" strokeOpacity="0.08" strokeWidth="1"/>
+    <image href="/screenshots/s4.png" x="4" y="4" width="504" height="145" preserveAspectRatio="xMidYMid meet" opacity="0.7"/>
   </g>
 );
 
