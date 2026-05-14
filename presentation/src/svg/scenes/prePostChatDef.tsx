@@ -32,18 +32,18 @@ const PrechatStage = (
 );
 
 const MainAgent = (
-  <g transform="translate(440, 180)">
-    <rect x="0" y="0" width="280" height="220" rx="14" fill="#1E1E2E" stroke="#5BAD7A" strokeWidth="2.5"/>
-    <rect x="0" y="0" width="280" height="44" rx="14" fill="#5BAD7A" opacity="0.12" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
-    <rect x="0" y="30" width="280" height="14" fill="#5BAD7A" opacity="0.12" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
-    <text x="140" y="30" textAnchor="middle" fill="#5BAD7A" fontFamily="sans-serif" fontSize="18" fontWeight="bold">Main Agent</text>
-    <circle cx="140" cy="100" r="30" fill="#252538" stroke="#5BAD7A" strokeWidth="2"/>
-    <text x="140" y="96" textAnchor="middle" fill="#5BAD7A" fontFamily="sans-serif" fontSize="22" fontWeight="bold">AI</text>
-    <text x="140" y="113" textAnchor="middle" fill="#5BAD7A" fontFamily="sans-serif" fontSize="10">主模型</text>
-    <rect x="50" y="145" width="180" height="28" rx="8" fill="#252538" stroke="#555570" strokeWidth="1"/>
-    <text x="140" y="164" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="12" opacity="0.6">Thinking Depth: adaptive</text>
-    <rect x="80" y="185" width="120" height="24" rx="12" fill="#5BAD7A" opacity="0.15"/>
-    <text x="140" y="202" textAnchor="middle" fill="#5BAD7A" fontFamily="sans-serif" fontSize="12" fontWeight="bold">Processing...</text>
+  <g transform="translate(385, 180)">
+    <rect x="0" y="0" width="390" height="220" rx="14" fill="#1E1E2E" stroke="#5BAD7A" strokeWidth="2.5"/>
+    <rect x="0" y="0" width="390" height="44" rx="14" fill="#5BAD7A" opacity="0.12" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
+    <rect x="0" y="30" width="390" height="14" fill="#5BAD7A" opacity="0.12" stroke="#7DD49A" strokeOpacity="0.3" strokeWidth="1"/>
+    <text x="195" y="30" textAnchor="middle" fill="#5BAD7A" fontFamily="sans-serif" fontSize="18" fontWeight="bold">Main Agent</text>
+    <circle cx="195" cy="100" r="30" fill="#252538" stroke="#5BAD7A" strokeWidth="2"/>
+    <text x="195" y="96" textAnchor="middle" fill="#5BAD7A" fontFamily="sans-serif" fontSize="22" fontWeight="bold">AI</text>
+    <text x="195" y="113" textAnchor="middle" fill="#5BAD7A" fontFamily="sans-serif" fontSize="10">主模型</text>
+    <rect x="105" y="145" width="180" height="28" rx="8" fill="#252538" stroke="#555570" strokeWidth="1"/>
+    <text x="195" y="164" textAnchor="middle" fill="#FFFFFF" fontFamily="sans-serif" fontSize="12" opacity="0.6">Thinking Depth: adaptive</text>
+    <rect x="135" y="185" width="120" height="24" rx="12" fill="#5BAD7A" opacity="0.15"/>
+    <text x="195" y="202" textAnchor="middle" fill="#5BAD7A" fontFamily="sans-serif" fontSize="12" fontWeight="bold">Processing...</text>
   </g>
 );
 
@@ -62,9 +62,9 @@ const PostchatStage = (
 
 const Arrows = (
   <g>
-    <line x1="330" y1="290" x2="430" y2="290" stroke="#555570" strokeWidth="2.5"/>
-    <polygon points="430,290 420,284 420,296" fill="#555570"/>
-    <line x1="730" y1="290" x2="830" y2="290" stroke="#555570" strokeWidth="2.5"/>
+    <line x1="330" y1="290" x2="375" y2="290" stroke="#555570" strokeWidth="2.5"/>
+    <polygon points="375,290 365,284 365,296" fill="#555570"/>
+    <line x1="785" y1="290" x2="830" y2="290" stroke="#555570" strokeWidth="2.5"/>
     <polygon points="830,290 820,284 820,296" fill="#555570"/>
   </g>
 );
